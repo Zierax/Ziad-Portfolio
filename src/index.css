@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Fira+Code&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-green: #00ff9d;
+  --neon-blue: #00e5ff;
+  --neon-purple: #bf00ff;
+  --background-color: #0f172a;
+  --text-color: #e2e8f0;
+  --accent-color: #f472b6;
+  --secondary-accent: #38bdf8;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-900 text-slate-200 font-sans;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .neon-text {
+    @apply relative inline-block;
+    color: var(--neon-green);
+    text-shadow: 
+      0 0 7px var(--neon-green),
+      0 0 10px var(--neon-green),
+      0 0 21px var(--neon-green),
+      0 0 42px var(--neon-green),
+      0 0 82px var(--neon-green);
+    animation: pulsate 1.5s infinite alternate;
+  }
+
+  .neon-border {
+    @apply relative overflow-hidden rounded-lg;
+    box-shadow: 
+      0 0 5px var(--neon-blue),
+      0 0 10px var(--neon-blue),
+      inset 0 0 5px var(--neon-blue);
+    transition: all 0.3s ease;
+  }
+
+  .neon-border::before {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(45deg, transparent, var(--neon-blue), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  .neon-border:hover::before {
+    transform: translateX(100%);
+  }
+
+  .glitch-effect {
+    @apply relative inline-block;
+    color: var(--text-color);
+  }
+
+  .glitch-effect::before,
+  .glitch-effect::after {
+    content: attr(data-text);
+    @apply absolute top-0 left-0 w-full h-full;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .glitch-effect::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--neon-purple);
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+  }
+
+  .glitch-effect::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--secondary-accent);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  }
+}
+
+@keyframes pulsate {
+  100% {
+    text-shadow:
+      0 0 4px var(--neon-green),
+      0 0 11px var(--neon-green),
+      0 0 19px var(--neon-green),
+      0 0 40px var(--neon-green),
+      0 0 80px var(--neon-green);
+  }
+  0% {
+    text-shadow:
+      0 0 2px var(--neon-green),
+      0 0 4px var(--neon-green),
+      0 0 6px var(--neon-green),
+      0 0 10px var(--neon-green),
+      0 0 45px var(--neon-green);
+  }
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip: rect(30px, 9999px, 10px, 0); }
+  25% { clip: rect(54px, 9999px, 70px, 0); }
+  50% { clip: rect(22px, 9999px, 29px, 0); }
+  75% { clip: rect(48px, 9999px, 36px, 0); }
+  100% { clip: rect(30px, 9999px, 10px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip: rect(65px, 9999px, 32px, 0); }
+  25% { clip: rect(15px, 9999px, 59px, 0); }
+  50% { clip: rect(40px, 9999px, 73px, 0); }
+  75% { clip: rect(68px, 9999px, 5px, 0); }
+  100% { clip: rect(65px, 9999px, 32px, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neon-text,
+  .glitch-effect::before,
+  .glitch-effect::after {
+    animation: none;
+  }
+  .neon-border::before {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400;
+  }
+  
+  .bg-glass {
+    @apply bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .cyberpunk-border {
+    @apply border-2 border-transparent relative;
+    background-clip: padding-box;
+  }
+
+  .cyberpunk-border::after {
+    content: '';
+    @apply absolute inset-0 rounded-lg;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-green));
+    margin: -2px;
+    z-index: -1;
+  }
+
+  .neon-glow {
+    filter: drop-shadow(0 0 5px var(--neon-blue)) 
+            drop-shadow(0 0 10px var(--neon-blue)) 
+            drop-shadow(0 0 15px var(--neon-blue));
+  }
+}
