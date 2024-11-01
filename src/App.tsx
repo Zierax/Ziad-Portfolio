@@ -10,6 +10,7 @@ import Certifications from './components/Certifications'
 import Consultations from './components/Consultations'
 import Contact from './components/Contact'
 import SecretPage from './components/SecretPage'
+import ToolsPage from './components/ToolsPage'
 
 
 function HomePage() {
@@ -21,6 +22,7 @@ function HomePage() {
       <Skills />
       <Experience />
       <Projects />
+      <ToolsPage />
       <Certifications />
       <Consultations />
       <Contact />
@@ -35,6 +37,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/secret" element={<SecretPage />} />
+          <Route path="/tools" element={<ToolsPage />} />
         </Routes>
       </div>
     </Router>
