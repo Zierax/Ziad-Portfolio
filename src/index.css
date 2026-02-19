@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 142 100% 50%;
+    
+    --terminal-green: 142 100% 50%;
+    --terminal-amber: 38 100% 50%;
+    --terminal-red: 0 100% 50%;
+    --terminal-blue: 200 100% 60%;
+
+    --neon-green: 142 100% 50%;
+    --neon-blue: 190 100% 50%;
+    --neon-purple: 280 100% 60%;
+    --neon-pink: 320 100% 60%;
+    
+    --card: 0 0% 4%;
+    --card-foreground: 142 100% 50%;
+    
+    --popover: 0 0% 4%;
+    --popover-foreground: 142 100% 50%;
+    
+    --primary: 142 100% 50%;
+    --primary-foreground: 0 0% 0%;
+    
+    --secondary: 260 50% 10%;
+    --secondary-foreground: 260 100% 70%;
+    
+    --muted: 0 0% 10%;
+    --muted-foreground: 142 40% 40%;
+    
+    --accent: 142 100% 50%;
+    --accent-foreground: 0 0% 0%;
+    
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 0%;
+    
+    --border: 142 100% 15%;
+    --input: 142 100% 5%;
+    --ring: 142 100% 50%;
+    
+    --radius: 0.25rem;
+    
+    /* CRT Effects */
+    --glow-primary: 142 100% 50%;
+    --glow-secondary: 38 100% 50%;
+    
+    /* Glass morphism */
+    --glass-bg: 0 0% 3%;
+    --glass-border: 142 100% 30%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-mono overflow-x-hidden;
+    background-image: 
+      linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+      linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-cyber tracking-wider;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #00ff41;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00cc33;
+  }
+}
+
+@layer utilities {
+  /* Terminal Text Effects */
+  .terminal-text {
+    @apply text-terminal-green font-mono;
+    text-shadow: 0 0 5px hsl(var(--terminal-green) / 0.5);
+  }
+  
+  .terminal-amber {
+    @apply text-terminal-amber;
+    text-shadow: 0 0 5px hsl(var(--terminal-amber) / 0.5);
+  }
+
+  .neon-text {
+    text-shadow: 
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #00ff41,
+      0 0 30px #00ff41,
+      0 0 40px #00ff41;
+  }
+  
+  /* CRT Screen Effects */
+  .crt-screen {
+    position: relative;
+  }
+  
+  .crt-screen::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+  }
+  
+  /* Glass Morphism */
+  .glass-panel {
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+  }
+
+  .glass-panel:hover {
+    border-color: rgba(0, 255, 65, 0.5);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+  }
+  
+  /* Glitch Effect */
+  .glitch-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .glitch-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+  }
+
+  .glitch-layer:nth-child(1) {
+    color: #ff00ff;
+    animation: glitch-1 2s infinite linear alternate-reverse;
+  }
+
+  .glitch-layer:nth-child(2) {
+    color: #00ffff;
+    animation: glitch-2 2s infinite linear alternate-reverse;
+  }
+  
+  /* Blinking Cursor */
+  .cursor-blink::after {
+    content: '▋';
+    @apply ml-1 animate-blink text-terminal-green;
+  }
+  
+  /* Helper to hide scrollbar but keep functionality */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
