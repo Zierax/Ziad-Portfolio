@@ -53,7 +53,7 @@ export const academicResearches: AcademicResearch[] = [
     date: "2026",
     description: "An exploration into the intersection of artificial intelligence and musical composition, detailing how non-living algorithms can generate lifelike and emotionally resonant music. Keywords: Artificial Intelligence, Music Generation, Algorithmic Composition, Machine Learning",
     journalOrConference: "Independent Research",
-    pdfLink: "/src/assets/researches/How_Non-Living_Intelligence_Brings_Life_to_Music.pdf",
+    pdfLink: "https://github.com/Zierax/Ziad-Portfolio/blob/main/src/assets/researches/How_Non-Living_Intelligence_Brings_Life_to_Music.pdf",
     doiLink: "#"
   }
 ];
@@ -268,3 +268,4 @@ export const awards = [
     issuer: "EYCC",
   },
 ];
+
