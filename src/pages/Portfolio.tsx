@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Terminal, Grid3x3, FileText, Github, Linkedin, Mail, MapPin, Award, Briefcase, ExternalLink, Cpu, Globe, Shield } from "lucide-react";
+import { Terminal, Grid3x3, FileText, Github, Linkedin, Mail, MapPin, Award, Briefcase, ExternalLink, Cpu, Globe, Shield, Trophy } from "lucide-react";
 import ProjectCard from "@/components/ProjectCard";
 import TerminalView from "@/components/TerminalView";
-import { profileData, projects, experience, skills, certifications, awards, education } from "@/data/profile";
+import { profileData, projects, experience, skills, certifications, awards, education, writeups, academicResearches } from "@/data/profile";
 
 type ViewMode = "terminal" | "grid" | "minimal";
 
@@ -28,8 +28,8 @@ const Portfolio = () => {
               <button
                 onClick={() => setViewMode("terminal")}
                 className={`px-4 py-2 rounded font-mono text-sm transition-all duration-300 border ${viewMode === "terminal"
-                    ? "bg-terminal-green/10 border-terminal-green text-terminal-green"
-                    : "border-transparent text-muted-foreground hover:text-terminal-green hover:border-terminal-green/50"
+                  ? "bg-terminal-green/10 border-terminal-green text-terminal-green"
+                  : "border-transparent text-muted-foreground hover:text-terminal-green hover:border-terminal-green/50"
                   }`}
               >
                 <Terminal size={16} className="inline mr-2" />
@@ -38,8 +38,8 @@ const Portfolio = () => {
               <button
                 onClick={() => setViewMode("grid")}
                 className={`px-4 py-2 rounded font-mono text-sm transition-all duration-300 border ${viewMode === "grid"
-                    ? "bg-neon-blue/10 border-neon-blue text-neon-blue"
-                    : "border-transparent text-muted-foreground hover:text-neon-blue hover:border-neon-blue/50"
+                  ? "bg-neon-blue/10 border-neon-blue text-neon-blue"
+                  : "border-transparent text-muted-foreground hover:text-neon-blue hover:border-neon-blue/50"
                   }`}
               >
                 <Grid3x3 size={16} className="inline mr-2" />
@@ -48,8 +48,8 @@ const Portfolio = () => {
               <button
                 onClick={() => setViewMode("minimal")}
                 className={`px-4 py-2 rounded font-mono text-sm transition-all duration-300 border ${viewMode === "minimal"
-                    ? "bg-neon-purple/10 border-neon-purple text-neon-purple"
-                    : "border-transparent text-muted-foreground hover:text-neon-purple hover:border-neon-purple/50"
+                  ? "bg-neon-purple/10 border-neon-purple text-neon-purple"
+                  : "border-transparent text-muted-foreground hover:text-neon-purple hover:border-neon-purple/50"
                   }`}
               >
                 <FileText size={16} className="inline mr-2" />
@@ -155,45 +155,136 @@ const Portfolio = () => {
               </div>
             </section>
 
-            {/* Projects Module */}
+            {/* Achievements Module */}
             <section>
               <div className="flex items-center gap-4 mb-8">
-                <Cpu className="text-neon-purple" size={32} />
-                <h2 className="text-3xl font-cyber text-neon-purple">Deployed_Payloads</h2>
-                <div className="h-px bg-neon-purple/30 flex-1"></div>
+                <Trophy className="text-terminal-amber" size={32} />
+                <h2 className="text-3xl font-cyber text-terminal-amber">Achievements_Log</h2>
+                <div className="h-px bg-terminal-amber/30 flex-1"></div>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {projects.map((project, index) => (
-                  <div key={index} className="glass-panel rounded-xl p-6 border-t border-t-neon-purple/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] transition-all group">
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-xl font-bold text-foreground group-hover:text-neon-purple transition-colors">{project.title}</h3>
-                      <span className="text-xs font-mono text-muted-foreground">{project.date}</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-6 line-clamp-3">{project.description}</p>
+              {/* Vulnerabilities & Research (High Impact) */}
+              <div className="mb-12">
+                <h3 className="text-xl font-bold font-mono text-terminal-red mb-6 flex items-center gap-2">
+                  <Shield size={20} className="animate-pulse" />
+                  CRITICAL_DISCLOSURES_&_RESEARCH
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {/* Writeups */}
+                  {writeups.map((writeup, index) => (
+                    <a
+                      key={index}
+                      href={writeup.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="glass-panel group relative overflow-hidden rounded-xl border border-terminal-red/30 hover:border-terminal-red/60 transition-all duration-300 block"
+                    >
+                      <div className="aspect-video w-full overflow-hidden relative">
+                        <div className="absolute inset-0 bg-terminal-red/10 group-hover:bg-transparent transition-colors z-10"></div>
+                        <img
+                          src={writeup.image}
+                          alt={writeup.title}
+                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500 filter grayscale group-hover:grayscale-0"
+                        />
+                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent z-20">
+                          <span className="text-xs font-mono text-terminal-red bg-black/50 px-2 py-1 rounded border border-terminal-red/30 mb-2 inline-block">
+                            {writeup.date}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <h4 className="text-xl font-bold text-foreground mb-2 group-hover:text-terminal-red transition-colors font-cyber leading-tight">
+                          {writeup.title}
+                        </h4>
+                        <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                          {writeup.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {writeup.tags.map((tag, i) => (
+                            <span key={i} className="text-xs px-2 py-1 rounded bg-terminal-red/10 text-terminal-red border border-terminal-red/20 font-mono">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
 
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tags.map((tag, i) => (
-                        <span key={i} className="text-xs px-2 py-1 rounded bg-neon-purple/10 text-neon-purple border border-neon-purple/20">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+              {/* Arsenal (Projects) */}
+              <div>
+                <h3 className="text-xl font-bold font-mono text-neon-purple mb-6 flex items-center gap-2">
+                  <Cpu size={20} />
+                  DEVELOPED_ARSENAL
+                </h3>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {projects.map((project, index) => (
+                    <div key={index} className="glass-panel rounded-xl p-6 border-t border-t-neon-purple/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] transition-all group hover:-translate-y-1">
+                      <div className="flex justify-between items-start mb-4">
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-neon-purple transition-colors font-cyber">{project.title}</h3>
+                        {project.github && (
+                          <a href={project.github} target="_blank" className="text-muted-foreground hover:text-neon-purple transition-colors">
+                            <Github size={20} />
+                          </a>
+                        )}
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-6 line-clamp-3 min-h-[60px]">{project.description}</p>
 
-                    <div className="flex items-center gap-4 pt-4 border-t border-white/5">
-                      {project.github && (
-                        <a href={project.github} target="_blank" className="text-sm flex items-center gap-2 hover:text-neon-purple transition-colors">
-                          <Github size={16} /> Source
-                        </a>
+                      {project.highlights && (
+                        <div className="mb-4 text-xs font-mono text-neon-purple/80 border-l-2 border-neon-purple pl-2">
+                          {project.highlights}
+                        </div>
                       )}
-                      {project.demo && (
-                        <a href={project.demo} target="_blank" className="text-sm flex items-center gap-2 hover:text-neon-purple transition-colors">
-                          <Globe size={16} /> Live Demo
-                        </a>
-                      )}
+
+                      <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+                        {project.tags.map((tag, i) => (
+                          <span key={i} className="text-xs px-2 py-1 rounded bg-neon-purple/10 text-neon-purple border border-neon-purple/20">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Academic Researches */}
+              <div className="mb-12">
+                <h3 className="text-xl font-bold font-mono text-neon-blue mb-6 flex items-center gap-2">
+                  <FileText size={20} />
+                  ACADEMIC_RESEARCH_LOGS
+                </h3>
+
+                {academicResearches.length === 0 ? (
+                  <div className="glass-panel p-6 rounded-lg text-center border-dashed border-2 border-neon-blue/30">
+                    <p className="text-muted-foreground font-mono">[LOGS_EMPTY] Research data pending upload...</p>
                   </div>
-                ))}
+                ) : (
+                  <div className="space-y-4">
+                    {academicResearches.map((research, index) => (
+                      <div key={index} className="glass-panel p-6 rounded-lg border-l-4 border-l-neon-blue">
+                        <div className="flex justify-between items-start mb-2">
+                          <h4 className="text-lg font-bold text-foreground font-cyber">{research.title}</h4>
+                          <span className="font-mono text-xs text-neon-blue border border-neon-blue/30 px-2 py-1 rounded">
+                            {research.date}
+                          </span>
+                        </div>
+                        {research.journalOrConference && (
+                          <div className="text-sm text-neon-blue mb-3 font-mono">
+                            Published in: {research.journalOrConference}
+                          </div>
+                        )}
+                        <p className="text-muted-foreground mb-4 text-sm">{research.description}</p>
+                        {research.link && (
+                          <a href={research.link} target="_blank" className="text-xs font-mono text-terminal-green hover:underline flex items-center gap-1">
+                            ACCESS_DOCUMENT <ExternalLink size={10} />
+                          </a>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </section>
 
@@ -307,7 +398,6 @@ const Portfolio = () => {
           </p>
           <div className="flex justify-center gap-6 text-sm text-primary/60">
             <Link to="/challenge" className="hover:text-terminal-green transition-colors">Capture The Flag</Link>
-            <Link to="/admin" className="hover:text-terminal-red transition-colors">Admin Portal</Link>
             <span>© 2025 Ziad Salah</span>
           </div>
         </div>

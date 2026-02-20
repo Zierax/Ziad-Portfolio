@@ -118,6 +118,7 @@ export default {
         "glitch-2": "glitch-2 3s infinite linear alternate-reverse",
         "scanline": "scanline 8s linear infinite",
         "blink": "blink 1s step-end infinite",
+        "spin-slow": "spin 8s linear infinite",
       },
       backgroundImage: {
         "grid-pattern": "linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px)",

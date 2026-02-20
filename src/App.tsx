@@ -6,7 +6,9 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Boot from "./pages/Boot";
 import Portfolio from "./pages/Portfolio";
 import Challenge from "./pages/Challenge";
-import Admin from "./pages/Admin";
+import Landing from "./pages/Landing";
+import AcademicPortfolio from "./pages/AcademicPortfolio";
+
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 
@@ -19,12 +21,15 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Boot />} />
+
+          <Route path="/" element={<Landing />} />
+          <Route path="/boot" element={<Boot />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/academic" element={<AcademicPortfolio />} />
           <Route path="/challenge" element={<Challenge />} />
-          <Route path="/admin" element={<Admin />} />
           <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

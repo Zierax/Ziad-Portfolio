@@ -12,7 +12,7 @@ interface Puzzle {
   difficulty: "Easy" | "Medium" | "Hard";
   hint: string;
   getAnswer: (deviceInfo: any) => string;
-  encrypted: string;
+  getEncrypted: (deviceInfo: any) => string;
 }
 
 const Challenge = () => {
@@ -29,18 +29,31 @@ const Challenge = () => {
       title: "Screen Cipher Challenge",
       description: "Decode the Caesar cipher using your screen width as the key",
       difficulty: "Easy",
-      hint: "Your screen width modulo 26 is the shift value",
+      hint: "Your screen width modulo 26 is the shift value (add to decode)",
       getAnswer: (info) => "WELCOME TO THE HACKER CHALLENGE",
-      encrypted: "JRYPBZR GB GUR UNPXRE PUNYYRATR",
+      getEncrypted: (info) => {
+        const text = "WELCOME TO THE HACKER CHALLENGE";
+        if (!info) return text;
+        let shift = info.screenWidth % 26;
+        shift = (26 - shift) % 26; // reverse shift for "encoding" so that adding it back decodes
+        return text.split('').map(c => {
+          if (c === ' ') return ' ';
+          const code = c.charCodeAt(0);
+          return String.fromCharCode(((code - 65 + shift) % 26) + 65);
+        }).join('');
+      },
     },
     logic: {
       id: "logic",
       title: "Port Scanner Logic",
       description: "Calculate the missing port number in the sequence",
       difficulty: "Medium",
-      hint: "The pattern follows: 2^n * 10 + your CPU cores",
-      getAnswer: (info) => String(80 + (info?.hardwareConcurrency || 4)),
-      encrypted: "Sequence: 20, 40, 80, ???",
+      hint: "The pattern follows: (2^n * 10) + your CPU cores",
+      getAnswer: (info) => String(160 + (info?.hardwareConcurrency || 4)),
+      getEncrypted: (info) => {
+        const cores = info?.hardwareConcurrency || 4;
+        return `Sequence: ${20 + cores}, ${40 + cores}, ${80 + cores}, ???`;
+      },
     },
     binary: {
       id: "binary",
@@ -49,16 +62,16 @@ const Challenge = () => {
       difficulty: "Medium",
       hint: "8 bits per character, ASCII encoding",
       getAnswer: () => "HACKED",
-      encrypted: "01001000 01000001 01000011 01001011 01000101 01000100",
+      getEncrypted: () => "01001000 01000001 01000011 01001011 01000101 01000100",
     },
     hash: {
       id: "hash",
-      title: "Memory Hash Puzzle",
-      description: "Find the correct string that matches the pattern",
+      title: "System Role Identification",
+      description: "What is your primary professional title shown in the terminal?",
       difficulty: "Hard",
-      hint: `Device memory GB + screen height = answer length`,
+      hint: `Your clearance level or primary role. Begins with P.`,
       getAnswer: (info) => "PENTESTER",
-      encrypted: "Hash: 0x${Math.random().toString(16).substring(2, 10)}",
+      getEncrypted: () => `Role_Hash: 0x${Math.random().toString(16).substring(2, 10)}`,
     },
   };
 
@@ -224,8 +237,8 @@ const Challenge = () => {
                         setAttempts(0);
                       }}
                       className={`p-4 rounded text-left transition-all border ${currentPuzzle === puzzle.id
-                          ? "bg-terminal-green/5 border-terminal-green"
-                          : "bg-black/20 border-white/5 hover:border-white/20"
+                        ? "bg-terminal-green/5 border-terminal-green"
+                        : "bg-black/20 border-white/5 hover:border-white/20"
                         } ${solvedPuzzles.has(puzzle.id)
                           ? "opacity-50 grayscale"
                           : ""
@@ -241,10 +254,10 @@ const Challenge = () => {
                       </div>
                       <span
                         className={`text-[10px] uppercase px-2 py-0.5 rounded ${puzzle.difficulty === "Easy"
-                            ? "bg-green-500/20 text-green-500"
-                            : puzzle.difficulty === "Medium"
-                              ? "bg-yellow-500/20 text-yellow-500"
-                              : "bg-red-500/20 text-red-500"
+                          ? "bg-green-500/20 text-green-500"
+                          : puzzle.difficulty === "Medium"
+                            ? "bg-yellow-500/20 text-yellow-500"
+                            : "bg-red-500/20 text-red-500"
                           }`}
                       >
                         {puzzle.difficulty}
@@ -263,10 +276,10 @@ const Challenge = () => {
                     </h2>
                     <span
                       className={`px-3 py-1 rounded text-sm font-semibold border ${currentPuzzleData.difficulty === "Easy"
-                          ? "border-green-500/50 text-green-500"
-                          : currentPuzzleData.difficulty === "Medium"
-                            ? "border-yellow-500/50 text-yellow-500"
-                            : "border-red-500/50 text-red-500"
+                        ? "border-green-500/50 text-green-500"
+                        : currentPuzzleData.difficulty === "Medium"
+                          ? "border-yellow-500/50 text-yellow-500"
+                          : "border-red-500/50 text-red-500"
                         }`}
                     >
                       {currentPuzzleData.difficulty}
@@ -280,7 +293,7 @@ const Challenge = () => {
                   <div className="bg-black/50 rounded-lg p-8 mb-8 border border-neon-blue/30 relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1 bg-neon-blue animate-scanline opacity-50"></div>
                     <p className="font-mono text-xl text-neon-blue text-center tracking-widest break-all">
-                      {currentPuzzleData.encrypted}
+                      {currentPuzzleData.getEncrypted(deviceInfo)}
                     </p>
                   </div>
 
@@ -351,7 +364,7 @@ const Challenge = () => {
                   className="px-8 py-4 rounded border border-white/10 text-muted-foreground hover:bg-white/10 transition-colors font-bold uppercase tracking-wider"
                 >
                   REBOOT_SYSTEM
-                </Link>
+                </button>
               </div>
             </div>
           )}

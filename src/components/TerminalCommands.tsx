@@ -1,8 +1,11 @@
-import { profileData, experience, projects, skills, certifications, awards } from "@/data/resumeData";
+import { profileData, experience, projects, skills, certifications, awards, writeups, academicResearches } from "@/data/profile";
 
 export const getTerminalOutput = (cmd: string): string[] => {
   const trimmedCmd = cmd.trim().toLowerCase();
   let output: string[] = [];
+
+  // Helper to get links
+  const getSocial = (platform: string) => profileData.socials.find(s => s.platform.toLowerCase().includes(platform.toLowerCase()))?.url || "N/A";
 
   // ASCII Art Banner
   const banner = [
@@ -14,7 +17,7 @@ export const getTerminalOutput = (cmd: string): string[] => {
     "║  ███████╗██║██║  ██║██████╔╝    ███████║██║  ██║███████╗██║  ██║██║  ██║ ║",
     "║  ╚══════╝╚═╝╚═╝  ╚═╝╚═════╝     ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ║",
     "║                                                                          ║",
-    "║              [ OFFENSIVE SECURITY TERMINAL v2.0 ]                       ║",
+    "║              [ OFFENSIVE SECURITY TERMINAL v3.0 ]                       ║",
     "║              [ PENTESTER | BUG BOUNTY HUNTER ]                          ║",
     "╚══════════════════════════════════════════════════════════════╗",
     "",
@@ -35,19 +38,13 @@ export const getTerminalOutput = (cmd: string): string[] => {
         "│  banner, logo     - Display ASCII art banner               │",
         "│  whoami           - Display current user info              │",
         "│  about, bio       - Personal information                   │",
-        "│  cat about.txt    - Read about file                        │",
         "│                                                             │",
-        "│ RECONNAISSANCE                                              │",
+        "│ RECONNAISSANCE & ARSENAL                                    │",
         "│  ls               - List directory contents                │",
-        "│  ls -la           - List all with details                  │",
-        "│  pwd              - Print working directory                │",
-        "│  tree             - Display directory tree                 │",
-        "│                                                             │",
-        "│ ENUMERATION                                                 │",
-        "│  nmap             - Network scanning info                  │",
-        "│  enum             - Enumerate system details               │",
-        "│  projects         - List all projects                      │",
-        "│  skills           - Show technical skills                  │",
+        "│  projects         - List developed tools & payloads        │",
+        "│  writeups         - List critical disclosures & research   │",
+        "│  research         - List academic research papers          │",
+        "│  skills           - Show technical skills matrix           │",
         "│  experience, exp  - Work history                           │",
         "│  certifications   - Display certificates                   │",
         "│  awards           - Show achievements                      │",
@@ -105,15 +102,16 @@ export const getTerminalOutput = (cmd: string): string[] => {
 
     case "ls":
       output = [
-        "total 8",
-        "drwxr-xr-x  2 root root 4096 Jan 12 2025  ./",
-        "drwxr-xr-x  8 root root 4096 Jan 12 2025  ../",
-        "-rw-r--r--  1 root root 2048 Jan 12 2025  projects/",
-        "-rw-r--r--  1 root root 1024 Jan 12 2025  experience/",
-        "-rw-r--r--  1 root root  512 Jan 12 2025  skills/",
-        "-rw-r--r--  1 root root  256 Jan 12 2025  certifications/",
-        "-rw-r--r--  1 root root  128 Jan 12 2025  awards/",
-        "-rw-r--r--  1 root root   64 Jan 12 2025  contact.txt",
+        "total 12",
+        "drwxr-xr-x  2 root root 4096 Jan 12 2026  ./",
+        "drwxr-xr-x  8 root root 4096 Jan 12 2026  ../",
+        "-rw-r--r--  1 root root 2048 Jan 12 2026  projects/",
+        "-rw-r--r--  1 root root 1024 Jan 12 2026  writeups/",
+        "-rw-r--r--  1 root root 1024 Jan 12 2026  experience/",
+        "-rw-r--r--  1 root root  512 Jan 12 2026  skills/",
+        "-rw-r--r--  1 root root  256 Jan 12 2026  certifications/",
+        "-rw-r--r--  1 root root  128 Jan 12 2026  awards/",
+        "-rw-r--r--  1 root root   64 Jan 12 2026  contact.txt",
         "",
       ];
       break;
@@ -121,13 +119,14 @@ export const getTerminalOutput = (cmd: string): string[] => {
     case "ls -la":
     case "ls -la ./":
       output = [
-        "total 24",
+        "total 32",
         "drwxr-xr-x  2 root root 4096 Jan 12 17:00 .",
         "drwxr-xr-x  8 root root 4096 Jan 12 16:59 ..",
         "-rw-r--r--  1 root root  220 Jan 12 16:59 .bash_logout",
         "-rw-r--r--  1 root root 3526 Jan 12 16:59 .bashrc",
         "-rw-r--r--  1 root root  807 Jan 12 16:59 .profile",
         "drwxr-xr-x  2 root root 4096 Jan 12 17:00 projects/",
+        "drwxr-xr-x  2 root root 4096 Jan 12 17:00 writeups/",
         "drwxr-xr-x  2 root root 4096 Jan 12 17:00 experience/",
         "drwxr-xr-x  2 root root 4096 Jan 12 17:00 skills/",
         "-rw-r--r--  1 root root 2048 Jan 12 17:00 certifications.db",
@@ -145,8 +144,12 @@ export const getTerminalOutput = (cmd: string): string[] => {
       output = [
         ".",
         "├── projects/",
+        "│   ├── grafana-scanner/",
         "│   ├── malware-detector-ml/",
         "│   └── hacker-helper/",
+        "├── writeups/",
+        "│   ├── critical-bugs-study.pdf",
+        "│   └── llm-prompt-editor-vuln.pdf",
         "├── experience/",
         "│   ├── freelance-pentester/",
         "│   ├── marketing-manager/",
@@ -162,7 +165,7 @@ export const getTerminalOutput = (cmd: string): string[] => {
         "└── awards/",
         "    └── EYCC-CTF-2025.trophy",
         "",
-        "8 directories, 6 files",
+        "9 directories, 8 files",
         "",
       ];
       break;
@@ -177,8 +180,8 @@ export const getTerminalOutput = (cmd: string): string[] => {
         " `d$$'     ,$P\"'   .    $$$     Uptime: 1337 days",
         "  $$P      d$'     ,    $$P     Shell: zsh 5.9",
         "  $$:      $$.   -    ,d$$'     Terminal: gnome-terminal",
-        "  $$;      Y$b._   _,d$P'       CPU: Intel i7 (8) @ 3.6GHz",
-        "  Y$$.    `.`\"Y$$$$P\"'          Memory: 16GB",
+        "  $$;      Y$b._   _,d$P'       CPU: Intel i9 (16) @ 5.2GHz",
+        "  Y$$.    `.`\"Y$$$$P\"'          Memory: 32GB",
         "  `$$b      \"-.__              Skills: GODLIKE",
         "   `Y$$                        ",
         "    `Y$$.                      ",
@@ -237,16 +240,50 @@ export const getTerminalOutput = (cmd: string): string[] => {
     case "projects":
     case "ls projects":
     case "ls projects/":
-      output = ["╔════════════════════ PROJECTS ═══════════════════╗", ""];
+      output = ["╔════════════════════ ARSENAL (PROJECTS) ═════════════════╗", ""];
       projects.forEach((project, idx) => {
         output.push(`[${idx + 1}] ${project.title}`);
-        output.push(`    Date: ${project.date}`);
+        if (project.date) output.push(`    Date: ${project.date}`);
         output.push(`    ${project.description}`);
         output.push(`    Tags: [${project.tags.join(", ")}]`);
-        output.push(`    Highlight: ${project.highlights}`);
+        if (project.highlights) output.push(`    Highlight: ${project.highlights}`);
         output.push("");
       });
-      output.push("╚═════════════════════════════════════════════════╝", "");
+      output.push("╚═════════════════════════════════════════════════════════╝", "");
+      break;
+
+    case "writeups":
+    case "ls writeups":
+    case "ls writeups/":
+      output = ["╔════════════════ CRITICAL DISCLOSURES & RESEARCH ════════╗", ""];
+      writeups.forEach((writeup, idx) => {
+        output.push(`[${idx + 1}] ${writeup.title}`);
+        output.push(`    Date: ${writeup.date}`);
+        output.push(`    ${writeup.description}`);
+        output.push(`    Link: ${writeup.link}`);
+        output.push("");
+      });
+      output.push("╚═════════════════════════════════════════════════════════╝", "");
+      break;
+
+    case "research":
+    case "academic":
+    case "ls research":
+    case "ls research/":
+      output = ["╔════════════════ ACADEMIC RESEARCH LOGS ═════════════════╗", ""];
+      if (academicResearches.length === 0) {
+        output.push("  [!] No research logs found in the database.");
+      } else {
+        academicResearches.forEach((res, idx) => {
+          output.push(`[${idx + 1}] ${res.title}`);
+          output.push(`    Date: ${res.date}`);
+          if (res.journalOrConference) output.push(`    Published: ${res.journalOrConference}`);
+          output.push(`    ${res.description}`);
+          if (res.link) output.push(`    Source: ${res.link}`);
+          output.push("");
+        });
+      }
+      output.push("╚═════════════════════════════════════════════════════════╝", "");
       break;
 
     case "experience":
@@ -294,6 +331,7 @@ export const getTerminalOutput = (cmd: string): string[] => {
       certifications.forEach((cert) => {
         output.push(`[✓] ${cert.name}`);
         output.push(`    Issued: ${cert.date} | ${cert.issuer}`);
+        if ((cert as any).note) output.push(`    Note: ${(cert as any).note}`);
         output.push("");
       });
       output.push("╚═════════════════════════════════════════════════╝", "");
@@ -317,8 +355,8 @@ export const getTerminalOutput = (cmd: string): string[] => {
         "╔══════════════════ CONTACT INFO ═════════════════╗",
         `│ Email:    ${profileData.email}`,
         `│ Phone:    ${profileData.phone}`,
-        `│ GitHub:   ${profileData.github}`,
-        `│ LinkedIn: ${profileData.linkedin}`,
+        `│ GitHub:   ${getSocial("GitHub")}`,
+        `│ LinkedIn: ${getSocial("LinkedIn")}`,
         `│ Location: ${profileData.location}`,
         "╚═════════════════════════════════════════════════╝",
         "",
@@ -328,15 +366,18 @@ export const getTerminalOutput = (cmd: string): string[] => {
     case "social":
       output = [
         "Social Media & Professional Networks:",
-        `GitHub:   ${profileData.github}`,
-        `LinkedIn: ${profileData.linkedin}`,
+        `GitHub:    ${getSocial("GitHub")}`,
+        `LinkedIn:  ${getSocial("LinkedIn")}`,
+        `HackerOne: ${getSocial("HackerOne")}`,
+        `Twitter:   ${getSocial("Twitter")}`,
+        `Medium:    ${getSocial("Medium")}`,
         "",
       ];
       break;
 
     case "github":
       output = [
-        `Opening GitHub profile: ${profileData.github}`,
+        `Opening GitHub profile: ${getSocial("GitHub")}`,
         "[*] Repositories found: PUBLIC",
         "[*] Contribution graph: ACTIVE",
         "",

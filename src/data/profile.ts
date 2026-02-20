@@ -35,9 +35,32 @@ export interface Writeup {
   tags: string[];
 }
 
+export interface AcademicResearch {
+  title: string;
+  date: string;
+  description: string;
+  journalOrConference?: string;
+  link?: string;
+  citation?: string;
+  abstract?: string;
+  pdfLink?: string;
+  doiLink?: string;
+}
+
+export const academicResearches: AcademicResearch[] = [
+  {
+    title: "How Non-Living Intelligence Brings Life to Music",
+    date: "2026",
+    description: "An exploration into the intersection of artificial intelligence and musical composition, detailing how non-living algorithms can generate lifelike and emotionally resonant music. Keywords: Artificial Intelligence, Music Generation, Algorithmic Composition, Machine Learning",
+    journalOrConference: "Independent Research",
+    pdfLink: "/src/assets/researches/How_Non-Living_Intelligence_Brings_Life_to_Music.pdf",
+    doiLink: "#"
+  }
+];
+
 export const profileData = {
-  name: "Ziad Salah Mohamed",
-  title: "Pentester | Offensive Security Engineer",
+  name: "Ziad Salah",
+  title: "Vulnerability Researcher | Offensive Security Engineer",
   email: "zs.01117875692@gmail.com",
   phone: "+201117875692",
   location: "Giza, Egypt",
@@ -57,6 +80,7 @@ export const skills = {
   cybersecurity: [
     "Web2 Pentesting",
     "Smart Contract Auditing",
+    "AD pentesting",
     "Vulnerability Assessments",
     "CTF Competitions",
     "Bug Bounty Hunting",
@@ -70,10 +94,7 @@ export const skills = {
     "Metasploit",
     "Nmap",
     "Wireshark",
-    "Solidity Analysis Tools",
-    "Ghidra",
-    "Google Dorker",
-    "ReverseAPK"
+    "Solidity Analysis Tools"
   ],
   programming: [
     "Python",
@@ -121,6 +142,15 @@ export const experience: Experience[] = [
     description: "Highly skilled copywriter with a proven track record of creating impactful marketing copy.",
     achievements: [
       "Collaborated with cross-functional teams for successful campaigns",
+    ],
+  },
+    {
+    title: "Script-Kiddie",
+    company: "Localhost",
+    period: "Jan 2016 - Jan 2021",
+    description: "Litterly a Script Kid, I was 7 in 2016",
+    achievements: [
+      "I was just using random hacking scripts from github and Learnt basic python and bash in this time",
     ],
   },
 ];
@@ -208,6 +238,12 @@ export const education = {
 
 export const certifications = [
   {
+    name: "Google Marketing Certificate",
+    date: "2022",
+    issuer: "Google",
+    note: "Got it when I was 12 years old"
+  },
+  {
     name: "CEH (Certified Ethical Hacker)",
     date: "Jan 2024",
     issuer: "Self-Study",
@@ -219,7 +255,7 @@ export const certifications = [
   },
   {
     name: "CRTP",
-    date: "2024",
+    date: "2026",
     issuer: "Altered Security",
   },
 ];
