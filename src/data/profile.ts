@@ -1,4 +1,3 @@
-
 import aiAccessImg from "../assets/AiAccess.png";
 import criticalsImg from "../assets/6Criticals.png";
 
@@ -110,6 +109,7 @@ export const skills = {
     "Digital Advertising",
     "Communication",
     "Social Media Management",
+    "Copywriting"
   ],
 };
 
@@ -118,7 +118,7 @@ export const experience: Experience[] = [
     title: "Web2/Web3 Penetration Tester | Bug Hunter",
     company: "Freelancer",
     period: "Mar 2024 - Present",
-    description: "Experienced Web2/Web3 Penetration Tester and Bug Bounty Hunter skilled in discovering and automating detection of high-impact vulnerabilities across web, mobile, and blockchain systems. Proficient in Burp Suite, OpenVAS, Caido, and Solidity auditing for secure, research-driven assessments.",
+    description: "Experienced Web2/Web3 Penetration Tester and Bug Bounty Hunter skilled in discovering and automating detection of high-impact vulnerabilities across web, mobile, and blockchain systems.",
     achievements: [
       "Identified and disclosed several high-impact vulnerabilities in well-known public security programs",
       "Enhanced overall platform resilience through responsible disclosure",
@@ -126,31 +126,41 @@ export const experience: Experience[] = [
     ],
   },
   {
+    title: "Freelance Copywriter",
+    company: "Self-Employed",
+    period: "2024 - Present",
+    description: "Direct-response copywriter focused on conversion-driven content for diverse industries.",
+    achievements: [
+      "Successfully collaborated with over 100+ clients within a 1.5-year period",
+      "Delivered high-converting sales copies, email campaigns, and landing pages",
+    ],
+  },
+  {
     title: "Marketing Manager",
     company: "Graphics Studio",
     period: "Jan 2024 - Apr 2024",
-    description: "Spearheaded strategic marketing initiatives to enhance brand visibility, attract new clients, and boost sales growth.",
+    description: "Spearheaded strategic marketing initiatives to enhance brand visibility and boost sales growth.",
     achievements: [
       "Increased client base by over 75% within six months through targeted marketing strategies",
-      "High-quality lead acquisition campaigns",
     ],
   },
   {
     title: "Copywriter",
     company: "A to Z Marketing Agency",
     period: "Oct 2023 - Jan 2024",
-    description: "Highly skilled copywriter with a proven track record of creating impactful marketing copy.",
+    description: "Developed comprehensive marketing copy and content strategies for agency clients.",
     achievements: [
-      "Collaborated with cross-functional teams for successful campaigns",
+      "Managed end-to-end copywriting projects (A to Z) for multiple brand campaigns",
+      "Collaborated with cross-functional teams for successful project delivery",
     ],
   },
-    {
+  {
     title: "Script-Kiddie",
     company: "Localhost",
     period: "Jan 2016 - Jan 2021",
-    description: "Litterly a Script Kid, I was 7 in 2016",
+    description: "Literally a Script Kid, I was 7 in 2016",
     achievements: [
-      "I was just using random hacking scripts from github and Learnt basic python and bash in this time",
+      "Explored random hacking scripts from GitHub and learned basic Python and Bash during this time",
     ],
   },
 ];
@@ -158,7 +168,7 @@ export const experience: Experience[] = [
 export const writeups: Writeup[] = [
   {
     title: "6 Hours, 6 Real-World Critical Bugs",
-    date: "Feb 2026", // Assuming recent based on prompt context, or leave date generic
+    date: "Feb 2026",
     description: "A case study in efficient bug hunting: uncovering multiple critical vulnerabilities in a short timeframe.",
     image: criticalsImg,
     link: "https://0xzyo.medium.com/6-hours-6-real-world-critical-bugs-a-case-study-in-efficient-bug-hunting-a88c2002abbb",
@@ -177,48 +187,48 @@ export const writeups: Writeup[] = [
 export const projects: Project[] = [
   {
     title: "Grafana Final Scanner",
-    description: "Comprehensive vulnerability detection tool for Grafana deployments covering 10 CVEs (2018-2025) with smart version detection and multi-endpoint fingerprinting.",
+    description: "Comprehensive vulnerability detection tool for Grafana deployments covering 10 CVEs (2018-2025).",
     tags: ["Python", "CVE Scanner", "Grafana", "Security Tool"],
     highlights: "Detects 10+ CVEs with high precision",
     github: "https://github.com/Zierax/Grafana-Final-Scanner",
   },
   {
     title: "Malware Linux Types Detector (ML)",
-    description: "Behavior-based machine learning malware classifier using syscall sequences. Features TF-IDF pipeline, LightGBM model, and CLI/API interfaces.",
+    description: "Behavior-based machine learning malware classifier using syscall sequences.",
     tags: ["Machine Learning", "Python", "Malware Analysis", "LightGBM"],
     highlights: "Balanced class weights & rare-class filtering",
     github: "https://github.com/Zierax/Malware-LinuxTypes-Detector-ML",
   },
   {
     title: "HackerHelper",
-    description: "Comprehensive security research toolkit combining mind mapping, AI assistance, and penetration testing utilities in a modern React application.",
+    description: "Comprehensive security research toolkit combining mind mapping, AI assistance, and penetration testing utilities.",
     tags: ["React", "TypeScript", "AI", "Pentesting Workflow"],
     highlights: "AI-assisted workflow optimization",
     github: "https://github.com/Zierax/HackerHelper",
   },
   {
     title: "GoogleDorker v2.0",
-    description: "Advanced Google Dorking tool featuring proxy support, WAF bypass techniques, visual dorking mode, and multi-threaded operations for rapid reconnaissance.",
+    description: "Advanced Google Dorking tool featuring proxy support and WAF bypass techniques.",
     tags: ["Python", "OSINT", "Reconnaissance", "Automation"],
     highlights: "Visual Dorking Mode & WAF Bypass",
     github: "https://github.com/Zierax/GoogleDorker",
   },
   {
     title: "TREVER (ReverseAPK)",
-    description: "Powerful Android security analysis CLI wrapper for apktool, jadx, and d2j-dex2jar. Automates unpacking, decompilation, and manifest analysis.",
+    description: "Powerful Android security analysis CLI wrapper for apktool, jadx, and d2j-dex2jar.",
     tags: ["Android Security", "Reverse Engineering", "Bash", "Java"],
     highlights: "Automated APK Analysis Pipeline",
     github: "https://github.com/Zierax/TREVER",
   },
   {
     title: "My Recon Methodology",
-    description: "Personal, constantly updated reconnaissance methodology and checklist for bug bounty hunting and pentesting.",
+    description: "Personal, constantly updated reconnaissance methodology and checklist for bug bounty hunting.",
     tags: ["Methodology", "Recon", "Bug Bounty"],
     github: "https://github.com/Zierax/My-Recon-Methology",
   },
   {
     title: "G-dorks",
-    description: "Curated collection of 'harmless' Google dorks for bug hunters to discover exposed assets and information.",
+    description: "Curated collection of 'harmless' Google dorks for bug hunters.",
     tags: ["Google Dorks", "Recon", "OSINT"],
     github: "https://github.com/Zierax/G-dorks",
   },
@@ -268,5 +278,3 @@ export const awards = [
     issuer: "EYCC",
   },
 ];
-
-
