@@ -7,7 +7,7 @@ export default async function handler(req: any, res: any) {
 
   try {
     const data = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-    const token = process.env.GITHUB_TOKEN;
+    const token = process.env.ITHUB_TOKEN;
     
     if (!token) {
       console.error('GITHUB_TOKEN missing');
