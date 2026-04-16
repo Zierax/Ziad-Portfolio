@@ -9,6 +9,7 @@ export interface Project {
   highlights?: string;
   github?: string;
   demo?: string;
+  performance?: string;
 }
 
 export interface Experience {
@@ -44,23 +45,35 @@ export interface AcademicResearch {
   abstract?: string;
   pdfLink?: string;
   doiLink?: string;
+  status?: string;
+  impact?: string;
 }
 
 export const academicResearches: AcademicResearch[] = [
   {
-    title: "PTRR: A Metacognitive Framework for Measuring and Mitigating Automation Bias in AI-Assisted Vulnerability Research",
+    title: "PTRR Framework: A Metacognitive Framework for Measuring and Mitigating Automation Bias in AI-Assisted Vulnerability Research",
     date: "2026",
     description: "Introduces ABI, CSI, TIIS — three behavioral indices measuring automation bias, grounded in Dual Process Theory and Cognitive Load Theory. Case study: 0→7 critical-severity findings over equivalent 60-hour periods, confirmed by independent programme triage. Active scholarly correspondence with Prof. Gajos (Harvard SEAS) on HLM design; WOOT '27 endorsement from Prof. Bianchi (Purdue). 167 views · 94 downloads (7 days).",
-    journalOrConference: "IEEE AIITA 2026 (Accepted)",
-    doiLink: "https://doi.org/10.5281/zenodo.18873774"
+    journalOrConference: "IEEE AIITA 2026 (Accepted) | Nature Portfolio (Scientific Reports) Under Review by 9 experts",
+    doiLink: "https://doi.org/10.5281/zenodo.18873773",
+    status: "Accepted / Under Review",
+    impact: "Shifting finding profiles from Low to Critical-Dominant"
   },
   {
-    title: "How Non-Living Intelligence Brings Life to Music",
+    title: "DVF Framework: How Non-Living Intelligence Brings Life to Music",
     date: "2026",
     description: "Introduces the Delegated Vitality Framework (DVF). Phenomenological study: 10 naive listeners independently assigned structurally convergent kinetic interpretations to an AI-generated score without narrative context. Engages Hanslick, Meyer, Huron, Gadamer. 232 views · 114 downloads (15 days).",
-    journalOrConference: "Preprint — Zenodo, OpenAIRE, Google Scholar",
-    pdfLink: "https://github.com/Zierax/Ziad-Portfolio/blob/main/src/assets/researches/How_Non-Living_Intelligence_Brings_Life_to_Music.pdf",
-    doiLink: "https://doi.org/10.5281/zenodo.18751159"
+    journalOrConference: "Neurology Research (Invited)",
+    doiLink: "https://doi.org/10.5281/zenodo.18751159",
+    status: "Invited",
+    impact: "Redefining AI-Vitality via Structural Activation Potential"
+  },
+  {
+    title: "Axiom-Logic: Deterministic Reasoning Engine",
+    date: "2026",
+    description: "Pure logical inference @ 34ns. Eliminates probabilistic 'possibility' factor in AI reasoning.",
+    status: "Production Phase",
+    impact: "Blackbox Elimination. Pure logical inference @ 34ns"
   },
   {
     title: "Reverse Correction Assessment Methodology (RCAM): Evaluating Conceptual Understanding Through Elimination-Based Scoring",
@@ -75,8 +88,8 @@ export const profileData = {
   title: "Independent Security Researcher | Vulnerability Researcher | Software Developer",
   email: "zs.01117875692@gmail.com",
   phone: "+201117875692",
-  location: "Giza, Egypt",
-  bio: "Independent security researcher and self-directed scholar operating without institutional affiliation. Published academic research indexed on Zenodo, OpenAIRE, and Google Scholar. Discovered critical vulnerabilities in global production infrastructure. Developed open-source security tools adopted by thousands of researchers worldwide. Research axis: the intersection of human–computer interaction, offensive security, and cognitive psychology.",
+  location: "Cairo Core (Egypt)",
+  bio: "Independent security researcher and self-directed scholar operating without institutional affiliation. Published academic research indexed on Zenodo, OpenAIRE, and Google Scholar. Discovered critical vulnerabilities in global production infrastructure. Developed open-source security tools adopted by thousands of researchers worldwide. Pioneer of Truthimatics — a logic-driven approach to AI and security that replaces probabilistic guessing with deterministic inference.",
   avatar: "https://github.com/Zierax.png",
   socials: [
     { platform: "GitHub", url: "https://github.com/Zierax", username: "Zierax" },
@@ -90,80 +103,81 @@ export const profileData = {
 };
 
 export const skills = {
+  logic: [
+    "Truthimatics",
+    "Deterministic Reasoning",
+    "Formal Logic Invariants",
+    "Quantum-Kernel Features",
+    "Signal Deconvolution",
+  ],
   cybersecurity: [
+    "Kernel-Level Auditing",
+    "Quantum Security Logic",
+    "SAST/DAST Engineering",
+    "Vulnerability Research",
+    "WAF Architecture",
     "Web/API Pentesting",
-    "Smart Contract Auditing",
     "Active Directory Pentesting",
-    "Binary Exploitation",
-    "Malware Analysis",
-    "OSINT",
-    "Bug Bounty Hunting",
-    "Security Automation",
-    "CTF Competitions",
+    "Bug Bounty Hunting CTF",
   ],
-  tools: [
-    "Burp Suite",
-    "Caido",
-    "nmap",
-    "ffuf",
-    "Arjun",
-    "Shodan",
-    "Censys",
-    "nuclei",
-    "Metasploit",
-    "YARA",
-    "strace",
-  ],
-  programming: [
-    "Python (advanced)",
-    "C/C++",
-    "Bash",
-    "JavaScript/TypeScript",
-    "React",
-    "Solidity",
-    "LightGBM",
-    "scikit-learn",
-    "TF-IDF",
+  engineering: [
+    "Sub-Microsecond Latency Optimization",
+    "C-Header Pipeline Integration",
+    "Low-Latency C/C++",
+    "Python/Rust Interop",
+    "TinyML Deployment",
+    "JavaScript/TypeScript React",
   ],
   research: [
+    "Metacognitive AI Audit",
+    "Neural Music Perception",
+    "Structural Activation Potential",
     "Dual Process Theory",
     "Cognitive Load Theory",
-    "Signal Detection Theory",
     "HLM/LME Modeling",
-    "Framework Development",
-    "Phenomenological Analysis",
   ],
   business: [
-    "Marketing",
+    "Marketing Manager",
     "Digital Advertising",
-    "Communication",
+    "Strategic Communication",
     "Social Media Management",
-    "Copywriting",
+    "Professional Copywriting",
   ],
 };
 
 export const experience: Experience[] = [
   {
+    title: "Founder & Lead Researcher",
+    company: "Axiom Logic / Division-36",
+    period: "2026 – Present",
+    description: "Architect of the Axiom ecosystem. Developing deterministic reasoning engines that outperform traditional neural networks in speed and precision.",
+    achievements: [
+      "Built Axiom-Qsecurity: 100% recall on unseen data with a 915-byte engine",
+      "Developed Axiom-Zspace: 33 planet candidates discovered in 45 minutes",
+      "Created TRUTHIMATICS: A sovereign logic framework for zero-hallucination AI"
+    ]
+  },
+  {
     title: "Vulnerability Researcher & Freelance Penetration Tester",
     company: "HackerOne @0xzyo",
     period: "May 2024 – Present",
-    description: "Independent vulnerability researcher targeting global production infrastructure across public bug bounty and VDP programs. Ranking: #9 Egypt · Top 90 Worldwide (VDP leaderboard, 2026).",
+    description: "Independent vulnerability researcher targeting global production infrastructure. Ranking: #9 Egypt · Top 90 Worldwide (VDP leaderboard, 2026).",
     achievements: [
       "12+ vulnerabilities confirmed in 48 hours in a single engagement, 7 Critical severity",
-      "Three-layer bypass at a major telecom: WAF (spoofed Host header) → 3DES key derived from bundle constants enabling offline traffic decryption → null SECRET KEY rendering 10,000 OTPs precomputable offline. All layers confirmed by independent triage",
-      "Critical unauthenticated LLM prompt editor: read/write of all base system prompts affecting every tenant simultaneously in a live FastAPI production deployment",
+      "Three-layer bypass at a major telecom: WAF (spoofed Host header) → 3DES key derived from bundle constants → null SECRET KEY",
+      "Critical unauthenticated LLM prompt editor in production AI infrastructure",
       "Simultaneous bypass of IP restriction, CAPTCHA, and rate limiting in a single chained attack",
-      "Programs: AT&T, IBM, CBRE, DoD VDPs",
+      "Active programs: AT&T, IBM, CBRE, DoD VDPs",
     ],
   },
   {
     title: "Technical Mentor — Security Research Community",
     company: "Independent",
     period: "2025 – Present",
-    description: "Providing 1-on-1 guidance to mentees on bug bounty methodology, vulnerability chaining, and recon frameworks. Framing: mutual problem-solving rather than instruction, to preserve intellectual equality.",
+    description: "Providing 1-on-1 guidance to mentees on bug bounty methodology, vulnerability chaining, and recon frameworks.",
     achievements: [
       "Guided Mohammed through AT&T's programme — he independently confirmed 3 High-severity vulnerabilities",
-      "Maintains two free global methodology resources: My-Recon-Methodology and AI-Prompts-for-Hunting",
+      "Maintains global methodology resources: My-Recon-Methodology and AI-Prompts-for-Hunting",
     ],
   },
   {
@@ -199,218 +213,166 @@ export const experience: Experience[] = [
     title: "First Encounter with Computing & Systems",
     company: "Localhost",
     period: "2015 – 2016 (Age 7)",
-    description: "Bypassed household router parental controls through first-principles reasoning before having a guide or English literacy. Self-assembled a curriculum from Linux, Bash, and Python at age 7–9, without a teacher or course.",
+    description: "Self-assembled a curriculum from Linux, Bash, and Python at age 7–9. from documentations and trying",
     achievements: [
-      "Operational mental model of networking, process isolation, and file systems by age nine",
+      "Operational mental model of networking and file systems by age nine",
       "A constitutional refusal to treat any system as a black box — unchanged since",
     ],
   },
 ];
 
-export const writeups: Writeup[] = [
-  {
-    title: "6 Hours, 6 Real-World Critical Bugs",
-    date: "Feb 2026",
-    description: "A case study in efficient bug hunting: uncovering multiple critical vulnerabilities in a short timeframe. 7.7K views · 2.6K reads.",
-    image: criticalsImg,
-    link: "https://0xzyo.medium.com/6-hours-6-real-world-critical-bugs-a-case-study-in-efficient-bug-hunting-a88c2002abbb",
-    tags: ["Bug Bounty", "Critical", "Web Security"]
-  },
-  {
-    title: "Critical Unauthenticated LLM Prompt Editor",
-    date: "Jan 2026",
-    description: "Discovered a critical vulnerability allowing unauthenticated prompt injection and manipulation in AI infrastructure. 1.1K views.",
-    image: aiAccessImg,
-    link: "https://0xzyo.medium.com/how-i-found-a-critical-unauthenticated-llm-prompt-editor-in-ai-infrastructure-bfca98d68e1f",
-    tags: ["AI Security", "LLM Injection", "Critical"]
-  },
-  {
-    title: "How I Bypassed IP Restrictions, CAPTCHA, and Rate Limiting in One Shot",
-    date: "2026",
-    description: "Simultaneous bypass of three independent security controls in a single chained attack. 1.5K views.",
-    image: aiAccessImg,
-    link: "https://0xzyo.medium.com",
-    tags: ["Bug Bounty", "WAF Bypass", "CAPTCHA", "Rate Limiting"]
-  }
-];
-
 export const projects: Project[] = [
+  {
+    title: "Axiom-Qsecurity",
+    date: "2026",
+    description: "Quantum-Kernel SVM Evolution For Planck-99. A minimalist, zero-overhead security audit engine built on Vectorized Quantum Features. 1KB Milestone: Logic compressed into 915-byte C-header.",
+    performance: "100% Recall (Unseen data)",
+    tags: ["Quantum Features", "SVM", "C", "SOTA"],
+    github: "https://github.com/Zierax/Axiom-Qsecurity",
+    highlights: "Model size: 915 Bytes — fits in CPU L1 cache"
+  },
+  {
+    title: "Planck-99",
+    date: "2026",
+    description: "High-performance Linux Kernel Malware Audit engine. Deterministic analysis of IoT syscalls and kernel-level anomalies.",
+    performance: "30-73ns Latency",
+    tags: ["Kernel", "Linux", "Security", "Optimization"],
+    github: "https://github.com/Division-36/Planck-99_PublicBenchmarks",
+    highlights: "Extreme low-latency malware detection"
+  },
+  {
+    title: "Axiom-Astrophysics",
+    date: "2026",
+    description: "Cosmic Signal Deconvolution engine. Recovers structured signal data from high-entropy astrophysical noise using Truthimatics.",
+    performance: "100% Precision",
+    tags: ["Astrophysics", "Signal Processing", "Truthimatics"],
+    github: "https://github.com/Zierax/Axiom-Astrophysics",
+    highlights: "Deterministic signal recovery"
+  },
+  {
+    title: "Axiom-WAF",
+    date: "2026",
+    description: "Deterministic Web application Firewall defense. Shifting from pattern matching to logical invariant validation.",
+    performance: "99.33% Accuracy",
+    tags: ["Security", "WAF", "Firewall", "Logic"],
+    github: "https://github.com/Division-36/AxiomWAF-Brain_PublicBenchmarks",
+    highlights: "Zero-hallucination web defense"
+  },
+  {
+    title: "Axiom-Vesuvius",
+    date: "2026",
+    description: "Deterministic Herculaneum Papyrus Recovery. Uses sub-millimeter physical feature analysis to detect ink on carbonized scrolls.",
+    performance: "91.83% F1-Score",
+    tags: ["History", "Signal Recovery", "Physical Modeling"],
+    github: "https://github.com/Zierax/Axiom-Vesuvius/",
+    highlights: "Zero GPU requirement — solves via Truthimatics"
+  },
+  {
+    title: "SYRTH",
+    date: "2026",
+    description: "Static Vulnerability Analysis (Scan Your Risk Trace History). AST-based detection system for Python code with production-ready C engine.",
+    performance: "4.1K records/s",
+    tags: ["SAST", "Vulnerability Research", "C Engine"],
+    github: "https://github.com/Division-36/Syrth_PublicBenchmark",
+    highlights: "Sub-millisecond vulnerability scanning"
+  },
+  {
+    title: "Axiom-Zspace",
+    date: "2026",
+    description: "Large-scale signal deconvolution for exoplanet discovery. Discovered 33 new planet candidates in 45 minutes on consumer hardware.",
+    performance: "33 discoveries in 45m",
+    tags: ["Space", "Signal Analysis", "Physics"],
+    github: "https://github.com/Zierax/Axiom-Zspace",
+    highlights: "0.86 planets/minute on a laptop"
+  },
   {
     title: "TinyML Malware Detector",
     date: "2025–2026",
-    description: "Full LightGBM pipeline with TF-IDF + 32 handcrafted behavioral features, 86% real-world accuracy on 7 malware families from a self-curated dataset of 4,000+ Linux ELF binaries detonated in isolated VMs. TinyML C-header pipeline: zero dynamic memory allocation, 95 ns kernel latency (22,898,948× faster than Python CLI), 4.4 KB binary, ROC-AUC 0.9979, FPR 0.53%.",
-    tags: ["Python", "C", "LightGBM", "scikit-learn", "TinyML", "Malware Analysis"],
-    highlights: "22,898,948× faster than Python CLI — runs on microcontrollers",
+    description: "Full LightGBM pipeline with TF-IDF + 32 handcrafted behavioral features, 86% real-world accuracy on Linux ELF binaries.",
+    tags: ["Python", "C", "LightGBM", "TinyML"],
+    highlights: "22,898,948× faster than Python CLI",
     github: "https://github.com/Zierax/TinyML-Malware-LinuxTypes",
   },
   {
     title: "Taskware Manager",
     date: "2025–Present",
-    description: "Fully offline Linux threat-hunting platform: YARA real-time memory/disk signature matching, ML-based syscall analysis, heuristic evasion and persistence detection, memory dumping for forensics. Offline-by-design — shaped by chronic infrastructure constraints into a deliberate architectural principle.",
-    tags: ["Python", "PyQt6", "YARA", "LightGBM", "strace", "Forensics"],
-    highlights: "Fully offline — zero network dependency by design",
+    description: "Fully offline Linux threat-hunting platform: YARA real-time signature matching, ML-based syscall analysis.",
+    tags: ["Python", "PyQt6", "YARA", "Forensics"],
+    highlights: "Fully offline — zero network dependency",
     github: "https://github.com/Zierax/Taskware-Manager",
   },
   {
-    title: "Grafana Final Scanner",
+    title: "Axiom-LRM (In-Development)",
     date: "2026",
-    description: "First comprehensive open-source scanner covering 10 Grafana CVEs (2018–2025). Adopted by thousands of researchers globally within four days; no equivalent tool existed prior.",
-    tags: ["Python", "CVE Scanner", "Grafana", "Security Tool"],
-    highlights: "70 stars · 10 forks · adopted by thousands within 4 days",
-    github: "https://github.com/Zierax/Grafana-Final-Scanner",
-  },
-  {
-    title: "AdmitGPT",
-    date: "2026",
-    description: "Deterministic client-side admissions engine on transparent logistic regression. Outlier Protocol (Tier 0) for professional-grade achievers; zero-knowledge handler for non-standard educational systems. 100% zero-data architecture.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Logistic Regression"],
-    highlights: "100% zero-data architecture — fully client-side",
-    github: "https://github.com/Zierax/AdmitGPT",
-  },
-  {
-    title: "HackerHelper",
-    description: "Full-stack security research workflow platform combining mind mapping, AI assistance, and penetration testing utilities.",
-    tags: ["React", "TypeScript", "AI", "Pentesting Workflow"],
-    highlights: "AI-assisted workflow optimization",
-    github: "https://github.com/Zierax/HackerHelper",
-  },
-  {
-    title: "GoogleDorker v2.0",
-    description: "Advanced Google Dorking tool featuring proxy support and WAF bypass techniques.",
-    tags: ["Python", "OSINT", "Reconnaissance", "Automation"],
-    highlights: "Visual Dorking Mode & WAF Bypass",
-    github: "https://github.com/Zierax/GoogleDorker",
-  },
-  {
-    title: "TREVER (ReverseAPK)",
-    description: "Powerful Android security analysis CLI wrapper for apktool, jadx, and d2j-dex2jar.",
-    tags: ["Android Security", "Reverse Engineering", "Bash", "Java"],
-    highlights: "Automated APK Analysis Pipeline",
-    github: "https://github.com/Zierax/TREVER",
-  },
-  {
-    title: "My Recon Methodology",
-    description: "Personal, constantly updated reconnaissance methodology and checklist for bug bounty hunting. Free, open-access global resource.",
-    tags: ["Methodology", "Recon", "Bug Bounty"],
-    github: "https://github.com/Zierax/My-Recon-Methology",
-  },
-  {
-    title: "AI Prompts for Hunting",
-    description: "Specialized AI prompts designed to assist in vulnerability hunting and security research tasks. Free, open-access global resource.",
-    tags: ["AI", "Prompt Engineering", "Bug Bounty"],
-    github: "https://github.com/Zierax/AI-prompts-for-hunting",
-  },
-  {
-    title: "G-dorks",
-    description: "Curated collection of Google dorks for bug hunters and OSINT researchers.",
-    tags: ["Google Dorks", "Recon", "OSINT"],
-    github: "https://github.com/Zierax/G-dorks",
-  },
+    description: "Large Reasoning Model shifting AI from probabilistic guessing to Pure Logical Inference.",
+    tags: ["AGI", "Logic", "R&D"],
+    highlights: "Alpha Status — Intelligence as a Law"
+  }
 ];
 
 export const education = {
   degree: "General Secondary Certificate (Thanaweya Amma) — Scientific Track",
   period: "2023 – 2026",
   institution: "Egyptian Public School System, Giza, Egypt",
-  note: "No GPA, no class rank — structurally unavailable.",
+  note: "Self-directed scholarly education focused on Truthimatics and Formal Logic.",
   selfDirected: {
-    title: "Self-Directed Technical & Scholarly Education",
+    title: "The Axiom Foundation",
     period: "2019 – Present",
-    description: "Offensive security, ML pipelines, systems design, cognitive philosophy, literary fiction. Each domain evidenced by public tool releases, indexed publications, or competitive results — not self-assertion. Produced under chronic hardware constraints (2 GB RAM machine), unreliable electricity, zero family background in technology or academia, and no library, laboratory, or faculty access."
+    description: "Offensive security, ML pipelines, systems design, cognitive philosophy. Each domain evidenced by public tool releases and indexed publications."
   }
 };
 
 export const certifications = [
-  {
-    name: "CRTP (Certified Red Team Professional)",
-    date: "2026",
-    issuer: "Altered Security",
-  },
-  {
-    name: "CEH (Certified Ethical Hacker)",
-    date: "Jan 2024",
-    issuer: "Self-Study",
-  },
-  {
-    name: "eWAPTx",
-    date: "Jan 2024",
-    issuer: "Self-Study",
-  },
-  {
-    name: "Google Digital Marketing Professional",
-    date: "2021",
-    issuer: "Google",
-    note: "Score: 90% — obtained at age 12"
-  },
+  { name: "CRTP (Certified Red Team Professional)", date: "2026", issuer: "Altered Security" },
+  { name: "CEH (Certified Ethical Hacker)", date: "2024", issuer: "Self-Study" },
+  { name: "eWAPTx", date: "2024", issuer: "Self-Study" },
+  { name: "Google Digital Marketing Professional", date: "2021", issuer: "Google", note: "Score: 90% — obtained at age 12" }
 ];
 
 export const awards = [
+  { title: "HackerOne VDP — #9 Egypt · Top 90 Worldwide", date: "2026'upto march", issuer: "HackerOne", description: "Ranked Top 90 Globally on the VDP leaderboard." },
+  { title: "1st Place — EYCC CTF", date: "2025", issuer: "HackClub Egypt", description: "Winning first high-school-only CTF in Egypt." },
+  { title: "TryHackMe — Top 2% Global", date: "Active", issuer: "TryHackMe" }
+];
+
+export const writeups = [
   {
-    title: "1st Place — EYCC CTF",
-    date: "October 2025",
-    description: "First place in Egypt Youth Cybersecurity Championship — the first high-school-only CTF in Egypt, organized by HackClub Egypt.",
-    issuer: "HackClub Egypt",
+    title: "6 Hours, 6 Real-World Critical Bugs",
+    date: "Feb 2026",
+    description: "A case study in efficient bug hunting: uncovering multiple critical vulnerabilities in a short timeframe. 7.7K views.",
+    image: criticalsImg,
+    link: "https://0xzyo.medium.com/6-hours-6-real-world-critical-bugs-a-case-study-in-efficient-bug-hunting-a88c2002abbb",
+    tags: ["Bug Bounty", "Critical"]
   },
   {
-    title: "HackerOne VDP — #9 Egypt · Top 90 Worldwide",
-    date: "2026",
-    description: "Ranked #9 in Egypt and Top 90 Worldwide on the HackerOne VDP leaderboard.",
-    issuer: "HackerOne",
-  },
-  {
-    title: "TryHackMe — Top 2% Global",
-    date: "Active",
-    description: "Top 2% globally across Active Directory, Binary Exploitation, Web Security, Forensics, and Cryptography.",
-    issuer: "TryHackMe",
-  },
+    title: "Critical Unauthenticated LLM Prompt Editor",
+    date: "Jan 2026",
+    description: "Discovered a critical vulnerability allowing unauthenticated prompt manipulation in AI infrastructure.",
+    image: aiAccessImg,
+    link: "https://0xzyx.medium.com",
+    tags: ["AI Security", "Critical"]
+  }
 ];
 
 export const athleticStats = {
-  title: "Powerlifting — Self-Directed Program",
-  period: "Mid-2024 – Present",
-  note: "Twelve consecutive months unbroken (July 2024 – July 2025, zero missed sessions). No coach, no institution.",
+  title: "Powerlifting — Deterministic Progression",
   lifts: [
     { name: "Deadlift", lbs: 440, kg: 200 },
     { name: "Squat", lbs: 300, kg: 136 },
     { name: "Bench Press", lbs: 200, kg: 91 },
-    { name: "Leg Press", lbs: 1100, kg: 499 },
-    { name: "Single-Arm Row", lbs: 200, kg: 91 },
+    { name: "Leg Press", lbs: 1100, kg: 499 }
   ]
 };
 
 export const creativeWork = {
   music: {
     identity: "Zy0x",
-    period: "2023 – Present",
-    genres: ["Phonk", "Brazilian Phonk", "Techno", "Classical Opera"],
     album: "What Heaven Sounded Like Before It Fell",
-    albumNote: "Structural companion to the novel: each phase of the protagonist's transformation arc scored as a distinct compositional movement. Pen name Zy0x is the devil king — a deliberate collapse of author and subject.",
-    study: "AI composition study (2026): 10 naive listeners independently assigned structurally convergent kinetic interpretations to an AI-generated score without narrative context — empirical foundation for the DVF paper.",
+    genres: ["Phonk", "Brazilian Phonk", "Techno", "Classical Opera"]
   },
   novels: [
-    {
-      title: "What Heaven Sounded Like Before It Fell",
-      language: "Arabic",
-      genre: "Philosophical Fantasy",
-      description: "A child born in Hell dismantles cosmic power systems — and is corrupted by the same forces he defeated. Paired chapter-by-chapter with the music discography as a unified project.",
-    },
-    {
-      title: "Zeus — The God Who Was Human",
-      language: "Arabic",
-      genre: "Philosophical Fiction",
-      description: "Systems of oppression require no malice; only forgetting.",
-    },
-    {
-      title: "Drowning in My Brother's Shadow",
-      language: "Arabic",
-      genre: "Psychological Thriller",
-      description: "Unreliable narration, fractured memory, identity dissolution.",
-    },
-    {
-      title: "The Last Night of Rain",
-      language: "Arabic",
-      genre: "Psychological Thriller",
-      description: "Unreliable narration, fractured memory, identity dissolution.",
-    },
+    { title: "What Heaven Sounded Like Before It Fell", language: "Arabic", genre: "Philosophical Fantasy", description: "A unified music and literature project." },
+    { title: "Zeus — The God Who Was Human", language: "Arabic", genre: "Philosophical Fiction" },
+    { title: "Drowning in My Brother's Shadow", language: "Arabic", genre: "Psychological Thriller" }
   ]
 };

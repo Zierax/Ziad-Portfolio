@@ -333,58 +333,82 @@ const Portfolio = () => {
         )}
 
         {viewMode === "minimal" && (
-          <div className="max-w-4xl mx-auto bg-white text-black p-12 rounded shadow-2xl font-sans">
-            <div className="flex justify-between items-start border-b-2 border-black pb-8 mb-8">
+          <div className="max-w-4xl mx-auto bg-white text-black p-8 md:p-16 rounded shadow-2xl font-sans animate-in fade-in duration-700">
+            <div className="flex flex-col md:flex-row justify-between items-start border-b-2 border-black pb-8 mb-8 gap-6">
               <div>
-                <h1 className="text-4xl font-bold uppercase tracking-tight mb-2">{profileData.name}</h1>
-                <p className="text-xl text-gray-600">{profileData.title}</p>
+                <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-2 leading-none">{profileData.name}</h1>
+                <p className="text-xl text-gray-600 font-medium">{profileData.title}</p>
               </div>
-              <div className="text-right text-sm">
-                <p>{profileData.email}</p>
+              <div className="text-left md:text-right text-sm space-y-1">
+                <p className="font-semibold">{profileData.email}</p>
                 <p>{profileData.phone}</p>
                 <p>{profileData.location}</p>
-                <a href={profileData.socials[0].url} className="text-blue-600 hover:underline">github.com/{profileData.socials[0].username}</a>
+                <div className="flex flex-wrap md:justify-end gap-x-4 gap-y-1 mt-2">
+                  {profileData.socials.slice(0, 3).map((s, i) => (
+                    <a key={i} href={s.url} target="_blank" className="text-blue-600 hover:underline">
+                      {s.platform.toLowerCase()}.com/{s.username}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
 
-            <div className="mb-8">
-              <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">Professional Summary</h2>
-              <p className="text-gray-700 leading-relaxed">{profileData.bio}</p>
+            <div className="mb-10">
+              <h2 className="text-lg font-bold uppercase border-b-2 border-black pb-1 mb-4">Professional Summary</h2>
+              <p className="text-gray-700 leading-relaxed text-base">{profileData.bio}</p>
             </div>
 
-            <div className="mb-8">
-              <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">Experience</h2>
-              <div className="space-y-6">
+            <div className="mb-10">
+              <h2 className="text-lg font-bold uppercase border-b-2 border-black pb-1 mb-6">Mission History</h2>
+              <div className="space-y-8">
                 {experience.map((exp, idx) => (
-                  <div key={idx}>
-                    <div className="flex justify-between font-semibold">
-                      <h3>{exp.title} - {exp.company}</h3>
-                      <span>{exp.period}</span>
+                  <div key={idx} className="relative">
+                    <div className="flex flex-col md:flex-row justify-between font-bold text-gray-900 mb-2">
+                      <h3 className="text-lg uppercase">{exp.title} | {exp.company}</h3>
+                      <span className="text-gray-500">{exp.period}</span>
                     </div>
-                    <p className="text-gray-700 mt-2 mb-2">{exp.description}</p>
-                    <ul className="list-disc list-outside ml-5 text-gray-700 text-sm">
-                      {exp.achievements.map((ach, i) => <li key={i}>{ach}</li>)}
+                    <p className="text-gray-700 mb-3 italic">{exp.description}</p>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 list-none text-gray-700 text-sm">
+                      {exp.achievements.map((ach, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <span className="text-black font-bold">»</span>
+                          {ach}
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">Education</h2>
-                <div className="font-semibold">{education.institution}</div>
-                <div>{education.degree}</div>
-                <div className="text-gray-600 text-sm">{education.period}</div>
+                <h2 className="text-lg font-bold uppercase border-b-2 border-black pb-1 mb-4">Research & Education</h2>
+                <div className="space-y-4">
+                  <div>
+                    <div className="font-bold text-gray-900 uppercase">{education.institution}</div>
+                    <div className="text-gray-800">{education.degree}</div>
+                    <div className="text-gray-500 text-sm">{education.period}</div>
+                  </div>
+                  <div>
+                    <div className="font-bold text-gray-900 uppercase">Axiom Research Phase</div>
+                    <p className="text-gray-600 text-xs mt-1">{education.selfDirected.description}</p>
+                  </div>
+                </div>
               </div>
               <div>
-                <h2 className="text-lg font-bold uppercase border-b border-gray-300 pb-1 mb-4">Skills</h2>
+                <h2 className="text-lg font-bold uppercase border-b-2 border-black pb-1 mb-4">Core Skill Matrix</h2>
                 <div className="flex flex-wrap gap-2 text-sm text-gray-700">
-                  {[...skills.cybersecurity, ...skills.programming].map((s, i) => (
-                    <span key={i} className="bg-gray-100 px-2 py-1 rounded">{s}</span>
+                  {Object.values(skills).flat().slice(0, 20).map((s, i) => (
+                    <span key={i} className="bg-gray-100 px-3 py-1 rounded border border-gray-200 font-medium">{s}</span>
                   ))}
                 </div>
               </div>
+            </div>
+
+            <div className="mt-12 pt-8 border-t border-gray-200 flex justify-between items-center text-[10px] text-gray-400 font-bold tracking-widest uppercase">
+              <span>Truthimatics Verified Portolio</span>
+              <span>© {new Date().getFullYear()} Ziad Salah</span>
             </div>
           </div>
         )}

@@ -51,6 +51,11 @@
     /* Glass morphism */
     --glass-bg: 0 0% 3%;
     --glass-border: 142 100% 30%;
+
+    /* DOC Theme (Light) */
+    --doc-bg: 210 40% 98%;
+    --doc-text: 222 47% 11%;
+    --doc-border: 214 32% 91%;
   }
 }
 
@@ -182,5 +187,14 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* Responsive Terminal Layout */
+  .terminal-container {
+    @apply w-full max-w-5xl mx-auto px-4;
+  }
+
+  .terminal-wrapper {
+    @apply bg-black/95 rounded-xl border border-terminal-green/20 shadow-2xl shadow-terminal-green/5 overflow-hidden;
   }
 }

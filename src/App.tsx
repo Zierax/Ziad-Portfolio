@@ -11,11 +11,17 @@ import AcademicPortfolio from "./pages/AcademicPortfolio";
 
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
+import { TrackingComponent } from "./components/TrackingComponent";
+import { TargetBanner } from "./components/TargetBanner";
+import ZyoAssistant from "./components/ZyoAssistant";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <TrackingComponent />
+    <TargetBanner />
+    <ZyoAssistant />
     <TooltipProvider>
       <Toaster />
       <Sonner />
