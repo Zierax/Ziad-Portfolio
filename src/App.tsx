@@ -14,33 +14,35 @@ import NotFound from "./pages/NotFound";
 import { TrackingComponent } from "./components/TrackingComponent";
 import { TargetBanner } from "./components/TargetBanner";
 import ZyoAssistant from "./components/ZyoAssistant";
+import { useAxiomRecon } from './hooks/use-recon'; // الـ Hook بتاعنا
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TrackingComponent />
-    <TargetBanner />
-    <ZyoAssistant />
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
+const App = () => {
+  useAxiomRecon();
 
-          <Route path="/" element={<Landing />} />
-          <Route path="/boot" element={<Boot />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/academic" element={<AcademicPortfolio />} />
-          <Route path="/challenge" element={<Challenge />} />
-          <Route path="/privacy" element={<Privacy />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TrackingComponent />
+      <TargetBanner />
+      <ZyoAssistant />
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/boot" element={<Boot />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/academic" element={<AcademicPortfolio />} />
+            <Route path="/challenge" element={<Challenge />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
