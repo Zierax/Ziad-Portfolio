@@ -7,10 +7,10 @@ export default async function handler(req: any, res: any) {
 
   try {
     const data = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-    const token = process.env.GITHUB_TOKEN; // تأكد من الاسم الصحيح في الـ Environment Variables
+    const token = process.env.ITHUB_TOKEN;
     
     if (!token) {
-      console.error('GITHUB_TOKEN missing');
+      console.error('ITHUB_TOKEN missing');
       return res.status(500).json({ error: 'Configuration error' });
     }
 
@@ -22,12 +22,10 @@ export default async function handler(req: any, res: any) {
     const timestamp = new Date().toISOString();
     const dateStr = timestamp.split('T')[0];
     
-    // Server-Side Data
     const userAgent = req.headers['user-agent'] || 'Unknown UA';
     const cfIp = req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for'] || 'Unknown';
     const cfCountry = req.headers['cf-ipcountry'] || 'Unknown';
     
-    // Client-Side Recon (Passed in body)
     const {
       screenRes = 'Unknown', // e.g., "1920x1080"
       deviceType = 'Unknown', // e.g., "Mobile" or "Desktop"
