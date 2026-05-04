@@ -12,11 +12,11 @@ type Mood = 'idle' | 'coding' | 'watching' | 'dancing' | 'dragged';
 interface Position { x: number; y: number; }
 
 const PLAYLIST = [
-  { id: 1, name: "God Alert", artist: "Creator", file: "/src/music/God Alert.mp3" },
-  { id: 2, name: "Creator's Move", artist: "Ziad", file: "/src/music/The Creator´s move.mp3" },
-  { id: 3, name: "Fallen Cathedral", artist: "System", file: "/src/music/The Fallen Cathedral.mp3" },
-  { id: 4, name: "The Holy Theft", artist: "Rogue", file: "/src/music/The Holy Theft.mp3" },
-  { id: 5, name: "Whiplash", artist: "Vibes", file: "/src/music/Whiplash.mp3" },
+  { id: 1, name: "God Alert", artist: "Creator", file: "https://github.com/Zierax/Ziad-Portfolio/raw/refs/heads/main/src/music/God%20Alert.mp3" },
+  { id: 2, name: "Creator's Move", artist: "Ziad", file: "https://github.com/Zierax/Ziad-Portfolio/raw/refs/heads/main/src/music/The Creator´s%20move.mp3" },
+  { id: 3, name: "Fallen Cathedral", artist: "System", file: "https://github.com/Zierax/Ziad-Portfolio/raw/refs/heads/main/src/music/The%20Fallen%20Cathedral.mp3" },
+  { id: 4, name: "The Holy Theft", artist: "Rogue", file: "https://github.com/Zierax/Ziad-Portfolio/raw/refs/heads/main/src/music/The%20Holy%20Theft.mp3" },
+  { id: 5, name: "Whiplash", artist: "Vibes", file: "https://github.com/Zierax/Ziad-Portfolio/raw/refs/heads/main/src/music/Whiplash.mp3" },
 ];
 
 const LOGS = ["This site uses Fingerprint Logginh for security auditing and performance metrics", "SYSTEM_ONLINE", "ZYO_CORE_ACTIVE", "VIBE_CHECK_PASSED", "SEC_AUDIT_COMPLETE"];
