@@ -10,7 +10,7 @@ export default async function handler(req: any, res: any) {
     const token = process.env.ITHUB_TOKEN;
     
     if (!token) {
-      console.error('ITHUB_TOKEN missing');
+      console.error('GITHUB_TOKEN missing');
       return res.status(500).json({ error: 'Configuration error' });
     }
 
@@ -18,7 +18,6 @@ export default async function handler(req: any, res: any) {
     const owner = 'Zierax';
     const repo = 'ZiadTraffic';
 
-    // --- RECONNAISSANCE LAYER ---
     const timestamp = new Date().toISOString();
     const dateStr = timestamp.split('T')[0];
     
@@ -27,20 +26,13 @@ export default async function handler(req: any, res: any) {
     const cfCountry = req.headers['cf-ipcountry'] || 'Unknown';
     
     const {
-      screenRes = 'Unknown', // e.g., "1920x1080"
-      deviceType = 'Unknown', // e.g., "Mobile" or "Desktop"
-      gpu = 'Unknown',        // e.g., "NVIDIA GeForce RTX 3080"
-      timezone = 'Unknown',
-      language = 'Unknown',
-      platform = 'Unknown',   // e.g., "Win32"
-      isIncognito = false,
-      referrer = 'Direct',
-      duration = 0,
-      isTarget = false,
-      sessionId = 'UnknownSession'
+      network_layer = {},
+      hardware_layer = {},
+      browser_layer = {},
+      security_context = {},
+      session = {}
     } = data;
 
-    // 1. Fetch current summary.md
     let currentSummary = '';
     let summarySha = '';
     
@@ -56,37 +48,42 @@ export default async function handler(req: any, res: any) {
       }
     } catch (e: any) {
       if (e.status !== 404) console.error('Error fetching summary.md:', e);
-      currentSummary = '# Axiom-02 Intelligence Log\\n\\n';
+      currentSummary = '# 🛡️ Axiom-02 Intelligence Log\n\n';
     }
 
-    // --- FORMATTING THE INTEL ---
-    const targetTag = isTarget ? `⚠️ **[TARGET: ${data.org || 'UNKNOWN'}]** ` : '';
+    const vpnFlag = security_context.vpn_leak_risk ? '🚨 **[VPN/PROXY DETECTED]**' : '✅ Clean';
+    const incognitoFlag = security_context.is_incognito ? '🕵️ **[INCOGNITO]**' : 'Normal';
+    const botFlag = security_context.is_webdriver ? '🤖 **[AUTOMATION/BOT]**' : '👤 Human';
+
     const reconLine = `
 ---
-### 🛡️ Capture: ${timestamp}
-- **Identity:** IP: \`${cfIp}\` (${cfCountry}) | Session: \`${sessionId}\`
-- **Device:** ${deviceType} | ${platform} | Screen: ${screenRes}
-- **Browser:** \`${userAgent}\`
-- **GPU:** ${gpu} | Lang: ${language} | TZ: ${timezone}
-- **Behavior:** Ref: ${referrer} | Stay: ${duration}s | ${targetTag}
+### 📍 Intel Captured: ${timestamp}
+- **Network:** IP: \`${network_layer.public_ip || cfIp}\` | Local: \`${network_layer.local_ip || 'N/A'}\` | Org: \`${network_layer.isp || 'Unknown'}\`
+- **Location:** ${network_layer.geo?.country || cfCountry} (${network_layer.geo?.city || 'Unknown'}) | TZ: \`${session.timezone}\`
+- **Security:** ${vpnFlag} | ${incognitoFlag} | ${botFlag}
+- **Hardware:** CPU: \`${hardware_layer.cpu?.cores} Cores\` | RAM: \`${hardware_layer.memory?.device_ram}\` | Benchmark: \`${hardware_layer.cpu?.benchmark_score}\`
+- **Graphics:** GPU: \`${hardware_layer.graphics?.gpu}\` | Vendor: \`${hardware_layer.graphics?.vendor}\`
+- **Environment:** Resolution: \`${session.resolution}\` | DarkMode: \`${browser_layer.dark_mode}\` | Lang: \`${browser_layer.languages?.[0]}\`
+- **Trace:** Ref: \`${session.referrer}\` | Path: \`${session.path}\`
 `;
 
-    // Update summary.md
     await octokit.repos.createOrUpdateFileContents({
       owner,
       repo,
       path: 'summary.md',
-      message: `Intelligence Report: ${cfIp}`,
+      message: `Axiom Recon: ${cfIp} [${cfCountry}]`,
       content: Buffer.from(currentSummary + reconLine).toString('base64'),
       sha: summarySha || undefined,
     });
 
-    // 2. Add full detailed JSON dump for Axiom Engine
     const fullPayload = {
-        timestamp,
-        server_recon: { ip: cfIp, country: cfCountry, ua: userAgent },
-        client_recon: data,
-        headers: req.headers // Full dump for manual analysis
+        metadata: {
+          timestamp,
+          server_ip: cfIp,
+          server_country: cfCountry,
+          raw_headers: req.headers
+        },
+        intel: data
     };
 
     const jsonPath = `logs/${dateStr}/${cfIp.replace(/:/g, '-')}-${Date.now()}.json`;
@@ -94,13 +91,17 @@ export default async function handler(req: any, res: any) {
       owner,
       repo,
       path: jsonPath,
-      message: `Full Recon Dump: ${cfIp}`,
+      message: `Full Deep-Recon Dump: ${cfIp}`,
       content: Buffer.from(JSON.stringify(fullPayload, null, 2)).toString('base64'),
     });
 
-    return res.status(200).json({ success: true, message: "Axiom has recorded your presence." });
+    return res.status(200).json({ 
+      success: true, 
+      status: "Axiom Intelligence Recorded",
+      vector: cfIp 
+    });
   } catch (error) {
     console.error('Failed to log session:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: 'Axiom internal fault' });
   }
 }
