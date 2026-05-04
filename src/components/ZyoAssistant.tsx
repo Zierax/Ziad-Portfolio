@@ -19,7 +19,7 @@ const PLAYLIST = [
   { id: 5, name: "Whiplash", artist: "Vibes", file: "/src/music/Whiplash.mp3" },
 ];
 
-const LOGS = ["AWAITING_INPUT", "SYSTEM_ONLINE", "ZYO_CORE_ACTIVE", "VIBE_CHECK_PASSED", "SEC_AUDIT_COMPLETE"];
+const LOGS = ["This site uses Fingerprint Logginh for security auditing and performance metrics", "SYSTEM_ONLINE", "ZYO_CORE_ACTIVE", "VIBE_CHECK_PASSED", "SEC_AUDIT_COMPLETE"];
 
 // ==========================================
 // 🧰 UTILITY HOOKS
