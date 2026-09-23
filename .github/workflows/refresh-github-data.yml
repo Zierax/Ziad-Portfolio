@@ -1,0 +1,45 @@
+name: refresh-github-snapshot
+
+on:
+  schedule:
+    # Every Monday 06:00 UTC — keeps the portfolio evidence fresh.
+    - cron: "0 6 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-github-snapshot
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Refresh GitHub snapshot
+        # GITHUB_TOKEN is authenticated (5,000 req/hr), so the refresh never
+        # starves the way anonymous runs (60 req/hr) can.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/refresh-github-data.mjs
+
+      - name: Commit snapshot if changed
+        run: |
+          if git diff --quiet -- src/data/generated/github-snapshot.json; then
+            echo "Snapshot unchanged — nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/generated/github-snapshot.json
+          git commit -m "chore: refresh GitHub snapshot $(date -u +%F)"
+          git push

@@ -1,0 +1,228 @@
+{
+  "PIN_ORDER": [
+    "Zierax/Grafana-Final-Scanner",
+    "Division-36/Z-Jail",
+    "Zierax/My-Recon-Methology",
+    "Division-36/Planck-99_PublicBenchmarks",
+    "Division-36/Z-Privesc",
+    "Zierax/Axiom-Zspace",
+    "Zierax/Axiom-Astrophysics",
+    "Zierax/NHE-Architecture",
+    "Zierax/AdmitGPT",
+    "Zierax/Axiom-02"
+  ],
+  "SPOTLIGHT": [
+    "Division-36/AxiomWAF-Brain_PublicBenchmarks",
+    "Division-36/Syrth_PublicBenchmark",
+    "Division-36/mcOS",
+    "Zierax/Taskware-manager",
+    "Zierax/fl-studio-mcp",
+    "Zierax/Truthimatics_Public",
+    "Zierax/Axiom-Recruit",
+    "Zierax/Axiom-LRM",
+    "Zierax/Axiom-Bio",
+    "Zierax/Axiom-Qsecurity",
+    "Zierax/Axiom-Vesuvius",
+    "Zierax/Riptar",
+    "Zierax/Purce"
+  ],
+  "HIDE": [
+    "Zierax/Zierax",
+    "Division-36/.github",
+    "Zierax/Z-Jail",
+    "Division-36/AxiomWAF_PublicBenckmark",
+    "Division-36/Syrth",
+    "Zierax/division-36",
+    "4osp3l/0xJS"
+  ],
+  "COPY": {
+    "Zierax/Grafana-Final-Scanner": {
+      "summary": "Practical Grafana scanner bundling public CVEs into a single workflow for bug bounty and defensive validation.",
+      "highlights": "External coverage: Hackers-Arise walkthrough, Vulners/KitPloit tool feed, CVEFeed exploit intelligence",
+      "tags": ["Python", "Grafana", "CVE Research", "Bug Bounty"],
+      "story": "The repo strangers actually use — 244 stars, 45 forks, and a Hackers-Arise walkthrough."
+    },
+    "Division-36/Z-Jail": {
+      "summary": "Lightweight Linux sandbox for native code execution: namespaces, pivot_root, dropped capabilities, NO_NEW_PRIVS, seccomp-BPF, JSON audit, BLAKE2b hashing. ~81 KiB static PIE, zero external dependencies.",
+      "highlights": "External mentions: Risky Business, Vulners/KitPloit, Spark, Ojeo, Trendshift, Linux Command Library",
+      "tags": ["C", "Sandbox", "Linux Security", "Seccomp"],
+      "story": "Six independent references — from Risky Business to a Linux man-page mirror — for a ~81 KiB sandbox."
+    },
+    "Zierax/GoogleDorker": {
+      "summary": "Python tool for practical Google-dorking workflows, targeted discovery, and repeatable operator-driven search.",
+      "tags": ["Python", "OSINT", "Recon"]
+    },
+    "Zierax/My-Recon-Methology": {
+      "story": "78 stars of field methodology — the hunting notes other hunters fork."
+    },
+    "Division-36/Z-Privesc": {
+      "story": "Seventeen deterministic probes in one static binary with no dependency chain."
+    },
+    "Zierax/Axiom-Zspace": {
+      "story": "The portfolio's most ambitious system: blind exoplanet search with a 101-test suite, a C99 engine, and a JOSS paper draft."
+    },
+    "Zierax/Axiom-Astrophysics": {
+      "story": "Pulsar-signal auditing that caught Voyager 1 end-to-end across 69 real telescope signals."
+    },
+    "Zierax/NHE-Architecture": {
+      "story": "Sub-second hallucination suppression for sub-1B edge models — on-device, no retraining, no GPU farm."
+    },
+    "Zierax/AdmitGPT": {
+      "story": "Client-side admission math — open logic running entirely in the browser, zero tracking."
+    },
+    "Zierax/Axiom-02": {
+      "story": "A deterministic drive-network simulation of high-stakes cognitive dissonance — now v2.0."
+    },
+    "Division-36/Planck-99_PublicBenchmarks": {
+      "label": "Planck-99",
+      "story": "The lab's flagship bet: deterministic malware classification for the layer where, per its own benchmark framing, no commercial product operates.",
+      "summary": "Public benchmark surface for Division-36's embedded Linux malware classifier and EU CRA traceability pitch. Source itself is confidential; benchmarks are the public proof.",
+      "tags": ["Embedded Linux", "EU CRA", "Malware Detection", "Benchmarks"]
+    },
+    "Division-36/AxiomWAF-Brain_PublicBenchmarks": {
+      "label": "Axiom-WAF",
+      "summary": "Reasoning-based WAF benchmark work that frames attack detection as logic saturation instead of static pattern matching.",
+      "tags": ["WAF", "Hypothesis Testing", "Benchmarks"]
+    },
+    "Division-36/Syrth_PublicBenchmark": {
+      "label": "SYRTH",
+      "summary": "AST-derived Python vulnerability classifier with explainable traces, eight CWE categories, and a C-engine benchmark path.",
+      "tags": ["SAST", "CWE", "AST", "C Engine"]
+    },
+    "Zierax/Axiom-Qsecurity": {
+      "summary": "Benchmark-report-only repo for a quantum-kernel syscall classifier, published with enforced train/eval separation. Research-phase figures, not production evidence.",
+      "tags": ["Research", "Malware Classification", "Benchmarks"]
+    },
+    "Zierax/TinyML-Malware-Detector_-Planck-99-": {
+      "label": "TinyML Malware Detector",
+      "summary": "Early public benchmark lineage for Planck-99, per its own README. Marked under development upstream.",
+      "tags": ["TinyML", "Malware Detection", "Benchmarks"]
+    }
+  },
+  "DOMAIN_BOOST": {
+    "Zierax/Grafana-Final-Scanner": 30,
+    "Division-36/Z-Jail": 30,
+    "Division-36/Planck-99_PublicBenchmarks": 26,
+    "Division-36/Z-Privesc": 24,
+    "Zierax/My-Recon-Methology": 20,
+    "Division-36/AxiomWAF-Brain_PublicBenchmarks": 20,
+    "Division-36/Syrth_PublicBenchmark": 20,
+    "Zierax/Axiom-Zspace": 18,
+    "Zierax/Axiom-Astrophysics": 18,
+    "Zierax/Axiom-Vesuvius": 18,
+    "Zierax/Axiom-02": 16,
+    "Zierax/Truthimatics_Public": 16,
+    "Zierax/Axiom-Qsecurity": 14,
+    "Zierax/Axiom-Recruit": 14,
+    "Zierax/Axiom-LRM": 14,
+    "Zierax/Axiom-Bio": 14,
+    "Zierax/NHE-Architecture": 14,
+    "Division-36/mcOS": 14,
+    "Zierax/Taskware-manager": 12,
+    "Zierax/AdmitGPT": 12,
+    "Zierax/GoogleDorker": 10,
+    "Zierax/G-dorks": 10,
+    "Zierax/HackFunction": 10,
+    "Zierax/HXCC-scanner": 10,
+    "Zierax/AI-prompts-for-hunting": 10,
+    "Zierax/fl-studio-mcp": 8,
+    "Zierax/Riptar": 8,
+    "Zierax/Purce": 8,
+    "Zierax/crtsh": 4,
+    "Zierax/HackerHelper": 4,
+    "Zierax/Reconizer": 4,
+    "Zierax/Basic-ML-prompt-injections": 4
+  },
+  "MENTIONS": [
+    {
+      "outlet": "Risky Business",
+      "title": "New tool: Z-Jail",
+      "detail": "June 8, 2026 Risky Bulletin lists Division-36's Z-Jail as a new Linux native-code sandbox tool.",
+      "url": "https://risky.biz/risky-bulletin-rubygems-adds-dependency-cooldowns-to-counter-supply-chain-attacks/",
+      "repo": "Division-36/Z-Jail",
+      "confidence": "high",
+      "sourceType": "editorial",
+      "linkCheck": "200 on 2026-09-22"
+    },
+    {
+      "outlet": "Vulners / KitPloit",
+      "title": "Z-Jail v1.1.0 indexed in vulnerability tooling feeds",
+      "detail": "Listed with GitHub sources, benchmark references, and release metadata. Direct page fetch is bot-gated (403 to curl); URL follows the standard KitPloit feed pattern.",
+      "url": "https://vulners.com/kitploit/KITPLOIT%3APOSTS-GITHUB-DIVISION-36-Z-JAIL-V110",
+      "repo": "Division-36/Z-Jail",
+      "confidence": "medium",
+      "sourceType": "aggregator",
+      "linkCheck": "bot-gated (403) on 2026-09-22"
+    },
+    {
+      "outlet": "Spark",
+      "title": "Z-Jail Native Code Sandbox",
+      "detail": "Tool page describing Z-Jail as a Linux sandbox with seven defense layers and audit logging.",
+      "url": "https://spark.entire.vc/tools/division-36-z-jail",
+      "repo": "Division-36/Z-Jail",
+      "confidence": "medium",
+      "sourceType": "aggregator",
+      "linkCheck": "200 on 2026-09-22"
+    },
+    {
+      "outlet": "Ojeo",
+      "title": "Z-Jail: Linux sandbox with seven defense layers",
+      "detail": "Spanish-language article summarizing Z-Jail's defense layers, zero-dependency build, and comparison with common sandboxing tools. Page did not respond to a direct fetch at check time.",
+      "url": "https://ojeo.com/noticia/z-jail-un-sandbox-de-linux-con-siete-capas-de-defensa-y-sin-dependencias-externas/",
+      "repo": "Division-36/Z-Jail",
+      "confidence": "low",
+      "sourceType": "editorial",
+      "linkCheck": "unreachable on 2026-09-22"
+    },
+    {
+      "outlet": "Trendshift",
+      "title": "#15 C Repository of the Day",
+      "detail": "Trendshift snapshot for Division-36/Z-Jail, including stars, forks, language, and trending status.",
+      "url": "https://trendshift.io/repositories/46346",
+      "repo": "Division-36/Z-Jail",
+      "confidence": "medium",
+      "sourceType": "trending",
+      "linkCheck": "200 on 2026-09-22"
+    },
+    {
+      "outlet": "Linux Command Library",
+      "title": "z_jail manual page",
+      "detail": "Independent command reference describing parameters, caveats, history, and Linux requirements.",
+      "url": "https://linuxcommandlibrary.com/man/z_jail",
+      "repo": "Division-36/Z-Jail",
+      "confidence": "medium",
+      "sourceType": "mirror",
+      "linkCheck": "200 on 2026-09-22"
+    },
+    {
+      "outlet": "Hackers-Arise",
+      "title": "Grafana-Final-Scanner used in Grafana pentesting workflow",
+      "detail": "Article walkthrough references cloning Zierax/Grafana-Final-Scanner to automate known Grafana vulnerability checks.",
+      "url": "https://hackers-arise.com/pentesting-using-grafana-to-pentest-a-fitness-app/",
+      "repo": "Zierax/Grafana-Final-Scanner",
+      "confidence": "high",
+      "sourceType": "editorial",
+      "linkCheck": "200 on 2026-09-22"
+    },
+    {
+      "outlet": "Vulners / KitPloit",
+      "title": "Grafana-Final-Scanner indexed as a Grafana vulnerability scanner",
+      "detail": "Tool feed entry describes CVE checks, configuration audits, and exploit-path tests for Grafana. Direct page fetch is bot-gated (403 to curl); URL follows the standard KitPloit feed pattern.",
+      "url": "https://vulners.com/kitploit/KITPLOIT%3ATOOLS-GITHUB-ZIERAX-GRAFANA-FINAL-SCANNER",
+      "repo": "Zierax/Grafana-Final-Scanner",
+      "confidence": "medium",
+      "sourceType": "aggregator",
+      "linkCheck": "bot-gated (403) on 2026-09-22"
+    },
+    {
+      "outlet": "CVEFeed",
+      "title": "Grafana-Final-Scanner linked from CVE-2024-8118 exploit intelligence",
+      "detail": "CVEFeed associates Zierax/Grafana-Final-Scanner with public PoC/exploit tracking and reports the repo linked across 14 CVEs at crawl time.",
+      "url": "https://cvefeed.io/vuln/detail/CVE-2024-8118",
+      "repo": "Zierax/Grafana-Final-Scanner",
+      "confidence": "medium",
+      "sourceType": "reference",
+      "linkCheck": "200 on 2026-09-22"
+    }
+  ]
+}
