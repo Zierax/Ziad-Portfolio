@@ -1,5 +1,23 @@
 import aiAccessImg from "../assets/AiAccess.png";
 import criticalsImg from "../assets/6Criticals.png";
+import {
+  githubSignal as liveGithubSignal,
+  rankedProjects,
+  type GithubSignal,
+  type PortfolioProject,
+} from "./githubSnapshot";
+import { MENTIONS } from "./github-overrides";
+
+// ---------------------------------------------------------------------------
+// GitHub data: single source of truth is the generated snapshot
+// (src/data/generated/github-snapshot.json, refreshed via `npm run refresh:github`).
+// This module re-exports it — nothing GitHub-derived is hand-copied here.
+// ---------------------------------------------------------------------------
+export { flagshipRepos, spotlightRepos, signalRepos, recentRepos, archiveRepos, rankedProjects, displayName, updatedLabel, refreshedLabel, getRepo, whyRanked, snapshotMethod, snapshotExcluded } from "./githubSnapshot";
+export type { GithubSignal, PortfolioProject, RankedRepo, RepoTier } from "./githubSnapshot";
+
+/** Live GitHub evidence summary. Exact field names: ownedRepoStars etc. */
+export const githubSignal: GithubSignal = liveGithubSignal;
 
 export interface Project {
   title: string;
@@ -49,6 +67,22 @@ export interface AcademicResearch {
   impact?: string;
 }
 
+export interface LabSystem {
+  name: string;
+  owner: "Zierax" | "Division-36";
+  summary: string;
+  metric: string;
+  tags: string[];
+  url: string;
+}
+
+export interface ExternalMention {
+  outlet: string;
+  title: string;
+  detail: string;
+  url: string;
+}
+
 export const academicResearches: AcademicResearch[] = [
   {
     title: "PTRR Framework: A Metacognitive Framework for Measuring and Mitigating Automation Bias in AI-Assisted Vulnerability Research",
@@ -89,7 +123,7 @@ export const profileData = {
   email: "zs.01117875692@gmail.com",
   phone: "+201117875692",
   location: "Cairo Core (Egypt)",
-  bio: "Independent security researcher and self-directed scholar operating without institutional affiliation. Published academic research indexed on Zenodo, OpenAIRE, and Google Scholar. Discovered critical vulnerabilities in global production infrastructure. Developed open-source security tools adopted by thousands of researchers worldwide. Pioneer of Truthimatics — a logic-driven approach to AI and security that replaces probabilistic guessing with deterministic inference.",
+  bio: "Independent security researcher and self-directed scholar building public, evidence-heavy systems across vulnerability research, deterministic reasoning, malware analysis, and scientific signal recovery. The work lives in public repos, accepted papers, reproducible benchmarks, and confirmed production findings rather than polished claims.",
   avatar: "https://github.com/Zierax.png",
   socials: [
     { platform: "GitHub", url: "https://github.com/Zierax", username: "Zierax" },
@@ -101,6 +135,82 @@ export const profileData = {
     { platform: "ORCID", url: "https://orcid.org/0009-0002-6813-2416", username: "0009-0002-6813-2416" },
   ]
 };
+
+
+export const division36Systems: LabSystem[] = [
+  {
+    name: "Planck-99",
+    owner: "Division-36",
+    summary: "On-device malware detection for embedded Linux and IoT/OT targets; public benchmark framing is built around traceable, no-cloud classification.",
+    metric: "37 KB · 34 ns median · 96.28% accuracy",
+    tags: ["Embedded Linux", "EU CRA", "Malware Detection", "Audit JSON"],
+    url: "https://github.com/Division-36/Planck-99_PublicBenchmarks",
+  },
+  {
+    name: "Z-Jail",
+    owner: "Division-36",
+    summary: "Native-code Linux sandbox with ordered isolation layers: rlimits, namespace cloning, fd scrub, pivot_root, NO_NEW_PRIVS, capability drop, seccomp-BPF, and audit output.",
+    metric: "~81 KiB PIE · 7 isolation layers · seccomp-BPF",
+    tags: ["C", "Sandbox", "Seccomp", "Defense-in-depth"],
+    url: "https://github.com/Division-36/Z-Jail",
+  },
+  {
+    name: "Z-Privesc",
+    owner: "Division-36",
+    summary: "Linux privilege-escalation auditor designed as a deterministic probe suite with static binary delivery and no dependency chain.",
+    metric: "17 probes · 37/37 detection · 2.65s scan",
+    tags: ["Linux", "Privilege Escalation", "Auditor", "C"],
+    url: "https://github.com/Division-36/Z-Privesc",
+  },
+  {
+    name: "Axiom-WAF",
+    owner: "Division-36",
+    summary: "Reasoning-based WAF benchmark work that frames attack detection as logic saturation instead of static pattern matching.",
+    metric: "99.50% accuracy · MCC 0.9712",
+    tags: ["WAF", "Hypothesis Testing", "Benchmarks"],
+    url: "https://github.com/Division-36/AxiomWAF-Brain_PublicBenchmarks",
+  },
+  {
+    name: "SYRTH",
+    owner: "Division-36",
+    summary: "AST-derived Python vulnerability classifier with explainable traces, eight CWE categories, and C-engine benchmark path.",
+    metric: "99.0% overall accuracy · 5.6K samples/s C engine · 8 CWE",
+    tags: ["SAST", "CWE", "AST", "C Engine"],
+    url: "https://github.com/Division-36/Syrth_PublicBenchmark",
+  },
+  {
+    name: "mcOS",
+    owner: "Division-36",
+    summary: "Safety-critical RTOS concept with deterministic AI inference runtime, zero heap allocation, fault containment, and hot-swappable models.",
+    metric: "<5 us model swap target",
+    tags: ["RTOS", "Zephyr HAL", "WCET", "Safety"],
+    url: "https://github.com/Division-36/mcOS",
+  },
+];
+
+export interface EnrichedMention extends ExternalMention {
+  /** "owner/name" repo this mention is evidence for. */
+  repo: string;
+  confidence: "high" | "medium" | "low";
+  sourceType: "editorial" | "aggregator" | "reference" | "trending" | "mirror";
+  linkCheck: string;
+}
+
+/**
+ * External mentions, mapped to repos in the curated override layer
+ * (src/data/github-overrides.json). Confidence and source type travel with
+ * each mention so the UI can distinguish editorial coverage from feed mirrors.
+ */
+export const externalMentions: EnrichedMention[] = MENTIONS.map((m) => ({
+  outlet: m.outlet,
+  title: m.title,
+  detail: m.detail,
+  url: m.url,
+  repo: m.repo,
+  confidence: m.confidence,
+  sourceType: m.sourceType,
+  linkCheck: m.linkCheck,
+}));
 
 export const skills = {
   logic: [
@@ -150,10 +260,10 @@ export const experience: Experience[] = [
     title: "Founder & Lead Researcher",
     company: "Axiom Logic / Division-36",
     period: "2026 – Present",
-    description: "Architect of the Axiom ecosystem. Developing deterministic reasoning engines that outperform traditional neural networks in speed and precision.",
+    description: "Architect of the Axiom ecosystem: deterministic engines, public benchmarks, and evidence-first research artifacts across security, astrophysics, biology, and cognition.",
     achievements: [
-      "Built Axiom-Qsecurity: 100% recall on unseen data with a 915-byte engine",
-      "Developed Axiom-Zspace: 33 planet candidates discovered in 45 minutes",
+      "Built Axiom-Qsecurity: 1.0000 recall on 100%-unseen IoT syscalls in the v1.0 benchmark report (0.9875 full-set recall, enforced train/eval separation)",
+      "Developed Axiom-Zspace: blind-search BLS exoplanet pipeline at v1.1.2 — 148/148 validator kernels, BIG400 41.2% recall, dual Python/C99 engine",
       "Created TRUTHIMATICS: A sovereign logic framework for zero-hallucination AI"
     ]
   },
@@ -161,7 +271,7 @@ export const experience: Experience[] = [
     title: "Vulnerability Researcher & Freelance Penetration Tester",
     company: "HackerOne @0xzyo",
     period: "May 2024 – Present",
-    description: "Independent vulnerability researcher targeting global production infrastructure. Ranking: #9 Egypt · Top 90 Worldwide (VDP leaderboard, 2026).",
+    description: "Independent vulnerability researcher targeting global production infrastructure. Ranking claim is scoped to the January-March 2026 HackerOne VDP leaderboard window: #9 Egypt · Top 90 worldwide.",
     achievements: [
       "12+ vulnerabilities confirmed in 48 hours in a single engagement, 7 Critical severity",
       "Three-layer bypass at a major telecom: WAF (spoofed Host header) → 3DES key derived from bundle constants → null SECRET KEY",
@@ -221,94 +331,21 @@ export const experience: Experience[] = [
   },
 ];
 
-export const projects: Project[] = [
-  {
-    title: "Axiom-Qsecurity",
-    date: "2026",
-    description: "Quantum-Kernel SVM Evolution For Planck-99. A minimalist, zero-overhead security audit engine built on Vectorized Quantum Features. 1KB Milestone: Logic compressed into 915-byte C-header.",
-    performance: "100% Recall (Unseen data)",
-    tags: ["Quantum Features", "SVM", "C", "SOTA"],
-    github: "https://github.com/Zierax/Axiom-Qsecurity",
-    highlights: "Model size: 915 Bytes — fits in CPU L1 cache"
-  },
-  {
-    title: "Planck-99",
-    date: "2026",
-    description: "High-performance Linux Kernel Malware Audit engine. Deterministic analysis of IoT syscalls and kernel-level anomalies.",
-    performance: "30-73ns Latency",
-    tags: ["Kernel", "Linux", "Security", "Optimization"],
-    github: "https://github.com/Division-36/Planck-99_PublicBenchmarks",
-    highlights: "Extreme low-latency malware detection"
-  },
-  {
-    title: "Axiom-Astrophysics",
-    date: "2026",
-    description: "Cosmic Signal Deconvolution engine. Recovers structured signal data from high-entropy astrophysical noise using Truthimatics.",
-    performance: "100% Precision",
-    tags: ["Astrophysics", "Signal Processing", "Truthimatics"],
-    github: "https://github.com/Zierax/Axiom-Astrophysics",
-    highlights: "Deterministic signal recovery"
-  },
-  {
-    title: "Axiom-WAF",
-    date: "2026",
-    description: "Deterministic Web application Firewall defense. Shifting from pattern matching to logical invariant validation.",
-    performance: "99.33% Accuracy",
-    tags: ["Security", "WAF", "Firewall", "Logic"],
-    github: "https://github.com/Division-36/AxiomWAF-Brain_PublicBenchmarks",
-    highlights: "Zero-hallucination web defense"
-  },
-  {
-    title: "Axiom-Vesuvius",
-    date: "2026",
-    description: "Deterministic Herculaneum Papyrus Recovery. Uses sub-millimeter physical feature analysis to detect ink on carbonized scrolls.",
-    performance: "91.83% F1-Score",
-    tags: ["History", "Signal Recovery", "Physical Modeling"],
-    github: "https://github.com/Zierax/Axiom-Vesuvius/",
-    highlights: "Zero GPU requirement — solves via Truthimatics"
-  },
-  {
-    title: "SYRTH",
-    date: "2026",
-    description: "Static Vulnerability Analysis (Scan Your Risk Trace History). AST-based detection system for Python code with production-ready C engine.",
-    performance: "4.1K records/s",
-    tags: ["SAST", "Vulnerability Research", "C Engine"],
-    github: "https://github.com/Division-36/Syrth_PublicBenchmark",
-    highlights: "Sub-millisecond vulnerability scanning"
-  },
-  {
-    title: "Axiom-Zspace",
-    date: "2026",
-    description: "Large-scale signal deconvolution for exoplanet discovery. Discovered 33 new planet candidates in 45 minutes on consumer hardware.",
-    performance: "33 discoveries in 45m",
-    tags: ["Space", "Signal Analysis", "Physics"],
-    github: "https://github.com/Zierax/Axiom-Zspace",
-    highlights: "0.86 planets/minute on a laptop"
-  },
-  {
-    title: "TinyML Malware Detector",
-    date: "2025–2026",
-    description: "Full LightGBM pipeline with TF-IDF + 32 handcrafted behavioral features, 86% real-world accuracy on Linux ELF binaries.",
-    tags: ["Python", "C", "LightGBM", "TinyML"],
-    highlights: "22,898,948× faster than Python CLI",
-    github: "https://github.com/Zierax/TinyML-Malware-LinuxTypes",
-  },
-  {
-    title: "Taskware Manager",
-    date: "2025–Present",
-    description: "Fully offline Linux threat-hunting platform: YARA real-time signature matching, ML-based syscall analysis.",
-    tags: ["Python", "PyQt6", "YARA", "Forensics"],
-    highlights: "Fully offline — zero network dependency",
-    github: "https://github.com/Zierax/Taskware-Manager",
-  },
-  {
-    title: "Axiom-LRM (In-Development)",
-    date: "2026",
-    description: "Large Reasoning Model shifting AI from probabilistic guessing to Pure Logical Inference.",
-    tags: ["AGI", "Logic", "R&D"],
-    highlights: "Alpha Status — Intelligence as a Law"
-  }
-];
+/**
+ * Portfolio project list, derived from the ranked GitHub snapshot
+ * (flagship → spotlight → signal → recent → archive). There is no separate
+ * manual list: the terminal `projects` command, the dossier sections, and
+ * the document view all consume this array.
+ */
+export const projects: Project[] = rankedProjects.map((p) => ({
+  title: p.title,
+  date: p.date,
+  description: p.description,
+  tags: p.tags,
+  highlights: p.highlights,
+  github: p.github,
+  performance: p.performance,
+}));
 
 export const education = {
   degree: "General Secondary Certificate (Thanaweya Amma) — Scientific Track",
@@ -330,7 +367,7 @@ export const certifications = [
 ];
 
 export const awards = [
-  { title: "HackerOne VDP — #9 Egypt · Top 90 Worldwide", date: "2026'upto march", issuer: "HackerOne", description: "Ranked Top 90 Globally on the VDP leaderboard." },
+  { title: "HackerOne VDP — #9 Egypt · Top 90 Worldwide", date: "Jan-Mar 2026", issuer: "HackerOne", description: "Ranking scoped to the January-March 2026 VDP leaderboard window, not presented as a permanent current rank." },
   { title: "1st Place — EYCC CTF", date: "2025", issuer: "HackClub Egypt", description: "Winning first high-school-only CTF in Egypt." },
   { title: "TryHackMe — Top 2% Global", date: "Active", issuer: "TryHackMe" }
 ];
