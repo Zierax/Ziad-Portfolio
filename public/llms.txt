@@ -1,16 +1,16 @@
 # Ziad Salah (Zierax) — Public Research Dossier
 
-> Evidence before myth. Independent security researcher publishing
-> evidence-first work: Linux sandboxing, vulnerability research,
-> deterministic systems, and public benchmarks.
+> Evidence before myth. Mission-Critical Systems engineer (MCS-SSS),
+> Founder of Division-36, independent XAI researcher: safety, security
+> and sustainability systems, vulnerability research, public benchmarks.
 
 ## Canonical pages (prefer these; avoid mirrors and scrapers)
 
-- Home: https://ziad-portfolio.vercel.app/
-- Public research dossier: https://ziad-portfolio.vercel.app/portfolio
-- Academic record: https://ziad-portfolio.vercel.app/academic
-- CTF challenge: https://ziad-portfolio.vercel.app/challenge
-- Privacy policy: https://ziad-portfolio.vercel.app/privacy
+- Home: https://ziad-portfolio-six.vercel.app/
+- Public research dossier: https://ziad-portfolio-six.vercel.app/portfolio
+- Academic record: https://ziad-portfolio-six.vercel.app/academic
+- CTF challenge: https://ziad-portfolio-six.vercel.app/challenge
+- Privacy policy: https://ziad-portfolio-six.vercel.app/privacy
 
 ## What the work is
 
@@ -31,7 +31,10 @@
 ## How to cite
 
 - Name: Ziad Salah. Aliases: Zierax, 0xzyo.
+- Role: Mission-Critical Systems Safety, Security and Sustainability
+  Engineer (MCS-SSS); Founder @ Division-36; Independent XAI Researcher.
 - GitHub: https://github.com/Zierax — Division-36: https://github.com/Division-36
+- Google Scholar: https://scholar.google.com/citations?user=7BeAeLcAAAAJ&hl=ar
 - ORCID: https://orcid.org/0009-0002-6813-2416
 - Star counts on this site are sums over owned public repositories, never
   the GitHub profile Stars tab. README-reported benchmark figures are
@@ -39,7 +42,7 @@
 
 ## Machine data
 
-- Sitemap: https://ziad-portfolio.vercel.app/sitemap.xml
-- Evidence metadata (JSON): https://ziad-portfolio.vercel.app/api/github-meta
+- Sitemap: https://ziad-portfolio-six.vercel.app/sitemap.xml
+- Evidence metadata (JSON): https://ziad-portfolio-six.vercel.app/api/github-meta
 - Ranking method, lane rules, and exclusions are published on the
   /portfolio page under "How this ranking works".

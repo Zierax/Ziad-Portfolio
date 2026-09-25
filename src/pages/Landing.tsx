@@ -37,7 +37,7 @@ const Landing = () => {
                 <div className="flex items-center gap-2.5 min-w-0">
                     <span className="led h-2 w-2 shrink-0 animate-pulse" aria-hidden />
                     <p className="truncate font-mono text-xs tracking-widest text-terminal-green">
-                        {profileData.name.toUpperCase()} <span className="text-muted-foreground">— SECURITY RESEARCH DOSSIER</span>
+                        {profileData.name.toUpperCase()} <span className="text-muted-foreground">— MCS-SSS ENGINEER · DIVISION-36 FOUNDER</span>
                     </p>
                 </div>
                 <p className="hidden md:block font-mono text-[11px] tracking-widest text-muted-foreground shrink-0">

@@ -32,12 +32,14 @@ const getSocial = (platform: string) =>
 export const getTerminalOutput = (cmd: string): string[] => {
   const trimmedCmd = cmd.trim().toLowerCase();
 
+  // Box width is 64 cols on purpose: wider art wraps on small screens
+  // (overflow-wrap breaks the ─ runs) and shatters the frame.
   const banner = [
-    "┌────────────────────────────────────────────────────────────────────────────┐",
-    "│ ZIAD SALAH / ZIERAX                                                       │",
-    "│ Public research dossier · Division-36 lab surface · security artifacts    │",
-    "│ Mode: read-only portfolio console · Authorized testing only               │",
-    "└────────────────────────────────────────────────────────────────────────────┘",
+    "┌──────────────────────────────────────────────────────────────┐",
+    "│ ZIAD SALAH / ZIERAX                                          │",
+    "│ MCS-SSS engineer · Founder @ Division-36 · XAI researcher    │",
+    "│ Mode: read-only console · Authorized testing only            │",
+    "└──────────────────────────────────────────────────────────────┘",
     "",
     "run: help, github, division36, projects, research, mentions, opsec",
     "",
@@ -124,7 +126,7 @@ export const getTerminalOutput = (cmd: string): string[] => {
         ...flagshipRepos.flatMap((repo, index) => [
           `${String(index + 1).padStart(2, "0")}. [flagship] ${displayName(repo)} (${repo.owner})`,
           `    ${repo.summary}`,
-          `    signal: ${repo.stars} stars · ${repo.forks} forks · updated ${updatedLabel(repo.updatedAt)}`,
+          `    signal: ${repo.stars} stars · ${repo.forks} forks · created ${updatedLabel(repo.createdAt)} · updated ${updatedLabel(repo.updatedAt)}${repo.headSha ? ` · head @${repo.headSha}` : ""}`,
           repo.mentions.length > 0 ? `    cited by: ${repo.mentions.map((m) => m.outlet).join(", ")}` : "",
           `    ${repo.url}`,
           "",
@@ -157,6 +159,7 @@ export const getTerminalOutput = (cmd: string): string[] => {
         "RANKED PROJECTS (same snapshot list as the dossier — flagship, spotlight, signal, recent)",
         ...visible.flatMap((project, index) => [
           `${String(index + 1).padStart(2, "0")}. [${project.tier} · score ${project.score}] ${project.title}${project.performance ? ` / ${project.performance}` : ""}`,
+          `    created ${updatedLabel(project.createdAt)} · updated ${updatedLabel(project.updatedAt)}`,
           `    ${project.description}`,
           `    tags: ${formatTags(project.tags)}`,
           project.highlights ? `    proof: ${project.highlights}` : "",
@@ -333,6 +336,8 @@ export const getTerminalOutput = (cmd: string): string[] => {
         "CONTACT",
         columns("Email", profileData.email),
         columns("GitHub", getSocial("GitHub")),
+        columns("Scholar", getSocial("Google Scholar")),
+        columns("ORCID", getSocial("ORCID")),
         columns("LinkedIn", getSocial("LinkedIn")),
         columns("HackerOne", getSocial("HackerOne")),
         columns("X", getSocial("Twitter")),

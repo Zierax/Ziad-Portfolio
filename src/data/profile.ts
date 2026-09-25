@@ -14,7 +14,7 @@ import { MENTIONS } from "./github-overrides";
 // This module re-exports it — nothing GitHub-derived is hand-copied here.
 // ---------------------------------------------------------------------------
 export { flagshipRepos, spotlightRepos, signalRepos, recentRepos, archiveRepos, rankedProjects, displayName, updatedLabel, refreshedLabel, getRepo, whyRanked, snapshotMethod, snapshotExcluded } from "./githubSnapshot";
-export type { GithubSignal, PortfolioProject, RankedRepo, RepoTier } from "./githubSnapshot";
+export type { GithubSignal, PortfolioProject, RankedRepo, RepoTier, RepoLinks } from "./githubSnapshot";
 
 /** Live GitHub evidence summary. Exact field names: ownedRepoStars etc. */
 export const githubSignal: GithubSignal = liveGithubSignal;
@@ -87,20 +87,92 @@ export const academicResearches: AcademicResearch[] = [
   {
     title: "PTRR Framework: A Metacognitive Framework for Measuring and Mitigating Automation Bias in AI-Assisted Vulnerability Research",
     date: "2026",
-    description: "Introduces ABI, CSI, TIIS — three behavioral indices measuring automation bias, grounded in Dual Process Theory and Cognitive Load Theory. Case study: 0→7 critical-severity findings over equivalent 60-hour periods, confirmed by independent programme triage. Active scholarly correspondence with Prof. Gajos (Harvard SEAS) on HLM design; WOOT '27 endorsement from Prof. Bianchi (Purdue). 167 views · 94 downloads (7 days).",
-    journalOrConference: "IEEE AIITA 2026 (Accepted) | Nature Portfolio (Scientific Reports) Under Review by 9 experts",
-    doiLink: "https://doi.org/10.5281/zenodo.18873773",
-    status: "Accepted / Under Review",
-    impact: "Shifting finding profiles from Low to Critical-Dominant"
+    description: "Defines three indices — Automation Bias Index (ABI), Cognitive Struggle Index (CSI), Tool Integration Intensity Score (TIIS). A 60-hour naturalistic case study documents a shift from a low-to-medium finding profile to a critical-dominant one, with 7 critical findings independently validated by programme triage.",
+    journalOrConference: "IEEE AIITA 2026 (Accepted, Chongqing)",
+    doiLink: "https://doi.org/10.5281/zenodo.18873774",
+    status: "Accepted / Redirected",
+    impact: "Low to Critical-Dominant finding profiles; Nature Scientific Reports path ended at editor out-of-scope after a passed 4-round review"
+  },
+  {
+    title: "Logs, Not Logic: Rethinking Audit Trail Requirements for Tiny On-Device Security Engines",
+    date: "2026",
+    description: "Regulatory and embedded-security paper on EU Cyber Resilience Act audit-trail requirements for tiny on-device engines. Argues un-bypassable compliance via tiered architecture.",
+    journalOrConference: "IEEE CNS CPSSec 2026 (Accepted)",
+    doiLink: "https://doi.org/10.5281/zenodo.20820849",
+    status: "Accepted",
+    impact: "Un-bypassable compliance via tiered architecture"
+  },
+  {
+    title: "Transparent by Design, Vulnerable by Disclosure",
+    date: "2026",
+    description: "CPS-regulatory paper tied to the Planck-99 public benchmarks: regional transforms after compliance directions.",
+    journalOrConference: "EU CRA / Planck-99 / IEEE CNS CPSSec (Accepted)",
+    link: "https://github.com/Division-36/Planck-99_PublicBenchmarks",
+    status: "Accepted",
+    impact: "Compliance-directed regional transforms"
   },
   {
     title: "DVF Framework: How Non-Living Intelligence Brings Life to Music",
     date: "2026",
-    description: "Introduces the Delegated Vitality Framework (DVF). Phenomenological study: 10 naive listeners independently assigned structurally convergent kinetic interpretations to an AI-generated score without narrative context. Engages Hanslick, Meyer, Huron, Gadamer. 232 views · 114 downloads (15 days).",
-    journalOrConference: "Neurology Research (Invited)",
+    description: "Philosophical, cognitive, and structural analysis of AI-created sound, arguing the discourse around AI-generated music misses its kinetic meaning. Introduces Structural Activation Potential.",
+    journalOrConference: "Nature AI and Society (Under Review)",
     doiLink: "https://doi.org/10.5281/zenodo.18751159",
-    status: "Invited",
-    impact: "Redefining AI-Vitality via Structural Activation Potential"
+    status: "Under Review",
+    impact: "Structural Activation Potential"
+  },
+  {
+    title: "Axiom-Astrophysics: White-Box Pulsar Signal Integrity Auditor",
+    date: "2026",
+    description: "Logic-driven auditing engine for pulsar signal analysis. Version 1.1 validated at 87.5% precision with 0.006% false-positive rate.",
+    journalOrConference: "Independent (SSRN)",
+    link: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7235123",
+    status: "Independent Research",
+    impact: "87.5% precision · 0.006% FP (v1.1 validated)"
+  },
+  {
+    title: "Constant Discrepancy of Deterministic Fp-Linear Gadgets and the Lifting Barrier for AC0-Frege Lower Bounds",
+    date: "2026",
+    description: "Complexity-theoretic no-go result: constant-discrepancy Fp-linear gadgets and the lifting barrier for AC0-Frege lower bounds.",
+    journalOrConference: "Independent / Zenodo",
+    doiLink: "https://doi.org/10.5281/zenodo.21796746",
+    status: "Independent Research",
+    impact: "No-go for lifting in NP vs co-NP"
+  },
+  {
+    title: "Axiom-01: A White-Box Reasoning Engine for Discovering Phonosemantic Laws in Animal Naming",
+    date: "2026",
+    description: "White-box hypothesis-driven system for discovering statistical laws between animal names and biological traits.",
+    journalOrConference: "Independent / Zenodo",
+    doiLink: "https://doi.org/10.5281/zenodo.20454367",
+    status: "Independent Research",
+    impact: "Engine for discovering linguistic rules"
+  },
+  {
+    title: "Axiom-Earth2: A Deterministic White-Box Pipeline for TESS Light Curve Analysis and Earth-Analogue Validation",
+    date: "2026",
+    description: "Deterministic pipeline for detecting, vetting, and validating Earth-analogue exoplanet candidates from TESS light curves. Reports 35 candidates via Axiom-Earth2 and Axiom-Zspace.",
+    journalOrConference: "Independent / Zenodo",
+    doiLink: "https://doi.org/10.5281/zenodo.20205969",
+    status: "Independent Research",
+    impact: "35 Earth-analogue candidates"
+  },
+  {
+    title: "Impossibility of Bounded-Memory Lyapunov Functions for Number-Theoretic Dynamical Systems",
+    date: "2026",
+    description: "Proves an impossibility result for a frequently proposed class of Foster-Lyapunov drift proof strategies. Explicit scope: does not prove, disprove, or advance the Collatz conjecture itself.",
+    journalOrConference: "Independent / Zenodo",
+    doiLink: "https://doi.org/10.5281/zenodo.21909709",
+    status: "Independent Research",
+    impact: "No-go for number-theoretic dynamical proof strategies"
+  },
+  {
+    title: "Truthimatics v2.0: Evidence-Driven Determinism Framework",
+    date: "2026",
+    description: "Deterministic logic framework for building decision systems under evidence-driven determinism rather than probabilistic approximation. Public core repository.",
+    journalOrConference: "Theory / Proprietary Core",
+    link: "https://github.com/Zierax/Truthimatics_Public",
+    status: "Theory",
+    impact: "Public logic core for the Axiom line"
   },
   {
     title: "Axiom-Logic: Deterministic Reasoning Engine",
@@ -112,27 +184,28 @@ export const academicResearches: AcademicResearch[] = [
   {
     title: "Reverse Correction Assessment Methodology (RCAM): Evaluating Conceptual Understanding Through Elimination-Based Scoring",
     date: "2026",
-    description: "Proposes a multiple-choice scoring system where students eliminate incorrect options rather than select correct ones, scored via RMS with continuous penalty exponent. Extends Bruno & Dirkzwager (1995). Preliminary data: ~4× reduction in time-to-mastery.",
+    description: "Proposes a multiple-choice scoring system where students eliminate incorrect options rather than select correct ones, scored via RMS with continuous penalty exponent. Extends Bruno & Dirkzwager (1995). Preliminary data: ~4x reduction in time-to-mastery.",
     journalOrConference: "Preprint v0.1"
   }
 ];
 
 export const profileData = {
   name: "Ziad Salah",
-  title: "Independent Security Researcher | Vulnerability Researcher | Software Developer",
+  title: "Mission-Critical Systems Safety, Security & Sustainability Engineer (MCS-SSS) · Founder @ Division-36 · Independent XAI Researcher",
   email: "zs.01117875692@gmail.com",
   phone: "+201117875692",
   location: "Cairo Core (Egypt)",
-  bio: "Independent security researcher and self-directed scholar building public, evidence-heavy systems across vulnerability research, deterministic reasoning, malware analysis, and scientific signal recovery. The work lives in public repos, accepted papers, reproducible benchmarks, and confirmed production findings rather than polished claims.",
+  bio: "Mission-critical systems engineer working where safety, security, and sustainability overlap. Founder of Division-36, an independent lab that ships public evidence: a Linux sandbox cited by Risky Business, a Grafana scanner with 244 stars, embedded-malware benchmarks, and twelve research records stretching from exoplanet pipelines to hallucination suppression — eight with versioned Zenodo DOIs. Independent XAI researcher — every claim links to a repo, a benchmark, or a DOI.",
   avatar: "https://github.com/Zierax.png",
   socials: [
     { platform: "GitHub", url: "https://github.com/Zierax", username: "Zierax" },
-    { platform: "HackerOne", url: "https://hackerone.com/0xzyo", username: "0xzyo" },
+    { platform: "Google Scholar", url: "https://scholar.google.com/citations?user=7BeAeLcAAAAJ&hl=ar", username: "Ziad Salah" },
+    { platform: "ORCID", url: "https://orcid.org/0009-0002-6813-2416", username: "0009-0002-6813-2416" },
     { platform: "LinkedIn", url: "https://linkedin.com/in/z14d", username: "z14d" },
+    { platform: "HackerOne", url: "https://hackerone.com/0xzyo", username: "0xzyo" },
     { platform: "TryHackMe", url: "https://tryhackme.com/p/Zierax", username: "Zierax" },
     { platform: "X (Twitter)", url: "https://x.com/Zierax_x", username: "@Zierax_x" },
     { platform: "Medium", url: "https://0xzyo.medium.com", username: "0xzyo" },
-    { platform: "ORCID", url: "https://orcid.org/0009-0002-6813-2416", username: "0009-0002-6813-2416" },
   ]
 };
 
@@ -257,14 +330,14 @@ export const skills = {
 
 export const experience: Experience[] = [
   {
-    title: "Founder & Lead Researcher",
-    company: "Axiom Logic / Division-36",
-    period: "2026 – Present",
-    description: "Architect of the Axiom ecosystem: deterministic engines, public benchmarks, and evidence-first research artifacts across security, astrophysics, biology, and cognition.",
+    title: "MCS-SSS Engineer — Founder & Lead Researcher",
+    company: "Division-36",
+    period: "Apr 2026 – Present",
+    description: "MCS-SSS Engineer; founded Division-36 in Apr 2026 to formalize the ongoing mission-critical systems work. Same MCS-SSS career as the prior independent research — the lab is the formal vehicle, not a new direction. Lab scope is Division-36 systems; Axiom-line work continues as personal research.",
     achievements: [
-      "Built Axiom-Qsecurity: 1.0000 recall on 100%-unseen IoT syscalls in the v1.0 benchmark report (0.9875 full-set recall, enforced train/eval separation)",
-      "Developed Axiom-Zspace: blind-search BLS exoplanet pipeline at v1.1.2 — 148/148 validator kernels, BIG400 41.2% recall, dual Python/C99 engine",
-      "Created TRUTHIMATICS: A sovereign logic framework for zero-hallucination AI"
+      "Built Axiom-Qsecurity (personal Axiom-line research): 1.0000 recall on 100%-unseen IoT syscalls in the v1.0 benchmark report (0.9875 full-set recall, enforced train/eval separation)",
+      "Developed Axiom-Zspace (personal Axiom-line research): blind-search BLS exoplanet pipeline at v1.1.2 — 148/148 validator kernels, BIG400 41.2% recall, dual Python/C99 engine",
+      "Created TRUTHIMATICS (personal Axiom-line research): A sovereign logic framework for zero-hallucination AI"
     ]
   },
   {

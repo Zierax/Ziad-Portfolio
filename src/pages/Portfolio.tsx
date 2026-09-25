@@ -69,9 +69,50 @@ const labRepoKey: Record<string, string> = {
   mcOS: "Division-36/mcOS",
 };
 
+const LINK_LABELS: Record<string, string> = {
+  demo: "Demo",
+  site: "Site",
+  paper: "Paper",
+  docs: "Docs",
+  benchmark: "Benchmarks",
+  context: "Context",
+};
+
+/** Curated + homepage links for one repo, capped so rows stay scannable. */
+function RepoLinks({ repoKey, compact = false }: { repoKey: string; compact?: boolean }) {
+  const repo = getRepo(repoKey);
+  if (!repo) return null;
+  const entries: { label: string; url: string }[] = [];
+  const links = repo.links || {};
+  if (links.demo) entries.push({ label: LINK_LABELS.demo, url: links.demo });
+  if (links.site) entries.push({ label: LINK_LABELS.site, url: links.site });
+  for (const u of links.paper || []) entries.push({ label: LINK_LABELS.paper, url: u });
+  for (const u of (links.docs || []).slice(0, compact ? 1 : 3)) entries.push({ label: LINK_LABELS.docs, url: u });
+  if (links.benchmark) entries.push({ label: LINK_LABELS.benchmark, url: links.benchmark });
+  if (links.context) entries.push({ label: LINK_LABELS.context, url: links.context });
+  const shown = compact ? entries.slice(0, 3) : entries;
+  if (shown.length === 0) return null;
+  return (
+    <div className="mt-3 flex flex-wrap gap-2">
+      {shown.map((entry) => (
+        <a
+          key={`${entry.label}-${entry.url}`}
+          href={entry.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 border border-terminal-green/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-terminal-green transition-colors hover:bg-terminal-green hover:text-background"
+        >
+          {entry.label}
+          <ArrowUpRight size={11} />
+        </a>
+      ))}
+    </div>
+  );
+}
+
 const Portfolio = () => {
   const [viewMode, setViewMode] = useState<ViewMode>("dossier");
-  const primaryResearch = academicResearches.slice(0, 3);
+  const primaryResearch = academicResearches.slice(0, 6);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -134,7 +175,7 @@ const Portfolio = () => {
                   <div>
                     <div className="mb-8 inline-flex max-w-full items-center gap-3 border border-terminal-green/30 bg-terminal-green/5 px-3 py-2 font-mono text-[11px] tracking-[0.2em] text-terminal-green">
                       <Shield size={14} />
-                      <span className="truncate">VULNERABILITY RESEARCH / DETERMINISTIC SYSTEMS / PUBLIC PROOF</span>
+                      <span className="truncate">SAFETY · SECURITY · SUSTAINABILITY / PUBLIC PROOF</span>
                     </div>
 
                     <h1 className="max-w-5xl font-cyber text-[clamp(3rem,8vw,8.7rem)] font-black uppercase leading-[0.84] tracking-normal text-foreground">
@@ -476,9 +517,17 @@ const Portfolio = () => {
                       <div className="flex items-start justify-between gap-4">
                         <div>
                           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                            {repo.owner} / {updatedLabel(repo.updatedAt)}
+                            {repo.owner} · Created {updatedLabel(repo.createdAt)} · Updated {updatedLabel(repo.updatedAt)}
                             {repo.stars > 0 || repo.forks > 0 ? ` / ${repo.stars} stars · ${repo.forks} forks` : ""}
                             {repo.license && repo.license !== "NOASSERTION" ? ` / ${repo.license}` : ""}
+                            {repo.headSha && repo.headUrl ? (
+                              <>
+                                {" / "}
+                                <a href={repo.headUrl} target="_blank" rel="noopener noreferrer" className="text-terminal-green hover:underline">
+                                  @{repo.headSha}
+                                </a>
+                              </>
+                            ) : ""}
                           </p>
                           <h3 className="mt-2 font-cyber text-2xl text-foreground group-hover:text-terminal-green">
                             {displayName(repo)}
@@ -517,6 +566,7 @@ const Portfolio = () => {
                           </span>
                         ))}
                       </div>
+                      <RepoLinks repoKey={repo.key} />
                       <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground/70">
                         why ranked: {whyRanked(repo)}
                       </p>
@@ -559,11 +609,13 @@ const Portfolio = () => {
                           )}
                         </div>
                         <p className="mt-1.5 text-sm leading-6 text-muted-foreground">{repo.summary}</p>
+                        <RepoLinks repoKey={repo.key} compact />
                         <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground/70">
                           why ranked: {whyRanked(repo)}
                         </p>
                       </div>
                       <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground md:flex-col md:items-end md:justify-center">
+                        <span>est. {updatedLabel(repo.createdAt)}</span>
                         <span>{updatedLabel(repo.updatedAt)}</span>
                         <ArrowUpRight size={15} className="text-terminal-green" />
                       </div>
@@ -592,7 +644,7 @@ const Portfolio = () => {
                         <div className="flex items-start justify-between gap-4">
                           <div>
                             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                              {repo.owner} / {updatedLabel(repo.updatedAt)}
+                              {repo.owner} · Created {updatedLabel(repo.createdAt)} · Updated {updatedLabel(repo.updatedAt)}
                               {repo.license && repo.license !== "NOASSERTION" ? ` / ${repo.license}` : ""}
                             </p>
                             <h4 className="mt-2 font-cyber text-xl text-foreground group-hover:text-terminal-amber">
@@ -613,6 +665,7 @@ const Portfolio = () => {
                           </span>
                         ))}
                       </div>
+                      <RepoLinks repoKey={repo.key} />
                       <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground/70">
                         why ranked: {whyRanked(repo)}
                       </p>

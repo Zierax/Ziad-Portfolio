@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
  * the static head carries the full homepage payload and this hook mirrors
  * it per route for crawlers that do render JS.
  */
-const SITE = "https://ziad-portfolio.vercel.app";
+const SITE = "https://ziad-portfolio-six.vercel.app";
 
 interface RouteMeta {
   title: string;
@@ -18,9 +18,9 @@ interface RouteMeta {
 }
 
 const DEFAULT_META: RouteMeta = {
-  title: "Ziad Salah (Zierax) — Security Researcher",
+  title: "Ziad Salah (Zierax) — Mission-Critical Systems Engineer",
   description:
-    "Independent security researcher publishing evidence-first work: Linux sandboxing, vulnerability research, deterministic systems, public benchmarks.",
+    "Mission-Critical Systems engineer (MCS-SSS) and Division-36 founder: safety, security and sustainability systems, vulnerability research, public benchmarks.",
 };
 
 const ROUTE_META: Record<string, RouteMeta> = {
@@ -28,7 +28,7 @@ const ROUTE_META: Record<string, RouteMeta> = {
   "/portfolio": {
     title: "Public Research Dossier — Ziad Salah (Zierax)",
     description:
-      "Flagship security systems, ranked GitHub evidence, research spotlight, and independent coverage — Grafana-Final-Scanner, Z-Jail, Planck-99, Axiom-Zspace.",
+      "Flagship mission-critical systems, ranked GitHub evidence, research spotlight, and independent coverage — Grafana-Final-Scanner, Z-Jail, Planck-99, Axiom-Zspace.",
   },
   "/academic": {
     title: "Academic Research — Ziad Salah (Zierax)",
