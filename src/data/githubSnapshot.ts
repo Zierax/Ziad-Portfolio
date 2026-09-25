@@ -33,6 +33,15 @@ export interface ReadmeSignals {
   highlights: string[];
 }
 
+export interface RepoLinks {
+  demo?: string;
+  site?: string;
+  paper?: string[];
+  docs?: string[];
+  benchmark?: string;
+  context?: string;
+}
+
 export interface RankedRepo {
   key: string;
   owner: string;
@@ -42,6 +51,13 @@ export interface RankedRepo {
   /** SPDX license id from the GitHub API; null when unlicensed. */
   license: string | null;
   url: string;
+  /** GitHub repo homepage field (often the live demo/site). May be null. */
+  homepage: string | null;
+  /** Curated + homepage-fallback links. Empty object when none exist. */
+  links: RepoLinks;
+  /** Short HEAD commit SHA (flagship only) + link. Null until a full refresh. */
+  headSha: string | null;
+  headUrl: string | null;
   apiDescription: string;
   language: string | null;
   topics: string[];
@@ -81,6 +97,7 @@ export interface SnapshotProfiles {
     publicRepos: number;
     followers: number;
     description: string | null;
+    founded: string | null;
   };
   /** The profile "Stars" tab (repos starred) — NOT owned repo stars. */
   starredTabCount: number | null;
@@ -264,6 +281,7 @@ export interface PortfolioProject {
   score: number;
   scoreReasons: string[];
   updatedAt: string;
+  createdAt: string;
   owner: string;
   mentions: SnapshotMention[];
 }
@@ -284,6 +302,7 @@ export function toPortfolioProject(repo: RankedRepo): PortfolioProject {
     score: repo.score,
     scoreReasons: repo.scoreReasons,
     updatedAt: repo.updatedAt,
+    createdAt: repo.createdAt,
     owner: repo.owner,
     mentions: repo.mentions,
   };

@@ -1,5 +1,5 @@
 {
-  "refreshedAt": "2026-09-22T15:02:05.320Z",
+  "refreshedAt": "2026-09-25T19:05:44.702Z",
   "source": "github-api",
   "schemaVersion": 2,
   "method": {
@@ -18,8 +18,8 @@
       "login": "Zierax",
       "htmlUrl": "https://github.com/Zierax",
       "publicRepos": 130,
-      "followers": 101,
-      "following": 69,
+      "followers": 102,
+      "following": 70,
       "location": "Egypt",
       "company": "@Division-36",
       "blog": "https://cal.com/zierax",
@@ -30,18 +30,19 @@
       "htmlUrl": "https://github.com/Division-36",
       "publicRepos": 10,
       "followers": 5,
-      "description": "On-device malware detection for embedded Linux. 37KB · 34ns · 96.28% accuracy · No cloud · No GPU · Built for the EU CRA 2027 compliance window."
+      "description": "On-device malware detection for embedded Linux. 37KB · 34ns · 96.28% accuracy · No cloud · No GPU · Built for the EU CRA 2027 compliance window.",
+      "founded": "2026-03-23T17:09:15Z"
     },
     "starredTabCount": 141
   },
   "totals": {
-    "zieraxOwnedRepoStars": 530,
+    "zieraxOwnedRepoStars": 532,
     "zieraxOwnedRepoForks": 102,
     "zieraxOwnedRepoCount": 93,
     "division36OwnedRepoStars": 95,
     "division36OwnedRepoForks": 15,
     "division36OwnedRepoCount": 10,
-    "combinedOwnedRepoStars": 625,
+    "combinedOwnedRepoStars": 627,
     "combinedOwnedRepoForks": 117
   },
   "tiers": {
@@ -66,218 +67,40 @@
       "Zierax/Truthimatics_Public",
       "Zierax/Purce",
       "Zierax/Axiom-Recruit",
+      "Zierax/fl-studio-mcp",
       "Zierax/Axiom-Bio",
       "Zierax/Axiom-LRM",
       "Zierax/Axiom-Qsecurity",
-      "Zierax/Riptar",
-      "Zierax/fl-studio-mcp"
+      "Zierax/Riptar"
     ],
     "signal": [
       "Zierax/GoogleDorker",
       "Zierax/G-dorks",
       "Zierax/Basic-ML-prompt-injections",
       "Zierax/HackFunction",
-      "Zierax/ip-changer",
       "Zierax/HXCC-scanner",
       "Zierax/AI-prompts-for-hunting",
       "Zierax/HackerHelper",
       "Zierax/Reconizer",
-      "Zierax/crtsh"
+      "Zierax/crtsh",
+      "Zierax/CIOSA"
     ],
     "recent": [
+      "Zierax/CIOSA",
       "Zierax/Axiom-Astrophysics",
-      "Zierax/Axiom-Zspace",
-      "Zierax/Taskware-manager",
-      "Zierax/Grafana-Final-Scanner",
       "Zierax/My-Recon-Methology",
-      "Zierax/AdmitGPT"
+      "Zierax/Axiom-Zspace",
+      "Zierax/fl-studio-mcp",
+      "Zierax/NHE-Architecture"
     ],
     "archive": [
-      "Division-36/Axiom-Hacker",
-      "Zierax/Bug-Bounty-tools",
-      "Zierax/BugBounty-Tips",
-      "Zierax/CVE-2018-13379",
-      "Zierax/lfi-mini-scanner",
       "Zierax/usenix26_artifact",
-      "Zierax/30K-nuclei-templates",
-      "Zierax/Message-Encryption-Decryption",
-      "Zierax/SMAS",
-      "Zierax/Axiom-Dinosaur",
+      "Zierax/CVE-2018-13379",
       "Zierax/CVE-2023-50094_POC",
-      "Zierax/Ziad-Portfolio",
-      "Zierax/Acqui-Finder",
-      "Zierax/AD-Tools-Resources",
-      "Zierax/autosniper",
-      "Zierax/Bbug",
-      "Zierax/My-BugBounty-Reports",
-      "Zierax/My-SmartContracts-Audit-Reports",
-      "Zierax/SmartGuard",
-      "Zierax/Axiom-01",
-      "Zierax/Axiom-Collatz",
-      "Zierax/Axiom-Crypt",
-      "Zierax/Axiom-Sigint_Public",
-      "Zierax/PTRR-F",
-      "Zierax/TinyML-Malware-Detector_-Planck-99-",
-      "Zierax/TREVER",
-      "Zierax/CIOSA",
-      "Zierax/Collatz-Research-Code",
-      "Zierax/prompts",
-      "Zierax/Axiom-Earth2",
-      "Zierax/Axiom-Fluid",
-      "Zierax/Axiom-Inception",
-      "Zierax/Axiom-Math",
-      "Zierax/Let-Another-Resource-Scanner",
-      "Zierax/Truthisite",
-      "Zierax/I-Like-U",
-      "Zierax/proxy-auto-updater",
-      "Zierax/Cors-Poc",
-      "Zierax/TheFetcher",
-      "Zierax/Xss-ultimate-payloads",
-      "Zierax/Bread-Generator",
-      "Zierax/clickjacking-poc",
-      "Zierax/download-from-youtube",
-      "Zierax/Gym-Managment-System",
-      "Zierax/JS-Testing-Examples",
-      "Zierax/Mr-Zierax",
-      "Zierax/My-Resume",
-      "Zierax/node.js-server-template",
-      "Zierax/Password-manager",
-      "Zierax/python-turtle-projects",
-      "Zierax/react-basic-project",
-      "Zierax/reload-site-template",
-      "Zierax/Research-XSPO",
-      "Zierax/Sencrypt",
-      "Zierax/xss-poc",
-      "Zierax/Zierax-website",
-      "Zierax/lol-game-ml-prediction",
-      "Zierax/instaCracker",
-      "Zierax/LNK-payload-gen",
-      "Zierax/exploit-RCE-vuln",
-      "Zierax/Recaptcha-forgery-site",
-      "Zierax/Reverse-shell",
-      "Zierax/telegram-forgery-site",
-      "Zierax/Windows-Activator",
-      "Zierax/zoom-forgery-site"
+      "Zierax/TinyML-Malware-Detector_-Planck-99-"
     ]
   },
   "ranked": [
-    {
-      "key": "Zierax/30K-nuclei-templates",
-      "owner": "Zierax",
-      "name": "30K-nuclei-templates",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/30K-nuclei-templates",
-      "apiDescription": "30k for nuclei automatic scan web vuln",
-      "language": null,
-      "topics": [
-        "automation",
-        "hacking",
-        "nuclei",
-        "nuclei-templates",
-        "security-tools",
-        "webscanner"
-      ],
-      "stars": 3,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:14Z",
-      "pushedAt": "2024-02-20T12:18:25Z",
-      "createdAt": "2024-02-20T12:16:15Z",
-      "archived": false,
-      "score": 14,
-      "scoreReasons": [
-        "stars×2=6",
-        "recency+8"
-      ],
-      "summary": "30k for nuclei automatic scan web vuln",
-      "highlights": "3 stars / 0 forks",
-      "tags": [
-        "automation",
-        "hacking",
-        "nuclei"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/30K-nuclei-templates#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Acqui-Finder",
-      "owner": "Zierax",
-      "name": "Acqui-Finder",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/Acqui-Finder",
-      "apiDescription": "",
-      "language": "Python",
-      "topics": [],
-      "stars": 2,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:17Z",
-      "pushedAt": "2024-07-08T21:00:34Z",
-      "createdAt": "2024-07-08T20:48:50Z",
-      "archived": false,
-      "score": 12,
-      "scoreReasons": [
-        "stars×2=4",
-        "recency+8"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "2 stars / 0 forks",
-      "tags": [
-        "Python"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Acqui-Finder#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/AD-Tools-Resources",
-      "owner": "Zierax",
-      "name": "AD-Tools-Resources",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/AD-Tools-Resources",
-      "apiDescription": "active directory custom made tools and commands and resources for helping people and (me) later",
-      "language": "Python",
-      "topics": [],
-      "stars": 2,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:23Z",
-      "pushedAt": "2025-10-23T19:19:46Z",
-      "createdAt": "2025-10-23T18:37:20Z",
-      "archived": false,
-      "score": 12,
-      "scoreReasons": [
-        "stars×2=4",
-        "recency+8"
-      ],
-      "summary": "active directory custom made tools and commands and resources for helping people and (me) later",
-      "highlights": "2 stars / 0 forks",
-      "tags": [
-        "Python"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/AD-Tools-Resources#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
     {
       "key": "Zierax/AdmitGPT",
       "owner": "Zierax",
@@ -285,6 +108,12 @@
       "label": null,
       "license": null,
       "url": "https://github.com/Zierax/AdmitGPT",
+      "homepage": "https://admitgpt.pages.dev/",
+      "links": {
+        "site": "https://admitgpt.pages.dev/"
+      },
+      "headSha": "f7dd7e0",
+      "headUrl": "https://github.com/Zierax/AdmitGPT/commit/f7dd7e0edd384a16a81dfa44fcf8ef6eb134e464",
       "apiDescription": "from student to students, math will never lie on you",
       "language": "TypeScript",
       "topics": [
@@ -307,8 +136,9 @@
         "domain+12",
         "readme+3"
       ],
-      "summary": "While consultants sell insider magic, AdmitGPT provides calculated reality. My logic is open-source and runs entirely in your browser. No data collection, no hidden formulas. A systematic strike against information inequality. The admissions industry thrives on fear and ambiguity",
+      "summary": "Admissions math with the curtains open: every formula visible, everything computed in your browser, nothing tracked. Built so students can check the consultants' magic.",
       "highlights": "- Full Privacy Protection: All calculations run locally in your browser. Zero tracking. Only opt-in outlier messages are persisted, in a Cloudflare D1 database. · - Private Gateway: High-achievement outliers gain a direct \"Private Invitation\" channel to the creator, backed by a Cloudflare D1 (SQLite",
+      "story": "Client-side admission math — open logic running entirely in the browser, zero tracking.",
       "tags": [
         "TypeScript",
         "educational",
@@ -326,8 +156,7 @@
           "- Security: AES-256 CTR (CryptoJS) for Audit Signatures"
         ]
       },
-      "tier": "flagship",
-      "story": "Client-side admission math — open logic running entirely in the browser, zero tracking."
+      "tier": "flagship"
     },
     {
       "key": "Zierax/AI-prompts-for-hunting",
@@ -336,6 +165,10 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Zierax/AI-prompts-for-hunting",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "swiss army prompts for every bug hunter",
       "language": null,
       "topics": [],
@@ -353,6 +186,7 @@
       ],
       "summary": "swiss army prompts for every bug hunter",
       "highlights": "4 stars / 0 forks",
+      "story": null,
       "tags": [],
       "mentions": [],
       "readme": {
@@ -361,80 +195,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "signal",
-      "story": null
-    },
-    {
-      "key": "Zierax/autosniper",
-      "owner": "Zierax",
-      "name": "autosniper",
-      "label": null,
-      "license": "GPL-3.0",
-      "url": "https://github.com/Zierax/autosniper",
-      "apiDescription": "",
-      "language": "Shell",
-      "topics": [],
-      "stars": 2,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:19Z",
-      "pushedAt": "2024-10-25T08:39:10Z",
-      "createdAt": "2024-10-25T08:22:53Z",
-      "archived": false,
-      "score": 12,
-      "scoreReasons": [
-        "stars×2=4",
-        "recency+8"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "2 stars / 0 forks",
-      "tags": [
-        "Shell"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/autosniper#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Axiom-01",
-      "owner": "Zierax",
-      "name": "Axiom-01",
-      "label": null,
-      "license": "NOASSERTION",
-      "url": "https://github.com/Zierax/Axiom-01",
-      "apiDescription": "a white-box hypothesis-driven reasoning system designed to discover latent structures between phonetic profiles and biological/contextual traits.",
-      "language": "Python",
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:26Z",
-      "pushedAt": "2026-05-30T04:50:49Z",
-      "createdAt": "2026-04-07T19:01:42Z",
-      "archived": false,
-      "score": 10,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8"
-      ],
-      "summary": "a white-box hypothesis-driven reasoning system designed to discover latent structures between phonetic profiles and biological/contextual traits.",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "Python"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Axiom-01#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "signal"
     },
     {
       "key": "Zierax/Axiom-02",
@@ -443,6 +204,17 @@
       "label": null,
       "license": "NOASSERTION",
       "url": "https://github.com/Zierax/Axiom-02",
+      "homepage": "https://axiom-02-world.zs-01117875692.workers.dev/",
+      "links": {
+        "site": "https://axiom-02-world.zs-01117875692.workers.dev/",
+        "docs": [
+          "https://github.com/Zierax/Axiom-02/blob/main/docs/RESEARCH_AUDIT_2026.md",
+          "https://github.com/Zierax/Axiom-02/blob/main/docs/SCENARIO_CATALOG.md"
+        ],
+        "benchmark": "https://github.com/Zierax/Axiom-02/blob/main/docs/RESULTS_ANALYSIS.md"
+      },
+      "headSha": "eb9a6a2",
+      "headUrl": "https://github.com/Zierax/Axiom-02/commit/eb9a6a20b398abda104e5944cce6a05ae208fdf6",
       "apiDescription": "AXIOM-02: a deterministic simulation engine modeling high-stakes cognitive dissonance and drive-conflict resolution via a mutual-inhibition drive network. 102 literary & ethical scenarios, reproducible consciousness-complexity metrics. A research instrument — not a claim of machine consciousness.",
       "language": "Python",
       "topics": [
@@ -467,8 +239,9 @@
         "readme+10",
         "benchmark-table+4"
       ],
-      "summary": "⚠ DISCLAIMER AXIOM-02 does NOT claim to create artificial consciousness, sentience, or a mind. It is a deterministic simulation instrument for studying the structure of conflicted decision-making — an epistemological research tool, not an ontological claim of machine awareness.",
-      "highlights": "- Grossberg's Adaptive Resonance Theory (1976): competitive neural dynamics for cognitive-emotional integration. · - Damasio's Somatic Marker Hypothesis (1994): the role of embodied signals in guiding decision-making. · - Minsky's Emotion Machine (2006): the view of mind as a society of interacting ",
+      "summary": "A drive network that simulates how minds break under conflicting pressures — 102 literary scenarios at 66.7% action fidelity. A research instrument, explicitly not a consciousness claim.",
+      "highlights": "102 literary scenarios · 66.7% action fidelity · research instrument",
+      "story": "A deterministic drive-network simulation of high-stakes cognitive dissonance — now v2.0.",
       "tags": [
         "Python",
         "affective-computing",
@@ -486,8 +259,7 @@
           "- Minsky's Emotion Machine (2006): the view of mind as a society of interacting resources."
         ]
       },
-      "tier": "flagship",
-      "story": "A deterministic drive-network simulation of high-stakes cognitive dissonance — now v2.0."
+      "tier": "flagship"
     },
     {
       "key": "Zierax/Axiom-Astrophysics",
@@ -496,13 +268,22 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Zierax/Axiom-Astrophysics",
+      "homepage": null,
+      "links": {
+        "docs": [
+          "https://github.com/Zierax/Axiom-Astrophysics/blob/main/docs/LOGIC.md"
+        ],
+        "benchmark": "https://github.com/Zierax/Axiom-Astrophysics/blob/main/BENCHMARKS.md"
+      },
+      "headSha": "de6b872",
+      "headUrl": "https://github.com/Zierax/Axiom-Astrophysics/commit/de6b872071ef4b080b927f4ff9cf342dd1fb6bea",
       "apiDescription": "a logic-driven auditing engine designed to analyze the mathematical structural integrity of astrophysical signals.",
       "language": "Python",
       "topics": [],
       "stars": 1,
       "forks": 0,
-      "updatedAt": "2026-09-22T03:48:42Z",
-      "pushedAt": "2026-09-22T03:48:38Z",
+      "updatedAt": "2026-09-25T17:59:22Z",
+      "pushedAt": "2026-09-25T17:59:18Z",
       "createdAt": "2026-04-09T14:44:17Z",
       "archived": false,
       "score": 49,
@@ -513,8 +294,9 @@
         "readme+10",
         "benchmark-table+4"
       ],
-      "summary": "Major Improvements: - Voyager 1 detected end-to-end: production pipeline (runaxiom.py) achieves TPR 1.000 / FPR 0.000 on 69 real telescope signals (4 provenance-pinned .fil + 65 Kaggle SETI GUPPI spectrograms). Voyager's fused p-value: pfused = 0.0023 (significant at α=0.05). - O",
-      "highlights": "- Voyager 1 detected end-to-end: production pipeline (runaxiom.py) achieves TPR 1.000 / FPR 0.000 on 69 real telescope signals (4 provenance-pinned .fil + 65 Ka · - Off-manifold anchor for narrowband carriers: zero-DM signals placed at the physically correct off-manifold position on the HTRU2 manifo",
+      "summary": "White-box audits of pulsar signals, built so every verdict shows its work. Caught Voyager 1 end-to-end; version 1.1 holds 87.5% precision at 0.006% false positives.",
+      "highlights": "87.5% precision · 0.006% FP · v1.1 validated",
+      "story": "Pulsar-signal auditing that caught Voyager 1 end-to-end across 69 real telescope signals.",
       "tags": [
         "Python"
       ],
@@ -522,15 +304,14 @@
       "readme": {
         "present": true,
         "url": "https://github.com/Zierax/Axiom-Astrophysics#readme",
-        "summary": "Major Improvements: - Voyager 1 detected end-to-end: production pipeline (runaxiom.py) achieves TPR 1.000 / FPR 0.000 on 69 real telescope signals (4 provenance-pinned .fil + 65 Kaggle SETI GUPPI spectrograms). Voyager's fused p-value: pfused = 0.0023 (significant at α=0.05). - O",
+        "summary": "What changed (9 fix commits, each verified by an independent review agent): - Verdicts now execute the published guarantee. The arbitrator receives Bonferroni-fused p-values (previously raw min-p, bounding FPR only at 2α); the significance comparison is <=; the OOD-mask branch is",
         "highlights": [
+          "- Full suite: 129 passed (5 pre-existing env failures: system torch +",
           "- Voyager 1 detected end-to-end: production pipeline (runaxiom.py) achieves TPR 1.000 / FPR 0.000 on 69 real telescope signals (4 provenance-pinned .fil + 65 Ka",
-          "- Off-manifold anchor for narrowband carriers: zero-DM signals placed at the physically correct off-manifold position on the HTRU2 manifold (not hand-tuned — de",
-          "- Bonferroni fusion is the primary p-value fusion method (valid under arbitrary dependence between the HTRU2 and descriptor conformal tests): pfused = min(1, mi"
+          "- Off-manifold anchor for narrowband carriers: zero-DM signals placed at the physically correct off-manifold position on the HTRU2 manifold (not hand-tuned — de"
         ]
       },
-      "tier": "flagship",
-      "story": "Pulsar-signal auditing that caught Voyager 1 end-to-end across 69 real telescope signals."
+      "tier": "flagship"
     },
     {
       "key": "Zierax/Axiom-Bio",
@@ -539,6 +320,10 @@
       "label": null,
       "license": "NOASSERTION",
       "url": "https://github.com/Zierax/Axiom-Bio",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "Axiom-Bio evaluates the possibility of the structure existence. an Evidence Evaluation Engine.",
       "language": null,
       "topics": [
@@ -563,7 +348,8 @@
         "benchmark-table+4"
       ],
       "summary": "Honest AI for structural biology — 100% deterministic, CPU-native, sub-second inference with auditable evidence chains.",
-      "highlights": "- pLDDT can be high for wrong structures. AlphaFold 3 confidently predicts compact folds for many IDPs (α-synuclein pLDDT ≈ 71, p53 TAD pLDDT ≈ 56), producing h · - pLDDT is poorly calibrated. ECE = 0.251 means a protein with pLDDT = 80 is ordered only 55% of the time — a systematic overconfidence o",
+      "highlights": "ECE 0.088 vs AlphaFold3 pLDDT ECE 0.251 · ~344ms/seq · research-phase",
+      "story": null,
       "tags": [
         "ai-safety",
         "alphafold3",
@@ -580,236 +366,7 @@
           "- pLDDT is non-deterministic. AF3 uses stochastic diffusion, producing different structures (±several Å RMSD) on each run."
         ]
       },
-      "tier": "spotlight",
-      "story": null
-    },
-    {
-      "key": "Zierax/Axiom-Collatz",
-      "owner": "Zierax",
-      "name": "Axiom-Collatz",
-      "label": null,
-      "license": "NOASSERTION",
-      "url": "https://github.com/Zierax/Axiom-Collatz",
-      "apiDescription": "",
-      "language": null,
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:26Z",
-      "pushedAt": "2026-05-09T16:52:15Z",
-      "createdAt": "2026-05-03T05:12:05Z",
-      "archived": false,
-      "score": 10,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "1 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Axiom-Collatz#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Axiom-Crypt",
-      "owner": "Zierax",
-      "name": "Axiom-Crypt",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Axiom-Crypt",
-      "apiDescription": "",
-      "language": "Python",
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:26Z",
-      "pushedAt": "2026-05-05T06:20:58Z",
-      "createdAt": "2026-05-01T04:58:20Z",
-      "archived": false,
-      "score": 10,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "Python"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Axiom-Crypt#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Axiom-Dinosaur",
-      "owner": "Zierax",
-      "name": "Axiom-Dinosaur",
-      "label": null,
-      "license": "NOASSERTION",
-      "url": "https://github.com/Zierax/Axiom-Dinosaur",
-      "apiDescription": "Reconstructing prehistoric biological structures",
-      "language": "HTML",
-      "topics": [],
-      "stars": 1,
-      "forks": 1,
-      "updatedAt": "2026-07-04T06:02:26Z",
-      "pushedAt": "2026-05-13T21:33:00Z",
-      "createdAt": "2026-04-22T18:46:42Z",
-      "archived": false,
-      "score": 13,
-      "scoreReasons": [
-        "stars×2=2",
-        "forks×3=3",
-        "recency+8"
-      ],
-      "summary": "Reconstructing prehistoric biological structures",
-      "highlights": "1 stars / 1 forks",
-      "tags": [
-        "HTML"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Axiom-Dinosaur#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Axiom-Earth2",
-      "owner": "Zierax",
-      "name": "Axiom-Earth2",
-      "label": null,
-      "license": "NOASSERTION",
-      "url": "https://github.com/Zierax/Axiom-Earth2",
-      "apiDescription": "A honest Try to find the Earth-2 by Axiom Logic, and it's confirmed by the known verfied data",
-      "language": null,
-      "topics": [
-        "agi",
-        "asi",
-        "astrophysics",
-        "astrophysics-ml",
-        "deterministic-ai",
-        "exoplanet-analysis"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2026-05-16T20:01:30Z",
-      "pushedAt": "2026-05-15T11:20:18Z",
-      "createdAt": "2026-05-11T18:59:30Z",
-      "archived": false,
-      "score": 4,
-      "scoreReasons": [
-        "recency+4"
-      ],
-      "summary": "A honest Try to find the Earth-2 by Axiom Logic, and it's confirmed by the known verfied data",
-      "highlights": "0 stars / 0 forks",
-      "tags": [
-        "agi",
-        "asi",
-        "astrophysics"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Axiom-Earth2#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Axiom-Fluid",
-      "owner": "Zierax",
-      "name": "Axiom-Fluid",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Axiom-Fluid",
-      "apiDescription": "",
-      "language": null,
-      "topics": [],
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2026-05-11T19:53:12Z",
-      "pushedAt": "2026-05-11T19:53:12Z",
-      "createdAt": "2026-05-11T19:53:12Z",
-      "archived": false,
-      "score": 4,
-      "scoreReasons": [
-        "recency+4"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "0 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Axiom-Fluid#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Axiom-Inception",
-      "owner": "Zierax",
-      "name": "Axiom-Inception",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/Axiom-Inception",
-      "apiDescription": "Deterministic Logic Injection: Strategic Prompt Framework for Aligning LLMs with Truthimatics Invariants.",
-      "language": null,
-      "topics": [
-        "ai",
-        "ai-agents",
-        "llm",
-        "llms",
-        "prompt",
-        "prompt-engineering"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2026-05-08T13:36:00Z",
-      "pushedAt": "2026-05-08T13:35:57Z",
-      "createdAt": "2026-05-08T12:46:13Z",
-      "archived": false,
-      "score": 4,
-      "scoreReasons": [
-        "recency+4"
-      ],
-      "summary": "Deterministic Logic Injection: Strategic Prompt Framework for Aligning LLMs with Truthimatics Invariants.",
-      "highlights": "0 stars / 0 forks",
-      "tags": [
-        "ai",
-        "ai-agents",
-        "llm"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Axiom-Inception#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "spotlight"
     },
     {
       "key": "Zierax/Axiom-LRM",
@@ -818,6 +375,10 @@
       "label": null,
       "license": null,
       "url": "https://github.com/Zierax/Axiom-LRM",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "Deterministic Logical Reasoning Model | Formal Logic Invariants | Zero-Hallucination AGI",
       "language": null,
       "topics": [
@@ -844,6 +405,7 @@
       ],
       "summary": "Axiom-LRM is not a Language Model; it is a Reasoning Engine.",
       "highlights": "1000x Efficiency: By eliminating the need for trillions of parameters to \"guess\" patterns, we achieve superior reasoning with a fraction of the compute. · Phase 1: Mathematical Invariants (Completed) · Phase 2: Cross-Domain Logic Mapping (Completed)",
+      "story": null,
       "tags": [
         "agi",
         "artifical-general-intelligence",
@@ -860,41 +422,7 @@
           "Phase 2: Cross-Domain Logic Mapping (Completed)"
         ]
       },
-      "tier": "spotlight",
-      "story": null
-    },
-    {
-      "key": "Zierax/Axiom-Math",
-      "owner": "Zierax",
-      "name": "Axiom-Math",
-      "label": null,
-      "license": "NOASSERTION",
-      "url": "https://github.com/Zierax/Axiom-Math",
-      "apiDescription": "",
-      "language": null,
-      "topics": [],
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2026-05-09T16:52:23Z",
-      "pushedAt": "2026-05-09T16:52:19Z",
-      "createdAt": "2026-04-21T19:38:32Z",
-      "archived": false,
-      "score": 4,
-      "scoreReasons": [
-        "recency+4"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "0 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Axiom-Math#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "spotlight"
     },
     {
       "key": "Zierax/Axiom-Qsecurity",
@@ -903,6 +431,10 @@
       "label": null,
       "license": null,
       "url": "https://github.com/Zierax/Axiom-Qsecurity",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "Quantum Truthimatics Malware Detector | 23 Kb | 0.00% FP | 5 microsecond/record",
       "language": null,
       "topics": [],
@@ -920,7 +452,8 @@
         "benchmark-table+4"
       ],
       "summary": "Benchmark-report-only repo for a quantum-kernel syscall classifier, published with enforced train/eval separation. Research-phase figures, not production evidence.",
-      "highlights": "Metric Full Dataset (5,549 rec) IoT Dataset (1,504 rec) · Accuracy 0.9921 1.0000 · Precision 0.9968 1.0000",
+      "highlights": "Profile reports: 23KB · 5μs/record · 0.00% FP — research-phase figures",
+      "story": null,
       "tags": [
         "Research",
         "Malware Classification",
@@ -937,8 +470,7 @@
           "Precision 0.9968 1.0000"
         ]
       },
-      "tier": "spotlight",
-      "story": null
+      "tier": "spotlight"
     },
     {
       "key": "Zierax/Axiom-Recruit",
@@ -947,6 +479,15 @@
       "label": null,
       "license": "NOASSERTION",
       "url": "https://github.com/Zierax/Axiom-Recruit",
+      "homepage": null,
+      "links": {
+        "docs": [
+          "https://github.com/Zierax/Axiom-Recruit/blob/main/docs/engine_logic.md",
+          "https://github.com/Zierax/Axiom-Recruit/blob/main/docs/logic.md"
+        ]
+      },
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "Deterministic, White-box, Reproducible Hiring Audit Engine.",
       "language": "Python",
       "topics": [
@@ -973,6 +514,7 @@
       ],
       "summary": "Axiom-Recruit is a senior-level logic engine designed to evaluate hiring decisions through the lens of mathematical excellence, market alignment, and the \"Grit Factor.\" It eliminates black-box bias by providing a full, auditable logic trace for every hiring verdict. The root cand",
       "highlights": "- Dynamic Market Scenarios: Model decisions across different countries (Egypt, USA, Canada, etc.) and technology eras (AI-Current, ML-2016).",
+      "story": null,
       "tags": [
         "Python",
         "hire",
@@ -988,42 +530,7 @@
           "- Dynamic Market Scenarios: Model decisions across different countries (Egypt, USA, Canada, etc.) and technology eras (AI-Current, ML-2016)."
         ]
       },
-      "tier": "spotlight",
-      "story": null
-    },
-    {
-      "key": "Zierax/Axiom-Sigint_Public",
-      "owner": "Zierax",
-      "name": "Axiom-Sigint_Public",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Axiom-Sigint_Public",
-      "apiDescription": "",
-      "language": null,
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:26Z",
-      "pushedAt": "2026-04-28T08:45:09Z",
-      "createdAt": "2026-04-27T00:23:45Z",
-      "archived": false,
-      "score": 10,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "1 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Axiom-Sigint_Public#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "spotlight"
     },
     {
       "key": "Zierax/Axiom-Vesuvius",
@@ -1032,6 +539,12 @@
       "label": null,
       "license": null,
       "url": "https://github.com/Zierax/Axiom-Vesuvius",
+      "homepage": null,
+      "links": {
+        "context": "https://scrollprize.org/"
+      },
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "3 Fragments 1 Hour >94% F1",
       "language": null,
       "topics": [
@@ -1057,7 +570,8 @@
         "benchmark-table+4"
       ],
       "summary": "1. Inverse Carbon Density Engine: A proprietary kernel that identifies non-stochastic carbon deposits via 3D voxel variance. 2. Deterministic Inference: Eliminates the \"Black Box\" nature of Deep Learning. Every pixel is validated against a sovereign mathematical proof. 3. Hardwar",
-      "highlights": "Precision 98.52% Clinical Accuracy · F1-Score 0.9652 Optimized Signal-to-Noise · Recall 94.69% High-Fidelity Extraction",
+      "highlights": "3 fragments · 1 hr · >94% F1 · research-phase",
+      "story": null,
       "tags": [
         "logic",
         "logic-programming",
@@ -1074,8 +588,7 @@
           "Recall 94.69% High-Fidelity Extraction"
         ]
       },
-      "tier": "spotlight",
-      "story": null
+      "tier": "spotlight"
     },
     {
       "key": "Zierax/Axiom-Zspace",
@@ -1084,6 +597,20 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Zierax/Axiom-Zspace",
+      "homepage": null,
+      "links": {
+        "paper": [
+          "https://doi.org/10.5281/zenodo.22255875",
+          "https://github.com/Zierax/Axiom-Zspace/blob/main/paper/JOSS/paper.md"
+        ],
+        "docs": [
+          "https://github.com/Zierax/Axiom-Zspace/blob/main/docs/QUICKSTART.md",
+          "https://github.com/Zierax/Axiom-Zspace/blob/main/docs/ARCHITECTURE.md"
+        ],
+        "benchmark": "https://github.com/Zierax/Axiom-Zspace/blob/main/docs/BENCHMARKS.md"
+      },
+      "headSha": "0ad453a",
+      "headUrl": "https://github.com/Zierax/Axiom-Zspace/commit/0ad453a63b3004e168013ef94ea31e21f503b59e",
       "apiDescription": "Blind-search exoplanet transit detection for TESS/Kepler light curves",
       "language": "C",
       "topics": [
@@ -1096,8 +623,8 @@
       ],
       "stars": 4,
       "forks": 1,
-      "updatedAt": "2026-09-22T01:54:43Z",
-      "pushedAt": "2026-09-22T01:54:44Z",
+      "updatedAt": "2026-09-24T19:06:04Z",
+      "pushedAt": "2026-09-24T19:06:00Z",
       "createdAt": "2026-04-14T21:57:16Z",
       "archived": false,
       "score": 58,
@@ -1109,8 +636,9 @@
         "readme+10",
         "benchmark-table+4"
       ],
-      "summary": "Blind-search exoplanet transit detection for TESS/Kepler light curves",
+      "summary": "Point it at TESS light curves and it hunts exoplanet transits on its own: blind BLS search, physics audits that kill false positives, and a C99 engine for batch runs. 148 out of 148 checks green.",
       "highlights": "- C99 build included: the same logic ships as a dependency-free C99 · Controlled BIG400 (400 true + 400 false, 8 seeds) recall 41.2% (165/400) · contamination FPR 4.25% (17/400) · wrong-ephemeris 20 · Controlled, fixed seed 20260814 (100+80) recall 52/100 · 0/80 (0%) contamination FPR (one-sample — ",
+      "story": "The portfolio's most ambitious system: blind exoplanet search with a 101-test suite, a C99 engine, and a JOSS paper draft.",
       "tags": [
         "C",
         "bls-signature",
@@ -1128,8 +656,7 @@
           "Controlled, fixed seed 20260814 (100+80) recall 52/100 · 0/80 (0%) contamination FPR (one-sample — see note)"
         ]
       },
-      "tier": "flagship",
-      "story": "The portfolio's most ambitious system: blind exoplanet search with a 101-test suite, a C99 engine, and a JOSS paper draft."
+      "tier": "flagship"
     },
     {
       "key": "Zierax/Basic-ML-prompt-injections",
@@ -1138,6 +665,10 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Zierax/Basic-ML-prompt-injections",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "llm attacks basic payloads",
       "language": null,
       "topics": [
@@ -1164,6 +695,7 @@
       ],
       "summary": "Disclaimer: This guide is intended for educational purposes only. Prompt injection can be a serious security vulnerability, and exploiting it for malicious purposes is unethical and illegal.",
       "highlights": "11 stars / 2 forks",
+      "story": null,
       "tags": [
         "attack",
         "injections",
@@ -1176,149 +708,7 @@
         "summary": "Disclaimer: This guide is intended for educational purposes only. Prompt injection can be a serious security vulnerability, and exploiting it for malicious purposes is unethical and illegal.",
         "highlights": []
       },
-      "tier": "signal",
-      "story": null
-    },
-    {
-      "key": "Zierax/Bbug",
-      "owner": "Zierax",
-      "name": "Bbug",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/Bbug",
-      "apiDescription": "Bbug is a Web Security testing professional framework for penetration testers",
-      "language": null,
-      "topics": [],
-      "stars": 2,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:17Z",
-      "pushedAt": "2024-07-09T09:02:28Z",
-      "createdAt": "2024-07-09T09:02:28Z",
-      "archived": false,
-      "score": 12,
-      "scoreReasons": [
-        "stars×2=4",
-        "recency+8"
-      ],
-      "summary": "Bbug is a Web Security testing professional framework for penetration testers",
-      "highlights": "2 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Bbug#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Bread-Generator",
-      "owner": "Zierax",
-      "name": "Bread-Generator",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/Bread-Generator",
-      "apiDescription": "Generate your breads for brute force",
-      "language": null,
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:16Z",
-      "pushedAt": "2024-04-17T09:24:03Z",
-      "createdAt": "2024-04-17T09:19:21Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "Generate your breads for brute force",
-      "highlights": "1 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Bread-Generator#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Bug-Bounty-tools",
-      "owner": "Zierax",
-      "name": "Bug-Bounty-tools",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Bug-Bounty-tools",
-      "apiDescription": "",
-      "language": "Shell",
-      "topics": [],
-      "stars": 2,
-      "forks": 1,
-      "updatedAt": "2026-07-04T06:02:17Z",
-      "pushedAt": "2024-07-07T17:05:25Z",
-      "createdAt": "2024-07-07T17:03:03Z",
-      "archived": false,
-      "score": 15,
-      "scoreReasons": [
-        "stars×2=4",
-        "forks×3=3",
-        "recency+8"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "2 stars / 1 forks",
-      "tags": [
-        "Shell"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Bug-Bounty-tools#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/BugBounty-Tips",
-      "owner": "Zierax",
-      "name": "BugBounty-Tips",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/BugBounty-Tips",
-      "apiDescription": "that repo i collected bug bounty hunting tips for public",
-      "language": null,
-      "topics": [],
-      "stars": 2,
-      "forks": 1,
-      "updatedAt": "2026-07-04T06:02:23Z",
-      "pushedAt": "2025-11-22T22:00:30Z",
-      "createdAt": "2025-11-22T21:34:11Z",
-      "archived": false,
-      "score": 15,
-      "scoreReasons": [
-        "stars×2=4",
-        "forks×3=3",
-        "recency+8"
-      ],
-      "summary": "that repo i collected bug bounty hunting tips for public",
-      "highlights": "2 stars / 1 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/BugBounty-Tips#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "signal"
     },
     {
       "key": "Zierax/CIOSA",
@@ -1327,21 +717,27 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Zierax/CIOSA",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "",
       "language": "Python",
       "topics": [],
       "stars": 0,
       "forks": 0,
-      "updatedAt": "2026-08-20T01:57:48Z",
-      "pushedAt": "2026-08-20T01:57:32Z",
+      "updatedAt": "2026-09-25T18:03:00Z",
+      "pushedAt": "2026-09-25T18:02:56Z",
       "createdAt": "2026-08-07T19:34:24Z",
       "archived": false,
-      "score": 8,
+      "score": 21,
       "scoreReasons": [
-        "recency+8"
+        "recency+15",
+        "domain+6"
       ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "Profile README reports: Game Value = 1/2, Proven & Empirically Validated (N=4–30, real transformers)",
+      "summary": "Formal impossibility bound on semantic-understanding certification, proven and empirically validated on real transformers.",
+      "highlights": "Game value = 1/2 · N=4-30 real transformers · Published Research",
+      "story": null,
       "tags": [
         "Python"
       ],
@@ -1352,115 +748,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/clickjacking-poc",
-      "owner": "Zierax",
-      "name": "clickjacking-poc",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/clickjacking-poc",
-      "apiDescription": "html poc for clickjacking",
-      "language": "HTML",
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:18Z",
-      "pushedAt": "2024-07-13T12:22:14Z",
-      "createdAt": "2024-07-13T12:19:17Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "html poc for clickjacking",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "HTML"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/clickjacking-poc#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Collatz-Research-Code",
-      "owner": "Zierax",
-      "name": "Collatz-Research-Code",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Collatz-Research-Code",
-      "apiDescription": "",
-      "language": null,
-      "topics": [],
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2026-07-19T20:42:21Z",
-      "pushedAt": "2026-07-19T20:42:20Z",
-      "createdAt": "2026-07-19T20:42:20Z",
-      "archived": false,
-      "score": 8,
-      "scoreReasons": [
-        "recency+8"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "0 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Collatz-Research-Code#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Cors-Poc",
-      "owner": "Zierax",
-      "name": "Cors-Poc",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Cors-Poc",
-      "apiDescription": "poc for cross-origin misconfiguration by HTML",
-      "language": "HTML",
-      "topics": [],
-      "stars": 2,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:17Z",
-      "pushedAt": "2024-07-03T15:11:51Z",
-      "createdAt": "2024-07-03T15:10:33Z",
-      "archived": false,
-      "score": -28,
-      "scoreReasons": [
-        "stars×2=4",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "poc for cross-origin misconfiguration by HTML",
-      "highlights": "2 stars / 0 forks",
-      "tags": [
-        "HTML"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Cors-Poc#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "signal"
     },
     {
       "key": "Zierax/crtsh",
@@ -1469,6 +757,10 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Zierax/crtsh",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "Get subdomains from crt.sh",
       "language": "Python",
       "topics": [],
@@ -1487,6 +779,7 @@
       ],
       "summary": "Get subdomains from crt.sh",
       "highlights": "4 stars / 1 forks",
+      "story": null,
       "tags": [
         "Python"
       ],
@@ -1497,8 +790,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "signal",
-      "story": null
+      "tier": "signal"
     },
     {
       "key": "Zierax/CVE-2018-13379",
@@ -1507,6 +799,10 @@
       "label": null,
       "license": null,
       "url": "https://github.com/Zierax/CVE-2018-13379",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "CVE-2018-13379 fortiOS vulnerability POC",
       "language": "Python",
       "topics": [],
@@ -1524,6 +820,7 @@
       ],
       "summary": "CVE-2018-13379 fortiOS vulnerability POC",
       "highlights": "2 stars / 1 forks",
+      "story": null,
       "tags": [
         "Python"
       ],
@@ -1534,8 +831,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "archive",
-      "story": null
+      "tier": "archive"
     },
     {
       "key": "Zierax/CVE-2023-50094_POC",
@@ -1544,6 +840,10 @@
       "label": null,
       "license": null,
       "url": "https://github.com/Zierax/CVE-2023-50094_POC",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "poc for CVE-2023-50094 (rengine command injection)",
       "language": "Python",
       "topics": [],
@@ -1561,6 +861,7 @@
       ],
       "summary": "poc for CVE-2023-50094 (rengine command injection)",
       "highlights": "1 stars / 1 forks",
+      "story": null,
       "tags": [
         "Python"
       ],
@@ -1571,87 +872,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/download-from-youtube",
-      "owner": "Zierax",
-      "name": "download-from-youtube",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/download-from-youtube",
-      "apiDescription": "youtube video downloader in specific path you choose it",
-      "language": "Python",
-      "topics": [
-        "downloader",
-        "youtube"
-      ],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:14Z",
-      "pushedAt": "2024-02-19T02:23:13Z",
-      "createdAt": "2024-02-19T02:15:28Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "youtube video downloader in specific path you choose it",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "Python",
-        "downloader",
-        "youtube"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/download-from-youtube#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/exploit-RCE-vuln",
-      "owner": "Zierax",
-      "name": "exploit-RCE-vuln",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/exploit-RCE-vuln",
-      "apiDescription": "exploit rce vuln by a python script",
-      "language": "Python",
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:15Z",
-      "pushedAt": "2024-03-03T07:35:07Z",
-      "createdAt": "2024-03-03T07:32:04Z",
-      "archived": false,
-      "score": -50,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-60"
-      ],
-      "summary": "exploit rce vuln by a python script",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "Python"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/exploit-RCE-vuln#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "archive"
     },
     {
       "key": "Zierax/fl-studio-mcp",
@@ -1660,6 +881,16 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Zierax/fl-studio-mcp",
+      "homepage": null,
+      "links": {
+        "docs": [
+          "https://github.com/Zierax/fl-studio-mcp/blob/main/docs/SETUP.md",
+          "https://github.com/Zierax/fl-studio-mcp/blob/main/docs/TOOLS.md",
+          "https://github.com/Zierax/fl-studio-mcp/blob/main/docs/ARCHITECTURE.md"
+        ]
+      },
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "AI assistants control FL Studio fully — transport, mixer, channel rack, plugins, patterns, step sequencer, piano roll, and the entire FL scripting API — over a virtual MIDI trigger + JSON command channel.",
       "language": "Python",
       "topics": [
@@ -1670,21 +901,23 @@
         "creation",
         "creation-kit"
       ],
-      "stars": 0,
+      "stars": 1,
       "forks": 0,
-      "updatedAt": "2026-08-17T09:10:48Z",
+      "updatedAt": "2026-09-24T16:12:37Z",
       "pushedAt": "2026-08-17T09:48:01Z",
       "createdAt": "2026-08-15T21:04:36Z",
       "archived": false,
-      "score": 26,
+      "score": 35,
       "scoreReasons": [
-        "recency+8",
+        "stars×2=2",
+        "recency+15",
         "domain+8",
         "readme+6",
         "benchmark-table+4"
       ],
       "summary": "An MCP server that lets AI assistants control FL Studio fully — transport, mixer, channel rack, plugins, patterns, step sequencer, piano roll, and the entire FL scripting API — over a virtual MIDI trigger + JSON command channel.",
-      "highlights": "- FL Studio 20.7+ on Windows or macOS (tested on FL Studio 2025 / Windows)",
+      "highlights": "164 tools · full scripting API coverage · v1.1.1",
+      "story": null,
       "tags": [
         "Python",
         "ai-agent",
@@ -1700,8 +933,7 @@
           "- FL Studio 20.7+ on Windows or macOS (tested on FL Studio 2025 / Windows)"
         ]
       },
-      "tier": "spotlight",
-      "story": null
+      "tier": "spotlight"
     },
     {
       "key": "Zierax/G-dorks",
@@ -1710,6 +942,10 @@
       "label": null,
       "license": "AGPL-3.0",
       "url": "https://github.com/Zierax/G-dorks",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "Just \"Harmless\" Google dorks for bug hunters",
       "language": "HTML",
       "topics": [
@@ -1735,6 +971,7 @@
       ],
       "summary": "Just \"Harmless\" Google dorks for bug hunters",
       "highlights": "25 stars / 4 forks",
+      "story": null,
       "tags": [
         "HTML",
         "db",
@@ -1748,8 +985,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "signal",
-      "story": null
+      "tier": "signal"
     },
     {
       "key": "Zierax/GoogleDorker",
@@ -1758,6 +994,10 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Zierax/GoogleDorker",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "Google Dork Finder is a Python tool designed to facilitate the use of Google Dorking for searching specific information on the web.",
       "language": "Python",
       "topics": [
@@ -1774,17 +1014,18 @@
       "pushedAt": "2024-11-27T10:48:25Z",
       "createdAt": "2024-06-21T21:02:28Z",
       "archived": false,
-      "score": 118,
+      "score": 111,
       "scoreReasons": [
         "stars×2=68",
         "forks×3=15",
-        "recency+15",
+        "recency+8",
         "domain+10",
         "readme+6",
         "benchmark-table+4"
       ],
-      "summary": "Python tool for practical Google-dorking workflows, targeted discovery, and repeatable operator-driven search.",
+      "summary": "Google dorking without the tab hell: scripted, repeatable operator-driven discovery for targeted recon.",
       "highlights": "-n, --number Number of results to retrieve per query (default: 10). · -t, --threads Number of threads to use for concurrent processing (default: 4). · --timeout Timeout in seconds for HTTP requests (default: 5).",
+      "story": null,
       "tags": [
         "Python",
         "OSINT",
@@ -1801,8 +1042,7 @@
           "--timeout Timeout in seconds for HTTP requests (default: 5)."
         ]
       },
-      "tier": "signal",
-      "story": null
+      "tier": "signal"
     },
     {
       "key": "Zierax/Grafana-Final-Scanner",
@@ -1811,6 +1051,10 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Zierax/Grafana-Final-Scanner",
+      "homepage": null,
+      "links": {},
+      "headSha": "f3f8bfc",
+      "headUrl": "https://github.com/Zierax/Grafana-Final-Scanner/commit/f3f8bfc46863d933f9d7a273a5d515ecc273254f",
       "apiDescription": "Grafana scanner with all public CVEs that I collected in one script to make grafana testing easier",
       "language": "Python",
       "topics": [],
@@ -1830,8 +1074,9 @@
         "benchmark-table+4",
         "mentions×3+36"
       ],
-      "summary": "Practical Grafana scanner bundling public CVEs into a single workflow for bug bounty and defensive validation.",
+      "summary": "One script that fingerprints your Grafana, checks every public CVE that matters against it, keeps results in a local database, and serves them on a small dashboard. 244 stars because it does the boring work end to end.",
       "highlights": "External coverage: Hackers-Arise walkthrough, Vulners/KitPloit tool feed, CVEFeed exploit intelligence",
+      "story": "The repo strangers actually use — 244 stars, 45 forks, and a Hackers-Arise walkthrough.",
       "tags": [
         "Python",
         "Grafana",
@@ -1880,45 +1125,7 @@
           "--threads N Concurrent scan threads (default 5)"
         ]
       },
-      "tier": "flagship",
-      "story": "The repo strangers actually use — 244 stars, 45 forks, and a Hackers-Arise walkthrough."
-    },
-    {
-      "key": "Zierax/Gym-Managment-System",
-      "owner": "Zierax",
-      "name": "Gym-Managment-System",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Gym-Managment-System",
-      "apiDescription": "",
-      "language": "HTML",
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:20Z",
-      "pushedAt": "2026-03-22T03:15:37Z",
-      "createdAt": "2024-12-24T16:50:51Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "HTML"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Gym-Managment-System#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "flagship"
     },
     {
       "key": "Zierax/HackerHelper",
@@ -1927,6 +1134,10 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Zierax/HackerHelper",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "HackerHelper is a powerful tool designed for security specialists and penetration testers. It streamlines the hacking process with an intuitive, user-friendly interface, featuring advanced scanning and efficient logging options. HackerHelper combines functionality and ease of use, making it an essential resource for cybersecurity professionals.",
       "language": "TypeScript",
       "topics": [],
@@ -1945,6 +1156,7 @@
       ],
       "summary": "HackerHelper is a powerful tool designed for security specialists and penetration testers. It streamlines the hacking process with an intuitive, user-friendly interface, featuring advanced scanning and efficient logging options. HackerHelper combines functionality and ease of use, making it an essential resource for cybersecurity professionals.",
       "highlights": "4 stars / 2 forks",
+      "story": null,
       "tags": [
         "TypeScript"
       ],
@@ -1955,8 +1167,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "signal",
-      "story": null
+      "tier": "signal"
     },
     {
       "key": "Zierax/HackFunction",
@@ -1965,6 +1176,10 @@
       "label": null,
       "license": null,
       "url": "https://github.com/Zierax/HackFunction",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "HackFunction is a opensource python library work as A toolkit for basic security checks and scans",
       "language": "Python",
       "topics": [
@@ -1991,6 +1206,7 @@
       ],
       "summary": "The Hackfunc Project is a comprehensive suite of cybersecurity tools and libraries designed to empower security researchers, penetration testers, and bug bounty hunters. It automates essential tasks in:",
       "highlights": "8 stars / 1 forks",
+      "story": null,
       "tags": [
         "Python",
         "bug",
@@ -2004,8 +1220,7 @@
         "summary": "The Hackfunc Project is a comprehensive suite of cybersecurity tools and libraries designed to empower security researchers, penetration testers, and bug bounty hunters. It automates essential tasks in:",
         "highlights": []
       },
-      "tier": "signal",
-      "story": null
+      "tier": "signal"
     },
     {
       "key": "Zierax/HXCC-scanner",
@@ -2014,6 +1229,10 @@
       "label": null,
       "license": null,
       "url": "https://github.com/Zierax/HXCC-scanner",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "HXCC is a vulnerability scanner for Cross-Site tracing, Clickjacking, Cors, Host-Header injection",
       "language": "Python",
       "topics": [],
@@ -2033,6 +1252,7 @@
       ],
       "summary": "HXCC is a simple yet powerful tool designed to scan web applications for common HTTP vulnerabilities. It's written in Python and utilizes the requests and socket libraries for network communication.",
       "highlights": "5 stars / 1 forks",
+      "story": null,
       "tags": [
         "Python"
       ],
@@ -2043,464 +1263,7 @@
         "summary": "HXCC is a simple yet powerful tool designed to scan web applications for common HTTP vulnerabilities. It's written in Python and utilizes the requests and socket libraries for network communication.",
         "highlights": []
       },
-      "tier": "signal",
-      "story": null
-    },
-    {
-      "key": "Zierax/I-Like-U",
-      "owner": "Zierax",
-      "name": "I-Like-U",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/I-Like-U",
-      "apiDescription": "An open-source 8-bit retro handheld love note generator created with React, Vite & Web Audio API",
-      "language": "JavaScript",
-      "topics": [],
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2026-09-05T23:34:11Z",
-      "pushedAt": "2026-09-05T23:34:08Z",
-      "createdAt": "2026-09-02T13:53:15Z",
-      "archived": false,
-      "score": -25,
-      "scoreReasons": [
-        "recency+15",
-        "weak-name-40"
-      ],
-      "summary": "An open-source 8-bit retro handheld love note generator created with React, Vite & Web Audio API",
-      "highlights": "0 stars / 0 forks",
-      "tags": [
-        "JavaScript"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/I-Like-U#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/instaCracker",
-      "owner": "Zierax",
-      "name": "instaCracker",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/instaCracker",
-      "apiDescription": "instagram brute force code",
-      "language": "Python",
-      "topics": [],
-      "stars": 2,
-      "forks": 1,
-      "updatedAt": "2026-07-04T06:02:17Z",
-      "pushedAt": "2024-06-13T12:49:19Z",
-      "createdAt": "2024-06-13T12:46:13Z",
-      "archived": false,
-      "score": -45,
-      "scoreReasons": [
-        "stars×2=4",
-        "forks×3=3",
-        "recency+8",
-        "weak-name-60"
-      ],
-      "summary": "instagram brute force code",
-      "highlights": "2 stars / 1 forks",
-      "tags": [
-        "Python"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/instaCracker#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/ip-changer",
-      "owner": "Zierax",
-      "name": "ip-changer",
-      "label": null,
-      "license": "GPL-3.0",
-      "url": "https://github.com/Zierax/ip-changer",
-      "apiDescription": "ip changer is open source tool for change ip every particular number of second",
-      "language": "Python",
-      "topics": [
-        "hidi",
-        "ip",
-        "tor"
-      ],
-      "stars": 9,
-      "forks": 3,
-      "updatedAt": "2026-07-31T01:56:34Z",
-      "pushedAt": "2024-02-19T03:25:13Z",
-      "createdAt": "2024-02-16T09:24:59Z",
-      "archived": false,
-      "score": 38,
-      "scoreReasons": [
-        "stars×2=18",
-        "forks×3=9",
-        "recency+8",
-        "readme+3"
-      ],
-      "summary": "Tor IP Changer This Python script allows you to change your IP address using Tor's SOCKS proxy. It automates the process of reloading the Tor service and fetching the external IP address.",
-      "highlights": "9 stars / 3 forks",
-      "tags": [
-        "Python",
-        "hidi",
-        "ip",
-        "tor"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": true,
-        "url": "https://github.com/Zierax/ip-changer#readme",
-        "summary": "Tor IP Changer This Python script allows you to change your IP address using Tor's SOCKS proxy. It automates the process of reloading the Tor service and fetching the external IP address.",
-        "highlights": []
-      },
-      "tier": "signal",
-      "story": null
-    },
-    {
-      "key": "Zierax/JS-Testing-Examples",
-      "owner": "Zierax",
-      "name": "JS-Testing-Examples",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/JS-Testing-Examples",
-      "apiDescription": "",
-      "language": "JavaScript",
-      "topics": [
-        "javascript",
-        "javascript-tes",
-        "javascript-testing",
-        "react-native",
-        "reactjs"
-      ],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:16Z",
-      "pushedAt": "2024-04-16T11:12:26Z",
-      "createdAt": "2024-04-16T11:11:09Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "JavaScript",
-        "javascript",
-        "javascript-tes",
-        "javascript-testing"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/JS-Testing-Examples#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Let-Another-Resource-Scanner",
-      "owner": "Zierax",
-      "name": "Let-Another-Resource-Scanner",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Let-Another-Resource-Scanner",
-      "apiDescription": "Supply chain vulnerability scanner for GitHub organizations and local static files.",
-      "language": null,
-      "topics": [],
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2026-05-09T20:07:44Z",
-      "pushedAt": "2026-05-09T20:07:44Z",
-      "createdAt": "2026-05-09T20:07:43Z",
-      "archived": false,
-      "score": 4,
-      "scoreReasons": [
-        "recency+4"
-      ],
-      "summary": "Supply chain vulnerability scanner for GitHub organizations and local static files.",
-      "highlights": "0 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Let-Another-Resource-Scanner#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/lfi-mini-scanner",
-      "owner": "Zierax",
-      "name": "lfi-mini-scanner",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/lfi-mini-scanner",
-      "apiDescription": "Exer is a vuln scanner for specific string",
-      "language": "Python",
-      "topics": [
-        "hack",
-        "lfi",
-        "python",
-        "scanner-web",
-        "sql",
-        "sqli"
-      ],
-      "stars": 2,
-      "forks": 1,
-      "updatedAt": "2026-07-04T06:02:16Z",
-      "pushedAt": "2025-11-25T02:15:00Z",
-      "createdAt": "2024-04-16T12:00:37Z",
-      "archived": false,
-      "score": 15,
-      "scoreReasons": [
-        "stars×2=4",
-        "forks×3=3",
-        "recency+8"
-      ],
-      "summary": "Exer is a vuln scanner for specific string",
-      "highlights": "2 stars / 1 forks",
-      "tags": [
-        "Python",
-        "hack",
-        "lfi",
-        "python"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/lfi-mini-scanner#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/LNK-payload-gen",
-      "owner": "Zierax",
-      "name": "LNK-payload-gen",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/LNK-payload-gen",
-      "apiDescription": "LNK-Payload-Generator is a Python script for creating customizable Windows shortcut (LNK) files with multi-language support (English, Russian, Chinese). It facilitates environment variable exfiltration and NTLM hash extraction, functioning across Windows and non-Windows platforms using platform-specific libraries.",
-      "language": "Python",
-      "topics": [
-        "automationtool",
-        "commandexec",
-        "devops",
-        "envexfil",
-        "infosectools",
-        "lnkgen"
-      ],
-      "stars": 2,
-      "forks": 1,
-      "updatedAt": "2026-07-04T06:02:17Z",
-      "pushedAt": "2024-07-08T20:13:39Z",
-      "createdAt": "2024-07-08T20:05:05Z",
-      "archived": false,
-      "score": -45,
-      "scoreReasons": [
-        "stars×2=4",
-        "forks×3=3",
-        "recency+8",
-        "weak-name-60"
-      ],
-      "summary": "LNK-Payload-Generator is a Python script for creating customizable Windows shortcut (LNK) files with multi-language support (English, Russian, Chinese). It facilitates environment variable exfiltration and NTLM hash extraction, functioning across Windows and non-Windows platforms using platform-specific libraries.",
-      "highlights": "2 stars / 1 forks",
-      "tags": [
-        "Python",
-        "automationtool",
-        "commandexec",
-        "devops"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/LNK-payload-gen#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/lol-game-ml-prediction",
-      "owner": "Zierax",
-      "name": "lol-game-ml-prediction",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/lol-game-ml-prediction",
-      "apiDescription": "league of legends game results prediction by the first 10-min data",
-      "language": "Python",
-      "topics": [],
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2026-08-04T13:16:52Z",
-      "pushedAt": "2026-08-04T15:56:14Z",
-      "createdAt": "2026-08-04T12:26:47Z",
-      "archived": false,
-      "score": -32,
-      "scoreReasons": [
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "league of legends game results prediction by the first 10-min data",
-      "highlights": "0 stars / 0 forks",
-      "tags": [
-        "Python"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/lol-game-ml-prediction#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Message-Encryption-Decryption",
-      "owner": "Zierax",
-      "name": "Message-Encryption-Decryption",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/Message-Encryption-Decryption",
-      "apiDescription": "html,js,css website for Encryption-Decryption masseges by AES",
-      "language": "CSS",
-      "topics": [
-        "cryptojs",
-        "css",
-        "decryption",
-        "encryption",
-        "encryption-decryption",
-        "html"
-      ],
-      "stars": 3,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:15Z",
-      "pushedAt": "2024-02-21T12:00:21Z",
-      "createdAt": "2024-02-21T11:56:18Z",
-      "archived": false,
-      "score": 14,
-      "scoreReasons": [
-        "stars×2=6",
-        "recency+8"
-      ],
-      "summary": "html,js,css website for Encryption-Decryption masseges by AES",
-      "highlights": "3 stars / 0 forks",
-      "tags": [
-        "CSS",
-        "cryptojs",
-        "css",
-        "decryption"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Message-Encryption-Decryption#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Mr-Zierax",
-      "owner": "Zierax",
-      "name": "Mr-Zierax",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/Mr-Zierax",
-      "apiDescription": "This project gives you a little taste of my skills and my creativity  (made by love <3)",
-      "language": "HTML",
-      "topics": [
-        "css",
-        "ethical-hacking",
-        "front-end-development",
-        "frontend",
-        "frontend-web",
-        "fullstack-development"
-      ],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:17Z",
-      "pushedAt": "2024-06-13T18:18:06Z",
-      "createdAt": "2024-06-13T18:14:01Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "This project gives you a little taste of my skills and my creativity  (made by love <3)",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "HTML",
-        "css",
-        "ethical-hacking",
-        "front-end-development"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Mr-Zierax#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/My-BugBounty-Reports",
-      "owner": "Zierax",
-      "name": "My-BugBounty-Reports",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/My-BugBounty-Reports",
-      "apiDescription": "",
-      "language": null,
-      "topics": [],
-      "stars": 2,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:18Z",
-      "pushedAt": "2024-08-27T11:34:33Z",
-      "createdAt": "2024-08-27T11:34:33Z",
-      "archived": false,
-      "score": 12,
-      "scoreReasons": [
-        "stars×2=4",
-        "recency+8"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "2 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/My-BugBounty-Reports#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "signal"
     },
     {
       "key": "Zierax/My-Recon-Methology",
@@ -2509,26 +1272,33 @@
       "label": null,
       "license": null,
       "url": "https://github.com/Zierax/My-Recon-Methology",
+      "homepage": null,
+      "links": {
+        "demo": "https://dorkmine.vercel.app/"
+      },
+      "headSha": "6ee5874",
+      "headUrl": "https://github.com/Zierax/My-Recon-Methology/commit/6ee5874ebf270e0f7511d29439110392575179b4",
       "apiDescription": "",
       "language": null,
       "topics": [],
-      "stars": 78,
+      "stars": 79,
       "forks": 22,
-      "updatedAt": "2026-09-17T09:52:15Z",
+      "updatedAt": "2026-09-25T11:50:29Z",
       "pushedAt": "2025-05-05T06:38:14Z",
       "createdAt": "2025-04-09T10:36:04Z",
       "archived": false,
-      "score": 271,
+      "score": 273,
       "scoreReasons": [
-        "stars×2=156",
+        "stars×2=158",
         "forks×3=66",
         "recency+15",
         "domain+20",
         "readme+10",
         "benchmark-table+4"
       ],
-      "summary": "Find Organization Name, NetName, AS Number: bash whois target.com grep \"NetName\\OrgName\\AS\" Lookup AS information via HackerTarget API: bash curl -s https://api.hackertarget.com/aslookup/?q=target.com Find CIDR ranges associated with an AS Number (replace ASXXXXX): bash whois ASX",
+      "summary": "The recon methodology behind my hunts, published raw: how targets get mapped before a single payload is written. Others fork the workflow, not just read about it.",
       "highlights": "Start the recon process with some vulnerability assessments & automation easy recon (magicrecon, rapidscan, sniper, frogy2.0, raccon, openvas, omsedaus) for get · from builtwith https://github.com/m4ll0k/BBTz/blob/master/getrelationship.py · SSRF (Server-Side Request Forgery) v1:",
+      "story": "78 stars of field methodology — the hunting notes other hunters fork.",
       "tags": [],
       "mentions": [],
       "readme": {
@@ -2541,77 +1311,7 @@
           "SSRF (Server-Side Request Forgery) v1:"
         ]
       },
-      "tier": "flagship",
-      "story": "78 stars of field methodology — the hunting notes other hunters fork."
-    },
-    {
-      "key": "Zierax/My-Resume",
-      "owner": "Zierax",
-      "name": "My-Resume",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/My-Resume",
-      "apiDescription": "my cv and what i do",
-      "language": null,
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:16Z",
-      "pushedAt": "2024-06-15T08:55:32Z",
-      "createdAt": "2024-04-30T11:06:31Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "my cv and what i do",
-      "highlights": "1 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/My-Resume#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/My-SmartContracts-Audit-Reports",
-      "owner": "Zierax",
-      "name": "My-SmartContracts-Audit-Reports",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/My-SmartContracts-Audit-Reports",
-      "apiDescription": "",
-      "language": null,
-      "topics": [],
-      "stars": 2,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:18Z",
-      "pushedAt": "2024-08-27T11:54:56Z",
-      "createdAt": "2024-08-27T11:33:33Z",
-      "archived": false,
-      "score": 12,
-      "scoreReasons": [
-        "stars×2=4",
-        "recency+8"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "2 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/My-SmartContracts-Audit-Reports#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "flagship"
     },
     {
       "key": "Zierax/NHE-Architecture",
@@ -2620,24 +1320,34 @@
       "label": null,
       "license": null,
       "url": "https://github.com/Zierax/NHE-Architecture",
+      "homepage": null,
+      "links": {
+        "docs": [
+          "https://github.com/Zierax/NHE-Architecture/blob/main/NHE-Edge/README.md",
+          "https://github.com/Zierax/NHE-Architecture/blob/main/STATUS.md"
+        ],
+        "benchmark": "https://github.com/Zierax/NHE-Architecture/blob/main/NHE-Edge/results/NUMBERS.md"
+      },
+      "headSha": "2d36361",
+      "headUrl": "https://github.com/Zierax/NHE-Architecture/commit/2d363615bc608f82663720aa82f71c1d27df6ed6",
       "apiDescription": "you LLM will not hallucinate again",
       "language": "Python",
       "topics": [],
       "stars": 0,
       "forks": 0,
-      "updatedAt": "2026-09-11T13:54:22Z",
-      "pushedAt": "2026-09-11T13:54:17Z",
+      "updatedAt": "2026-09-23T21:19:42Z",
+      "pushedAt": "2026-09-23T21:19:37Z",
       "createdAt": "2026-08-18T07:39:51Z",
       "archived": false,
-      "score": 36,
+      "score": 35,
       "scoreReasons": [
         "recency+15",
         "domain+14",
-        "readme+3",
-        "benchmark-table+4"
+        "readme+6"
       ],
-      "summary": "Paper title: NHE-Edge: Sub-Second Dynamic Hallucination Suppression for Sub-1B Edge LLMs in Mission-Critical Scenarios.",
-      "highlights": "- NHE-Edge/ - the working track. Gemma 3 1B, jitter detector + soft scaling",
+      "summary": "A guardrail for small models in places where a hallucination hurts: sub-second suppression on sub-1B edge LLMs, running on-device with no retraining and no GPU farm.",
+      "highlights": "Gemma 3 1B · p<0.001 hard bench · zero control breaks · research-phase",
+      "story": "Sub-second hallucination suppression for sub-1B edge models — on-device, no retraining, no GPU farm.",
       "tags": [
         "Python"
       ],
@@ -2645,219 +1355,12 @@
       "readme": {
         "present": true,
         "url": "https://github.com/Zierax/NHE-Architecture#readme",
-        "summary": "Paper title: NHE-Edge: Sub-Second Dynamic Hallucination Suppression for Sub-1B Edge LLMs in Mission-Critical Scenarios.",
+        "summary": "No-Hallucinations-Ever — fixing hallucinations on small models without retraining.",
         "highlights": [
-          "- NHE-Edge/ - the working track. Gemma 3 1B, jitter detector + soft scaling"
+          "- NHE-Edge/ — working. Gemma 3 1B, jitter detector + soft scaling (0.3) in the"
         ]
       },
-      "tier": "flagship",
-      "story": "Sub-second hallucination suppression for sub-1B edge models — on-device, no retraining, no GPU farm."
-    },
-    {
-      "key": "Zierax/node.js-server-template",
-      "owner": "Zierax",
-      "name": "node.js-server-template",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/node.js-server-template",
-      "apiDescription": "",
-      "language": "JavaScript",
-      "topics": [
-        "javascript",
-        "nodejs",
-        "server",
-        "ssh-client",
-        "ssh-key",
-        "ssh-server"
-      ],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:15Z",
-      "pushedAt": "2024-04-10T09:52:58Z",
-      "createdAt": "2024-04-10T09:47:33Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "JavaScript",
-        "javascript",
-        "nodejs",
-        "server"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/node.js-server-template#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Password-manager",
-      "owner": "Zierax",
-      "name": "Password-manager",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/Password-manager",
-      "apiDescription": "manage you passwords, it's simple",
-      "language": "Python",
-      "topics": [
-        "password-generator",
-        "password-manager"
-      ],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:14Z",
-      "pushedAt": "2024-12-18T10:37:02Z",
-      "createdAt": "2024-02-19T02:05:14Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "manage you passwords, it's simple",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "Python",
-        "password-generator",
-        "password-manager"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Password-manager#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/prompts",
-      "owner": "Zierax",
-      "name": "prompts",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/prompts",
-      "apiDescription": "My personal Prompts & Loops for AI Agents",
-      "language": null,
-      "topics": [],
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2026-07-25T14:30:13Z",
-      "pushedAt": "2026-07-25T14:30:01Z",
-      "createdAt": "2026-07-25T13:53:31Z",
-      "archived": false,
-      "score": 8,
-      "scoreReasons": [
-        "recency+8"
-      ],
-      "summary": "My personal Prompts & Loops for AI Agents",
-      "highlights": "0 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/prompts#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/proxy-auto-updater",
-      "owner": "Zierax",
-      "name": "proxy-auto-updater",
-      "label": null,
-      "license": "GPL-3.0",
-      "url": "https://github.com/Zierax/proxy-auto-updater",
-      "apiDescription": "this tool install new proxies from open source github repositories",
-      "language": "Python",
-      "topics": [
-        "automated",
-        "freeproxy",
-        "freeproxylist",
-        "fuzzing",
-        "hacking-tool",
-        "helper-tool"
-      ],
-      "stars": 2,
-      "forks": 1,
-      "updatedAt": "2026-07-04T06:02:14Z",
-      "pushedAt": "2024-02-17T02:10:04Z",
-      "createdAt": "2024-02-16T09:17:08Z",
-      "archived": false,
-      "score": -25,
-      "scoreReasons": [
-        "stars×2=4",
-        "forks×3=3",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "this tool install new proxies from open source github repositories",
-      "highlights": "2 stars / 1 forks",
-      "tags": [
-        "Python",
-        "automated",
-        "freeproxy",
-        "freeproxylist"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/proxy-auto-updater#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/PTRR-F",
-      "owner": "Zierax",
-      "name": "PTRR-F",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/PTRR-F",
-      "apiDescription": "",
-      "language": "JavaScript",
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:25Z",
-      "pushedAt": "2026-04-02T21:34:14Z",
-      "createdAt": "2026-03-04T08:15:43Z",
-      "archived": false,
-      "score": 10,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "JavaScript"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/PTRR-F#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "flagship"
     },
     {
       "key": "Zierax/Purce",
@@ -2866,6 +1369,12 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Zierax/Purce",
+      "homepage": null,
+      "links": {
+        "benchmark": "https://github.com/Zierax/Purce/blob/main/benchmarks/results.md"
+      },
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "",
       "language": "Python",
       "topics": [],
@@ -2883,7 +1392,8 @@
         "benchmark-table+4"
       ],
       "summary": "\"Code is not the source. Mathematics is the source. Code is merely a transient projection of mathematical intent.\"",
-      "highlights": "GENERATED FILE: realworldjaxgelu669530995.c · GENERATED BY: purce v1.0.0 · GENERATED AT: 2026-08-22T05:24:42Z",
+      "highlights": "91/91 kernel coverage · 497 tests passed · 814 files, 0 errors · v1-Prod",
+      "story": null,
       "tags": [
         "Python"
       ],
@@ -2898,129 +1408,7 @@
           "GENERATED AT: 2026-08-22T05:24:42Z"
         ]
       },
-      "tier": "spotlight",
-      "story": null
-    },
-    {
-      "key": "Zierax/python-turtle-projects",
-      "owner": "Zierax",
-      "name": "python-turtle-projects",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/python-turtle-projects",
-      "apiDescription": "this is project i have made it when i feel boring",
-      "language": "Python",
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:14Z",
-      "pushedAt": "2024-02-21T06:05:51Z",
-      "createdAt": "2024-02-20T12:07:49Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "this is project i have made it when i feel boring",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "Python"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/python-turtle-projects#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/react-basic-project",
-      "owner": "Zierax",
-      "name": "react-basic-project",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/react-basic-project",
-      "apiDescription": "open source react basic project for editing",
-      "language": "JavaScript",
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:16Z",
-      "pushedAt": "2024-05-04T08:04:38Z",
-      "createdAt": "2024-05-04T08:03:15Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "open source react basic project for editing",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "JavaScript"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/react-basic-project#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Recaptcha-forgery-site",
-      "owner": "Zierax",
-      "name": "Recaptcha-forgery-site",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Recaptcha-forgery-site",
-      "apiDescription": "this is a recaptcha forgery site for phishing or pranking",
-      "language": "HTML",
-      "topics": [
-        "bootstrap",
-        "css",
-        "forgery",
-        "html",
-        "js",
-        "json-server"
-      ],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:14Z",
-      "pushedAt": "2024-02-21T09:54:51Z",
-      "createdAt": "2024-02-21T06:10:04Z",
-      "archived": false,
-      "score": -50,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-60"
-      ],
-      "summary": "this is a recaptcha forgery site for phishing or pranking",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "HTML",
-        "bootstrap",
-        "css",
-        "forgery"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Recaptcha-forgery-site#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "spotlight"
     },
     {
       "key": "Zierax/Reconizer",
@@ -3029,6 +1417,10 @@
       "label": null,
       "license": null,
       "url": "https://github.com/Zierax/Reconizer",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "",
       "language": "Python",
       "topics": [],
@@ -3047,6 +1439,7 @@
       ],
       "summary": "Reconizer is a powerful and comprehensive reconnaissance tool designed to automate the process of gathering information about a target domain. It integrates various tools to perform subdomain enumeration, DNS reconnaissance, CORS scanning, IP resolution, port scanning, visual rec",
       "highlights": "5 stars / 0 forks",
+      "story": null,
       "tags": [
         "Python"
       ],
@@ -3057,119 +1450,7 @@
         "summary": "Reconizer is a powerful and comprehensive reconnaissance tool designed to automate the process of gathering information about a target domain. It integrates various tools to perform subdomain enumeration, DNS reconnaissance, CORS scanning, IP resolution, port scanning, visual rec",
         "highlights": []
       },
-      "tier": "signal",
-      "story": null
-    },
-    {
-      "key": "Zierax/reload-site-template",
-      "owner": "Zierax",
-      "name": "reload-site-template",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/reload-site-template",
-      "apiDescription": "css, html code for cool reloading for your website",
-      "language": "CSS",
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:15Z",
-      "pushedAt": "2024-02-25T11:08:57Z",
-      "createdAt": "2024-02-25T10:33:37Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "css, html code for cool reloading for your website",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "CSS"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/reload-site-template#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Research-XSPO",
-      "owner": "Zierax",
-      "name": "Research-XSPO",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Research-XSPO",
-      "apiDescription": "",
-      "language": "JavaScript",
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:21Z",
-      "pushedAt": "2026-02-10T19:05:31Z",
-      "createdAt": "2025-03-17T23:39:37Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "JavaScript"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Research-XSPO#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Reverse-shell",
-      "owner": "Zierax",
-      "name": "Reverse-shell",
-      "label": null,
-      "license": "GPL-3.0",
-      "url": "https://github.com/Zierax/Reverse-shell",
-      "apiDescription": "",
-      "language": "Python",
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:18Z",
-      "pushedAt": "2024-10-07T10:26:20Z",
-      "createdAt": "2024-10-07T10:21:34Z",
-      "archived": false,
-      "score": -50,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-60"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "Python"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Reverse-shell#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "signal"
     },
     {
       "key": "Zierax/Riptar",
@@ -3178,6 +1459,15 @@
       "label": null,
       "license": "NOASSERTION",
       "url": "https://github.com/Zierax/Riptar",
+      "homepage": null,
+      "links": {
+        "docs": [
+          "https://github.com/Zierax/Riptar/blob/main/GUIDE.md"
+        ],
+        "benchmark": "https://github.com/Zierax/Riptar/blob/main/report_summary.json"
+      },
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "",
       "language": "C",
       "topics": [],
@@ -3195,7 +1485,8 @@
         "benchmark-table+4"
       ],
       "summary": "Version 1.0 · Truthimatics Engine v2.0 Last run: see reportsummary.json for timestamp",
-      "highlights": "- Truthimatics Confidence Index (TCI) — the kernel's confidence in its own verdicts (0–1 scale) · - Determinism Score (D) — the degree of determinism in the evidence (0–1 scale) · 0 Nominal Low Noise Clean startup with minimal sensor noise (2%) Baseline",
+      "highlights": "~14-20μs latency · 92.7% detection rate · research-phase",
+      "story": null,
       "tags": [
         "C"
       ],
@@ -3210,132 +1501,7 @@
           "0 Nominal Low Noise Clean startup with minimal sensor noise (2%) Baseline"
         ]
       },
-      "tier": "spotlight",
-      "story": null
-    },
-    {
-      "key": "Zierax/Sencrypt",
-      "owner": "Zierax",
-      "name": "Sencrypt",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/Sencrypt",
-      "apiDescription": "encrypt files quickly and with a low space in your device !",
-      "language": "Python",
-      "topics": [
-        "encryption-algorithms",
-        "encryption-decryption",
-        "encryption-tool"
-      ],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:14Z",
-      "pushedAt": "2024-02-19T02:14:05Z",
-      "createdAt": "2024-02-19T02:08:29Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "encrypt files quickly and with a low space in your device !",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "Python",
-        "encryption-algorithms",
-        "encryption-decryption",
-        "encryption-tool"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Sencrypt#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/SmartGuard",
-      "owner": "Zierax",
-      "name": "SmartGuard",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/SmartGuard",
-      "apiDescription": "SmartGuard: An advanced automation tool designed to identify and expose vulnerabilities in smart contracts.",
-      "language": null,
-      "topics": [],
-      "stars": 2,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:18Z",
-      "pushedAt": "2024-09-10T18:30:13Z",
-      "createdAt": "2024-08-25T12:25:00Z",
-      "archived": false,
-      "score": 12,
-      "scoreReasons": [
-        "stars×2=4",
-        "recency+8"
-      ],
-      "summary": "SmartGuard: An advanced automation tool designed to identify and expose vulnerabilities in smart contracts.",
-      "highlights": "2 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/SmartGuard#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/SMAS",
-      "owner": "Zierax",
-      "name": "SMAS",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/SMAS",
-      "apiDescription": "smas is a sqli finder and detector",
-      "language": "Python",
-      "topics": [
-        "attack",
-        "db",
-        "hacking",
-        "python3",
-        "requests",
-        "security-tools"
-      ],
-      "stars": 3,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:16Z",
-      "pushedAt": "2024-04-16T18:15:11Z",
-      "createdAt": "2024-04-16T12:45:03Z",
-      "archived": false,
-      "score": 14,
-      "scoreReasons": [
-        "stars×2=6",
-        "recency+8"
-      ],
-      "summary": "smas is a sqli finder and detector",
-      "highlights": "3 stars / 0 forks",
-      "tags": [
-        "Python",
-        "attack",
-        "db",
-        "hacking"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/SMAS#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "spotlight"
     },
     {
       "key": "Zierax/Taskware-manager",
@@ -3344,6 +1510,16 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Zierax/Taskware-manager",
+      "homepage": null,
+      "links": {
+        "docs": [
+          "https://github.com/Zierax/Taskware-manager/blob/main/docs/setup.md",
+          "https://github.com/Zierax/Taskware-manager/blob/main/docs/architecture.md",
+          "https://github.com/Zierax/Taskware-manager/blob/main/docs/detection.md"
+        ]
+      },
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "an advanced, offline process monitoring and malware analysis tool designed exclusively for Linux systems. It leverages a combination of YARA rules, machine-learning-based system call analysis (via `strace`), and heuristic behavioral monitoring to identify potential threats, abnormal activities, and malware execution in real-time.",
       "language": "Python",
       "topics": [],
@@ -3363,6 +1539,7 @@
       ],
       "summary": "Malware-Centric Process Monitor for Linux 100% Offline, Live Malware Analysis & Threat Hunting",
       "highlights": "- GUI Dashboard: PyQt6-based graphical interface for ease of use, enabling quick threat triage and process termination.",
+      "story": null,
       "tags": [
         "Python"
       ],
@@ -3375,82 +1552,7 @@
           "- GUI Dashboard: PyQt6-based graphical interface for ease of use, enabling quick threat triage and process termination."
         ]
       },
-      "tier": "spotlight",
-      "story": null
-    },
-    {
-      "key": "Zierax/telegram-forgery-site",
-      "owner": "Zierax",
-      "name": "telegram-forgery-site",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/telegram-forgery-site",
-      "apiDescription": "",
-      "language": "CSS",
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:15Z",
-      "pushedAt": "2024-02-21T10:27:26Z",
-      "createdAt": "2024-02-21T10:09:51Z",
-      "archived": false,
-      "score": -50,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-60"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "CSS"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/telegram-forgery-site#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/TheFetcher",
-      "owner": "Zierax",
-      "name": "TheFetcher",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/TheFetcher",
-      "apiDescription": "TheFetcher is a url fetcher from archive.org",
-      "language": "Go",
-      "topics": [],
-      "stars": 2,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:15Z",
-      "pushedAt": "2024-05-15T16:19:14Z",
-      "createdAt": "2024-04-10T09:05:38Z",
-      "archived": false,
-      "score": -28,
-      "scoreReasons": [
-        "stars×2=4",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "TheFetcher is a url fetcher from archive.org",
-      "highlights": "2 stars / 0 forks",
-      "tags": [
-        "Go"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/TheFetcher#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "spotlight"
     },
     {
       "key": "Zierax/TinyML-Malware-Detector_-Planck-99-",
@@ -3459,6 +1561,12 @@
       "label": "TinyML Malware Detector",
       "license": null,
       "url": "https://github.com/Zierax/TinyML-Malware-Detector_-Planck-99-",
+      "homepage": "https://github.com/Division-36/Planck-99_PublicBenchmarks",
+      "links": {
+        "site": "https://github.com/Division-36/Planck-99_PublicBenchmarks"
+      },
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "Benchmark",
       "language": null,
       "topics": [],
@@ -3475,6 +1583,7 @@
       ],
       "summary": "Early public benchmark lineage for Planck-99, per its own README. Marked under development upstream.",
       "highlights": "1 stars / 0 forks",
+      "story": null,
       "tags": [
         "TinyML",
         "Malware Detection",
@@ -3487,54 +1596,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/TREVER",
-      "owner": "Zierax",
-      "name": "TREVER",
-      "label": null,
-      "license": "GPL-3.0",
-      "url": "https://github.com/Zierax/TREVER",
-      "apiDescription": "Advanced Apk Analysis Tool",
-      "language": "Python",
-      "topics": [
-        "android",
-        "apkcrypter",
-        "apktool",
-        "bugbounty",
-        "decryption",
-        "hacking-tool"
-      ],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:20Z",
-      "pushedAt": "2024-12-18T10:40:44Z",
-      "createdAt": "2024-12-18T10:39:51Z",
-      "archived": false,
-      "score": 10,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8"
-      ],
-      "summary": "Advanced Apk Analysis Tool",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "Python",
-        "android",
-        "apkcrypter",
-        "apktool"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/TREVER#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "archive"
     },
     {
       "key": "Zierax/Truthimatics_Public",
@@ -3543,6 +1605,12 @@
       "label": null,
       "license": "NOASSERTION",
       "url": "https://github.com/Zierax/Truthimatics_Public",
+      "homepage": "https://truthisite.pages.dev",
+      "links": {
+        "site": "https://truthisite.pages.dev"
+      },
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "Truthimatics logic core",
       "language": null,
       "topics": [],
@@ -3563,6 +1631,7 @@
       ],
       "summary": "A system is not defined by how often it answers, but by how well it knows when it should not.",
       "highlights": "Profile README reports: Deterministic Logic",
+      "story": null,
       "tags": [],
       "mentions": [],
       "readme": {
@@ -3571,43 +1640,7 @@
         "summary": "A system is not defined by how often it answers, but by how well it knows when it should not.",
         "highlights": []
       },
-      "tier": "spotlight",
-      "story": null
-    },
-    {
-      "key": "Zierax/Truthisite",
-      "owner": "Zierax",
-      "name": "Truthisite",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Truthisite",
-      "apiDescription": "",
-      "language": "HTML",
-      "topics": [],
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2026-05-31T10:55:50Z",
-      "pushedAt": "2026-05-31T09:56:36Z",
-      "createdAt": "2026-05-30T09:47:00Z",
-      "archived": false,
-      "score": 4,
-      "scoreReasons": [
-        "recency+4"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "0 stars / 0 forks",
-      "tags": [
-        "HTML"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Truthisite#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "spotlight"
     },
     {
       "key": "Zierax/usenix26_artifact",
@@ -3616,6 +1649,10 @@
       "label": null,
       "license": null,
       "url": "https://github.com/Zierax/usenix26_artifact",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "",
       "language": "Python",
       "topics": [],
@@ -3625,12 +1662,14 @@
       "pushedAt": "2026-09-10T16:49:19Z",
       "createdAt": "2026-09-10T16:46:11Z",
       "archived": false,
-      "score": 15,
+      "score": 21,
       "scoreReasons": [
-        "recency+15"
+        "recency+15",
+        "domain+6"
       ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "Profile README reports: 30-Project Ecosystem Audit · 4 Fault-Injection Scenarios",
+      "summary": "Non-idempotency fault detector for Linux isolation tools.",
+      "highlights": "30-project ecosystem audit · 4 fault-injection scenarios · USENIX Security 2027 submission",
+      "story": null,
       "tags": [
         "Python"
       ],
@@ -3641,268 +1680,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Windows-Activator",
-      "owner": "Zierax",
-      "name": "Windows-Activator",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Windows-Activator",
-      "apiDescription": "activate your windows by a script",
-      "language": null,
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:16Z",
-      "pushedAt": "2024-04-21T03:57:11Z",
-      "createdAt": "2024-04-21T03:49:55Z",
-      "archived": false,
-      "score": -50,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-60"
-      ],
-      "summary": "activate your windows by a script",
-      "highlights": "1 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Windows-Activator#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/xss-poc",
-      "owner": "Zierax",
-      "name": "xss-poc",
-      "label": null,
-      "license": "MIT",
-      "url": "https://github.com/Zierax/xss-poc",
-      "apiDescription": "",
-      "language": "TypeScript",
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:16Z",
-      "pushedAt": "2024-04-15T09:31:09Z",
-      "createdAt": "2024-04-15T09:20:41Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "TypeScript"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/xss-poc#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Xss-ultimate-payloads",
-      "owner": "Zierax",
-      "name": "Xss-ultimate-payloads",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Xss-ultimate-payloads",
-      "apiDescription": "",
-      "language": null,
-      "topics": [],
-      "stars": 2,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:15Z",
-      "pushedAt": "2024-04-14T17:24:01Z",
-      "createdAt": "2024-04-14T16:29:40Z",
-      "archived": false,
-      "score": -28,
-      "scoreReasons": [
-        "stars×2=4",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "2 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Xss-ultimate-payloads#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Ziad-Portfolio",
-      "owner": "Zierax",
-      "name": "Ziad-Portfolio",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Ziad-Portfolio",
-      "apiDescription": "nothing to say, just enter the portfolio and see by your self",
-      "language": "TypeScript",
-      "topics": [],
-      "stars": 1,
-      "forks": 1,
-      "updatedAt": "2026-07-04T06:02:25Z",
-      "pushedAt": "2026-05-04T06:19:29Z",
-      "createdAt": "2026-02-19T01:13:10Z",
-      "archived": false,
-      "score": 13,
-      "scoreReasons": [
-        "stars×2=2",
-        "forks×3=3",
-        "recency+8"
-      ],
-      "summary": "nothing to say, just enter the portfolio and see by your self",
-      "highlights": "1 stars / 1 forks",
-      "tags": [
-        "TypeScript"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Ziad-Portfolio#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/Zierax-website",
-      "owner": "Zierax",
-      "name": "Zierax-website",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/Zierax-website",
-      "apiDescription": "",
-      "language": null,
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:15Z",
-      "pushedAt": "2024-02-26T10:44:58Z",
-      "createdAt": "2024-02-26T10:44:58Z",
-      "archived": false,
-      "score": -30,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-40"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "1 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/Zierax-website#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Zierax/zoom-forgery-site",
-      "owner": "Zierax",
-      "name": "zoom-forgery-site",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Zierax/zoom-forgery-site",
-      "apiDescription": "zoom forgery site for pranks or legal phising",
-      "language": "HTML",
-      "topics": [
-        "css",
-        "forgery",
-        "hacking",
-        "html",
-        "javascript",
-        "site"
-      ],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:15Z",
-      "pushedAt": "2024-02-21T17:22:57Z",
-      "createdAt": "2024-02-21T17:22:28Z",
-      "archived": false,
-      "score": -50,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+8",
-        "weak-name-60"
-      ],
-      "summary": "zoom forgery site for pranks or legal phising",
-      "highlights": "1 stars / 0 forks",
-      "tags": [
-        "HTML",
-        "css",
-        "forgery",
-        "hacking"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/zoom-forgery-site#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
-    },
-    {
-      "key": "Division-36/Axiom-Hacker",
-      "owner": "Division-36",
-      "name": "Axiom-Hacker",
-      "label": null,
-      "license": null,
-      "url": "https://github.com/Division-36/Axiom-Hacker",
-      "apiDescription": "",
-      "language": null,
-      "topics": [],
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2026-05-01T00:47:14Z",
-      "pushedAt": "2026-05-01T00:45:45Z",
-      "createdAt": "2026-05-01T00:45:45Z",
-      "archived": false,
-      "score": 16,
-      "scoreReasons": [
-        "recency+4",
-        "org+12"
-      ],
-      "summary": "Public repository — see README on GitHub.",
-      "highlights": "0 stars / 0 forks",
-      "tags": [],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Division-36/Axiom-Hacker#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive",
-      "story": null
+      "tier": "archive"
     },
     {
       "key": "Division-36/AxiomWAF-Brain_PublicBenchmarks",
@@ -3911,6 +1689,10 @@
       "label": "Axiom-WAF",
       "license": null,
       "url": "https://github.com/Division-36/AxiomWAF-Brain_PublicBenchmarks",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "Better than your WAF ??",
       "language": null,
       "topics": [],
@@ -3931,6 +1713,7 @@
       ],
       "summary": "Reasoning-based WAF benchmark work that frames attack detection as logic saturation instead of static pattern matching.",
       "highlights": "Axiom-Nano 200 199 KB 0.9712 99.50% · Axiom-Mini 15,000 1.01 MB 0.9712 99.50% · Axiom-Full 60,000 28.7 MB 0.9712 99.50%",
+      "story": null,
       "tags": [
         "WAF",
         "Hypothesis Testing",
@@ -3947,8 +1730,7 @@
           "Axiom-Full 60,000 28.7 MB 0.9712 99.50%"
         ]
       },
-      "tier": "spotlight",
-      "story": null
+      "tier": "spotlight"
     },
     {
       "key": "Division-36/mcOS",
@@ -3957,6 +1739,16 @@
       "label": null,
       "license": "NOASSERTION",
       "url": "https://github.com/Division-36/mcOS",
+      "homepage": null,
+      "links": {
+        "docs": [
+          "https://github.com/Division-36/mcOS/blob/main/docs/architecture.md",
+          "https://github.com/Division-36/mcOS/blob/main/docs/safety_case.md",
+          "https://github.com/Division-36/mcOS/blob/main/docs/api.md"
+        ]
+      },
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "mcOS — A deterministic, safety-critical RTOS with a built-in AI inference runtime. Zero-heap allocation, compositional WCET analysis, Fault Containment Regions, and hot-swappable models (< 5 μs). Targets DO-178C, IEC 61508, ISO 26262. Runs on Cortex-M0/M3/M33/M4 via Zephyr HAL.",
       "language": "C",
       "topics": [
@@ -3982,7 +1774,8 @@
         "benchmark-table+4"
       ],
       "summary": "Lead Developer & Owner: Ziad Salah (Zierax) — Published under Division-36 — © 2026 Ziad Salah (Zierax)",
-      "highlights": "AI model switch Single-cycle pointer swap, < 5 μs worst-case · AI inference Fixed-point INT8/INT16, no FPU dependency, deterministic timing · Target hardware Cortex-M0/M0+/M3/M33/M4, QEMU",
+      "highlights": "DO-178C/ISO 26262 mission envelope · <5μs AI switch · Zephyr HAL",
+      "story": null,
       "tags": [
         "C",
         "arm-cortex-m",
@@ -4000,8 +1793,7 @@
           "Target hardware Cortex-M0/M0+/M3/M33/M4, QEMU"
         ]
       },
-      "tier": "spotlight",
-      "story": null
+      "tier": "spotlight"
     },
     {
       "key": "Division-36/Planck-99_PublicBenchmarks",
@@ -4010,6 +1802,18 @@
       "label": "Planck-99",
       "license": null,
       "url": "https://github.com/Division-36/Planck-99_PublicBenchmarks",
+      "homepage": "https://planck-99.pages.dev",
+      "links": {
+        "site": "https://planck-99.pages.dev",
+        "paper": [
+          "https://github.com/Division-36/Planck-99_PublicBenchmarks/blob/main/Planck-99_benchmark_paper.pdf"
+        ],
+        "docs": [
+          "https://github.com/Division-36/Planck-99_PublicBenchmarks/blob/main/Planck-99_TechnicalBrief.pdf"
+        ]
+      },
+      "headSha": "ec1a7a6",
+      "headUrl": "https://github.com/Division-36/Planck-99_PublicBenchmarks/commit/ec1a7a642eaf71ea0bf615df562e8754b7de81ed",
       "apiDescription": "Full IP for Ziad Salah, commercial project, Source code is Confidential",
       "language": "HTML",
       "topics": [
@@ -4036,8 +1840,9 @@
         "readme+6",
         "benchmark-table+4"
       ],
-      "summary": "Public benchmark surface for Division-36's embedded Linux malware classifier and EU CRA traceability pitch. Source itself is confidential; benchmarks are the public proof.",
+      "summary": "The public face of Division-36's embedded malware classifier: 37KB, 34ns decisions, 96.28% accuracy, built for the EU CRA window where no commercial product operates. Source stays private; the benchmarks are the proof.",
       "highlights": "Binary size 37 KB · Median inference latency 34 ns (σ ≤ 14 ns) · Throughput 29.4M inferences/sec (single CPU core)",
+      "story": "The lab's flagship bet: deterministic malware classification for the layer where, per its own benchmark framing, no commercial product operates.",
       "tags": [
         "Embedded Linux",
         "EU CRA",
@@ -4055,8 +1860,7 @@
           "Throughput 29.4M inferences/sec (single CPU core)"
         ]
       },
-      "tier": "flagship",
-      "story": "The lab's flagship bet: deterministic malware classification for the layer where, per its own benchmark framing, no commercial product operates."
+      "tier": "flagship"
     },
     {
       "key": "Division-36/Syrth_PublicBenchmark",
@@ -4065,6 +1869,10 @@
       "label": "SYRTH",
       "license": null,
       "url": "https://github.com/Division-36/Syrth_PublicBenchmark",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
       "apiDescription": "Scan Your Risk Trace History",
       "language": null,
       "topics": [],
@@ -4084,6 +1892,7 @@
       ],
       "summary": "AST-derived Python vulnerability classifier with explainable traces, eight CWE categories, and a C-engine benchmark path.",
       "highlights": "0 CWE-89 SQLi arg:userinput → sink:execute · 1 CWE-79 XSS arg:userinput → sink:rendertostring · 2 CWE-284 IDOR arg:docid → sink:db.find (no auth decorator)",
+      "story": null,
       "tags": [
         "SAST",
         "CWE",
@@ -4101,8 +1910,7 @@
           "2 CWE-284 IDOR arg:docid → sink:db.find (no auth decorator)"
         ]
       },
-      "tier": "spotlight",
-      "story": null
+      "tier": "spotlight"
     },
     {
       "key": "Division-36/Z-Jail",
@@ -4111,6 +1919,17 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Division-36/Z-Jail",
+      "homepage": null,
+      "links": {
+        "docs": [
+          "https://github.com/Division-36/Z-Jail/blob/main/docs/SANDBOX.md",
+          "https://github.com/Division-36/Z-Jail/blob/main/docs/THREAT_MODEL.md",
+          "https://github.com/Division-36/Z-Jail/blob/main/docs/AUDIT_SCHEMA.md"
+        ],
+        "benchmark": "https://github.com/Division-36/Z-Jail/blob/main/docs/BENCHMARKS.md"
+      },
+      "headSha": "d43d388",
+      "headUrl": "https://github.com/Division-36/Z-Jail/commit/d43d38825f6dec9d1c7bc20ec9bd9551b529f641",
       "apiDescription": "A lightweight, multi-layer Linux sandbox combining namespaces, pivot_root, seccomp-bpf, capability dropping, and an evidence-based verdict engine (Truthimatics Public Version) for secure, auditable code execution.",
       "language": "C",
       "topics": [
@@ -4138,8 +1957,9 @@
         "benchmark-table+4",
         "mentions×6+72"
       ],
-      "summary": "Lightweight Linux sandbox for native code execution: namespaces, pivot_root, dropped capabilities, NO_NEW_PRIVS, seccomp-BPF, JSON audit, BLAKE2b hashing. ~81 KiB static PIE, zero external dependencies.",
+      "summary": "A Linux sandbox for running native code you don't trust: namespaces, pivot_root, dropped capabilities, NO_NEW_PRIVS, seccomp-BPF, JSON audit logs and BLAKE2b hashing — all inside a ~81 KiB static binary with zero dependencies.",
       "highlights": "External mentions: Risky Business, Vulners/KitPloit, Spark, Ojeo, Trendshift, Linux Command Library",
+      "story": "Six independent references — from Risky Business to a Linux man-page mirror — for a ~81 KiB sandbox.",
       "tags": [
         "C",
         "Sandbox",
@@ -4218,8 +2038,7 @@
           "openat 257 file access (not open)"
         ]
       },
-      "tier": "flagship",
-      "story": "Six independent references — from Risky Business to a Linux man-page mirror — for a ~81 KiB sandbox."
+      "tier": "flagship"
     },
     {
       "key": "Division-36/Z-Privesc",
@@ -4228,6 +2047,17 @@
       "label": null,
       "license": "MIT",
       "url": "https://github.com/Division-36/Z-Privesc",
+      "homepage": "https://github.com/Division-36/Z-Privesc",
+      "links": {
+        "site": "https://github.com/Division-36/Z-Privesc",
+        "docs": [
+          "https://github.com/Division-36/Z-Privesc/blob/main/docs/PROBES.md",
+          "https://github.com/Division-36/Z-Privesc/blob/main/docs/EVALUATION.md"
+        ],
+        "benchmark": "https://github.com/Division-36/Z-Privesc/blob/main/benchmarks.md"
+      },
+      "headSha": "d359879",
+      "headUrl": "https://github.com/Division-36/Z-Privesc/commit/d3598794fe65b8d8ec650d0069205617b9dc7c61",
       "apiDescription": "Linux privilege-escalation auditor — 17 probes, deterministic verdicts, 37/37 detection, 2.65s scan. Static C binary, zero deps, MIT.",
       "language": "C",
       "topics": [
@@ -4254,8 +2084,9 @@
         "readme+10",
         "benchmark-table+4"
       ],
-      "summary": "text ┌──────────────────────────────────────────────────────┐ │ Z-Privesc │ ├──────────────────────────────────────────────────────┤ │ suid SUID/SGID binary audit │ │ capabilities File/process Linux capabilities │ │ dockersocket Exposed Docker control socket │ │ polkit polkit/pke",
+      "summary": "Seventeen yes-or-no probes that tell you whether a Linux box can be escalated — shipped as one static binary with nothing to install and nothing to break.",
       "highlights": "17 categories OOTB Yes Broad Broad Partial · Machine-readable JSON v1 None None None · License MIT GPL-3 GPL MIT",
+      "story": "Seventeen deterministic probes in one static binary with no dependency chain.",
       "tags": [
         "C",
         "c99",
@@ -4273,19 +2104,79 @@
           "License MIT GPL-3 GPL MIT"
         ]
       },
-      "tier": "flagship",
-      "story": "Seventeen deterministic probes in one static binary with no dependency chain."
+      "tier": "flagship"
     }
   ],
   "excluded": {
     "hidden": [
-      "Zierax/Zierax",
+      "4osp3l/0xJS",
       "Division-36/.github",
-      "Zierax/Z-Jail",
+      "Division-36/Axiom-Hacker",
       "Division-36/AxiomWAF_PublicBenckmark",
       "Division-36/Syrth",
+      "Zierax/30K-nuclei-templates",
+      "Zierax/AD-Tools-Resources",
+      "Zierax/Acqui-Finder",
+      "Zierax/Axiom-01",
+      "Zierax/Axiom-Collatz",
+      "Zierax/Axiom-Crypt",
+      "Zierax/Axiom-Dinosaur",
+      "Zierax/Axiom-Earth2",
+      "Zierax/Axiom-Fluid",
+      "Zierax/Axiom-Inception",
+      "Zierax/Axiom-Math",
+      "Zierax/Axiom-Sigint_Public",
+      "Zierax/Bbug",
+      "Zierax/Bread-Generator",
+      "Zierax/Bug-Bounty-tools",
+      "Zierax/BugBounty-Tips",
+      "Zierax/Collatz-Research-Code",
+      "Zierax/Cors-Poc",
+      "Zierax/Gym-Managment-System",
+      "Zierax/I-Like-U",
+      "Zierax/JS-Testing-Examples",
+      "Zierax/LNK-payload-gen",
+      "Zierax/Let-Another-Resource-Scanner",
+      "Zierax/Message-Encryption-Decryption",
+      "Zierax/Mr-Zierax",
+      "Zierax/My-BugBounty-Reports",
+      "Zierax/My-Resume",
+      "Zierax/My-SmartContracts-Audit-Reports",
+      "Zierax/PTRR-F",
+      "Zierax/Password-manager",
+      "Zierax/Recaptcha-forgery-site",
+      "Zierax/Research-XSPO",
+      "Zierax/Reverse-shell",
+      "Zierax/SMAS",
+      "Zierax/Sencrypt",
+      "Zierax/SmartGuard",
+      "Zierax/TREVER",
+      "Zierax/TheFetcher",
+      "Zierax/Truthisite",
+      "Zierax/Windows-Activator",
+      "Zierax/Xss-ultimate-payloads",
+      "Zierax/Z-Jail",
+      "Zierax/Ziad-Portfolio",
+      "Zierax/Zierax",
+      "Zierax/Zierax-website",
+      "Zierax/autosniper",
+      "Zierax/clickjacking-poc",
       "Zierax/division-36",
-      "4osp3l/0xJS"
+      "Zierax/download-from-youtube",
+      "Zierax/exploit-RCE-vuln",
+      "Zierax/instaCracker",
+      "Zierax/ip-changer",
+      "Zierax/lfi-mini-scanner",
+      "Zierax/lol-game-ml-prediction",
+      "Zierax/node.js-server-template",
+      "Zierax/prompts",
+      "Zierax/proxy-auto-updater",
+      "Zierax/python-turtle-projects",
+      "Zierax/react-basic-project",
+      "Zierax/reload-site-template",
+      "Zierax/telegram-forgery-site",
+      "Zierax/xss-poc",
+      "Zierax/zoom-forgery-site"
     ],
     "thirdParty": [
       "4osp3l/0xJS"
@@ -4411,11 +2302,11 @@
     ]
   },
   "readmeFetch": {
-    "requested": 30,
-    "fetched": 29,
+    "requested": 29,
+    "fetched": 28,
     "failed": [
       "Zierax/G-dorks"
-    ]
-  },
-  "retieredAt": "2026-09-23T20:13:44.482Z"
+    ],
+    "failures": []
+  }
 }

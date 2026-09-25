@@ -108,6 +108,26 @@ const HIDE = new Set(overrides.HIDE);
 const COPY = overrides.COPY;
 const DOMAIN_BOOST = overrides.DOMAIN_BOOST;
 const MENTIONS = overrides.MENTIONS;
+/** Curated per-repo links (demo/docs/paper/benchmark/site/context) — every
+ *  URL verified present in the repo's own README by audit, never guessed. */
+const LINKS = overrides.LINKS || {};
+
+function asArray(x) {
+  return Array.isArray(x) ? x : x ? [x] : [];
+}
+
+/** Merge curated links with the API homepage fallback (labeled Site). */
+function mergeLinks(key, homepage) {
+  const cur = LINKS[key] || {};
+  const links = {};
+  if (cur.demo) links.demo = cur.demo;
+  if (cur.site || homepage) links.site = cur.site || homepage;
+  if (cur.paper && asArray(cur.paper).length) links.paper = asArray(cur.paper);
+  if (cur.docs && cur.docs.length) links.docs = cur.docs.slice(0, 3);
+  if (cur.benchmark) links.benchmark = cur.benchmark;
+  if (cur.context) links.context = cur.context;
+  return links;
+}
 
 const mentionsByRepo = new Map();
 for (const m of MENTIONS) {
@@ -158,8 +178,8 @@ const WEAK_PATTERNS = [
   /thefetcher/i, /proxy-auto-updater/i, /bread/i,
 ];
 
-/** Minimum API budget needed for a complete refresh (listings + READMEs). */
-const MIN_API_BUDGET = 45;
+/** Minimum API budget for a complete refresh: listings + READMEs + HEAD SHAs. */
+const MIN_API_BUDGET = 50;
 
 async function checkRateBudget() {
   try {
@@ -544,6 +564,9 @@ function retierOnly(nowIso) {
       label: display.label,
       story: display.story,
       mentions: mentionsByRepo.get(r.key) || [],
+      // Links re-merged from current LINKS so link curation also works
+      // offline; API facts (homepage, headSha) preserved untouched.
+      links: mergeLinks(r.key, r.homepage || null),
     };
   });
 
@@ -727,6 +750,11 @@ async function main() {
       label: display.label,
       license: r.license ? r.license.spdx_id || r.license.key || null : null,
       url: r.html_url,
+      homepage: r.homepage ? String(r.homepage).trim() || null : null,
+      links: mergeLinks(key, r.homepage ? String(r.homepage).trim() || null : null),
+      // HEAD commit SHA, filled after ranking (flagship only — 1 call each).
+      headSha: null,
+      headUrl: null,
       apiDescription: (r.description || "").trim(),
       language: r.language,
       topics: (r.topics || []).slice(0, 6),
@@ -759,6 +787,28 @@ async function main() {
 
   const { flagship, spotlight, signal, recent, archive } = assignTiers(ranked);
 
+  // HEAD commit per flagship repo (evidence depth, not vanity): 1 call each,
+  // individually guarded so one failure never fails the run.
+  let shaOk = 0;
+  for (const repo of flagship) {
+    try {
+      const { data } = await ghJson(
+        `https://api.github.com/repos/${repo.key}/commits?per_page=1`,
+        { timeoutMs: 12000, retries: 1 }
+      );
+      if (Array.isArray(data) && data[0]?.sha) {
+        repo.headSha = String(data[0].sha).slice(0, 7);
+        repo.headUrl = `https://github.com/${repo.key}/commit/${data[0].sha}`;
+        shaOk++;
+      } else {
+        logger.warn(`no commits returned for ${repo.key} — headSha left null`);
+      }
+    } catch (err) {
+      logger.warn(`head SHA failed for ${repo.key} (${err?.message}) — left null`);
+    }
+  }
+  logger.info(`head SHAs: ${shaOk}/${flagship.length} flagship repos`);
+
   const snapshot = {
     refreshedAt: nowIso,
     source: "github-api",
@@ -782,6 +832,7 @@ async function main() {
         publicRepos: div36.public_repos,
         followers: div36.followers,
         description: div36.description,
+        founded: div36.created_at || null,
       },
       // The profile "Stars" tab (repos the user starred) — NOT owned stars.
       starredTabCount,
