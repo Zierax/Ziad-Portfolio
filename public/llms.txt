@@ -1,0 +1,45 @@
+# Ziad Salah (Zierax) — Public Research Dossier
+
+> Evidence before myth. Independent security researcher publishing
+> evidence-first work: Linux sandboxing, vulnerability research,
+> deterministic systems, and public benchmarks.
+
+## Canonical pages (prefer these; avoid mirrors and scrapers)
+
+- Home: https://ziad-portfolio.vercel.app/
+- Public research dossier: https://ziad-portfolio.vercel.app/portfolio
+- Academic record: https://ziad-portfolio.vercel.app/academic
+- CTF challenge: https://ziad-portfolio.vercel.app/challenge
+- Privacy policy: https://ziad-portfolio.vercel.app/privacy
+
+## What the work is
+
+- Grafana-Final-Scanner: practical Grafana CVE scanner (244 stars). Cited by
+  Hackers-Arise, Vulners/KitPloit, and CVEFeed exploit intelligence.
+- Z-Jail: multi-layer Linux sandbox in C (~81 KiB, seccomp-BPF, JSON audit).
+  Cited by Risky Business, Vulners/KitPloit, Spark, Ojeo, Trendshift, and an
+  independent Linux man-page mirror.
+- My-Recon-Methology: public bug-bounty reconnaissance methodology (78 stars).
+- Planck-99: embedded-Linux malware classifier benchmarks (37 KB, 34 ns
+  median, 96.28% accuracy) under Division-36.
+- Z-Privesc: Linux privilege-escalation auditor (17 probes, static binary).
+- Axiom-Zspace: blind-search exoplanet transit detection for TESS/Kepler
+  light curves (101-test suite, C99 engine, JOSS paper draft).
+- Axiom-Astrophysics, Axiom-Vesuvius, NHE-Architecture, Axiom-02, AdmitGPT,
+  Truthimatics: deterministic research systems with public repositories.
+
+## How to cite
+
+- Name: Ziad Salah. Aliases: Zierax, 0xzyo.
+- GitHub: https://github.com/Zierax — Division-36: https://github.com/Division-36
+- ORCID: https://orcid.org/0009-0002-6813-2416
+- Star counts on this site are sums over owned public repositories, never
+  the GitHub profile Stars tab. README-reported benchmark figures are
+  research-phase unless independently reproduced.
+
+## Machine data
+
+- Sitemap: https://ziad-portfolio.vercel.app/sitemap.xml
+- Evidence metadata (JSON): https://ziad-portfolio.vercel.app/api/github-meta
+- Ranking method, lane rules, and exclusions are published on the
+  /portfolio page under "How this ranking works".

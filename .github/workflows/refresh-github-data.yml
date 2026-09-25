@@ -38,8 +38,11 @@ jobs:
             echo "Snapshot unchanged — nothing to commit."
             exit 0
           fi
+          # Evidence changed: keep the sitemap freshness signal truthful too.
+          TODAY=$(date -u +%F)
+          sed -i "s|<lastmod>[0-9-]*</lastmod>|<lastmod>${TODAY}</lastmod>|g" public/sitemap.xml
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/generated/github-snapshot.json
-          git commit -m "chore: refresh GitHub snapshot $(date -u +%F)"
+          git add src/data/generated/github-snapshot.json public/sitemap.xml
+          git commit -m "chore: refresh GitHub snapshot ${TODAY}"
           git push
