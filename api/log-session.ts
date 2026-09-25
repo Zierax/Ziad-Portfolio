@@ -1,107 +1,120 @@
-import { Octokit } from '@octokit/rest';
+/**
+ * POST /api/log-session — intentionally retired (HTTP 410 Gone).
+ *
+ * History: an earlier version of this portfolio collected passive visitor
+ * telemetry. That was removed as an OPSEC defect: a security portfolio must
+ * not run a visitor trap. This route survives only as an explicit tombstone
+ * so old clients get a clear, actionable answer instead of a silent 404.
+ *
+ * Guarantees:
+ * - Nothing is ever stored, logged, or echoed from the request — not the
+ *   body, not headers, not identifiers, not even query values. Server logs
+ *   carry method/path/status/error-class only (see api/_util.ts).
+ * - Bodies are capped at 1 MB by the platform parser; this handler never
+ *   parses, reads, or reflects them (chunked bodies included).
+ * - Every response carries x-request-id for correlation without identity.
+ */
+import { NO_STORE, safeHandler, sendJson, declaredBodyBytes, serverLog } from "./_util";
+import type { ApiRequest, ApiResponse, RouteInfo } from "./_util";
 
-export default async function handler(req: any, res: any) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+export const config = {
+  api: {
+    bodyParser: { sizeLimit: "1mb" },
+  },
+};
 
-  try {
-    const data = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-    const token = process.env.ITHUB_TOKEN;
-    
-    if (!token) {
-      console.error('GITHUB_TOKEN missing');
-      return res.status(500).json({ error: 'Configuration error' });
-    }
+export const ENDPOINT_VERSION = 2;
+const MAX_ACCEPTED_BYTES = 1024 * 1024;
 
-    const octokit = new Octokit({ auth: token });
-    const owner = 'Zierax';
-    const repo = 'ZiadTraffic';
-
-    const timestamp = new Date().toISOString();
-    const dateStr = timestamp.split('T')[0];
-    
-    const userAgent = req.headers['user-agent'] || 'Unknown UA';
-    const cfIp = req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for'] || 'Unknown';
-    const cfCountry = req.headers['cf-ipcountry'] || 'Unknown';
-    
-    const {
-      network_layer = {},
-      hardware_layer = {},
-      browser_layer = {},
-      security_context = {},
-      session = {}
-    } = data;
-
-    let currentSummary = '';
-    let summarySha = '';
-    
-    try {
-      const summaryRes = await octokit.repos.getContent({
-        owner,
-        repo,
-        path: 'summary.md',
-      });
-      if ('content' in summaryRes.data) {
-        currentSummary = Buffer.from(summaryRes.data.content, 'base64').toString('utf8');
-        summarySha = summaryRes.data.sha;
-      }
-    } catch (e: any) {
-      if (e.status !== 404) console.error('Error fetching summary.md:', e);
-      currentSummary = '# 🛡️ Axiom-02 Intelligence Log\n\n';
-    }
-
-    const vpnFlag = security_context.vpn_leak_risk ? '🚨 **[VPN/PROXY DETECTED]**' : '✅ Clean';
-    const incognitoFlag = security_context.is_incognito ? '🕵️ **[INCOGNITO]**' : 'Normal';
-    const botFlag = security_context.is_webdriver ? '🤖 **[AUTOMATION/BOT]**' : '👤 Human';
-
-    const reconLine = `
----
-### 📍 Intel Captured: ${timestamp}
-- **Network:** IP: \`${network_layer.public_ip || cfIp}\` | Local: \`${network_layer.local_ip || 'N/A'}\` | Org: \`${network_layer.isp || 'Unknown'}\`
-- **Location:** ${network_layer.geo?.country || cfCountry} (${network_layer.geo?.city || 'Unknown'}) | TZ: \`${session.timezone}\`
-- **Security:** ${vpnFlag} | ${incognitoFlag} | ${botFlag}
-- **Hardware:** CPU: \`${hardware_layer.cpu?.cores} Cores\` | RAM: \`${hardware_layer.memory?.device_ram}\` | Benchmark: \`${hardware_layer.cpu?.benchmark_score}\`
-- **Graphics:** GPU: \`${hardware_layer.graphics?.gpu}\` | Vendor: \`${hardware_layer.graphics?.vendor}\`
-- **Environment:** Resolution: \`${session.resolution}\` | DarkMode: \`${browser_layer.dark_mode}\` | Lang: \`${browser_layer.languages?.[0]}\`
-- **Trace:** Ref: \`${session.referrer}\` | Path: \`${session.path}\`
-`;
-
-    await octokit.repos.createOrUpdateFileContents({
-      owner,
-      repo,
-      path: 'summary.md',
-      message: `Axiom Recon: ${cfIp} [${cfCountry}]`,
-      content: Buffer.from(currentSummary + reconLine).toString('base64'),
-      sha: summarySha || undefined,
-    });
-
-    const fullPayload = {
-        metadata: {
-          timestamp,
-          server_ip: cfIp,
-          server_country: cfCountry,
-          raw_headers: req.headers
-        },
-        intel: data
-    };
-
-    const jsonPath = `logs/${dateStr}/${cfIp.replace(/:/g, '-')}-${Date.now()}.json`;
-    await octokit.repos.createOrUpdateFileContents({
-      owner,
-      repo,
-      path: jsonPath,
-      message: `Full Deep-Recon Dump: ${cfIp}`,
-      content: Buffer.from(JSON.stringify(fullPayload, null, 2)).toString('base64'),
-    });
-
-    return res.status(200).json({ 
-      success: true, 
-      status: "Axiom Intelligence Recorded",
-      vector: cfIp 
-    });
-  } catch (error) {
-    console.error('Failed to log session:', error);
-    return res.status(500).json({ error: 'Axiom internal fault' });
-  }
+/** Normalize content-type to a class — never record or echo the raw value. */
+function contentClass(req: ApiRequest): "json" | "other" | "absent" {
+  const raw = req.headers["content-type"];
+  const first = Array.isArray(raw) ? raw[0] : raw;
+  if (typeof first !== "string" || first.trim() === "") return "absent";
+  return first.toLowerCase().includes("json") ? "json" : "other";
 }
+
+/** Whether a query string is present — never its values (may carry PII). */
+function hasQuery(req: ApiRequest): boolean {
+  return typeof req.url === "string" && req.url.includes("?");
+}
+
+async function handler(req: ApiRequest, res: ApiResponse, info: RouteInfo) {
+  // CORS preflight: answer honestly so browser clients fail cleanly too.
+  if (info.method === "OPTIONS") {
+    res.setHeader("Allow", "POST, OPTIONS");
+    res.setHeader("access-control-allow-origin", "*");
+    res.setHeader("access-control-allow-methods", "POST, OPTIONS");
+    res.setHeader("access-control-max-age", "86400");
+    serverLog("info", info, 204, "preflight");
+    return res.status(204).json({});
+  }
+
+  if (info.method !== "POST") {
+    return sendJson(req, res, 405, {
+      code: "method_not_allowed",
+      title: "Only POST reaches this endpoint — and POST is retired.",
+      status: 405,
+      instance: info.path,
+      endpoint: "log-session",
+      version: ENDPOINT_VERSION,
+      allowed: ["POST", "OPTIONS"],
+      hint: "If you are an old site client still phoning home: stop. There is nothing to phone home to.",
+    }, { ...NO_STORE, Allow: "POST, OPTIONS" });
+  }
+
+  const bytes = declaredBodyBytes(req);
+  if (bytes !== null && bytes > MAX_ACCEPTED_BYTES) {
+    serverLog("warn", info, 413, "body_too_large");
+    return sendJson(req, res, 413, {
+      code: "body_too_large",
+      title: "Declared body exceeds the cap.",
+      status: 413,
+      instance: info.path,
+      endpoint: "log-session",
+      version: ENDPOINT_VERSION,
+      detail: `Declared ${bytes} bytes against a ${MAX_ACCEPTED_BYTES} byte cap. The body was not read, not parsed, not stored.`,
+      limitBytes: MAX_ACCEPTED_BYTES,
+    }, NO_STORE);
+  }
+
+  const content = contentClass(req);
+  const query = hasQuery(req);
+
+  return sendJson(req, res, 410, {
+    code: "telemetry_retired",
+    title: "Session logging has been retired. This endpoint accepts nothing.",
+    status: 410,
+    instance: info.path,
+    endpoint: "log-session",
+    version: ENDPOINT_VERSION,
+    detail: "An earlier version of this portfolio collected passive visitor telemetry. That was removed as an OPSEC defect and will not return.",
+    policy: [
+      "No passive visitor telemetry is collected, stored, or forwarded.",
+      "No browser fingerprinting, WebRTC probing, or stealth logging runs on this site.",
+      "Server logs contain method/path/status only — never IPs, headers, bodies, or query values.",
+    ],
+    received: {
+      method: info.method,
+      path: info.path,
+      contentClass: content,
+      declaredBodyBytes: bytes,
+      queryPresent: query,
+      note: "Body content was not read, not parsed, not stored. Query values are never inspected.",
+      contentHint:
+        content === "other"
+          ? "Content type is irrelevant here — bodies of every type are refused."
+          : undefined,
+      queryHint: query ? "Query strings change nothing — this endpoint has no inputs." : undefined,
+    },
+    retryable: false,
+    alternatives: {
+      privacy: "/privacy",
+      evidenceMetadata: "/api/github-meta",
+      sourceCode: "https://github.com/Zierax/Ziad-Portfolio",
+      issues: "https://github.com/Zierax/Ziad-Portfolio/issues",
+    },
+  }, NO_STORE);
+}
+
+export default safeHandler(handler);

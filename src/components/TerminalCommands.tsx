@@ -61,6 +61,7 @@ export const getTerminalOutput = (cmd: string): string[] => {
         "  projects         selected repositories and engines",
         "  archive          long-tail repos (stubs, experiments, older utilities)",
         "  method           ranking formula, lanes, and exclusions",
+        "  api              public API routes (metadata good, telemetry gone)",
         "  research         papers, frameworks, and review status",
         "  mentions         external references for Z-Jail and related work",
         "  writeups         public vulnerability writeups",
@@ -194,6 +195,21 @@ export const getTerminalOutput = (cmd: string): string[] => {
           `${displayName(repo)} (${repo.owner}) — ${repo.stars} stars · updated ${updatedLabel(repo.updatedAt)}`,
           `  ${repo.url}`,
         ]),
+        "",
+      ];
+    case "api":
+    case "routes":
+    case "endpoints":
+      return [
+        "PUBLIC API ROUTES",
+        "  GET  /api/github-meta    snapshot metadata: refreshedAt, totals,",
+        "                           lane counts, flagship list, exclusion counts.",
+        "                           Edge-cached 1h. No state, no telemetry.",
+        "  POST /api/log-session    RETIRED (410 Gone). Passive visitor",
+        "                           telemetry was removed as an OPSEC defect.",
+        "                           Nothing is stored, logged, or echoed —",
+        "                           server logs carry method/path/status only,",
+        "                           every response carries x-request-id.",
         "",
       ];
     case "research":
