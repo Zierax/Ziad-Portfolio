@@ -126,7 +126,9 @@ export interface GithubSnapshot {
     requested: number;
     fetched: number;
     failed: string[];
+    failures?: { key: string; reason: string }[];
   };
+  warnings?: string[];
 }
 
 export const githubSnapshot = snapshotJson as unknown as GithubSnapshot;

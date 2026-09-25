@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "refresh:github": "node scripts/refresh-github-data.mjs",
-    "retier:github": "node scripts/refresh-github-data.mjs --retier-only"
+    "retier:github": "node scripts/refresh-github-data.mjs --retier-only",
+    "test:github": "node scripts/refresh-github-data.mjs --self-test"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

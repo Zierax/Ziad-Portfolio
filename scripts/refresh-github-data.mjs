@@ -31,7 +31,7 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OVERRIDES_PATH = join(ROOT, "src", "data", "github-overrides.json");
@@ -43,6 +43,63 @@ const HEADERS = {
   Accept: "application/vnd.github+json",
   ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),
 };
+
+// ---------------------------------------------------------------------------
+// Logging: timestamped, leveled, dependency-free.
+// LOG_LEVEL=debug|info|warn|error, or --verbose / --quiet flags.
+// ---------------------------------------------------------------------------
+const LOG_LEVELS = { debug: 0, info: 1, warn: 2, error: 3 };
+const LOG_LEVEL = (process.env.LOG_LEVEL || (process.argv.includes("--verbose") ? "debug" : "info")).toLowerCase();
+const QUIET = process.argv.includes("--quiet");
+const RESOLVED_LEVEL = LOG_LEVELS[LOG_LEVEL] ?? LOG_LEVELS.info;
+
+function log(level, msg) {
+  if (LOG_LEVELS[level] < RESOLVED_LEVEL) return;
+  if (QUIET && level !== "error") return;
+  const stream = level === "error" || level === "warn" ? process.stderr : process.stdout;
+  stream.write(`[${new Date().toISOString()}] ${level.toUpperCase().padEnd(5, " ")} ${msg}\n`);
+}
+
+const logger = {
+  debug: (m) => log("debug", m),
+  info: (m) => log("info", m),
+  warn: (m) => log("warn", m),
+  error: (m) => log("error", m),
+};
+
+function phase(name) {
+  const t0 = Date.now();
+  logger.info(`-- ${name}`);
+  return () => logger.debug(`   ${name} done in ${((Date.now() - t0) / 1000).toFixed(1)}s`);
+}
+
+// ---------------------------------------------------------------------------
+// Errors: typed so callers can tell "missing" (fine) from "rate-limited"
+// (abort) from "transient" (retry).
+// ---------------------------------------------------------------------------
+class HttpError extends Error {
+  constructor(status, url, detail = "") {
+    super(`GitHub API ${status} for ${url}${detail ? `: ${detail}` : ""}`);
+    this.name = "HttpError";
+    this.status = status;
+    this.url = url;
+  }
+}
+
+class RateLimitError extends HttpError {
+  constructor(url, resetEpochSec) {
+    super(403, url, "rate limit exhausted");
+    this.name = "RateLimitError";
+    this.resetEpochSec = resetEpochSec;
+  }
+
+  get retryAfterSec() {
+    if (!this.resetEpochSec) return null;
+    return Math.max(0, Math.round(this.resetEpochSec - Date.now() / 1000));
+  }
+}
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const overrides = JSON.parse(readFileSync(OVERRIDES_PATH, "utf8"));
 const PIN_ORDER = overrides.PIN_ORDER;
@@ -113,19 +170,67 @@ async function checkRateBudget() {
   }
 }
 
-async function ghJson(url, { timeoutMs = 20000 } = {}) {
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), timeoutMs);
-  try {
-    const res = await fetch(url, { headers: HEADERS, signal: ctrl.signal });
-    if (!res.ok) {
-      const err = new Error(`GitHub API ${res.status} for ${url}`);
-      err.status = res.status;
-      throw err;
+/**
+ * GET with timeout, parsed errors, and retries for transient failures.
+ * Never retries 4xx (missing/forbidden are answers, not blips); 403 with an
+ * exhausted budget throws RateLimitError immediately so the run aborts
+ * instead of recording false "missing" data.
+ */
+async function ghJson(url, { timeoutMs = 20000, retries = 2 } = {}) {
+  let attempt = 0;
+  for (;;) {
+    attempt++;
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), timeoutMs);
+    try {
+      const res = await fetch(url, { headers: HEADERS, signal: ctrl.signal });
+      if (res.status === 404) {
+        throw new HttpError(404, url);
+      }
+      if (res.status === 403 || res.status === 429) {
+        const remaining = res.headers.get("x-ratelimit-remaining");
+        if (remaining === "0") {
+          const reset = Number(res.headers.get("x-ratelimit-reset") || 0) || null;
+          throw new RateLimitError(url, reset);
+        }
+        throw new HttpError(res.status, url, await safeBody(res));
+      }
+      if (res.status >= 500 && attempt <= retries) {
+        logger.warn(`retry ${attempt}/${retries} after HTTP ${res.status}: ${url}`);
+        await sleep(1000 * 2 ** (attempt - 1) + Math.random() * 500);
+        continue;
+      }
+      if (!res.ok) {
+        throw new HttpError(res.status, url, await safeBody(res));
+      }
+      return { data: await res.json(), headers: res.headers };
+    } catch (err) {
+      if (err instanceof HttpError || err instanceof RateLimitError) throw err;
+      // Network error / timeout: retry, then give up with context.
+      const transient = err?.name === "AbortError" || err instanceof TypeError;
+      if (transient && attempt <= retries) {
+        logger.warn(`retry ${attempt}/${retries} after ${err?.name || "error"}: ${url}`);
+        await sleep(1000 * 2 ** (attempt - 1) + Math.random() * 500);
+        continue;
+      }
+      throw new Error(`fetch failed for ${url}: ${err?.message || err}`, { cause: err });
+    } finally {
+      clearTimeout(t);
     }
-    return { data: await res.json(), headers: res.headers };
-  } finally {
-    clearTimeout(t);
+  }
+}
+
+async function safeBody(res) {
+  try {
+    const text = await res.text();
+    try {
+      const json = JSON.parse(text);
+      return String(json.message || text).slice(0, 160);
+    } catch {
+      return text.slice(0, 160);
+    }
+  } catch {
+    return "";
   }
 }
 
@@ -151,13 +256,23 @@ async function fetchStarredTabCount() {
   return m ? Number(m[1]) : null;
 }
 
-async function fetchReadme(owner, name) {
+/**
+ * README fetch with classified outcomes. 404 (no README) is a normal,
+ * expected result — not an error. Anything else that survives retries is
+ * recorded with its reason; rate-limit exhaustion propagates so the run
+ * aborts instead of writing false present:false entries.
+ */
+async function fetchReadmeOutcome(owner, name) {
+  const key = `${owner}/${name}`;
   try {
     const { data } = await ghJson(`https://api.github.com/repos/${owner}/${name}/readme`, { timeoutMs: 15000 });
-    if (!data.content) return null;
-    return Buffer.from(data.content, "base64").toString("utf8");
-  } catch {
-    return null; // README missing or fetch failed — never fatal
+    if (!data.content) return { key, outcome: "missing", reason: "empty readme payload" };
+    return { key, outcome: "ok", text: Buffer.from(data.content, "base64").toString("utf8") };
+  } catch (err) {
+    if (err instanceof HttpError && err.status === 404) {
+      return { key, outcome: "missing", reason: "404" };
+    }
+    throw err;
   }
 }
 
@@ -298,23 +413,6 @@ function scoreRepo(r, key, readmeText, mentionCount, now) {
     score -= 25; reasons.push("tiny-stale−25");
   }
   return { score, reasons };
-}
-
-async function pool(items, limit, fn) {
-  const results = new Array(items.length);
-  let i = 0;
-  async function worker() {
-    while (i < items.length) {
-      const idx = i++;
-      try {
-        results[idx] = await fn(items[idx]);
-      } catch {
-        results[idx] = null;
-      }
-    }
-  }
-  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
-  return results;
 }
 
 /**
@@ -471,9 +569,9 @@ function retierOnly(nowIso) {
   // Backup before overwrite so a retier bug can never destroy the only copy.
   copyFileSync(SNAPSHOT_PATH, `${SNAPSHOT_PATH}.bak`);
   writeFileSync(SNAPSHOT_PATH, JSON.stringify(snapshot, null, 2) + "\n");
-  console.log(`Snapshot re-tiered (no API calls): ${SNAPSHOT_PATH}`);
-  console.log(`  data from: ${old.refreshedAt} · curation applied: ${nowIso}`);
-  console.log(`  tiers: flagship=${flagship.length} spotlight=${spotlight.length} signal=${signal.length} recent=${recent.length} archive=${archive.length}`);
+  logger.info(`snapshot re-tiered (no API calls): ${SNAPSHOT_PATH}`);
+  logger.info(`data from: ${old.refreshedAt} · curation applied: ${nowIso}`);
+  logger.info(`tiers: flagship=${flagship.length} spotlight=${spotlight.length} signal=${signal.length} recent=${recent.length} archive=${archive.length}`);
 }
 
 async function main() {
@@ -491,6 +589,11 @@ async function main() {
   // Fail-safe: never start a refresh we cannot finish. A partial run would
   // silently mark repos as readme-less and corrupt tier quality.
   const budget = await checkRateBudget();
+  if (budget === null) {
+    logger.warn("rate-limit budget unknown (rate_limit check failed) — proceeding, may abort mid-run");
+  } else {
+    logger.info(`API budget: ${budget} remaining (need >= ${MIN_API_BUDGET})${TOKEN ? " [authenticated]" : " [anonymous]"}`);
+  }
   if (budget !== null && budget < MIN_API_BUDGET) {
     throw new Error(
       `insufficient GitHub API budget (remaining=${budget}, need>=${MIN_API_BUDGET}). ` +
@@ -498,15 +601,24 @@ async function main() {
     );
   }
 
+  const doneProfiles = phase("profiles");
   const [{ data: zierax }, { data: div36 }] = await Promise.all([
     ghJson("https://api.github.com/users/Zierax"),
     ghJson("https://api.github.com/orgs/Division-36"),
   ]);
+  doneProfiles();
+
+  const doneListings = phase("repo listings");
   const [zieraxRepos, div36Repos, starredTabCount] = await Promise.all([
     fetchAllRepos("Zierax", false),
     fetchAllRepos("Division-36", true),
-    fetchStarredTabCount().catch(() => null),
+    fetchStarredTabCount().catch((err) => {
+      logger.warn(`Stars-tab count unavailable (${err?.message}) — recording null, not zero`);
+      return null;
+    }),
   ]);
+  doneListings();
+  logger.info(`listings: ${zieraxRepos.length} Zierax + ${div36Repos.length} Division-36 repos`);
 
   const allRepos = [...zieraxRepos, ...div36Repos];
   const byKey = new Map(allRepos.map((r) => [`${r.owner.login}/${r.name}`, r]));
@@ -533,13 +645,44 @@ async function main() {
     .filter((k) => byKey.has(k) && !HIDE.has(k));
 
   const readmeTexts = new Map();
-  await pool(readmeKeys, 4, async (key) => {
-    const [owner, ...rest] = key.split("/");
-    const text = await fetchReadme(owner, rest.join("/"));
-    if (text) readmeTexts.set(key, text);
-  });
-  console.log(`  readmes: ${readmeTexts.size}/${readmeKeys.length} fetched`);
-  const profileReadmeText = await fetchReadme("Zierax", "Zierax");
+  const readmeMissing = [];
+  const readmeFailed = [];
+  const CONCURRENCY = 4;
+  for (let i = 0; i < readmeKeys.length; i += CONCURRENCY) {
+    const batch = readmeKeys.slice(i, i + CONCURRENCY);
+    const outcomes = await Promise.all(
+      batch.map(async (key) => {
+        const [owner, ...rest] = key.split("/");
+        try {
+          return await fetchReadmeOutcome(owner, rest.join("/"));
+        } catch (err) {
+          return { key, outcome: "error", reason: err?.message || String(err), error: err };
+        }
+      })
+    );
+    for (const o of outcomes) {
+      if (o.outcome === "ok" && o.text) readmeTexts.set(o.key, o.text);
+      else if (o.outcome === "missing") readmeMissing.push(`${o.key} (${o.reason})`);
+      else readmeFailed.push(o);
+    }
+    logger.debug(`readmes ${Math.min(i + CONCURRENCY, readmeKeys.length)}/${readmeKeys.length}`);
+  }
+  // Systemic failures (rate limit) abort the whole run — a partial README
+  // set would silently demote repos. Isolated failures are recorded.
+  const rateLimited = readmeFailed.find((f) => f.error instanceof RateLimitError);
+  if (rateLimited) throw rateLimited.error;
+  for (const f of readmeFailed) logger.warn(`readme failed for ${f.key}: ${f.reason}`);
+  logger.info(`readmes: ${readmeTexts.size} fetched, ${readmeMissing.length} absent, ${readmeFailed.length} failed`);
+
+  let profileReadmeText = null;
+  try {
+    const outcome = await fetchReadmeOutcome("Zierax", "Zierax");
+    profileReadmeText = outcome.outcome === "ok" ? outcome.text : null;
+    if (!profileReadmeText) logger.warn(`profile README unavailable (${outcome.reason}) — highlights skipped`);
+  } catch (err) {
+    if (err instanceof RateLimitError) throw err;
+    logger.warn(`profile README fetch failed (${err?.message}) — highlights skipped`);
+  }
   const profileHighlights = profileReadmeText ? extractProfileHighlights(profileReadmeText) : [];
   const profileMetricByRepo = new Map(profileHighlights.map((h) => [h.repo, h.metric]));
 
@@ -675,31 +818,200 @@ async function main() {
     },
     // Observable fetch quality: which READMEs were requested vs obtained.
     // A repo with present=false genuinely lacks a README, or its fetch
-    // failed this run (see failed[]). UI copy never depends on this.
+    // failed this run (see failed[] with reasons). UI copy never depends on this.
     readmeFetch: {
       requested: readmeKeys.length,
       fetched: readmeTexts.size,
       failed: readmeKeys.filter((k) => !readmeTexts.has(k)).sort(),
+      failures: readmeFailed.map((f) => ({ key: f.key, reason: f.reason })),
     },
   };
+
+  // Write guards: never persist an empty or flagship-less snapshot. Either
+  // means the API returned something unexpected (rename, outage, shape
+  // change) and the old snapshot is more truthful than this run.
+  if (ranked.length === 0) {
+    throw new Error("refusing to write empty snapshot (0 ranked repos) — old snapshot kept.");
+  }
+  if (flagship.length === 0) {
+    logger.warn("flagship lane resolved empty — pins may be stale, writing anyway with warn flag");
+    snapshot.warnings = ["flagship empty: PIN_ORDER keys did not match any ranked repo"];
+  }
 
   mkdirSync(dirname(SNAPSHOT_PATH), { recursive: true });
   writeFileSync(SNAPSHOT_PATH, JSON.stringify(snapshot, null, 2) + "\n");
 
-  console.log(`Snapshot written: ${SNAPSHOT_PATH}`);
-  console.log(`  refreshedAt: ${nowIso}`);
-  console.log(`  owned repos ranked: ${ranked.length} (+${forked.length} forks tracked, +${snapshot.excluded.hidden.length} hidden, +${thirdParty.length} third-party quarantined)`);
-  console.log(`  tiers: flagship=${flagship.length} spotlight=${spotlight.length} signal=${signal.length} recent=${recent.length} archive=${archive.length}`);
-  console.log(`  stars: Zierax=${snapshot.totals.zieraxOwnedRepoStars} Division-36=${snapshot.totals.division36OwnedRepoStars} combined=${snapshot.totals.combinedOwnedRepoStars}`);
+  logger.info(`snapshot written: ${SNAPSHOT_PATH}`);
+  logger.info(`refreshedAt: ${nowIso}`);
+  logger.info(`ranked ${ranked.length} owned repos (+${forked.length} forks tracked, +${snapshot.excluded.hidden.length} hidden, +${thirdParty.length} quarantined)`);
+  logger.info(`tiers: flagship=${flagship.length} spotlight=${spotlight.length} signal=${signal.length} recent=${recent.length} archive=${archive.length}`);
+  logger.info(`stars: Zierax=${snapshot.totals.zieraxOwnedRepoStars} Division-36=${snapshot.totals.division36OwnedRepoStars} combined=${snapshot.totals.combinedOwnedRepoStars}`);
 }
 
-try {
-  await main();
-} catch (err) {
-  if (existsSync(SNAPSHOT_PATH)) {
-    console.error(`GitHub refresh failed (${err.message}). Keeping last known snapshot.`);
+/**
+ * Exit codes: 0 ok · 1 API/refresh failure (old snapshot kept) ·
+ * 2 usage/config error (nothing was fetched, nothing to keep).
+ *
+ * --self-test runs the offline unit suite (no GitHub calls) instead of main.
+ */
+const invokedAsScript = (() => {
+  try {
+    return !!process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+  } catch {
+    return false;
+  }
+})();
+
+if (invokedAsScript) {
+  if (process.argv.includes("--self-test")) {
+    await runSelfTest();
+  } else {
+    try {
+      await main();
+    } catch (err) {
+      const usageError = /no snapshot to retier|insufficient GitHub API budget/i.test(err?.message || "");
+      if (existsSync(SNAPSHOT_PATH) && !usageError) {
+        logger.error(`refresh failed (${err?.message}). Old snapshot kept.`);
+        process.exit(1);
+      }
+      if (existsSync(SNAPSHOT_PATH)) {
+        logger.error(`refresh aborted before fetching (${err?.message}). Old snapshot kept.`);
+        process.exit(2);
+      }
+      logger.error(`refresh failed and no snapshot exists: ${err?.message}`);
+      if (process.env.LOG_LEVEL === "debug" || process.argv.includes("--verbose")) logger.error(String(err?.stack || err));
+      process.exit(1);
+    }
+  }
+}
+
+/**
+ * Offline self-test: flaky/local HTTP server for retry + error
+ * classification, plus pure-function checks. No GitHub traffic.
+ */
+async function runSelfTest() {
+  const { default: http } = await import("node:http");
+  let failures = 0;
+  const check = (name, cond, extra = "") => {
+    if (cond) logger.info(`PASS ${name}`);
+    else {
+      failures++;
+      logger.error(`FAIL ${name} ${extra}`);
+    }
+  };
+
+  const hits = { flaky: 0, missing: 0 };
+  const server = http.createServer((req, res) => {
+    if (req.url === "/flaky") {
+      hits.flaky++;
+      if (hits.flaky < 3) {
+        res.writeHead(500, { "content-type": "text/plain" });
+        res.end("boom");
+      } else {
+        res.writeHead(200, { "content-type": "application/json" });
+        res.end(JSON.stringify({ ok: true }));
+      }
+    } else if (req.url === "/missing") {
+      hits.missing++;
+      res.writeHead(404, { "content-type": "application/json" });
+      res.end(JSON.stringify({ message: "Not Found" }));
+    } else if (req.url === "/limited") {
+      res.writeHead(403, {
+        "content-type": "application/json",
+        "x-ratelimit-remaining": "0",
+        "x-ratelimit-reset": String(Math.round(Date.now() / 1000) + 60),
+      });
+      res.end(JSON.stringify({ message: "API rate limit exceeded" }));
+    } else if (req.url === "/forbidden") {
+      res.writeHead(403, { "content-type": "application/json", "x-ratelimit-remaining": "59" });
+      res.end(JSON.stringify({ message: "Resource not accessible" }));
+    } else {
+      res.writeHead(404);
+      res.end();
+    }
+  });
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  const base = `http://127.0.0.1:${server.address().port}`;
+
+  // 1. Transient 500s are retried, then succeed.
+  const r1 = await ghJson(`${base}/flaky`, { timeoutMs: 5000, retries: 3 });
+  check("retry-then-success", r1.data?.ok === true && hits.flaky === 3, `hits=${hits.flaky}`);
+
+  // 2. 404 throws HttpError immediately (exactly one hit = no retry).
+  try {
+    await ghJson(`${base}/missing`, { timeoutMs: 5000 });
+    check("404-throws", false);
+  } catch (err) {
+    check("404-throws", err instanceof HttpError && err.status === 404 && hits.missing === 1, `hits=${hits.missing}`);
+  }
+
+  // 3. Exhausted budget throws RateLimitError with retry hint.
+  try {
+    await ghJson(`${base}/limited`, { timeoutMs: 5000 });
+    check("rate-limit-throws", false);
+  } catch (err) {
+    check(
+      "rate-limit-throws",
+      err instanceof RateLimitError && typeof err.retryAfterSec === "number" && err.retryAfterSec <= 60,
+      String(err?.message)
+    );
+  }
+
+  // 4. Non-budget 403 is a plain HttpError (answer, not retryable signal).
+  try {
+    await ghJson(`${base}/forbidden`, { timeoutMs: 5000 });
+    check("403-plain", false);
+  } catch (err) {
+    check("403-plain", err instanceof HttpError && !(err instanceof RateLimitError) && err.status === 403);
+  }
+
+  // 5. resolveDisplay prefers human copy, falls back honestly.
+  const d = resolveDisplay({
+    key: "Zierax/Grafana-Final-Scanner",
+    apiDescription: "api desc",
+    language: "Python",
+    topics: ["a", "b"],
+    stars: 1,
+    forks: 0,
+    readmeSummary: "readme summary",
+    readmeHighlightList: ["h1"],
+    profileMetric: "",
+  });
+  check("copy-precedence", d.summary.startsWith("Practical Grafana scanner") && d.tags.includes("Grafana"));
+  const d2 = resolveDisplay({
+    key: "Zierax/Nope-Unknown",
+    apiDescription: "",
+    language: null,
+    topics: [],
+    stars: 0,
+    forks: 0,
+    readmeSummary: "",
+    readmeHighlightList: [],
+    profileMetric: "",
+  });
+  check("empty-fallback", d2.summary.includes("see README on GitHub") && d2.tags.length === 0);
+
+  // 6. assignTiers: pins first, sketchy never in signal.
+  const fake = (key, stars, updatedAt) => ({
+    key, owner: key.split("/")[0], name: key.split("/")[1], stars, forks: 0,
+    updatedAt, archived: false, score: stars * 2, scoreReasons: [],
+    readme: { present: false }, mentions: [],
+  });
+  const lanes = assignTiers([
+    fake("Evil/instaCracker-clone", 50, "2026-09-01T00:00:00Z"),
+    fake("Zierax/Grafana-Final-Scanner", 244, "2026-09-18T00:00:00Z"),
+    fake("Zierax/G-dorks", 25, "2026-09-13T00:00:00Z"),
+  ]);
+  check("flagship-pin", lanes.flagship[0]?.key === "Zierax/Grafana-Final-Scanner");
+  check(
+    "sketchy-quarantined",
+    !lanes.signal.some((r) => /insta/i.test(r.key)) && lanes.signal.some((r) => r.key === "Zierax/G-dorks")
+  );
+
+  server.close();
+  if (failures > 0) {
+    logger.error(`self-test: ${failures} failure(s)`);
     process.exit(1);
   }
-  console.error(`GitHub refresh failed and no snapshot exists: ${err.message}`);
-  process.exit(1);
+  logger.info("self-test: all passed");
 }
