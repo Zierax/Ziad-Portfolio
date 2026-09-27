@@ -32,10 +32,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/refresh-github-data.mjs
 
-      - name: Commit snapshot if changed
+      - name: Commit snapshot if evidence changed
+        # refreshedAt always moves, so compare canonical content excluding
+        # the timestamp — skip the weekly commit when nothing real changed.
         run: |
-          if git diff --quiet -- src/data/generated/github-snapshot.json; then
-            echo "Snapshot unchanged — nothing to commit."
+          strip_ts() { python3 -c "import json,sys; d=json.load(open('src/data/generated/github-snapshot.json')); d.pop('refreshedAt',None); print(json.dumps(d,sort_keys=True))"; }
+          strip_ts > /tmp/snapshot.new.json
+          git show HEAD:src/data/generated/github-snapshot.json > /tmp/snapshot.head.json 2>/dev/null || echo '{}' > /tmp/snapshot.head.json
+          python3 -c "import json; d=json.load(open('/tmp/snapshot.head.json')); d.pop('refreshedAt',None); print(json.dumps(d,sort_keys=True))" > /tmp/snapshot.old.json
+          if cmp -s /tmp/snapshot.new.json /tmp/snapshot.old.json; then
+            echo "Evidence unchanged (only timestamp moved) — nothing to commit."
             exit 0
           fi
           # Evidence changed: keep the sitemap freshness signal truthful too.

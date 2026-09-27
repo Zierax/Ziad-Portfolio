@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import {
   Play, Pause, SkipForward, SkipBack, Volume2, VolumeX, X, Music, Terminal
 } from 'lucide-react';
@@ -816,7 +816,7 @@ const ZyoAssistant: React.FC = () => {
             <svg width="110" height="130" viewBox="0 0 110 130" aria-hidden="true" className={reducedMotion.current ? undefined : "animate-zyo-float"}>
 
               {/* 1. FIBER DREADS */}
-              <g stroke="hsl(var(--border))" strokeWidth="4" fill="none" strokeLinecap="round" aria-hidden="true">
+              <g stroke="hsl(var(--border))" strokeWidth="4" fill="none" strokeLinecap="round" >
                 <path d="M 40 30 Q 30 20 20 50" />
                 <path d="M 45 25 Q 40 10 35 45" />
                 <path d="M 65 25 Q 70 10 75 45" />
@@ -827,14 +827,14 @@ const ZyoAssistant: React.FC = () => {
               </g>
 
               {/* 2. CHASSIS */}
-              <g transform="translate(25, 60)" aria-hidden="true">
+              <g transform="translate(25, 60)" >
                 <path d="M 10 0 L 50 0 L 55 35 L 5 35 Z" fill="hsl(var(--card))" stroke="hsl(var(--terminal-green) / 0.4)" strokeWidth="1" />
                 <rect x="15" y="10" width="30" height="15" rx="2" fill="hsl(var(--background))" />
                 <path d="M 20 12 L 40 12" stroke="hsl(var(--terminal-green))" strokeWidth="0.5" opacity="0.6" />
               </g>
 
               {/* 3. HEAD UNIT */}
-              <g transform="translate(55, 40)" className={mood === 'dancing' && !reducedMotion.current ? 'animate-zyo-head' : ''} aria-hidden="true">
+              <g transform="translate(55, 40)" className={mood === 'dancing' && !reducedMotion.current ? 'animate-zyo-head' : ''} >
                 {/* Main Case */}
                 <rect x="-28" y="-25" width="56" height="50" rx="12" fill="hsl(var(--background))" stroke="hsl(var(--terminal-green) / 0.4)" strokeWidth="1.5" />
 
@@ -862,7 +862,7 @@ const ZyoAssistant: React.FC = () => {
               </g>
 
               {/* 4. ARMS */}
-              <g stroke="hsl(var(--border))" strokeWidth="6" strokeLinecap="round" aria-hidden="true">
+              <g stroke="hsl(var(--border))" strokeWidth="6" strokeLinecap="round" >
                 <path d="M 25 75 L 10 100" />
                 <path d="M 85 75 L 100 100" />
               </g>

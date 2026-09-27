@@ -8,7 +8,7 @@
       "flagship": "human-pinned PIN_ORDER, fixed order, small by design",
       "spotlight": "curated research/product set, ordered by score desc",
       "signal": "strict score order over the remainder, floor stars≥2 or score≥20, top 10, sketchy/archived excluded",
-      "recent": "activity feed: 6 most recently updated substantive repos (stars>0 or README or mentions or boost), lane overlap expected and labeled",
+      "recent": "activity feed: 6 most recently updated substantive repos (stars>0 or README or mentions or boost; updated since Aug 2026; archived/sketchy excluded) — lane overlap expected and labeled",
       "archive": "everything else, score order — stubs, experiments, older utilities"
     },
     "excluded": "forks of others' work (tracked, not ranked), profile-config repos, duplicate/typo repos, third-party repos unless human-pinned"
@@ -208,7 +208,7 @@
       "links": {
         "site": "https://axiom-02-world.zs-01117875692.workers.dev/",
         "docs": [
-          "https://github.com/Zierax/Axiom-02/blob/main/docs/RESEARCH_AUDIT_2026.md",
+          "https://github.com/Zierax/Axiom-02/blob/main/docs/METRICS_DEEP_DIVE.md",
           "https://github.com/Zierax/Axiom-02/blob/main/docs/SCENARIO_CATALOG.md"
         ],
         "benchmark": "https://github.com/Zierax/Axiom-02/blob/main/docs/RESULTS_ANALYSIS.md"
@@ -884,9 +884,9 @@
       "homepage": null,
       "links": {
         "docs": [
-          "https://github.com/Zierax/fl-studio-mcp/blob/main/docs/SETUP.md",
-          "https://github.com/Zierax/fl-studio-mcp/blob/main/docs/TOOLS.md",
-          "https://github.com/Zierax/fl-studio-mcp/blob/main/docs/ARCHITECTURE.md"
+          "https://github.com/Zierax/fl-studio-mcp/blob/master/docs/SETUP.md",
+          "https://github.com/Zierax/fl-studio-mcp/blob/master/docs/TOOLS.md",
+          "https://github.com/Zierax/fl-studio-mcp/blob/master/docs/ARCHITECTURE.md"
         ]
       },
       "headSha": null,
@@ -1076,7 +1076,7 @@
       ],
       "summary": "One script that fingerprints your Grafana, checks every public CVE that matters against it, keeps results in a local database, and serves them on a small dashboard. 244 stars because it does the boring work end to end.",
       "highlights": "External coverage: Hackers-Arise walkthrough, Vulners/KitPloit tool feed, CVEFeed exploit intelligence",
-      "story": "The repo strangers actually use — 244 stars, 45 forks, and a Hackers-Arise walkthrough.",
+      "story": "The repo strangers actually use — a Hackers-Arise walkthrough and Vulners/KitPloit plus CVEFeed listings to prove it.",
       "tags": [
         "Python",
         "Grafana",
@@ -1092,7 +1092,7 @@
           "repo": "Zierax/Grafana-Final-Scanner",
           "confidence": "high",
           "sourceType": "editorial",
-          "linkCheck": "200 on 2026-09-22"
+          "linkCheck": "200 on 2026-09-22; bot-gated (403) on re-check 2026-09-25"
         },
         {
           "outlet": "Vulners / KitPloit",
@@ -1298,7 +1298,7 @@
       ],
       "summary": "The recon methodology behind my hunts, published raw: how targets get mapped before a single payload is written. Others fork the workflow, not just read about it.",
       "highlights": "Start the recon process with some vulnerability assessments & automation easy recon (magicrecon, rapidscan, sniper, frogy2.0, raccon, openvas, omsedaus) for get · from builtwith https://github.com/m4ll0k/BBTz/blob/master/getrelationship.py · SSRF (Server-Side Request Forgery) v1:",
-      "story": "78 stars of field methodology — the hunting notes other hunters fork.",
+      "story": "Field methodology — the hunting notes other hunters fork.",
       "tags": [],
       "mentions": [],
       "readme": {
@@ -1323,10 +1323,10 @@
       "homepage": null,
       "links": {
         "docs": [
-          "https://github.com/Zierax/NHE-Architecture/blob/main/NHE-Edge/README.md",
-          "https://github.com/Zierax/NHE-Architecture/blob/main/STATUS.md"
+          "https://github.com/Zierax/NHE-Architecture/blob/NHE-Architecture/NHE-Edge/README.md",
+          "https://github.com/Zierax/NHE-Architecture/blob/NHE-Architecture/STATUS.md"
         ],
-        "benchmark": "https://github.com/Zierax/NHE-Architecture/blob/main/NHE-Edge/results/NUMBERS.md"
+        "benchmark": "https://github.com/Zierax/NHE-Architecture/blob/NHE-Architecture/NHE-Edge/results/NUMBERS.md"
       },
       "headSha": "2d36361",
       "headUrl": "https://github.com/Zierax/NHE-Architecture/commit/2d363615bc608f82663720aa82f71c1d27df6ed6",
@@ -1806,7 +1806,7 @@
       "links": {
         "site": "https://planck-99.pages.dev",
         "paper": [
-          "https://github.com/Division-36/Planck-99_PublicBenchmarks/blob/main/Planck-99_benchmark_paper.pdf"
+          "https://github.com/Division-36/Planck-99_PublicBenchmarks/blob/main/Planck-99_benckmark_paper.pdf"
         ],
         "docs": [
           "https://github.com/Division-36/Planck-99_PublicBenchmarks/blob/main/Planck-99_TechnicalBrief.pdf"
@@ -1959,7 +1959,7 @@
       ],
       "summary": "A Linux sandbox for running native code you don't trust: namespaces, pivot_root, dropped capabilities, NO_NEW_PRIVS, seccomp-BPF, JSON audit logs and BLAKE2b hashing — all inside a ~81 KiB static binary with zero dependencies.",
       "highlights": "External mentions: Risky Business, Vulners/KitPloit, Spark, Ojeo, Trendshift, Linux Command Library",
-      "story": "Six independent references — from Risky Business to a Linux man-page mirror — for a ~81 KiB sandbox.",
+      "story": "Referenced from Risky Business to a Linux man-page mirror — a ~81 KiB sandbox with the receipts to prove it.",
       "tags": [
         "C",
         "Sandbox",
@@ -2005,7 +2005,7 @@
           "repo": "Division-36/Z-Jail",
           "confidence": "low",
           "sourceType": "editorial",
-          "linkCheck": "unreachable on 2026-09-22"
+          "linkCheck": "non-200 on re-check 2026-09-25 (403); was unreachable 2026-09-22"
         },
         {
           "outlet": "Trendshift",
@@ -2308,5 +2308,6 @@
       "Zierax/G-dorks"
     ],
     "failures": []
-  }
+  },
+  "retieredAt": "2026-09-26T01:30:07.436Z"
 }

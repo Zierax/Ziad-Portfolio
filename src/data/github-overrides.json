@@ -106,7 +106,7 @@
         "CVE Research",
         "Bug Bounty"
       ],
-      "story": "The repo strangers actually use — 244 stars, 45 forks, and a Hackers-Arise walkthrough."
+      "story": "The repo strangers actually use — a Hackers-Arise walkthrough and Vulners/KitPloit plus CVEFeed listings to prove it."
     },
     "Division-36/Z-Jail": {
       "summary": "A Linux sandbox for running native code you don't trust: namespaces, pivot_root, dropped capabilities, NO_NEW_PRIVS, seccomp-BPF, JSON audit logs and BLAKE2b hashing — all inside a ~81 KiB static binary with zero dependencies.",
@@ -117,7 +117,7 @@
         "Linux Security",
         "Seccomp"
       ],
-      "story": "Six independent references — from Risky Business to a Linux man-page mirror — for a ~81 KiB sandbox."
+      "story": "Referenced from Risky Business to a Linux man-page mirror — a ~81 KiB sandbox with the receipts to prove it."
     },
     "Zierax/Axiom-Vesuvius": {
       "highlights": "3 fragments · 1 hr · >94% F1 · research-phase"
@@ -173,7 +173,7 @@
       ]
     },
     "Zierax/My-Recon-Methology": {
-      "story": "78 stars of field methodology — the hunting notes other hunters fork.",
+      "story": "Field methodology — the hunting notes other hunters fork.",
       "summary": "The recon methodology behind my hunts, published raw: how targets get mapped before a single payload is written. Others fork the workflow, not just read about it."
     },
     "Division-36/Z-Privesc": {
@@ -308,7 +308,7 @@
       "repo": "Division-36/Z-Jail",
       "confidence": "low",
       "sourceType": "editorial",
-      "linkCheck": "unreachable on 2026-09-22"
+      "linkCheck": "non-200 on re-check 2026-09-25 (403); was unreachable 2026-09-22"
     },
     {
       "outlet": "Trendshift",
@@ -338,7 +338,7 @@
       "repo": "Zierax/Grafana-Final-Scanner",
       "confidence": "high",
       "sourceType": "editorial",
-      "linkCheck": "200 on 2026-09-22"
+      "linkCheck": "200 on 2026-09-22; bot-gated (403) on re-check 2026-09-25"
     },
     {
       "outlet": "Vulners / KitPloit",
@@ -374,7 +374,7 @@
       "demo": "https://dorkmine.vercel.app/"
     },
     "Division-36/Planck-99_PublicBenchmarks": {
-      "paper": "https://github.com/Division-36/Planck-99_PublicBenchmarks/blob/main/Planck-99_benchmark_paper.pdf",
+      "paper": "https://github.com/Division-36/Planck-99_PublicBenchmarks/blob/main/Planck-99_benckmark_paper.pdf",
       "docs": [
         "https://github.com/Division-36/Planck-99_PublicBenchmarks/blob/main/Planck-99_TechnicalBrief.pdf"
       ]
@@ -404,16 +404,16 @@
       ]
     },
     "Zierax/NHE-Architecture": {
-      "benchmark": "https://github.com/Zierax/NHE-Architecture/blob/main/NHE-Edge/results/NUMBERS.md",
+      "benchmark": "https://github.com/Zierax/NHE-Architecture/blob/NHE-Architecture/NHE-Edge/results/NUMBERS.md",
       "docs": [
-        "https://github.com/Zierax/NHE-Architecture/blob/main/NHE-Edge/README.md",
-        "https://github.com/Zierax/NHE-Architecture/blob/main/STATUS.md"
+        "https://github.com/Zierax/NHE-Architecture/blob/NHE-Architecture/NHE-Edge/README.md",
+        "https://github.com/Zierax/NHE-Architecture/blob/NHE-Architecture/STATUS.md"
       ]
     },
     "Zierax/Axiom-02": {
       "benchmark": "https://github.com/Zierax/Axiom-02/blob/main/docs/RESULTS_ANALYSIS.md",
       "docs": [
-        "https://github.com/Zierax/Axiom-02/blob/main/docs/RESEARCH_AUDIT_2026.md",
+        "https://github.com/Zierax/Axiom-02/blob/main/docs/METRICS_DEEP_DIVE.md",
         "https://github.com/Zierax/Axiom-02/blob/main/docs/SCENARIO_CATALOG.md"
       ]
     },
@@ -451,9 +451,9 @@
     },
     "Zierax/fl-studio-mcp": {
       "docs": [
-        "https://github.com/Zierax/fl-studio-mcp/blob/main/docs/SETUP.md",
-        "https://github.com/Zierax/fl-studio-mcp/blob/main/docs/TOOLS.md",
-        "https://github.com/Zierax/fl-studio-mcp/blob/main/docs/ARCHITECTURE.md"
+        "https://github.com/Zierax/fl-studio-mcp/blob/master/docs/SETUP.md",
+        "https://github.com/Zierax/fl-studio-mcp/blob/master/docs/TOOLS.md",
+        "https://github.com/Zierax/fl-studio-mcp/blob/master/docs/ARCHITECTURE.md"
       ]
     }
   }

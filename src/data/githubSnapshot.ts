@@ -309,10 +309,18 @@ export function toPortfolioProject(repo: RankedRepo): PortfolioProject {
 }
 
 /** Every ranked repo as a portfolio project, tier order: flagship → spotlight → signal → recent → archive. */
-export const rankedProjects: PortfolioProject[] = (
-  ["flagship", "spotlight", "signal", "recent", "archive"] as RepoTier[]
-).flatMap((tier) => lane(tier).map(toPortfolioProject));
+export const rankedProjects: PortfolioProject[] = (() => {
+  // Recent is an overlapping activity feed: first occurrence (primary lane) wins.
+  const seen = new Set<string>();
+  const out: PortfolioProject[] = [];
+  for (const tier of ["flagship", "spotlight", "signal", "recent", "archive"] as RepoTier[]) {
+    for (const repo of lane(tier)) {
+      if (seen.has(repo.key)) continue;
+      seen.add(repo.key);
+      out.push(toPortfolioProject(repo));
+    }
+  }
+  return out;
+})();
 
-export function mentionsForRepo(key: string): SnapshotMention[] {
-  return repoByKey.get(key)?.mentions || [];
-}
+

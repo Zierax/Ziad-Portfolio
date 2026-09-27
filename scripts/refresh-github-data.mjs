@@ -21,7 +21,7 @@
  *      (never raw dumps — summaries/highlights only, with source links).
  *   5. Scores every repo with a documented feature function, applies the
  *      curated overrides in src/data/github-overrides.json, assigns tiers
- *      (flagship / signal / recent / archive).
+ *      (flagship / spotlight / signal / recent / archive).
  *   6. Writes src/data/generated/github-snapshot.json deterministically.
  *
  * Failure policy: if the GitHub API is unreachable and a snapshot already
@@ -154,7 +154,7 @@ const METHOD = {
     flagship: "human-pinned PIN_ORDER, fixed order, small by design",
     spotlight: "curated research/product set, ordered by score desc",
     signal: "strict score order over the remainder, floor stars≥2 or score≥20, top 10, sketchy/archived excluded",
-    recent: "activity feed: 6 most recently updated substantive repos (stars>0 or README or mentions or boost), lane overlap expected and labeled",
+    recent: "activity feed: 6 most recently updated substantive repos (stars>0 or README or mentions or boost; updated since Aug 2026; archived/sketchy excluded) — lane overlap expected and labeled",
     archive: "everything else, score order — stubs, experiments, older utilities",
   },
   excluded: "forks of others' work (tracked, not ranked), profile-config repos, duplicate/typo repos, third-party repos unless human-pinned",
@@ -543,7 +543,6 @@ function retierOnly(nowIso) {
   }
   const old = JSON.parse(readFileSync(SNAPSHOT_PATH, "utf8"));
   const profileMetricByRepo = new Map((old.profileReadme?.highlights || []).map((h) => [h.repo, h.metric]));
-
   const ranked = old.ranked.map((r) => {
     const display = resolveDisplay({
       key: r.key,
@@ -574,11 +573,20 @@ function retierOnly(nowIso) {
 
   // Totals are API facts (they include hidden-owned repos); preserved exactly.
   // Method is code, not data — always refresh it to the current contract.
+  // Excluded.hidden is recomputed as HIDE keys that are either still ranked
+  // or were previously observed (offline runs cannot re-observe listings);
+  // thirdParty/forks are preserved untouched (API facts).
+  const rankedKeys = new Set(ranked.map((r) => r.key));
+  const previouslyHidden = new Set(old.excluded?.hidden || []);
   const snapshot = {
     ...old,
     retieredAt: nowIso,
     schemaVersion: SCHEMA_VERSION,
     method: METHOD,
+    excluded: {
+      ...old.excluded,
+      hidden: [...HIDE].filter((k) => rankedKeys.has(k) || previouslyHidden.has(k)),
+    },
     tiers: {
       flagship: flagship.map((r) => r.key),
       spotlight: spotlight.map((r) => r.key),
@@ -1028,7 +1036,7 @@ async function runSelfTest() {
     readmeHighlightList: ["h1"],
     profileMetric: "",
   });
-  check("copy-precedence", d.summary.startsWith("Practical Grafana scanner") && d.tags.includes("Grafana"));
+  check("copy-precedence", d.summary.startsWith("One script that fingerprints") && d.tags.includes("Grafana"));
   const d2 = resolveDisplay({
     key: "Zierax/Nope-Unknown",
     apiDescription: "",
