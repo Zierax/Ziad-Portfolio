@@ -5,10 +5,24 @@
  * ships to every browser with the site: refresh timestamps, owned-star
  * totals, lane sizes, and the flagship list. No per-visitor state, no
  * telemetry, no secrets — safe to cache at the edge.
+ *
+ * NOTE: deliberately self-contained (no cross-file imports) so the
+ * serverless bundle has zero resolution risk. The snapshot is loaded
+ * dynamically with a clean fallback so a bundling miss degrades to a
+ * diagnosable 500 instead of a cold-start crash.
  */
-import snapshot from "../src/data/generated/github-snapshot.json";
-import { publicCache, requireMethod, safeHandler, sendJson } from "./_util";
-import type { ApiRequest, ApiResponse } from "./_util";
+
+interface Req {
+  method?: string;
+  url?: string;
+  headers: Record<string, string | string[] | undefined>;
+}
+
+interface Res {
+  status: (code: number) => Res;
+  json: (body: unknown) => unknown;
+  setHeader: (name: string, value: string) => Res;
+}
 
 interface SnapshotMeta {
   refreshedAt?: string;
@@ -26,19 +40,51 @@ interface SnapshotMeta {
   warnings?: string[];
 }
 
-const data = snapshot as unknown as SnapshotMeta;
-
-function laneCount(name: string): number {
-  return Array.isArray(data.tiers?.[name]) ? (data.tiers as Record<string, string[]>)[name].length : 0;
+async function loadSnapshot(): Promise<SnapshotMeta> {
+  const mod = await import("../src/data/generated/github-snapshot.json");
+  return (mod as { default?: SnapshotMeta }).default ?? (mod as unknown as SnapshotMeta);
 }
 
-async function handler(req: ApiRequest, res: ApiResponse) {
-  if (!requireMethod(req, res, ["GET"])) return;
+async function route(req: Req, res: Res) {
+  const method = (req.method || "").toUpperCase();
+  if (method !== "GET") {
+    res.setHeader("content-type", "application/json; charset=utf-8");
+    res.setHeader("x-request-id", `${Date.now().toString(36)}`);
+    res.setHeader("Allow", "GET");
+    return res.status(405).json({
+      code: "method_not_allowed",
+      error: "Use GET on this endpoint.",
+      allowed: ["GET"],
+    });
+  }
 
+  let data: SnapshotMeta;
+  try {
+    data = await loadSnapshot();
+  } catch (err) {
+    console.error(JSON.stringify({
+      ts: new Date().toISOString(), level: "error",
+      detail: `snapshot_unavailable:${err instanceof Error ? err.message : typeof err}`,
+    }));
+    res.setHeader("content-type", "application/json; charset=utf-8");
+    return res.status(500).json({
+      code: "snapshot_unavailable",
+      error: "Evidence snapshot could not be loaded. The site itself carries the same data.",
+    });
+  }
+
+  const laneCount = (name: string): number => {
+    const arr = data.tiers?.[name];
+    return Array.isArray(arr) ? arr.length : 0;
+  };
   const ranked = Array.isArray(data.ranked) ? data.ranked : [];
   const flagship = ranked.filter((r) => r.tier === "flagship").map((r) => ({ key: r.key, stars: r.stars }));
 
-  return sendJson(req, res, 200, {
+  res.setHeader("content-type", "application/json; charset=utf-8");
+  res.setHeader("x-content-type-options", "nosniff");
+  res.setHeader("referrer-policy", "no-referrer");
+  res.setHeader("cache-control", "public, s-maxage=3600, stale-while-revalidate=86400");
+  return res.status(200).json({
     code: "ok",
     refreshedAt: data.refreshedAt ?? null,
     retieredAt: data.retieredAt ?? null,
@@ -60,7 +106,21 @@ async function handler(req: ApiRequest, res: ApiResponse) {
     },
     warnings: data.warnings ?? [],
     note: "Owned public repository stars — not the GitHub profile Stars tab. Full data ships with the site; regenerate with `npm run refresh:github`.",
-  }, publicCache(3600, 86400));
+  });
 }
 
-export default safeHandler(handler);
+export default async function handler(req: Req, res: Res) {
+  try {
+    await route(req, res);
+  } catch (err) {
+    console.error(JSON.stringify({
+      ts: new Date().toISOString(), level: "error",
+      detail: `unhandled:${err instanceof Error ? err.name : typeof err}`,
+    }));
+    res.setHeader("content-type", "application/json; charset=utf-8");
+    return res.status(500).json({
+      code: "internal_error",
+      error: "Unexpected server error. Nothing was stored.",
+    });
+  }
+}
