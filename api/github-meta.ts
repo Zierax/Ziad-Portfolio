@@ -6,10 +6,10 @@
  * totals, lane sizes, and the flagship list. No per-visitor state, no
  * telemetry, no secrets — safe to cache at the edge.
  *
- * NOTE: imports a tiny generated TS module (not the 144KB snapshot JSON),
- * so the serverless bundler inlines it with zero file-tracing risk.
+ * NOTE: the payload below is inlined (not imported) because cross-file
+ * TS imports demonstrably fail to resolve in this serverless runtime.
+ * Rewritten by scripts/refresh-github-data.mjs — do not hand-edit it.
  */
-import { githubMetaPayload } from "./github-meta.payload";
 
 interface Req {
   method?: string;
@@ -22,6 +22,81 @@ interface Res {
   json: (body: unknown) => unknown;
   setHeader: (name: string, value: string) => Res;
 }
+
+// <GENERATED-PAYLOAD-START>
+const PAYLOAD = {
+  "refreshedAt": "2026-09-25T19:05:44.702Z",
+  "retieredAt": "2026-09-27T03:06:29.357Z",
+  "source": "github-api",
+  "schemaVersion": 2,
+  "totals": {
+    "zieraxOwnedRepoStars": 532,
+    "zieraxOwnedRepoForks": 102,
+    "zieraxOwnedRepoCount": 93,
+    "division36OwnedRepoStars": 95,
+    "division36OwnedRepoForks": 15,
+    "division36OwnedRepoCount": 10,
+    "combinedOwnedRepoStars": 627,
+    "combinedOwnedRepoForks": 117
+  },
+  "lanes": {
+    "flagship": 10,
+    "spotlight": 13,
+    "signal": 10,
+    "recent": 6,
+    "archive": 4
+  },
+  "flagship": [
+    {
+      "key": "Zierax/Grafana-Final-Scanner",
+      "stars": 244
+    },
+    {
+      "key": "Division-36/Z-Jail",
+      "stars": 74
+    },
+    {
+      "key": "Zierax/My-Recon-Methology",
+      "stars": 79
+    },
+    {
+      "key": "Division-36/Planck-99_PublicBenchmarks",
+      "stars": 9
+    },
+    {
+      "key": "Division-36/Z-Privesc",
+      "stars": 9
+    },
+    {
+      "key": "Zierax/Axiom-Zspace",
+      "stars": 4
+    },
+    {
+      "key": "Zierax/Axiom-Astrophysics",
+      "stars": 1
+    },
+    {
+      "key": "Zierax/NHE-Architecture",
+      "stars": 0
+    },
+    {
+      "key": "Zierax/AdmitGPT",
+      "stars": 3
+    },
+    {
+      "key": "Zierax/Axiom-02",
+      "stars": 4
+    }
+  ],
+  "excluded": {
+    "hidden": 68,
+    "thirdParty": 1,
+    "forks": 37
+  },
+  "warnings": []
+} as const;
+// <GENERATED-PAYLOAD-END>
+
 
 async function route(req: Req, res: Res) {
   const method = (req.method || "").toUpperCase();
@@ -42,7 +117,7 @@ async function route(req: Req, res: Res) {
   res.setHeader("cache-control", "public, s-maxage=3600, stale-while-revalidate=86400");
   return res.status(200).json({
     code: "ok",
-    ...githubMetaPayload,
+    ...PAYLOAD,
     note: "Owned public repository stars — not the GitHub profile Stars tab. Full data ships with the site; regenerate with `npm run refresh:github`.",
   });
 }
