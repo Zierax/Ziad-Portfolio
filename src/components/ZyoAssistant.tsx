@@ -7,9 +7,14 @@ import {
 // ⚙️ SYSTEM CONSTANTS
 // ==========================================
 
-type Mood = 'idle' | 'coding' | 'watching' | 'dancing' | 'dragged';
+type Mood = 'idle' | 'coding' | 'watching' | 'dancing' | 'dragged' | 'sleeping';
 
 interface Position { x: number; y: number; }
+
+// After this long without cursor movement, the pet dozes off.
+const SLEEP_AFTER_MS = 45000;
+// Closer than this (px), the pet stares back instead of idling.
+const CURIOUS_RADIUS_PX = 130;
 
 const PLAYLIST = [
   { id: 1, name: "God Alert", artist: "Creator", file: "https://github.com/Zierax/Ziad-Portfolio/raw/refs/heads/main/src/music/God%20Alert.mp3" },
@@ -50,7 +55,10 @@ function buildFacts(profile: ProfileModule | null): string[] {
     "TIP — a 12-puzzle CTF lives at /challenge",
   ];
   if (!profile) return facts;
-  const { flagshipRepos, githubSignal, academicResearches, displayName } = profile;
+  const {
+    flagshipRepos, signalRepos, recentRepos, externalMentions,
+    division36Systems, githubSignal, academicResearches, displayName, updatedLabel,
+  } = profile;
   facts.push(
     `${githubSignal.combinedOwnedRepoStars} owned repo stars across ${githubSignal.publicRepos + githubSignal.division36PublicRepos} public repos`,
     `${academicResearches.length} research records with versioned Zenodo DOIs`
@@ -74,6 +82,24 @@ function buildFacts(profile: ProfileModule | null): string[] {
         `Z-Jail is cited by ${outlets.slice(0, 3).join(", ")}${outlets.length > 3 ? ` +${outlets.length - 3} more` : ""}`
       );
     }
+  }
+  const topSignal = signalRepos[0];
+  if (topSignal) {
+    facts.push(`${displayName(topSignal)} leads the signal stream at ${topSignal.stars} stars`);
+  }
+  const freshest = recentRepos[0];
+  if (freshest) {
+    facts.push(`${displayName(freshest)} updated ${updatedLabel(freshest.updatedAt)} — freshest activity`);
+  }
+  if (externalMentions.length > 0) {
+    facts.push(`${externalMentions.length} third-party citations tracked — see 'mentions' in the terminal`);
+  }
+  if (division36Systems.length > 0) {
+    facts.push(`Division-36 runs ${division36Systems.slice(0, 3).map((s) => s.name).join(" · ")} as public benchmarks`);
+  }
+  const newestPaper = academicResearches[0];
+  if (newestPaper && newestPaper.status) {
+    facts.push(`Research record: ${newestPaper.title.slice(0, 60)}… — ${newestPaper.status}`);
   }
   return facts;
 }
@@ -218,6 +244,8 @@ const ZyoAssistant: React.FC = () => {
   const posRef = useRef<Position>({ x: vw() - 120, y: vh() - 150 });
   const targetRef = useRef<Position>({ x: vw() - 120, y: vh() - 150 });
   const mouseRef = useRef<Position>({ x: vw() / 2, y: vh() / 2 });
+  const lastMoveRef = useRef<number>(Date.now());
+  const [bounceKey, setBounceKey] = useState(0);
   const draggingRef = useRef(false);
   const mountedRef = useRef(true);
   const reducedMotion = useRef(
@@ -264,6 +292,7 @@ const ZyoAssistant: React.FC = () => {
     const handleResize = () => clampTarget();
     const handleMouse = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
+      lastMoveRef.current = Date.now();
     };
     window.addEventListener('resize', handleResize);
     window.addEventListener('mousemove', handleMouse, { passive: true });
@@ -315,13 +344,23 @@ const ZyoAssistant: React.FC = () => {
         setStatusText("PLAYBACK_ACTIVE");
         return;
       }
+      // Asleep after long idleness — wakes on movement, click, or drag.
+      if (Date.now() - lastMoveRef.current > SLEEP_AFTER_MS) {
+        setMood('sleeping');
+        setStatusText("DREAM_MODE");
+        return;
+      }
       const rand = Math.random();
       if (rand < 0.3) {
         setMood('coding');
         setStatusText("INDEXING_DOSSIER");
       } else if (rand < 0.6) {
+        // Close cursor? Stare back, don't look away.
+        const dx = mouseRef.current.x - (posRef.current.x + 55);
+        const dy = mouseRef.current.y - (posRef.current.y + 45);
+        const near = Math.hypot(dx, dy) < CURIOUS_RADIUS_PX;
         setMood('watching');
-        setStatusText("ON_WATCH");
+        setStatusText(near ? "CURIOUS" : "ON_WATCH");
       } else {
         setMood('idle');
         setStatusText(LOGS[Math.floor(Math.random() * LOGS.length)]);
@@ -374,6 +413,8 @@ const ZyoAssistant: React.FC = () => {
     }
     setSpeech(facts[factIdx.current % facts.length]);
     factIdx.current += 1;
+    lastMoveRef.current = Date.now(); // attention wakes the pet
+    if (!reducedMotion.current) setBounceKey((b) => b + 1);
     if (speechTimer.current !== null) window.clearTimeout(speechTimer.current);
     speechTimer.current = window.setTimeout(() => {
       if (mountedRef.current) setSpeech(null);
@@ -402,6 +443,7 @@ const ZyoAssistant: React.FC = () => {
   const handleMouseDown = (e: React.MouseEvent) => {
     if (e.button !== 0) return; // left button only
     downPos.current = { x: e.clientX, y: e.clientY };
+    lastMoveRef.current = Date.now();
     draggingRef.current = true;
     setIsDragging(true);
     setMood('dragged');
@@ -431,6 +473,7 @@ const ZyoAssistant: React.FC = () => {
     const t = e.changedTouches[0];
     touchId.current = t.identifier;
     downPos.current = { x: t.clientX, y: t.clientY };
+    lastMoveRef.current = Date.now();
     draggingRef.current = true;
     setIsDragging(true);
     setMood('dragged');
@@ -807,12 +850,20 @@ const ZyoAssistant: React.FC = () => {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
-            className="cursor-grab active:cursor-grabbing focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terminal-green"
+            className="cursor-grab active:cursor-grabbing transition-transform duration-200 group-hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terminal-green"
             role="button"
             tabIndex={0}
             aria-label="Zyo assistant. Press Enter for a dossier fact, M for music."
             onKeyDown={handleKeyDown}
           >
+            {mood === 'sleeping' && (
+              <div aria-hidden="true" className="pointer-events-none absolute -right-2 -top-4 flex flex-col items-center">
+                <span className="font-mono text-sm font-bold text-terminal-green animate-zyo-zzz">z</span>
+                <span className="font-mono text-[10px] font-bold text-terminal-green/70 animate-zyo-zzz" style={{ animationDelay: "0.6s" }}>z</span>
+                <span className="font-mono text-[8px] font-bold text-terminal-green/50 animate-zyo-zzz" style={{ animationDelay: "1.2s" }}>z</span>
+              </div>
+            )}
+            <div key={bounceKey} className={bounceKey > 0 && !reducedMotion.current ? "animate-zyo-boing" : undefined}>
             <svg width="110" height="130" viewBox="0 0 110 130" aria-hidden="true" className={reducedMotion.current ? undefined : "animate-zyo-float"}>
 
               {/* 1. FIBER DREADS */}
@@ -827,14 +878,26 @@ const ZyoAssistant: React.FC = () => {
               </g>
 
               {/* 2. CHASSIS */}
-              <g transform="translate(25, 60)" >
+              <g transform="translate(25, 60)" aria-hidden="true">
                 <path d="M 10 0 L 50 0 L 55 35 L 5 35 Z" fill="hsl(var(--card))" stroke="hsl(var(--terminal-green) / 0.4)" strokeWidth="1" />
                 <rect x="15" y="10" width="30" height="15" rx="2" fill="hsl(var(--background))" />
                 <path d="M 20 12 L 40 12" stroke="hsl(var(--terminal-green))" strokeWidth="0.5" opacity="0.6" />
+                {/* Core light */}
+                <circle cx="30" cy="29" r="3.5" fill="hsl(var(--terminal-green))" opacity="0.85" className={reducedMotion.current ? undefined : "animate-pulse"} />
+                <circle cx="30" cy="29" r="1.5" fill="#eafff0" />
               </g>
 
+              {/* 2b. THRUSTER GLOW */}
+              <ellipse cx="55" cy="101" rx="9" ry="2.5" fill="hsl(var(--terminal-green))" opacity="0.3" className={reducedMotion.current ? undefined : "animate-zyo-thrust"} aria-hidden="true" />
+
               {/* 3. HEAD UNIT */}
-              <g transform="translate(55, 40)" className={mood === 'dancing' && !reducedMotion.current ? 'animate-zyo-head' : ''} >
+              <g transform="translate(55, 40)" className={mood === 'dancing' && !reducedMotion.current ? 'animate-zyo-head' : ''} aria-hidden="true">
+                {/* Antenna */}
+                <line x1="0" y1="-25" x2="0" y2="-34" stroke="hsl(var(--terminal-green) / 0.6)" strokeWidth="2" strokeLinecap="round" />
+                <circle cx="0" cy="-36" r="2" fill="hsl(var(--terminal-green))" className={reducedMotion.current ? undefined : "animate-pulse"} />
+                {/* Ear fins */}
+                <path d="M -28 -6 L -37 1 L -28 7 Z" fill="hsl(var(--card))" stroke="hsl(var(--terminal-green) / 0.4)" strokeWidth="1" />
+                <path d="M 28 -6 L 37 1 L 28 7 Z" fill="hsl(var(--card))" stroke="hsl(var(--terminal-green) / 0.4)" strokeWidth="1" />
                 {/* Main Case */}
                 <rect x="-28" y="-25" width="56" height="50" rx="12" fill="hsl(var(--background))" stroke="hsl(var(--terminal-green) / 0.4)" strokeWidth="1.5" />
 
@@ -845,8 +908,8 @@ const ZyoAssistant: React.FC = () => {
                   <path d="M -2 -3 L 2 -3" />
                 </g>
 
-                {/* Eyes Logic */}
-                {isBlinking ? (
+                {/* Eyes Logic — closed while blinking or dreaming */}
+                {isBlinking || mood === 'sleeping' ? (
                    <g stroke="hsl(var(--terminal-green))" strokeWidth="2">
                      <line x1="-18" y1="-3" x2="-6" y2="-3" />
                      <line x1="6" y1="-3" x2="18" y2="-3" />
@@ -861,13 +924,18 @@ const ZyoAssistant: React.FC = () => {
                 )}
               </g>
 
-              {/* 4. ARMS */}
-              <g stroke="hsl(var(--border))" strokeWidth="6" strokeLinecap="round" >
+              {/* 4. ARMS + HANDS */}
+              <g stroke="hsl(var(--border))" strokeWidth="6" strokeLinecap="round" aria-hidden="true">
                 <path d="M 25 75 L 10 100" />
                 <path d="M 85 75 L 100 100" />
               </g>
+              <g aria-hidden="true">
+                <circle cx="10" cy="101" r="3.5" fill="hsl(var(--background))" stroke="hsl(var(--terminal-green) / 0.5)" strokeWidth="1.5" />
+                <circle cx="100" cy="101" r="3.5" fill="hsl(var(--background))" stroke="hsl(var(--terminal-green) / 0.5)" strokeWidth="1.5" />
+              </g>
 
             </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -877,14 +945,32 @@ const ZyoAssistant: React.FC = () => {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }
         }
+        @keyframes zyo-boing {
+          0% { transform: scale(1, 1); }
+          30% { transform: scale(1.12, 0.88); }
+          55% { transform: scale(0.94, 1.06); }
+          100% { transform: scale(1, 1); }
+        }
+        @keyframes zyo-zzz {
+          0% { transform: translateY(0); opacity: 0; }
+          30% { opacity: 1; }
+          100% { transform: translateY(-14px); opacity: 0; }
+        }
+        @keyframes zyo-thrust {
+          0%, 100% { opacity: 0.22; }
+          50% { opacity: 0.45; }
+        }
         @keyframes zyo-head {
           0%, 100% { transform: translate(55px, 40px) rotate(0deg); }
           50% { transform: translate(55px, 40px) rotate(5deg); }
         }
         .animate-zyo-float { animation: zyo-float 3s ease-in-out infinite; }
         .animate-zyo-head { animation: zyo-head 0.5s ease-in-out infinite; }
+        .animate-zyo-boing { animation: zyo-boing 0.5s ease-out; }
+        .animate-zyo-zzz { animation: zyo-zzz 2.2s ease-out infinite; }
+        .animate-zyo-thrust { animation: zyo-thrust 1.6s ease-in-out infinite; }
         @media (prefers-reduced-motion: reduce) {
-          .animate-zyo-float, .animate-zyo-head { animation: none; }
+          .animate-zyo-float, .animate-zyo-head, .animate-zyo-boing, .animate-zyo-zzz, .animate-zyo-thrust { animation: none; }
         }
       `}</style>
     </>
