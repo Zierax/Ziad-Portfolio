@@ -914,7 +914,7 @@ const ZyoAssistant: React.FC = () => {
             <svg width="110" height="130" viewBox="0 0 110 130" aria-hidden="true" className={reducedMotion.current ? undefined : "animate-zyo-float"} style={{ filter: "drop-shadow(0 0 14px hsl(var(--terminal-green) / 0.35))" }}>
               <defs>
                 <linearGradient id="zyo-head-grad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#0e1c13" />
+                  <stop offset="0%" stopColor="#16281a" />
                   <stop offset="100%" stopColor="#040705" />
                 </linearGradient>
                 <radialGradient id="zyo-aura" cx="0.5" cy="0.5" r="0.5">
@@ -922,7 +922,7 @@ const ZyoAssistant: React.FC = () => {
                   <stop offset="100%" stopColor="hsl(var(--terminal-green))" stopOpacity="0" />
                 </radialGradient>
                 <linearGradient id="zyo-body-grad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#0c1610" />
+                  <stop offset="0%" stopColor="#132218" />
                   <stop offset="100%" stopColor="#030604" />
                 </linearGradient>
               </defs>
@@ -932,13 +932,13 @@ const ZyoAssistant: React.FC = () => {
 
               {/* 1. FIBER DREADS */}
               <g stroke="hsl(var(--terminal-green) / 0.5)" strokeWidth="4" fill="none" strokeLinecap="round" >
-                <path d="M 40 30 Q 30 20 20 50" />
-                <path d="M 45 25 Q 40 10 35 45" />
-                <path d="M 65 25 Q 70 10 75 45" />
-                <path d="M 70 30 Q 80 20 90 50" />
+                <path d="M 40 30 Q 33 22 26 42" />
+                <path d="M 45 25 Q 42 12 38 38" />
+                <path d="M 65 25 Q 68 12 72 38" />
+                <path d="M 70 30 Q 77 22 84 42" />
                 {/* Status tips */}
-                <circle cx="20" cy="50" r="1.5" fill="hsl(var(--terminal-amber))" className={reducedMotion.current ? undefined : "animate-pulse"} />
-                <circle cx="90" cy="50" r="1.5" fill="hsl(var(--terminal-amber))" className={reducedMotion.current ? undefined : "animate-pulse"} />
+                <circle cx="26" cy="42" r="1.5" fill="hsl(var(--terminal-amber))" className={reducedMotion.current ? undefined : "animate-pulse"} />
+                <circle cx="84" cy="42" r="1.5" fill="hsl(var(--terminal-amber))" className={reducedMotion.current ? undefined : "animate-pulse"} />
               </g>
 
               {/* 2. CHASSIS */}
@@ -956,7 +956,7 @@ const ZyoAssistant: React.FC = () => {
 
               {/* 2b. THRUSTER GLOW */}
               <ellipse cx="55" cy="101" rx="9" ry="2.5" fill="hsl(var(--terminal-green))" opacity="0.3" className={reducedMotion.current ? undefined : "animate-zyo-thrust"} aria-hidden="true" />
-              <ellipse cx="55" cy="100.5" rx="4.5" ry="1.4" fill="#eafff0" opacity="0.75" aria-hidden="true" />
+              <ellipse cx="55" cy="100.5" rx="3.2" ry="1.1" fill="#eafff0" opacity="0.5" aria-hidden="true" />
 
               {/* 3. HEAD UNIT */}
               <g transform="translate(55, 40)" className={mood === 'dancing' && !reducedMotion.current ? 'animate-zyo-head' : ''} aria-hidden="true">
@@ -964,8 +964,8 @@ const ZyoAssistant: React.FC = () => {
                 <line x1="0" y1="-25" x2="0" y2="-34" stroke="hsl(var(--terminal-green) / 0.6)" strokeWidth="2" strokeLinecap="round" />
                 <circle cx="0" cy="-36" r="2" fill="hsl(var(--terminal-amber))" className={reducedMotion.current ? undefined : "animate-pulse"} />
                 {/* Ear fins */}
-                <path d="M -28 -6 L -37 1 L -28 7 Z" fill="#0a120d" stroke="hsl(var(--terminal-green) / 0.4)" strokeWidth="1" />
-                <path d="M 28 -6 L 37 1 L 28 7 Z" fill="#0a120d" stroke="hsl(var(--terminal-green) / 0.4)" strokeWidth="1" />
+                <path d="M -27 -9 L -34 -22 L -21 -13 Z" fill="#0a120d" stroke="hsl(var(--terminal-green) / 0.4)" strokeWidth="1" />
+                <path d="M 27 -9 L 34 -22 L 21 -13 Z" fill="#0a120d" stroke="hsl(var(--terminal-green) / 0.4)" strokeWidth="1" />
                 {/* Main Case */}
                 <rect x="-28" y="-25" width="56" height="50" rx="12" fill="url(#zyo-head-grad)" stroke="hsl(var(--terminal-green))" strokeOpacity="0.9" strokeWidth="2" />
                 {/* Brow plates (determined) */}
@@ -974,14 +974,11 @@ const ZyoAssistant: React.FC = () => {
                 {/* Forehead emblem */}
                 <path d="M 0 -22 L 3 -19 L 0 -16 L -3 -19 Z" fill="none" stroke="hsl(var(--terminal-amber))" strokeWidth="1.2" />
                 {/* Cheek vents */}
-                <path d="M -24 8 L -24 16 M -21 8 L -21 16" stroke="hsl(var(--terminal-green))" strokeOpacity="0.35" strokeWidth="1.2" strokeLinecap="round" />
-                <path d="M 24 8 L 24 16 M 21 8 L 21 16" stroke="hsl(var(--terminal-green))" strokeOpacity="0.35" strokeWidth="1.2" strokeLinecap="round" />
-
+                
                 {/* Optical Sensors */}
                 <g stroke="hsl(var(--terminal-green) / 0.8)" strokeWidth="2" fill="none">
-                  <circle cx="-12" cy="-3" r="10" />
-                  <circle cx="12" cy="-3" r="10" />
-                  <path d="M -2 -3 L 2 -3" />
+                  <circle cx="-12" cy="-3" r="7.5" />
+                  <circle cx="12" cy="-3" r="7.5" />
                 </g>
 
                 {/* Eyes Logic — closed while blinking or dreaming */}
@@ -992,14 +989,22 @@ const ZyoAssistant: React.FC = () => {
                    </g>
                 ) : (
                   <g ref={pupilGroupRef} transform="translate(0,0)">
-                    <circle cx={-10} cy={-3} r="6.5" fill="hsl(var(--terminal-green))" opacity="0.22" />
-                    <circle cx={10} cy={-3} r="6.5" fill="hsl(var(--terminal-green))" opacity="0.22" />
-                    <circle cx={-10} cy={-3} r="4" fill="hsl(var(--terminal-green))" opacity="0.95" />
-                    <circle cx={10} cy={-3} r="4" fill="hsl(var(--terminal-green))" opacity="0.95" />
+                    <circle cx={-10} cy={-3} r="7" fill="hsl(var(--terminal-green))" opacity="0.22" />
+                    <circle cx={10} cy={-3} r="7" fill="hsl(var(--terminal-green))" opacity="0.22" />
+                    <circle cx={-10} cy={-3} r="4.5" fill="hsl(var(--terminal-green))" opacity="0.95" />
+                    <circle cx={10} cy={-3} r="4.5" fill="hsl(var(--terminal-green))" opacity="0.95" />
                     <circle cx={-10} cy={-3} r="1.5" fill="#eafff0" />
                     <circle cx={10} cy={-3} r="1.5" fill="#eafff0" />
                   </g>
                 )}
+                {/* Mouth */}
+                <g transform="translate(0, 15)">
+                  {mood === 'coding' ? (
+                    <rect x="-10" y="0" width="20" height="2" fill="hsl(var(--terminal-green))" />
+                  ) : (
+                    <path d="M -9 0 Q 0 5 9 0" stroke="hsl(var(--terminal-green))" fill="none" strokeWidth="2" strokeLinecap="round" />
+                  )}
+                </g>
               </g>
 
               {/* 4. ARMS + HANDS */}
@@ -1012,8 +1017,8 @@ const ZyoAssistant: React.FC = () => {
                 <circle cx="93" cy="88" r="1.6" fill="hsl(var(--terminal-green))" opacity="0.7" />
               </g>
               <g aria-hidden="true">
-                <circle cx="10" cy="101" r="3.5" fill="hsl(var(--background))" stroke="hsl(var(--terminal-green) / 0.5)" strokeWidth="1.5" />
-                <circle cx="100" cy="101" r="3.5" fill="hsl(var(--background))" stroke="hsl(var(--terminal-green) / 0.5)" strokeWidth="1.5" />
+                <circle cx="10" cy="101" r="2.6" fill="hsl(var(--terminal-green))" />
+                <circle cx="100" cy="101" r="2.6" fill="hsl(var(--terminal-green))" />
               </g>
 
             </svg>
