@@ -85,7 +85,7 @@ export const getTerminalOutput = (cmd: string): string[] => {
         "",
         columns("GitHub", "github.com/Zierax"),
         columns("Organization", githubSignal.affiliation),
-        columns("Location", `${githubSignal.location} / ${profileData.location}`),
+        columns("Location", profileData.location),
         columns("Public repos", githubSignal.publicRepos),
         columns("Followers", githubSignal.followers),
         columns("Owned repo stars", githubSignal.combinedOwnedRepoStars),
@@ -153,10 +153,14 @@ export const getTerminalOutput = (cmd: string): string[] => {
     case "projects":
     case "ls projects":
     case "ls projects/": {
-      const visible = rankedProjects.filter((p) => p.tier !== "archive");
+      // Primary lanes only; rankedProjects is already de-duplicated at the
+      // source (recent is an overlapping feed shown in the dossier).
+      const visible = rankedProjects.filter(
+        (p) => p.tier === "flagship" || p.tier === "spotlight" || p.tier === "signal"
+      );
       const archived = rankedProjects.filter((p) => p.tier === "archive");
       return [
-        "RANKED PROJECTS (same snapshot list as the dossier — flagship, spotlight, signal, recent)",
+        "RANKED PROJECTS (same snapshot list as the dossier — flagship, spotlight, signal)",
         ...visible.flatMap((project, index) => [
           `${String(index + 1).padStart(2, "0")}. [${project.tier} · score ${project.score}] ${project.title}${project.performance ? ` / ${project.performance}` : ""}`,
           `    created ${updatedLabel(project.createdAt)} · updated ${updatedLabel(project.updatedAt)}`,
@@ -277,6 +281,9 @@ export const getTerminalOutput = (cmd: string): string[] => {
         "[research]",
         ...skills.research.map((skill) => `  - ${skill}`),
         "",
+        "[business]",
+        ...skills.business.map((skill) => `  - ${skill}`),
+        "",
       ];
 
     case "opsec":
@@ -286,6 +293,7 @@ export const getTerminalOutput = (cmd: string): string[] => {
         "PORTFOLIO OPSEC POSTURE",
         "  passive recon hook: disabled",
         "  visitor dump API: returns 410 Gone",
+        "  host access logs: provider-side only, see /privacy",
         "  browser fingerprinting: removed from app shell",
         "  WebRTC/audio/canvas/font probes: removed from app shell",
         "  terminal mode: read-only local state",

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { BookOpen, GraduationCap, Github, Linkedin, Mail, ExternalLink, FileText, Trophy, MapPin, Award } from "lucide-react";
-import { profileData, skills, experience, projects, education, academicResearches, certifications, awards } from "@/data/profile";
+import { GraduationCap, Github, Linkedin, Mail, ExternalLink, FileText, Trophy, MapPin, Award, Fingerprint } from "lucide-react";
+import { profileData, skills, experience, projects, education, academicResearches, certifications, awards, githubSignal } from "@/data/profile";
 
 const AcademicPortfolio = () => {
     const [activeTab, setActiveTab] = useState<"about" | "research" | "projects" | "achievements">("about");
@@ -17,8 +17,7 @@ const AcademicPortfolio = () => {
     return (
         <div className="min-h-screen bg-[#f8fafc] w-full text-slate-800 font-sans selection:bg-blue-200 selection:text-blue-900 overflow-x-hidden relative">
             <div className="fixed inset-0 z-0 pointer-events-none">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_0%,#000_10%,transparent_100%)] opacity-50"></div>
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[400px] opacity-20 bg-gradient-to-b from-blue-400 to-transparent blur-3xl mix-blend-multiply"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e7edf3_1px,transparent_1px),linear-gradient(to_bottom,#e7edf3_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_0%,#000_10%,transparent_100%)] opacity-60"></div>
             </div>
 
             <div className="relative z-10 flex flex-col min-h-screen">
@@ -78,10 +77,12 @@ const AcademicPortfolio = () => {
                                     
                                     <div className="flex justify-center gap-3 mb-8">
                                         {profileData.socials.slice(0, 4).map((social, idx) => (
-                                            <a key={idx} href={social.url} target="_blank" className="p-2.5 bg-slate-50 rounded-xl text-slate-500 border border-slate-200/50 hover:bg-blue-600 hover:text-white transition-all">
+                                            <a key={idx} href={social.url} target="_blank" title={social.platform} className="p-2.5 bg-slate-50 rounded-xl text-slate-500 border border-slate-200/50 hover:bg-blue-600 hover:text-white transition-all">
                                                 {social.platform === "GitHub" && <Github size={18} />}
                                                 {social.platform === "LinkedIn" && <Linkedin size={18} />}
-                                                {(social.platform !== "GitHub" && social.platform !== "LinkedIn") && <ExternalLink size={18} />}
+                                                {social.platform === "Google Scholar" && <GraduationCap size={18} />}
+                                                {social.platform === "ORCID" && <Fingerprint size={18} />}
+                                                {["GitHub", "LinkedIn", "Google Scholar", "ORCID"].indexOf(social.platform) === -1 && <ExternalLink size={18} />}
                                             </a>
                                         ))}
                                     </div>
@@ -95,6 +96,31 @@ const AcademicPortfolio = () => {
                                             <GraduationCap size={16} className="text-blue-500" />
                                             <span className="font-medium text-xs truncate">{education.degree}</span>
                                         </div>
+                                        <a href={`mailto:${profileData.email}`} className="flex items-center gap-3 bg-slate-50 p-3 rounded-xl hover:bg-blue-50 transition-colors">
+                                            <Mail size={16} className="text-blue-500" />
+                                            <span className="font-medium text-xs truncate">{profileData.email}</span>
+                                        </a>
+                                        <a href="https://cal.com/zierax" target="_blank" className="flex items-center gap-3 bg-slate-50 p-3 rounded-xl hover:bg-blue-50 transition-colors">
+                                            <ExternalLink size={16} className="text-blue-500" />
+                                            <span className="font-medium text-xs">Schedule a call · cal.com/zierax</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-200/60">
+                                    <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">GitHub evidence · {githubSignal.refreshed}</p>
+                                    <div className="grid grid-cols-2 gap-3">
+                                        {[
+                                            ["Public repos", githubSignal.publicRepos + githubSignal.division36PublicRepos],
+                                            ["Owned stars", githubSignal.combinedOwnedRepoStars],
+                                            ["Followers", githubSignal.followers],
+                                            ["Starred tab", githubSignal.profileStarredCount ?? "n/a"],
+                                        ].map(([label, value]) => (
+                                            <div key={label} className="bg-slate-50 rounded-xl p-3 text-center border border-slate-100">
+                                                <p className="text-xl font-bold text-slate-900">{value}</p>
+                                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">{label}</p>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +130,19 @@ const AcademicPortfolio = () => {
                                     <h2 className="text-2xl font-serif font-bold text-slate-900 mb-6">Scholarly Biography</h2>
                                     <p className="text-slate-700 leading-relaxed mb-6 font-medium">{profileData.bio}</p>
                                     <div className="p-4 bg-blue-50 rounded-2xl border-l-4 border-blue-500 italic text-slate-600 text-sm">
-                                        Independent security researcher and self-directed scholar. Focus on deterministic logic and the Truthimatics framework.
+                                        Mission-Critical Systems Safety, Security and Sustainability Engineer (MCS-SSS) and Founder of Division-36. Independent XAI researcher working on deterministic logic and the Truthimatics framework.
+                                    </div>
+                                </section>
+
+                                <section className="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-200/60">
+                                    <h2 className="text-2xl font-serif font-bold text-slate-900 mb-6">Skill Matrix</h2>
+                                    <div className="grid sm:grid-cols-2 gap-5">
+                                        {Object.entries(skills).map(([category, items]) => (
+                                            <div key={category}>
+                                                <p className="text-[11px] font-bold uppercase tracking-widest text-blue-600">{category}</p>
+                                                <p className="mt-2 text-sm leading-6 text-slate-600">{items.join(" · ")}</p>
+                                            </div>
+                                        ))}
                                     </div>
                                 </section>
 
@@ -142,7 +180,7 @@ const AcademicPortfolio = () => {
                                         <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
                                             <h3 className="text-xl font-bold text-slate-900 font-serif leading-tight">{paper.title}</h3>
                                             <span className="text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-100 flex-shrink-0 self-start">
-                                                {paper.date}
+                                                {paper.status ?? paper.date}
                                             </span>
                                         </div>
                                         {paper.journalOrConference && (
@@ -172,7 +210,7 @@ const AcademicPortfolio = () => {
                         <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 space-y-8">
                             <h2 className="text-3xl font-serif font-bold text-slate-900 text-center mb-12">System Implementations</h2>
                             <div className="grid md:grid-cols-2 gap-6">
-                                {projects.filter(p => !p.title.includes("Alpha")).map((project, idx) => (
+                                {projects.map((project, idx) => (
                                     <div key={idx} className="bg-white p-6 rounded-3xl border border-slate-200 flex flex-col">
                                         <h3 className="text-xl font-bold font-serif text-slate-900 mb-2">{project.title}</h3>
                                         <p className="text-slate-600 text-sm mb-4 flex-grow">{project.description}</p>
@@ -227,6 +265,9 @@ const AcademicPortfolio = () => {
                     <div className="container mx-auto px-4">
                         <p className="font-serif font-bold text-slate-900">{profileData.name} | Curriculum Vitae</p>
                         <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">{new Date().getFullYear()} — Research Intelligence Portfolio</p>
+                        <p className="text-[10px] text-slate-400 mt-3">
+                            No cookies · No tracking · Provider host logs only · <Link to="/privacy" className="underline hover:text-blue-600">Privacy & disclaimers</Link>
+                        </p>
                     </div>
                 </footer>
             </div>

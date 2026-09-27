@@ -91,7 +91,7 @@ export const academicResearches: AcademicResearch[] = [
     journalOrConference: "IEEE AIITA 2026 (Accepted, Chongqing)",
     doiLink: "https://doi.org/10.5281/zenodo.18873774",
     status: "Accepted / Redirected",
-    impact: "Low to Critical-Dominant finding profiles; Nature Scientific Reports path ended at editor out-of-scope after a passed 4-round review"
+    impact: "Low to Critical-Dominant finding profiles; Nature Scientific Reports path ended at editor out-of-scope after passing a 4-round review"
   },
   {
     title: "Logs, Not Logic: Rethinking Audit Trail Requirements for Tiny On-Device Security Engines",
@@ -175,17 +175,11 @@ export const academicResearches: AcademicResearch[] = [
     impact: "Public logic core for the Axiom line"
   },
   {
-    title: "Axiom-Logic: Deterministic Reasoning Engine",
-    date: "2026",
-    description: "Pure logical inference @ 34ns. Eliminates probabilistic 'possibility' factor in AI reasoning.",
-    status: "Production Phase",
-    impact: "Blackbox Elimination. Pure logical inference @ 34ns"
-  },
-  {
     title: "Reverse Correction Assessment Methodology (RCAM): Evaluating Conceptual Understanding Through Elimination-Based Scoring",
     date: "2026",
     description: "Proposes a multiple-choice scoring system where students eliminate incorrect options rather than select correct ones, scored via RMS with continuous penalty exponent. Extends Bruno & Dirkzwager (1995). Preliminary data: ~4x reduction in time-to-mastery.",
-    journalOrConference: "Preprint v0.1"
+    journalOrConference: "Preprint v0.1",
+    status: "Unpublished preprint"
   }
 ];
 
@@ -195,7 +189,7 @@ export const profileData = {
   email: "zs.01117875692@gmail.com",
   phone: "+201117875692",
   location: "Cairo Core (Egypt)",
-  bio: "Mission-critical systems engineer working where safety, security, and sustainability overlap. Founder of Division-36, an independent lab that ships public evidence: a Linux sandbox cited by Risky Business, a Grafana scanner with 244 stars, embedded-malware benchmarks, and twelve research records stretching from exoplanet pipelines to hallucination suppression — eight with versioned Zenodo DOIs. Independent XAI researcher — every claim links to a repo, a benchmark, or a DOI.",
+  bio: "Mission-critical systems engineer working where safety, security, and sustainability overlap. Founder of Division-36, an independent lab that ships public evidence: a Linux sandbox cited by Risky Business, a 200-plus-star Grafana scanner, embedded-malware benchmarks, and eleven research records stretching from exoplanet pipelines to hallucination suppression — most with versioned Zenodo DOIs. Independent XAI researcher — every claim links to a repo, a benchmark, or a DOI.",
   avatar: "https://github.com/Zierax.png",
   socials: [
     { platform: "GitHub", url: "https://github.com/Zierax", username: "Zierax" },
@@ -222,7 +216,7 @@ export const division36Systems: LabSystem[] = [
   {
     name: "Z-Jail",
     owner: "Division-36",
-    summary: "Native-code Linux sandbox with ordered isolation layers: rlimits, namespace cloning, fd scrub, pivot_root, NO_NEW_PRIVS, capability drop, seccomp-BPF, and audit output.",
+    summary: "Native-code Linux sandbox with seven ordered isolation layers — rlimits, namespace cloning, fd scrub, pivot_root, NO_NEW_PRIVS, capability drop, seccomp-BPF — plus JSON audit output.",
     metric: "~81 KiB PIE · 7 isolation layers · seccomp-BPF",
     tags: ["C", "Sandbox", "Seccomp", "Defense-in-depth"],
     url: "https://github.com/Division-36/Z-Jail",
@@ -346,7 +340,7 @@ export const experience: Experience[] = [
     period: "May 2024 – Present",
     description: "Independent vulnerability researcher targeting global production infrastructure. Ranking claim is scoped to the January-March 2026 HackerOne VDP leaderboard window: #9 Egypt · Top 90 worldwide.",
     achievements: [
-      "12+ vulnerabilities confirmed in 48 hours in a single engagement, 7 Critical severity",
+      "Single-engagement record: 12+ vulnerabilities confirmed in 48 hours, 7 Critical severity",
       "Three-layer bypass at a major telecom: WAF (spoofed Host header) → 3DES key derived from bundle constants → null SECRET KEY",
       "Critical unauthenticated LLM prompt editor in production AI infrastructure",
       "Simultaneous bypass of IP restriction, CAPTCHA, and rate limiting in a single chained attack",
@@ -367,7 +361,7 @@ export const experience: Experience[] = [
     title: "Marketing Manager",
     company: "Graphics Studio",
     period: "Dec 2023 – May 2024",
-    description: "Spearheaded strategic marketing initiatives to enhance brand visibility and boost sales growth.",
+    description: "Ran marketing for a graphics studio and grew its client base 75%+ in six months.",
     achievements: [
       "Increased client base by 75%+ in six months through targeted marketing strategies",
       "Declined Regional Marketing Manager offer (Saudi Arabia) to remain focused on research",
@@ -376,11 +370,11 @@ export const experience: Experience[] = [
   {
     title: "Copywriter",
     company: "A to Z Marketing Agency",
-    period: "Oct – Dec 2023",
-    description: "High-impact copy across channels; cross-functional campaign collaboration.",
+    period: "Oct 2023 – Dec 2023",
+    description: "Wrote copy across channels and shipped brand campaigns with a cross-functional team.",
     achievements: [
-      "Managed end-to-end copywriting projects for multiple brand campaigns",
-      "Collaborated with cross-functional teams for successful project delivery",
+      "Shipped end-to-end copy for multiple brand campaigns",
+      "Delivered campaigns jointly with design and media teams",
     ],
   },
   {
@@ -396,7 +390,7 @@ export const experience: Experience[] = [
     title: "First Encounter with Computing & Systems",
     company: "Localhost",
     period: "2015 – 2016 (Age 7)",
-    description: "Self-assembled a curriculum from Linux, Bash, and Python at age 7–9. from documentations and trying",
+    description: "Self-assembled a curriculum from Linux, Bash, and Python at age 7–9, from documentation and trying things out",
     achievements: [
       "Operational mental model of networking and file systems by age nine",
       "A constitutional refusal to treat any system as a black box — unchanged since",
@@ -440,7 +434,7 @@ export const certifications = [
 ];
 
 export const awards = [
-  { title: "HackerOne VDP — #9 Egypt · Top 90 Worldwide", date: "Jan-Mar 2026", issuer: "HackerOne", description: "Ranking scoped to the January-March 2026 VDP leaderboard window, not presented as a permanent current rank." },
+  { title: "HackerOne VDP — #9 Egypt · Top 90 Worldwide", date: "Jan-Mar 2026", issuer: "HackerOne", description: "Ranking scoped to the January-March 2026 VDP leaderboard window, not presented as a permanent current rank — verifiable via the linked HackerOne profile." },
   { title: "1st Place — EYCC CTF", date: "2025", issuer: "HackClub Egypt", description: "Winning first high-school-only CTF in Egypt." },
   { title: "TryHackMe — Top 2% Global", date: "Active", issuer: "TryHackMe" }
 ];
@@ -449,7 +443,7 @@ export const writeups = [
   {
     title: "6 Hours, 6 Real-World Critical Bugs",
     date: "Feb 2026",
-    description: "A case study in efficient bug hunting: uncovering multiple critical vulnerabilities in a short timeframe. 7.7K views.",
+    description: "A case study in efficient bug hunting: uncovering multiple critical vulnerabilities in a short timeframe.",
     image: criticalsImg,
     link: "https://0xzyo.medium.com/6-hours-6-real-world-critical-bugs-a-case-study-in-efficient-bug-hunting-a88c2002abbb",
     tags: ["Bug Bounty", "Critical"]
@@ -459,7 +453,7 @@ export const writeups = [
     date: "Jan 2026",
     description: "Discovered a critical vulnerability allowing unauthenticated prompt manipulation in AI infrastructure.",
     image: aiAccessImg,
-    link: "https://0xzyx.medium.com",
+    link: "https://0xzyo.medium.com",
     tags: ["AI Security", "Critical"]
   }
 ];

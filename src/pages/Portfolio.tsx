@@ -4,6 +4,7 @@ import {
   ArrowUpRight,
   BookOpen,
   Briefcase,
+  Calendar,
   Cpu,
   FileText,
   Github,
@@ -162,7 +163,7 @@ const Portfolio = () => {
       <main>
         {viewMode === "terminal" && (
           <section className="mx-auto max-w-[1300px] px-4 py-10 md:px-8">
-            <TerminalView projects={projects} />
+            <TerminalView />
           </section>
         )}
 
@@ -219,7 +220,7 @@ const Portfolio = () => {
                           <h2 className="mt-2 truncate font-cyber text-3xl text-foreground">{profileData.name}</h2>
                           <p className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
                             <MapPin size={14} />
-                            {githubSignal.location} / {profileData.location}
+                            {profileData.location}
                           </p>
                         </div>
                       </div>
@@ -255,6 +256,18 @@ const Portfolio = () => {
                             <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                           </a>
                         ))}
+                        <a
+                          href="https://cal.com/zierax"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-between border border-border px-3 py-2 font-mono text-xs text-muted-foreground transition-colors hover:border-terminal-green/60 hover:text-terminal-green"
+                        >
+                          <span className="flex items-center gap-2">
+                            <Calendar size={14} />
+                            Schedule a call
+                          </span>
+                          <ArrowUpRight size={14} />
+                        </a>
                         <a
                           href={`mailto:${profileData.email}`}
                           className="flex items-center justify-between border border-terminal-green/50 bg-terminal-green/10 px-3 py-2 font-mono text-xs text-terminal-green transition-colors hover:bg-terminal-green hover:text-background"
@@ -654,7 +667,7 @@ const Portfolio = () => {
                           <ArrowUpRight size={16} className="shrink-0 text-terminal-amber" />
                         </div>
                         <p className="mt-3 border-l border-terminal-amber pl-3 font-mono text-xs leading-6 text-terminal-amber">
-                          {repo.highlights}
+                          {repo.highlights || `${repo.stars} stars / ${repo.forks} forks`}
                         </p>
                         <p className="mt-3 text-sm leading-7 text-muted-foreground">{repo.summary}</p>
                       </div>
@@ -802,8 +815,36 @@ const Portfolio = () => {
                           {research.status ?? research.date}
                         </span>
                       </div>
-                      <p className="mt-3 font-mono text-xs leading-6 text-terminal-green">{research.journalOrConference}</p>
+                      {research.journalOrConference && (
+                        <p className="mt-3 font-mono text-xs leading-6 text-terminal-green">{research.journalOrConference}</p>
+                      )}
                       <p className="mt-3 text-sm leading-7 text-muted-foreground">{research.description}</p>
+                      {(research.doiLink || research.link) && (
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {research.doiLink && (
+                            <a
+                              href={research.doiLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 border border-terminal-green/50 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-terminal-green transition-colors hover:bg-terminal-green hover:text-background"
+                            >
+                              DOI
+                              <ArrowUpRight size={12} />
+                            </a>
+                          )}
+                          {research.link && (
+                            <a
+                              href={research.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 border border-border px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:border-terminal-green hover:text-terminal-green"
+                            >
+                              Source
+                              <ArrowUpRight size={12} />
+                            </a>
+                          )}
+                        </div>
+                      )}
                     </article>
                   ))}
                 </div>
@@ -816,7 +857,7 @@ const Portfolio = () => {
                     <h2 className="font-cyber text-2xl text-foreground">Mission history</h2>
                   </div>
                   <div className="mt-5 space-y-5">
-                    {experience.slice(0, 4).map((item) => (
+                    {experience.map((item) => (
                       <div key={`${item.title}-${item.company}`} className="border-l border-border pl-4">
                         <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-terminal-green">{item.period}</p>
                         <h3 className="mt-1 font-semibold text-foreground">{item.title}</h3>
@@ -832,10 +873,10 @@ const Portfolio = () => {
                     <h2 className="font-cyber text-2xl text-foreground">Skill matrix</h2>
                   </div>
                   <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                    {Object.entries(skills).slice(0, 4).map(([category, items]) => (
+                    {Object.entries(skills).map(([category, items]) => (
                       <div key={category}>
                         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-terminal-amber">{category}</p>
-                        <p className="mt-2 text-sm leading-6 text-muted-foreground">{items.slice(0, 4).join(" / ")}</p>
+                        <p className="mt-2 text-sm leading-6 text-muted-foreground">{items.join(" / ")}</p>
                       </div>
                     ))}
                   </div>
@@ -845,7 +886,7 @@ const Portfolio = () => {
 
             <section className="border-t border-border bg-card/35">
               <div className="mx-auto grid max-w-[1500px] gap-4 px-4 py-10 md:grid-cols-3 md:px-8">
-                {[...certifications.slice(0, 3), ...awards.slice(0, 3)].map((item) => (
+                {[...certifications, ...awards].map((item) => (
                   <div key={"name" in item ? item.name : item.title} className="border border-border bg-background p-4">
                     <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
                       {"issuer" in item ? item.issuer : "award"}
@@ -926,6 +967,11 @@ const Portfolio = () => {
             <Link to="/privacy" className="hover:text-terminal-green">Privacy</Link>
             <span>© {new Date().getFullYear()} Ziad Salah</span>
           </div>
+        </div>
+        <div className="border-t border-border/60">
+          <p className="mx-auto max-w-[1500px] px-4 py-3 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground/70 md:px-8">
+            No cookies · No tracking · Provider host logs only · <Link to="/privacy" className="underline hover:text-terminal-green">Privacy & disclaimers</Link>
+          </p>
         </div>
       </footer>
     </div>
