@@ -34,6 +34,9 @@ const CLICK_DRAG_THRESHOLD_PX = 6;
 const SPEECH_HIDE_MS = 6500;
 const BLOCKED_NOTICE_MS = 10000;
 const DISMISS_KEY = "zyo-dismissed";
+const RESPAWN_EVENT = "zyo:respawn";
+
+const HOME_POS = () => ({ x: vw() - 120, y: vh() - 150 });
 
 type ProfileModule = typeof import("@/data/profile");
 
@@ -241,8 +244,8 @@ const ZyoAssistant: React.FC = () => {
   const pupilGroupRef = useRef<SVGGElement>(null);
   const toggleBtnRef = useRef<HTMLButtonElement>(null);
   const mobileBtnRef = useRef<HTMLButtonElement>(null);
-  const posRef = useRef<Position>({ x: vw() - 120, y: vh() - 150 });
-  const targetRef = useRef<Position>({ x: vw() - 120, y: vh() - 150 });
+  const posRef = useRef<Position>(HOME_POS());
+  const targetRef = useRef<Position>(HOME_POS());
   const mouseRef = useRef<Position>({ x: vw() / 2, y: vh() / 2 });
   const lastMoveRef = useRef<number>(Date.now());
   const [bounceKey, setBounceKey] = useState(0);
@@ -539,6 +542,38 @@ const ZyoAssistant: React.FC = () => {
     setDismissed(true);
   };
 
+  const recenter = useCallback(() => {
+    const home = HOME_POS();
+    posRef.current = home;
+    targetRef.current = home;
+    lastMoveRef.current = Date.now();
+  }, []);
+
+  // External respawn (terminal `zyo` command, restore button): clear the
+  // dismissal, come home, say something.
+  const respawnTimer = useRef<number | null>(null);
+  useEffect(() => {
+    const onRespawn = () => {
+      try {
+        window.localStorage.removeItem(DISMISS_KEY);
+      } catch {
+        // ignore
+      }
+      if (!mountedRef.current) return;
+      setDismissed(false);
+      recenter();
+      if (respawnTimer.current !== null) window.clearTimeout(respawnTimer.current);
+      respawnTimer.current = window.setTimeout(() => {
+        if (mountedRef.current) speak();
+      }, 350);
+    };
+    window.addEventListener(RESPAWN_EVENT, onRespawn);
+    return () => {
+      window.removeEventListener(RESPAWN_EVENT, onRespawn);
+      if (respawnTimer.current !== null) window.clearTimeout(respawnTimer.current);
+    };
+  }, [recenter, speak]);
+
   // ----------------------------------------
   // 🎵 AUDIO ENGINE
   // ----------------------------------------
@@ -726,7 +761,18 @@ const ZyoAssistant: React.FC = () => {
 
   const track = PLAYLIST[currentTrackIdx];
 
-  if (dismissed) return null;
+  if (dismissed) {
+    return (
+      <button
+        onClick={() => window.dispatchEvent(new Event(RESPAWN_EVENT))}
+        aria-label="Bring back Zyo assistant"
+        title="Bring back Zyo"
+        className="fixed bottom-4 right-4 z-[9999] rounded-full border border-dashed border-terminal-green/40 bg-card/80 p-2.5 text-terminal-green/70 shadow-xl transition-all hover:border-terminal-green hover:text-terminal-green md:bottom-6 md:right-6"
+      >
+        <Terminal size={16} />
+      </button>
+    );
+  }
 
   const panelProps = {
     track,
@@ -756,25 +802,25 @@ const ZyoAssistant: React.FC = () => {
     <>
       <audio ref={audioRef} src={track.file} preload="metadata" onEnded={() => changeTrack(1)} />
 
-      {/* Compact music access below lg (pet stays desktop-only) */}
+      {/* Compact music access below md (pet stays tablet-and-up) */}
       <button
         ref={mobileBtnRef}
         onClick={openPlayer}
         aria-label="Open music player"
         title="Music player"
-        className="fixed bottom-4 right-4 z-[9999] rounded-full border border-terminal-green/40 bg-card p-3 text-terminal-green shadow-2xl transition-colors hover:border-terminal-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-terminal-green lg:hidden"
+        className="fixed bottom-4 right-4 z-[9999] rounded-full border border-terminal-green/40 bg-card p-3 text-terminal-green shadow-2xl transition-colors hover:border-terminal-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-terminal-green md:hidden"
       >
         <Music size={18} />
       </button>
       {showPlayer && (
-        <div className="fixed bottom-16 right-4 z-[9999] lg:hidden">
+        <div className="fixed bottom-16 right-4 z-[9999] md:hidden">
           <PlayerPanel {...panelProps} onClose={closePlayerMobile} />
         </div>
       )}
 
       <div
         ref={botRef}
-        className="fixed left-0 top-0 z-[9999] hidden select-none lg:block"
+        className="fixed left-0 top-0 z-[9999] hidden select-none md:block"
         style={{ touchAction: 'none' }}
       >
         <div className="relative flex flex-col items-center group">
@@ -844,16 +890,17 @@ const ZyoAssistant: React.FC = () => {
             <PlayerPanel {...panelProps} />
           </div>
 
-          {/* 🤖 THE ROBOT ASSISTANT */}
+          {/* 🤖 THE ROBOT ASSISTANT — double-click recenters */}
           <div
             onMouseDown={handleMouseDown}
+            onDoubleClick={recenter}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
             className="cursor-grab active:cursor-grabbing transition-transform duration-200 group-hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terminal-green"
             role="button"
             tabIndex={0}
-            aria-label="Zyo assistant. Press Enter for a dossier fact, M for music."
+            aria-label="Zyo assistant. Press Enter for a dossier fact, M for music, double-click to recenter."
             onKeyDown={handleKeyDown}
           >
             {mood === 'sleeping' && (

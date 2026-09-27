@@ -64,6 +64,7 @@ export const getTerminalOutput = (cmd: string): string[] => {
         "  archive          long-tail repos (stubs, experiments, older utilities)",
         "  method           ranking formula, lanes, and exclusions",
         "  api              public API routes (metadata good, telemetry gone)",
+        "  zyo              respawn the assistant pet (clears dismissal)",
         "  research         papers, frameworks, and review status",
         "  mentions         external references for Z-Jail and related work",
         "  writeups         public vulnerability writeups",
@@ -217,6 +218,20 @@ export const getTerminalOutput = (cmd: string): string[] => {
         "                           Nothing is stored, logged, or echoed —",
         "                           server logs carry method/path/status only,",
         "                           every response carries x-request-id.",
+        "",
+      ];
+    case "zyo":
+    case "assistant":
+    case "pet":
+      try {
+        window.dispatchEvent(new Event("zyo:respawn"));
+      } catch {
+        // non-browser context — message still informs
+      }
+      return [
+        "ZYO RESPAWN SIGNAL SENT",
+        "  dismissal cleared · pet recentered · fact incoming",
+        "  (look bottom-right; on small screens find the music button)",
         "",
       ];
     case "research":
