@@ -9,7 +9,7 @@
  * NOTE: imports a tiny generated TS module (not the 144KB snapshot JSON),
  * so the serverless bundler inlines it with zero file-tracing risk.
  */
-import { githubMetaPayload } from "../src/data/generated/github-meta.payload";
+import { githubMetaPayload } from "./github-meta.payload";
 
 interface Req {
   method?: string;
