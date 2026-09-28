@@ -1,5 +1,5 @@
 {
-  "refreshedAt": "2026-09-25T19:05:44.702Z",
+  "refreshedAt": "2026-09-28T13:26:51.971Z",
   "source": "github-api",
   "schemaVersion": 2,
   "method": {
@@ -18,7 +18,7 @@
       "login": "Zierax",
       "htmlUrl": "https://github.com/Zierax",
       "publicRepos": 130,
-      "followers": 102,
+      "followers": 104,
       "following": 70,
       "location": "Egypt",
       "company": "@Division-36",
@@ -33,16 +33,16 @@
       "description": "On-device malware detection for embedded Linux. 37KB · 34ns · 96.28% accuracy · No cloud · No GPU · Built for the EU CRA 2027 compliance window.",
       "founded": "2026-03-23T17:09:15Z"
     },
-    "starredTabCount": 141
+    "starredTabCount": 142
   },
   "totals": {
-    "zieraxOwnedRepoStars": 532,
+    "zieraxOwnedRepoStars": 534,
     "zieraxOwnedRepoForks": 102,
     "zieraxOwnedRepoCount": 93,
     "division36OwnedRepoStars": 95,
     "division36OwnedRepoForks": 15,
     "division36OwnedRepoCount": 10,
-    "combinedOwnedRepoStars": 627,
+    "combinedOwnedRepoStars": 629,
     "combinedOwnedRepoForks": 117
   },
   "tiers": {
@@ -86,12 +86,12 @@
       "Zierax/CIOSA"
     ],
     "recent": [
+      "Zierax/G-dorks",
       "Zierax/CIOSA",
       "Zierax/Axiom-Astrophysics",
       "Zierax/My-Recon-Methology",
       "Zierax/Axiom-Zspace",
-      "Zierax/fl-studio-mcp",
-      "Zierax/NHE-Architecture"
+      "Zierax/fl-studio-mcp"
     ],
     "archive": [
       "Zierax/usenix26_artifact",
@@ -956,21 +956,21 @@
         "google-dorking-payloads",
         "google-dorking-tool"
       ],
-      "stars": 25,
+      "stars": 26,
       "forks": 4,
-      "updatedAt": "2026-09-13T12:55:14Z",
+      "updatedAt": "2026-09-25T22:16:16Z",
       "pushedAt": "2024-11-25T20:53:39Z",
       "createdAt": "2024-04-15T05:55:00Z",
       "archived": false,
-      "score": 87,
+      "score": 89,
       "scoreReasons": [
-        "stars×2=50",
+        "stars×2=52",
         "forks×3=12",
         "recency+15",
         "domain+10"
       ],
       "summary": "Just \"Harmless\" Google dorks for bug hunters",
-      "highlights": "25 stars / 4 forks",
+      "highlights": "26 stars / 4 forks",
       "story": null,
       "tags": [
         "HTML",
@@ -1946,11 +1946,11 @@
       "pushedAt": "2026-08-26T19:33:11Z",
       "createdAt": "2026-06-02T21:38:08Z",
       "archived": false,
-      "score": 327,
+      "score": 320,
       "scoreReasons": [
         "stars×2=148",
         "forks×3=36",
-        "recency+15",
+        "recency+8",
         "org+12",
         "domain+30",
         "readme+10",
@@ -2308,6 +2308,5 @@
       "Zierax/G-dorks"
     ],
     "failures": []
-  },
-  "retieredAt": "2026-09-26T01:30:07.436Z"
+  }
 }
