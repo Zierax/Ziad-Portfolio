@@ -12,12 +12,15 @@
     --terminal-red: 0 100% 50%;
     --terminal-blue: 200 100% 60%;
 
-    /* Zyo is a violet observer, not part of the terminal phosphor rig.
-       Kept separate so the site theme stays green while the pet reads its own. */
-    --zyo-violet: 271 91% 65%;
-    --zyo-violet-soft: 258 90% 72%;
-    --zyo-violet-deep: 265 55% 18%;
-    --zyo-violet-glow: 260 100% 93%;
+    /* Zyo is a soft companion, not part of the terminal phosphor rig.
+       Pastel periwinkle with a warm blush accent: low saturation and a
+       light body read calm, where neon-on-black reads as a war machine. */
+    --zyo-body: 230 34% 80%;
+    --zyo-body-deep: 231 28% 66%;
+    --zyo-shade: 233 26% 48%;
+    --zyo-blush: 8 76% 80%;
+    --zyo-cream: 38 72% 96%;
+    --zyo-ink: 250 22% 32%;
 
     --neon-green: 142 100% 50%;
     --neon-blue: 190 100% 50%;

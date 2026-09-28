@@ -316,7 +316,7 @@ const ZyoAssistant: React.FC = () => {
       // Pupils follow the cursor, clamped to a 2.5px radius.
       if (pupilGroupRef.current && !reducedMotion.current) {
         const dx = mouseRef.current.x - (posRef.current.x + 55);
-        const dy = mouseRef.current.y - (posRef.current.y + 41);
+        const dy = mouseRef.current.y - (posRef.current.y + 34);
         const angle = Math.atan2(dy, dx);
         const dist = Math.min(2.5, Math.sqrt(dx * dx + dy * dy) / 80);
         pupilGroupRef.current.setAttribute(
@@ -360,7 +360,7 @@ const ZyoAssistant: React.FC = () => {
       } else if (rand < 0.6) {
         // Close cursor? Stare back, don't look away.
         const dx = mouseRef.current.x - (posRef.current.x + 55);
-        const dy = mouseRef.current.y - (posRef.current.y + 41);
+        const dy = mouseRef.current.y - (posRef.current.y + 34);
         const near = Math.hypot(dx, dy) < CURIOUS_RADIUS_PX;
         setMood('watching');
         setStatusText(near ? "CURIOUS" : "ON_WATCH");
@@ -767,7 +767,7 @@ const ZyoAssistant: React.FC = () => {
         onClick={() => window.dispatchEvent(new Event(RESPAWN_EVENT))}
         aria-label="Bring back Zyo assistant"
         title="Bring back Zyo"
-        className="fixed bottom-4 right-4 z-[9999] rounded-full border border-dashed border-zyo-violet/50 bg-card/80 p-2.5 text-zyo-violet shadow-xl transition-all hover:border-zyo-violet hover:text-zyo-soft md:bottom-6 md:right-6"
+        className="fixed bottom-4 right-4 z-[9999] rounded-full border border-dashed border-zyo-body/50 bg-card/80 p-2.5 text-zyo-body shadow-xl transition-all hover:border-zyo-body hover:text-zyo-cream md:bottom-6 md:right-6"
       >
         <Terminal size={16} />
       </button>
@@ -808,7 +808,7 @@ const ZyoAssistant: React.FC = () => {
         onClick={openPlayer}
         aria-label="Open music player"
         title="Music player"
-        className="fixed bottom-4 right-4 z-[9999] rounded-full border border-zyo-violet/40 bg-card p-3 text-zyo-violet shadow-2xl transition-colors hover:border-zyo-violet focus-visible:outline focus-visible:outline-2 focus-visible:outline-zyo-violet md:hidden"
+        className="fixed bottom-4 right-4 z-[9999] rounded-full border border-zyo-body/50 bg-card p-3 text-zyo-body shadow-2xl transition-colors hover:border-zyo-body hover:text-zyo-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-zyo-body md:hidden"
       >
         <Music size={18} />
       </button>
@@ -830,8 +830,8 @@ const ZyoAssistant: React.FC = () => {
           <div
             aria-hidden="true"
             className={`
-            absolute -top-10 px-3 py-1 rounded-md bg-black/85 text-zyo-soft
-            text-[10px] font-mono tracking-widest border border-zyo-violet/60
+            absolute -top-10 px-3 py-1 rounded-md bg-black/85 text-zyo-cream
+            text-[10px] font-mono tracking-widest border border-zyo-blush/50
             transition-all duration-300 motion-reduce:transition-none ${mood !== 'idle' && !speech ? 'opacity-100' : 'opacity-0'}
           `}>
             [{statusText}]
@@ -844,7 +844,7 @@ const ZyoAssistant: React.FC = () => {
             onMouseLeave={releaseSpeech}
             className={`
             absolute -top-10 left-1/2 -translate-x-1/2 -translate-y-full w-60 p-3 pr-8 rounded-lg
-            bg-card border border-zyo-violet/70 shadow-2xl transition-all motion-reduce:transition-none
+            bg-card border border-zyo-body/50 shadow-2xl transition-all motion-reduce:transition-none
             ${speech ? 'scale-100 opacity-100' : 'scale-90 opacity-0 pointer-events-none'}
           `}>
             <p className="text-xs font-mono leading-5 text-foreground">{speech}</p>
@@ -855,7 +855,7 @@ const ZyoAssistant: React.FC = () => {
                   setSpeech(null);
                 }}
                 aria-label="Dismiss fact"
-                className="absolute right-1.5 top-1.5 rounded-full p-1.5 text-muted-foreground hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-zyo-violet"
+                className="absolute right-1.5 top-1.5 rounded-full p-1.5 text-muted-foreground hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-zyo-body"
               >
                 <X size={12} />
               </button>
@@ -868,7 +868,7 @@ const ZyoAssistant: React.FC = () => {
             aria-label="Toggle music player"
             aria-expanded={showPlayer}
             title="Music player"
-            className="absolute -right-12 top-4 rounded-full border border-border bg-card p-2 text-muted-foreground opacity-0 transition-all hover:border-zyo-violet/50 hover:text-zyo-violet group-hover:opacity-100 focus:opacity-100 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-zyo-violet"
+            className="absolute -right-12 top-4 rounded-full border border-border bg-card p-2 text-muted-foreground opacity-0 transition-all hover:border-zyo-body hover:text-zyo-body group-hover:opacity-100 focus:opacity-100 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-zyo-body"
           >
             <Music size={16} />
           </button>
@@ -877,7 +877,7 @@ const ZyoAssistant: React.FC = () => {
             onClick={dismiss}
             aria-label="Hide Zyo assistant"
             title="Hide assistant"
-            className="absolute -left-10 top-4 rounded-full border border-border bg-card p-1.5 text-muted-foreground opacity-0 transition-all hover:border-terminal-red/60 hover:text-terminal-red group-hover:opacity-100 focus:opacity-100 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-zyo-violet"
+            className="absolute -left-10 top-4 rounded-full border border-border bg-card p-1.5 text-muted-foreground opacity-0 transition-all hover:border-zyo-blush hover:text-zyo-blush group-hover:opacity-100 focus:opacity-100 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-zyo-body"
           >
             <X size={13} />
           </button>
@@ -897,7 +897,7 @@ const ZyoAssistant: React.FC = () => {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
-            className="cursor-grab active:cursor-grabbing transition-transform duration-200 group-hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zyo-violet"
+            className="cursor-grab active:cursor-grabbing transition-transform duration-200 group-hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zyo-body"
             role="button"
             tabIndex={0}
             aria-label="Zyo assistant. Press Enter for a dossier fact, M for music, double-click to recenter."
@@ -905,80 +905,96 @@ const ZyoAssistant: React.FC = () => {
           >
             {mood === 'sleeping' && (
               <div aria-hidden="true" className="pointer-events-none absolute -right-2 -top-4 flex flex-col items-center">
-                <span className="font-mono text-sm font-bold text-zyo-soft animate-zyo-zzz">z</span>
-                <span className="font-mono text-[10px] font-bold text-zyo-soft animate-zyo-zzz" style={{ animationDelay: "0.6s" }}>z</span>
-                <span className="font-mono text-[8px] font-bold text-zyo-soft/75 animate-zyo-zzz" style={{ animationDelay: "1.2s" }}>z</span>
+                <span className="font-mono text-sm font-bold text-zyo-body animate-zyo-zzz">z</span>
+                <span className="font-mono text-[10px] font-bold text-zyo-body/80 animate-zyo-zzz" style={{ animationDelay: "0.6s" }}>z</span>
+                <span className="font-mono text-[8px] font-bold text-zyo-body/60 animate-zyo-zzz" style={{ animationDelay: "1.2s" }}>z</span>
               </div>
             )}
             <div key={bounceKey} className={bounceKey > 0 && !reducedMotion.current ? "animate-zyo-boing" : undefined}>
-            <svg width="110" height="120" viewBox="0 0 110 120" aria-hidden="true" className={reducedMotion.current ? undefined : "animate-zyo-float"}>
+            <svg width="110" height="112" viewBox="0 0 110 112" aria-hidden="true" className={reducedMotion.current ? undefined : "animate-zyo-float"}>
               <defs>
-                <linearGradient id="zyo-head-grad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#3a2770" />
-                  <stop offset="100%" stopColor="#1c1236" />
-                </linearGradient>
-                <linearGradient id="zyo-body-grad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#2e1f5c" />
-                  <stop offset="100%" stopColor="#1a1130" />
-                </linearGradient>
+                <radialGradient id="zyo-head-grad" cx="0.38" cy="0.26" r="0.92">
+                  <stop offset="0%" stopColor="#d3d9f5" />
+                  <stop offset="100%" stopColor="#9aa5d8" />
+                </radialGradient>
+                <radialGradient id="zyo-body-grad" cx="0.4" cy="0.2" r="0.95">
+                  <stop offset="0%" stopColor="#c8cef0" />
+                  <stop offset="100%" stopColor="#8f9bd2" />
+                </radialGradient>
+                <clipPath id="zyo-head-clip">
+                  <circle cx="0" cy="0" r="24" />
+                </clipPath>
               </defs>
 
-              {/* 1. GROUND POOL — a page this dark cannot be darkened, so the figure
-                  is grounded with faint violet bounce instead of a black shadow. */}
-              <ellipse cx="55" cy="112" rx="28" ry="4" fill="hsl(var(--zyo-violet))" opacity="0.1" aria-hidden="true" />
-
-              {/* 2. LIMBS — same stroke tier as the shell, joints seated on the body */}
-              <g stroke="hsl(var(--zyo-violet))" strokeWidth="2" fill="none" strokeLinecap="round" aria-hidden="true">
-                <path d="M 38 72 L 30 96" />
-                <path d="M 72 72 L 80 96" />
+              {/* 1. LIMBS — outlined so they read against both the body and the page */}
+              <g fill="none" strokeLinecap="round" aria-hidden="true">
+                <path d="M 39 74 Q 33 80 35 88" stroke="hsl(var(--zyo-shade))" strokeWidth="6.5" />
+                <path d="M 71 74 Q 77 80 75 88" stroke="hsl(var(--zyo-shade))" strokeWidth="6.5" />
+                <path d="M 39 74 Q 33 80 35 88" stroke="hsl(var(--zyo-body))" strokeWidth="4.2" />
+                <path d="M 71 74 Q 77 80 75 88" stroke="hsl(var(--zyo-body))" strokeWidth="4.2" />
               </g>
               <g aria-hidden="true">
-                <circle cx="38" cy="72" r="4" fill="hsl(var(--zyo-violet-deep))" stroke="hsl(var(--zyo-violet))" strokeWidth="1.4" />
-                <circle cx="72" cy="72" r="4" fill="hsl(var(--zyo-violet-deep))" stroke="hsl(var(--zyo-violet))" strokeWidth="1.4" />
-                <circle cx="30" cy="96" r="3" fill="hsl(var(--zyo-violet))" />
-                <circle cx="80" cy="96" r="3" fill="hsl(var(--zyo-violet))" />
+                <circle cx="35" cy="89" r="3.3" fill="hsl(var(--zyo-body))" stroke="hsl(var(--zyo-shade))" strokeWidth="1.3" />
+                <circle cx="75" cy="89" r="3.3" fill="hsl(var(--zyo-body))" stroke="hsl(var(--zyo-shade))" strokeWidth="1.3" />
+                <ellipse cx="47" cy="99" rx="5.6" ry="3.5" fill="hsl(var(--zyo-body))" stroke="hsl(var(--zyo-shade))" strokeWidth="1.3" />
+                <ellipse cx="63" cy="99" rx="5.6" ry="3.5" fill="hsl(var(--zyo-body))" stroke="hsl(var(--zyo-shade))" strokeWidth="1.3" />
               </g>
 
-              {/* 3. TORSO — tapers into a base so it is planted, not on a tripod */}
-              <g aria-hidden="true">
-                <rect x="47" y="54" width="16" height="16" rx="3" fill="hsl(var(--zyo-violet-deep))" stroke="hsl(var(--zyo-violet))" strokeWidth="1.4" />
-                <path d="M 39 66 L 71 66 L 73 98 L 65 110 L 45 110 L 37 98 Z" fill="url(#zyo-body-grad)" stroke="hsl(var(--zyo-violet))" strokeWidth="2" />
-                <circle cx="55" cy="88" r="2.5" fill="hsl(var(--zyo-violet))" className={reducedMotion.current ? undefined : "animate-pulse"} />
-              </g>
+              {/* 2. NECK + BODY */}
+              <rect x="48" y="50" width="14" height="18" rx="7" fill="hsl(var(--zyo-body-deep))" aria-hidden="true" />
+              <ellipse cx="55" cy="80" rx="19" ry="17" fill="url(#zyo-body-grad)" stroke="hsl(var(--zyo-shade))" strokeWidth="1.4" aria-hidden="true" />
+              <ellipse cx="55" cy="85" rx="10" ry="8" fill="hsl(var(--zyo-cream))" opacity="0.22" aria-hidden="true" />
+
+              {/* 3. COLLAR — a soft band tucked under the chin, not a stiff cup */}
+              <ellipse cx="55" cy="61" rx="11.5" ry="4.2" fill="hsl(var(--zyo-blush))" stroke="hsl(var(--zyo-shade))" strokeWidth="1.2" aria-hidden="true" />
 
               {/* 4. HEAD UNIT */}
-              <g transform="translate(55, 41)" className={mood === 'dancing' && !reducedMotion.current ? 'animate-zyo-head' : ''} aria-hidden="true">
-                {/* Antennae */}
-                <path d="M -8 -19 L -12 -28.5 M 8 -19 L 12 -28.5" stroke="hsl(var(--zyo-violet-soft))" strokeWidth="1.4" strokeLinecap="round" />
-                <circle cx="-12" cy="-30" r="1.6" fill="hsl(var(--terminal-amber))" className={reducedMotion.current ? undefined : "animate-pulse"} />
-                <circle cx="12" cy="-30" r="1.6" fill="hsl(var(--terminal-amber))" className={reducedMotion.current ? undefined : "animate-pulse"} />
+              <g transform="translate(55, 34)" className={mood === 'dancing' && !reducedMotion.current ? 'animate-zyo-head' : ''} aria-hidden="true">
+                {/* Ears */}
+                <ellipse cx="-18" cy="-17" rx="6.5" ry="9.5" transform="rotate(-25 -18 -17)" fill="url(#zyo-body-grad)" stroke="hsl(var(--zyo-shade))" strokeWidth="1.4" />
+                <ellipse cx="18" cy="-17" rx="6.5" ry="9.5" transform="rotate(25 18 -17)" fill="url(#zyo-body-grad)" stroke="hsl(var(--zyo-shade))" strokeWidth="1.4" />
+                <ellipse cx="-17" cy="-16" rx="2.8" ry="5" transform="rotate(-25 -17 -16)" fill="hsl(var(--zyo-blush))" opacity="0.6" />
+                <ellipse cx="17" cy="-16" rx="2.8" ry="5" transform="rotate(25 17 -16)" fill="hsl(var(--zyo-blush))" opacity="0.6" />
 
-                {/* Sensor pods */}
-                <rect x="-30" y="-9" width="7" height="18" rx="3.5" fill="hsl(var(--zyo-violet-deep))" stroke="hsl(var(--zyo-violet))" strokeWidth="1.4" />
-                <rect x="23" y="-9" width="7" height="18" rx="3.5" fill="hsl(var(--zyo-violet-deep))" stroke="hsl(var(--zyo-violet))" strokeWidth="1.4" />
+                {/* Skull */}
+                <circle cx="0" cy="0" r="24" fill="url(#zyo-head-grad)" stroke="hsl(var(--zyo-shade))" strokeWidth="1.6" />
+                <g clipPath="url(#zyo-head-clip)" aria-hidden="true">
+                  <ellipse cx="-7" cy="-14" rx="17" ry="10" fill="hsl(var(--zyo-cream))" opacity="0.2" />
+                </g>
 
-                {/* Main housing */}
-                <rect x="-23" y="-19" width="46" height="38" rx="10" fill="url(#zyo-head-grad)" stroke="hsl(var(--zyo-violet))" strokeWidth="2" />
+                {/* Blush */}
+                <ellipse cx="-16" cy="6" rx="6.5" ry="3.8" fill="hsl(var(--zyo-blush))" opacity="0.75" />
+                <ellipse cx="16" cy="6" rx="6.5" ry="3.8" fill="hsl(var(--zyo-blush))" opacity="0.75" />
 
-                {/* Optical band */}
-                <rect x="-20" y="-8" width="40" height="16" rx="8" fill="#1c1538" stroke="hsl(var(--zyo-violet))" strokeWidth="1.4" />
-
-                {/* Code brackets — fixed to the housing, well clear of the iris sweep */}
-                {mood === 'coding' && (
-                  <path d="M -12.5 -3.2 L -12.5 3.2 M 12.5 -3.2 L 12.5 3.2" stroke="hsl(var(--zyo-violet-soft))" strokeOpacity="0.55" strokeWidth="1.4" strokeLinecap="round" />
-                )}
-
-                {/* Sensor iris — the only face. Tracks the pointer in every
-                    tracking state, closes to a slit while blinking or asleep,
-                    and dilates while curious. */}
+                {/* Eyes — closed and content when blinking or asleep,
+                    squinting down while deep in code, otherwise soft and
+                    following the pointer. The ref stays mounted whenever
+                    the eye is open so it never freezes. */}
                 {isBlinking || mood === 'sleeping' ? (
-                  <rect x="-3" y="-0.8" width="6" height="1.6" rx="0.8" fill="hsl(var(--zyo-violet))" opacity="0.55" />
+                  <g stroke="hsl(var(--zyo-ink))" strokeWidth="2.1" fill="none" strokeLinecap="round">
+                    <path d="M -14 5 Q -10 -0.5 -6 5" />
+                    <path d="M 6 5 Q 10 -0.5 14 5" />
+                  </g>
                 ) : (
                   <g ref={pupilGroupRef} transform="translate(0,0)">
-                    <circle r={mood === 'watching' ? 3.9 : 3.4} fill="none" stroke="hsl(var(--zyo-violet-glow))" strokeWidth="1.8" />
-                    <circle r={mood === 'watching' ? 1.4 : 1.1} fill="hsl(var(--zyo-violet-glow))" />
+                    {mood === 'coding' ? (
+                      <g stroke="hsl(var(--zyo-ink))" strokeWidth="2.1" fill="none" strokeLinecap="round">
+                        <path d="M -14 -1 Q -10 4.5 -6 -1" />
+                        <path d="M 6 -1 Q 10 4.5 14 -1" />
+                      </g>
+                    ) : (
+                      <>
+                        <ellipse cx="-10" cy="2" rx={mood === 'watching' ? 5.2 : 4} ry={mood === 'watching' ? 6 : 4.6} fill="hsl(var(--zyo-ink))" />
+                        <ellipse cx="10" cy="2" rx={mood === 'watching' ? 5.2 : 4} ry={mood === 'watching' ? 6 : 4.6} fill="hsl(var(--zyo-ink))" />
+                        <circle cx="-11.8" cy="0.2" r={mood === 'watching' ? 1.9 : 1.3} fill="hsl(var(--zyo-cream))" />
+                        <circle cx="8.2" cy="0.2" r={mood === 'watching' ? 1.9 : 1.3} fill="hsl(var(--zyo-cream))" />
+                      </>
+                    )}
                   </g>
                 )}
+
+                {/* Mouth — a small, constant, unbothered smile */}
+                <path d="M -4 8 Q 0 11.5 4 8" stroke="hsl(var(--zyo-ink))" strokeWidth="1.9" fill="none" strokeLinecap="round" />
               </g>
             </svg>
             </div>
@@ -989,7 +1005,7 @@ const ZyoAssistant: React.FC = () => {
       <style>{`
         @keyframes zyo-float {
           0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
+          50% { transform: translateY(-6px); }
         }
         @keyframes zyo-boing {
           0% { transform: scale(1, 1); }
@@ -1003,11 +1019,11 @@ const ZyoAssistant: React.FC = () => {
           100% { transform: translateY(-14px); opacity: 0; }
         }
         @keyframes zyo-head {
-          0%, 100% { transform: translate(55px, 41px) rotate(0deg); }
-          50% { transform: translate(55px, 41px) rotate(5deg); }
+          0%, 100% { transform: translate(55px, 34px) rotate(0deg); }
+          50% { transform: translate(55px, 34px) rotate(3deg); }
         }
         .animate-zyo-float { animation: zyo-float 3s ease-in-out infinite; }
-        .animate-zyo-head { transform-origin: 55px 41px; animation: zyo-head 0.5s ease-in-out infinite; }
+        .animate-zyo-head { transform-origin: 55px 34px; animation: zyo-head 0.5s ease-in-out infinite; }
         .animate-zyo-boing { animation: zyo-boing 0.5s ease-out; }
         .animate-zyo-zzz { animation: zyo-zzz 2.2s ease-out infinite; }
         @media (prefers-reduced-motion: reduce) {
