@@ -30,6 +30,12 @@ export default {
           red: "hsl(var(--terminal-red))",
           blue: "hsl(var(--terminal-blue))",
         },
+        zyo: {
+          violet: "hsl(var(--zyo-violet))",
+          soft: "hsl(var(--zyo-violet-soft))",
+          deep: "hsl(var(--zyo-violet-deep))",
+          glow: "hsl(var(--zyo-violet-glow))",
+        },
         neon: {
           green: "hsl(var(--neon-green))",
           blue: "hsl(var(--neon-blue))",

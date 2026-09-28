@@ -12,6 +12,13 @@
     --terminal-red: 0 100% 50%;
     --terminal-blue: 200 100% 60%;
 
+    /* Zyo is a violet observer, not part of the terminal phosphor rig.
+       Kept separate so the site theme stays green while the pet reads its own. */
+    --zyo-violet: 271 91% 65%;
+    --zyo-violet-soft: 258 90% 72%;
+    --zyo-violet-deep: 265 55% 18%;
+    --zyo-violet-glow: 260 100% 93%;
+
     --neon-green: 142 100% 50%;
     --neon-blue: 190 100% 50%;
     --neon-purple: 280 100% 60%;
