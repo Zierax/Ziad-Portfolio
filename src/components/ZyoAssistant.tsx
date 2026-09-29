@@ -26,17 +26,65 @@ const PLAYLIST = [
 // NOTE: local src/music/*.mp3 copies exist but total ~30MB — bundling them
 // would explode dist/. Remote URLs stay until a proper audio CDN exists.
 
+/**
+ * Mood is expressed by the antenna, not the face. Snoo solves the small-face
+ * legibility problem the same way: a neutral face plus a readable appendage.
+ * This also avoids the common failure where every state reshapes the features
+ * and the character appears to change identity.
+ */
+const ANTENNA_TILT: Record<Mood, number> = {
+  idle: -5,
+  watching: 9,
+  coding: 1,
+  dancing: -15,
+  dragged: 20,
+  sleeping: 28,
+};
+
 const LOGS = ["SYSTEM_ONLINE", "ZYO_CORE_ACTIVE", "DOSSIER_INDEXED", "READY"];
 
+// Must match the rendered <svg> dimensions exactly: BOT_H also defines the
+// drag clamp, so a stale value leaves the pet able to be dropped off-screen.
 const BOT_W = 110;
-const BOT_H = 130;
+const BOT_H = 112;
+
+// Gaze tuning. GAZE_BIAS is the off-axis rest pose; see the rAF loop.
+const GAZE_BIAS_X = 1.5;
+const GAZE_BIAS_Y = -1;
+const GAZE_MAX_PX = 2;
+const LEAN_MAX_DEG = 1.4;
+
+/**
+ * Per-mood body squash, applied about the base (55,104) so the bean compresses
+ * onto itself instead of sliding.
+ *
+ * The antenna alone is NOT sufficient here, and this is measured, not assumed:
+ * the antenna tip travels 11px from a pivot at (55,16), so idle(-5deg) and
+ * coding(1deg) sit 6deg apart = 1.15px of tip travel. On a 110px character
+ * three of six moods fell inside a sub-pixel band. Snoo can carry mood in an
+ * antenna because it is a large-format mark with arms, posture and eyelids
+ * behind it; at sprite scale the appendage is 5% of the character's height.
+ * Silhouette is the signal that survives downsampling, so each mood now also
+ * gets its own squash: the smallest pairwise gap here is 0.05 of a ~90px
+ * body = 4.5px, which clears the noise floor.
+ */
+const MOOD_SQUASH: Record<Mood, number> = {
+  idle: 1,
+  watching: 1.05,
+  coding: 0.95,
+  dancing: 1.1,
+  dragged: 0.9,
+  sleeping: 0.94,
+};
 const CLICK_DRAG_THRESHOLD_PX = 6;
 const SPEECH_HIDE_MS = 6500;
 const BLOCKED_NOTICE_MS = 10000;
 const DISMISS_KEY = "zyo-dismissed";
 const RESPAWN_EVENT = "zyo:respawn";
 
-const HOME_POS = () => ({ x: vw() - 120, y: vh() - 150 });
+// Derived from the rendered size so it cannot drift out of sync the way the
+// literal 150 did; BOT_H is the single source of truth for the pet box.
+const HOME_POS = () => ({ x: vw() - (BOT_W + 10), y: vh() - (BOT_H + 24) });
 
 type ProfileModule = typeof import("@/data/profile");
 
@@ -50,12 +98,57 @@ function formatTime(sec: number): string {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
+/** One line of readout. `by` is attribution and is only ever set where a
+ *  source was verified; unverified quotations are deliberately absent. */
+interface ZyoLine {
+  text: string;
+  by?: string;
+}
+
+/**
+ * Verified quotations. Every line was checked against a primary or
+ * authoritative source; translators are named where the wording is theirs.
+ * A widely circulated line with no traceable origin is worse than no line at
+ * all, so the usual misattributions (the Frankl "stimulus and response",
+ * the Confucius "slowly you go", the Feynman "try to be wrong") are excluded.
+ */
+const QUOTES: readonly ZyoLine[] = [
+  {
+    text: "Whereof one cannot speak, thereof one must be silent.",
+    by: "Wittgenstein — Tractatus 7, trans. Ogden",
+  },
+  {
+    text: "If you do not work on an important problem, it's unlikely you'll do important work. It's perfectly obvious.",
+    by: "Richard Hamming — You and Your Research, 1986",
+  },
+  {
+    text: "Talk is cheap. Show me the code.",
+    by: "Linus Torvalds — linux-kernel, 2000",
+  },
+  {
+    text: "Let us concentrate rather on explaining to human beings what we want a computer to do.",
+    by: "Donald Knuth — Literate Programming, 1984",
+  },
+  {
+    text: "A book holds words. Words hold things. They bear meanings.",
+    by: "Ursula K. Le Guin — The Carrier Bag Theory of Fiction",
+  },
+  {
+    text: "Everything has two handles, the one by which it may be carried, the other by which it cannot.",
+    by: "Epictetus — Enchiridion 43, trans. Carter",
+  },
+  {
+    text: "The first principle is that you must not fool yourself — and you are the easiest person to fool.",
+    by: "Richard Feynman — Cargo Cult Science, 1974",
+  },
+];
+
 /** Real dossier facts only — built from the generated snapshot, never hardcoded. */
-function buildFacts(profile: ProfileModule | null): string[] {
-  const facts: string[] = [
-    "TIP — type 'github' in the terminal for live repo stats",
-    "TIP — type 'projects' to browse ranked work, 'method' for the formula",
-    "TIP — a 12-puzzle CTF lives at /challenge",
+function buildFacts(profile: ProfileModule | null): ZyoLine[] {
+  const facts: ZyoLine[] = [
+    { text: "TIP — type 'github' in the terminal for live repo stats" },
+    { text: "TIP — type 'projects' to browse ranked work, 'method' for the formula" },
+    { text: "TIP — a 12-puzzle CTF lives at /challenge" },
   ];
   if (!profile) return facts;
   const {
@@ -63,13 +156,13 @@ function buildFacts(profile: ProfileModule | null): string[] {
     division36Systems, githubSignal, academicResearches, displayName, updatedLabel,
   } = profile;
   facts.push(
-    `${githubSignal.combinedOwnedRepoStars} owned repo stars across ${githubSignal.publicRepos + githubSignal.division36PublicRepos} public repos`,
-    `${academicResearches.length} research records with versioned Zenodo DOIs`
+    { text: `${githubSignal.combinedOwnedRepoStars} owned repo stars across ${githubSignal.publicRepos + githubSignal.division36PublicRepos} public repos` },
+    { text: `${academicResearches.length} research records with versioned Zenodo DOIs` }
   );
   const grafana = flagshipRepos.find((r) => r.key === "Zierax/Grafana-Final-Scanner");
   if (grafana) {
     facts.unshift(
-      `${displayName(grafana)}: ${grafana.stars} stars, ${grafana.forks} forks — most-adopted tool here`
+      { text: `${displayName(grafana)}: ${grafana.stars} stars, ${grafana.forks} forks — most-adopted tool here` }
     );
   }
   const zjail = flagshipRepos.find((r) => r.key === "Division-36/Z-Jail");
@@ -82,27 +175,27 @@ function buildFacts(profile: ProfileModule | null): string[] {
     if (outlets.length > 0) {
       facts.splice(
         2, 0,
-        `Z-Jail is cited by ${outlets.slice(0, 3).join(", ")}${outlets.length > 3 ? ` +${outlets.length - 3} more` : ""}`
+        { text: `Z-Jail is cited by ${outlets.slice(0, 3).join(", ")}${outlets.length > 3 ? ` +${outlets.length - 3} more` : ""}` }
       );
     }
   }
   const topSignal = signalRepos[0];
   if (topSignal) {
-    facts.push(`${displayName(topSignal)} leads the signal stream at ${topSignal.stars} stars`);
+    facts.push({ text: `${displayName(topSignal)} leads the signal stream at ${topSignal.stars} stars` });
   }
   const freshest = recentRepos[0];
   if (freshest) {
-    facts.push(`${displayName(freshest)} updated ${updatedLabel(freshest.updatedAt)} — freshest activity`);
+    facts.push({ text: `${displayName(freshest)} updated ${updatedLabel(freshest.updatedAt)} — freshest activity` });
   }
   if (externalMentions.length > 0) {
-    facts.push(`${externalMentions.length} third-party citations tracked — see 'mentions' in the terminal`);
+    facts.push({ text: `${externalMentions.length} third-party citations tracked — see 'mentions' in the terminal` });
   }
   if (division36Systems.length > 0) {
-    facts.push(`Division-36 runs ${division36Systems.slice(0, 3).map((s) => s.name).join(" · ")} as public benchmarks`);
+    facts.push({ text: `Division-36 runs ${division36Systems.slice(0, 3).map((s) => s.name).join(" · ")} as public benchmarks` });
   }
   const newestPaper = academicResearches[0];
   if (newestPaper && newestPaper.status) {
-    facts.push(`Research record: ${newestPaper.title.slice(0, 60)}… — ${newestPaper.status}`);
+    facts.push({ text: `Research record: ${newestPaper.title.slice(0, 60)}… — ${newestPaper.status}` });
   }
   return facts;
 }
@@ -234,7 +327,7 @@ const ZyoAssistant: React.FC = () => {
   const errorStreakRef = useRef(0);
   const blockedUntilRef = useRef(0);
 
-  const [speech, setSpeech] = useState<string | null>(null);
+  const [speech, setSpeech] = useState<ZyoLine | null>(null);
   const speechTimer = useRef<number | null>(null);
   const factIdx = useRef(0);
   const profileRef = useRef<ProfileModule | null>(null);
@@ -242,6 +335,8 @@ const ZyoAssistant: React.FC = () => {
   // Refs mutated by the rAF loop — never state.
   const botRef = useRef<HTMLDivElement>(null);
   const pupilGroupRef = useRef<SVGGElement>(null);
+  const leanRef = useRef<SVGGElement>(null);
+  const moodRef = useRef<Mood>('idle');
   const toggleBtnRef = useRef<HTMLButtonElement>(null);
   const mobileBtnRef = useRef<HTMLButtonElement>(null);
   const posRef = useRef<Position>(HOME_POS());
@@ -251,6 +346,10 @@ const ZyoAssistant: React.FC = () => {
   const [bounceKey, setBounceKey] = useState(0);
   const draggingRef = useRef(false);
   const mountedRef = useRef(true);
+  useEffect(() => {
+    moodRef.current = mood;
+  }, [mood]);
+
   const reducedMotion = useRef(
     typeof window !== "undefined" &&
     typeof window.matchMedia === "function" &&
@@ -313,15 +412,33 @@ const ZyoAssistant: React.FC = () => {
         botRef.current.style.transform =
           `translate3d(${posRef.current.x}px, ${posRef.current.y}px, 0)`;
       }
-      // Pupils follow the cursor, clamped to a 2.5px radius.
-      if (pupilGroupRef.current && !reducedMotion.current) {
+      // Gaze follows the cursor, but deliberately not 1:1 and never centred.
+      // Three reasons, each measured or documented rather than taste:
+      //  - Duolingo's brand rule is blunt: "Center Duo's pupils within his
+      //    eyes. It makes him look creepy." A dead-centre pupil is a symmetric
+      //    unwavering stare, so GAZE_BIAS holds the rest pose up and to the
+      //    right, as if watching something past your shoulder.
+      //  - Amplitude is clamped below the true cursor delta; a 1:1 servo
+      //    sweep is what makes a tracker read as machinery.
+      //  - The body counter-leans against the gaze. If only the eyes move,
+      //    the result is a turret; a small opposing tilt is what converts
+      //    "tracking" into "looking".
+      if (pupilGroupRef.current && leanRef.current && !reducedMotion.current) {
         const dx = mouseRef.current.x - (posRef.current.x + 55);
         const dy = mouseRef.current.y - (posRef.current.y + 34);
         const angle = Math.atan2(dy, dx);
-        const dist = Math.min(2.5, Math.sqrt(dx * dx + dy * dy) / 80);
+        const dist = Math.min(GAZE_MAX_PX, Math.sqrt(dx * dx + dy * dy) / 110);
+        const gx = Math.cos(angle) * dist + GAZE_BIAS_X;
+        const gy = Math.sin(angle) * dist + GAZE_BIAS_Y;
         pupilGroupRef.current.setAttribute(
           "transform",
-          `translate(${(Math.cos(angle) * dist).toFixed(2)},${(Math.sin(angle) * dist).toFixed(2)})`
+          `translate(${gx.toFixed(2)},${gy.toFixed(2)})`
+        );
+        const lean = Math.max(-LEAN_MAX_DEG, Math.min(LEAN_MAX_DEG, -gx * 0.55));
+        const sy = MOOD_SQUASH[moodRef.current];
+        leanRef.current.setAttribute(
+          "transform",
+          `rotate(${lean.toFixed(2)} 55 58) translate(55 104) scale(1 ${sy}) translate(-55 -104)`
         );
       }
       frame = requestAnimationFrame(update);
@@ -408,13 +525,20 @@ const ZyoAssistant: React.FC = () => {
   // ----------------------------------------
 
   const speak = useCallback(() => {
-    let facts: string[];
+    let lines: ZyoLine[];
     try {
-      facts = buildFacts(profileRef.current);
+      // Deterministic interleave: one quote per three facts, walked by a single
+      // incrementing index, so the sequence is reproducible and no line can
+      // be starved by another.
+      const facts = buildFacts(profileRef.current);
+      lines = facts.flatMap((fact, i) => (i % 3 === 2 ? [fact, QUOTES[((i / 3) | 0) % QUOTES.length]] : [fact]));
+      if (lines.length === 0) {
+        lines = [{ text: "TIP — type 'help' in the terminal to start exploring" }];
+      }
     } catch {
-      facts = ["TIP — type 'help' in the terminal to start exploring"];
+      lines = [{ text: "TIP — type 'help' in the terminal to start exploring" }];
     }
-    setSpeech(facts[factIdx.current % facts.length]);
+    setSpeech(lines[factIdx.current % lines.length]);
     factIdx.current += 1;
     lastMoveRef.current = Date.now(); // attention wakes the pet
     if (!reducedMotion.current) setBounceKey((b) => b + 1);
@@ -831,31 +955,58 @@ const ZyoAssistant: React.FC = () => {
             aria-hidden="true"
             className={`
             absolute -top-10 px-3 py-1 rounded-md bg-black/85 text-zyo-cream
-            text-[10px] font-mono tracking-widest border border-zyo-blush/50
+            text-[10px] font-mono tracking-widest border border-zyo-cheek/50
             transition-all duration-300 motion-reduce:transition-none ${mood !== 'idle' && !speech ? 'opacity-100' : 'opacity-0'}
           `}>
             [{statusText}]
           </div>
 
-          {/* Speech bubble — announced politely when a fact lands */}
+          {/* Readout — deliberately NOT a speech bubble. GitHub's art director
+              removed speaking from the Octocat precisely because talking
+              mascots read as agents with an agenda (the Clippy failure), and
+              Snoo communicates through a non-face channel instead. Framing
+              this as a terminal readout keeps the lines legible and diegetic:
+              the site is already a text-display device, so the pet reports
+              rather than addresses. Announced politely when a line lands. */}
           <div
             role="status"
             onMouseEnter={holdSpeech}
             onMouseLeave={releaseSpeech}
             className={`
-            absolute -top-10 left-1/2 -translate-x-1/2 -translate-y-full w-60 p-3 pr-8 rounded-lg
-            bg-card border border-zyo-body/50 shadow-2xl transition-all motion-reduce:transition-none
-            ${speech ? 'scale-100 opacity-100' : 'scale-90 opacity-0 pointer-events-none'}
+            absolute -top-10 left-1/2 -translate-x-1/2 -translate-y-full w-64
+            border border-zyo-line/60 bg-black/92 p-2.5 pr-8
+            transition-all duration-300 motion-reduce:transition-none
+            ${speech ? 'opacity-100' : 'opacity-0 pointer-events-none'}
           `}>
-            <p className="text-xs font-mono leading-5 text-foreground">{speech}</p>
+            <div className="mb-1.5 flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-[0.22em] text-terminal-amber/85">
+              <span>zyo</span>
+              <span className="text-zyo-line">/</span>
+              <span className="text-zyo-line/80">{speech?.by ? "quote" : "local"}</span>
+            </div>
+            {speech && (
+              <>
+                <p className="text-[11px] font-mono leading-[1.45] text-zyo-cream">
+                  {speech.text}
+                  <span
+                    aria-hidden="true"
+                    className="ml-1 inline-block h-[9px] w-[5px] translate-y-[1px] bg-terminal-amber animate-zyo-caret motion-reduce:hidden"
+                  />
+                </p>
+                {speech.by && (
+                  <p className="mt-1.5 border-t border-zyo-line/40 pt-1.5 text-[10px] font-mono leading-4 text-zyo-body">
+                    — {speech.by}
+                  </p>
+                )}
+              </>
+            )}
             {speech && (
               <button
                 onClick={() => {
                   if (speechTimer.current !== null) window.clearTimeout(speechTimer.current);
                   setSpeech(null);
                 }}
-                aria-label="Dismiss fact"
-                className="absolute right-1.5 top-1.5 rounded-full p-1.5 text-muted-foreground hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-zyo-body"
+                aria-label="Dismiss line"
+                className="absolute right-1.5 top-1.5 rounded-full p-1.5 text-muted-foreground hover:text-zyo-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-terminal-amber"
               >
                 <X size={12} />
               </button>
@@ -877,7 +1028,7 @@ const ZyoAssistant: React.FC = () => {
             onClick={dismiss}
             aria-label="Hide Zyo assistant"
             title="Hide assistant"
-            className="absolute -left-10 top-4 rounded-full border border-border bg-card p-1.5 text-muted-foreground opacity-0 transition-all hover:border-zyo-blush hover:text-zyo-blush group-hover:opacity-100 focus:opacity-100 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-zyo-body"
+            className="absolute -left-10 top-4 rounded-full border border-border bg-card p-1.5 text-muted-foreground opacity-0 transition-all hover:border-zyo-cheek hover:text-zyo-cheek group-hover:opacity-100 focus:opacity-100 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-zyo-body"
           >
             <X size={13} />
           </button>
@@ -900,7 +1051,7 @@ const ZyoAssistant: React.FC = () => {
             className="cursor-grab active:cursor-grabbing transition-transform duration-200 group-hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zyo-body"
             role="button"
             tabIndex={0}
-            aria-label="Zyo assistant. Press Enter for a dossier fact, M for music, double-click to recenter."
+            aria-label="Zyo assistant. Press Enter for a line, M for music, double-click to recenter."
             onKeyDown={handleKeyDown}
           >
             {mood === 'sleeping' && (
@@ -913,88 +1064,97 @@ const ZyoAssistant: React.FC = () => {
             <div key={bounceKey} className={bounceKey > 0 && !reducedMotion.current ? "animate-zyo-boing" : undefined}>
             <svg width="110" height="112" viewBox="0 0 110 112" aria-hidden="true" className={reducedMotion.current ? undefined : "animate-zyo-float"}>
               <defs>
-                <radialGradient id="zyo-head-grad" cx="0.38" cy="0.26" r="0.92">
-                  <stop offset="0%" stopColor="#d3d9f5" />
-                  <stop offset="100%" stopColor="#9aa5d8" />
+                <linearGradient id="zyo-cream-grad" x1="0.15" y1="0" x2="0.5" y2="1">
+                  <stop offset="0%" stopColor="hsl(var(--zyo-cream))" />
+                  <stop offset="100%" stopColor="hsl(var(--zyo-body))" />
+                </linearGradient>
+                <radialGradient id="zyo-lens-grad" cx="0.5" cy="0.45" r="0.5">
+                  <stop offset="0%" stopColor="hsl(var(--zyo-deep))" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="hsl(var(--zyo-deep))" stopOpacity="0" />
                 </radialGradient>
-                <radialGradient id="zyo-body-grad" cx="0.4" cy="0.2" r="0.95">
-                  <stop offset="0%" stopColor="#c8cef0" />
-                  <stop offset="100%" stopColor="#8f9bd2" />
-                </radialGradient>
-                <clipPath id="zyo-head-clip">
-                  <circle cx="0" cy="0" r="24" />
-                </clipPath>
               </defs>
 
-              {/* 1. LIMBS — outlined so they read against both the body and the page */}
-              <g fill="none" strokeLinecap="round" aria-hidden="true">
-                <path d="M 39 74 Q 33 80 35 88" stroke="hsl(var(--zyo-shade))" strokeWidth="6.5" />
-                <path d="M 71 74 Q 77 80 75 88" stroke="hsl(var(--zyo-shade))" strokeWidth="6.5" />
-                <path d="M 39 74 Q 33 80 35 88" stroke="hsl(var(--zyo-body))" strokeWidth="4.2" />
-                <path d="M 71 74 Q 77 80 75 88" stroke="hsl(var(--zyo-body))" strokeWidth="4.2" />
+              {/* ANTENNA — primary mood channel. Rendered as a CSS transform as well
+                  as a presentation attribute: a CSS transition on an attribute
+                  change is engine-dependent, so the style is what actually
+                  guarantees the settle. */}
+              <g
+                transform={`rotate(${ANTENNA_TILT[mood]} 55 16)`}
+                style={{
+                  transform: `rotate(${ANTENNA_TILT[mood]}deg)`,
+                  transformOrigin: "55px 16px",
+                  transformBox: "view-box",
+                  transition: reducedMotion.current ? undefined : "transform 600ms cubic-bezier(0.34, 1.3, 0.64, 1)",
+                }}
+                aria-hidden="true"
+              >
+                <path d="M 55 16 Q 55 9 55 5" fill="none" stroke="hsl(var(--zyo-line))" strokeWidth="2" strokeLinecap="round" />
+                <circle cx="55" cy="5" r="3" fill="hsl(var(--terminal-amber))" />
               </g>
+
+              {/* EARS — the only appendage besides the antenna. The earlier
+                  mitten pair was removed: four identical nubs at two different
+                  body widths gave the viewer no cue which pair was ears, so all
+                  four read as rivets. Snoo carries no hands in its rest pose
+                  either, and pet-forge's guidance for a limbless character is to
+                  degrade to body contour and breathing rather than force a rig. */}
               <g aria-hidden="true">
-                <circle cx="35" cy="89" r="3.3" fill="hsl(var(--zyo-body))" stroke="hsl(var(--zyo-shade))" strokeWidth="1.3" />
-                <circle cx="75" cy="89" r="3.3" fill="hsl(var(--zyo-body))" stroke="hsl(var(--zyo-shade))" strokeWidth="1.3" />
-                <ellipse cx="47" cy="99" rx="5.6" ry="3.5" fill="hsl(var(--zyo-body))" stroke="hsl(var(--zyo-shade))" strokeWidth="1.3" />
-                <ellipse cx="63" cy="99" rx="5.6" ry="3.5" fill="hsl(var(--zyo-body))" stroke="hsl(var(--zyo-shade))" strokeWidth="1.3" />
+                <circle cx="28" cy="26" r="7" fill="hsl(var(--zyo-body))" stroke="hsl(var(--zyo-line))" strokeWidth="1.4" />
+                <circle cx="82" cy="26" r="7" fill="hsl(var(--zyo-body))" stroke="hsl(var(--zyo-line))" strokeWidth="1.4" />
               </g>
 
-              {/* 2. NECK + BODY */}
-              <rect x="48" y="50" width="14" height="18" rx="7" fill="hsl(var(--zyo-body-deep))" aria-hidden="true" />
-              <ellipse cx="55" cy="80" rx="19" ry="17" fill="url(#zyo-body-grad)" stroke="hsl(var(--zyo-shade))" strokeWidth="1.4" aria-hidden="true" />
-              <ellipse cx="55" cy="85" rx="10" ry="8" fill="hsl(var(--zyo-cream))" opacity="0.22" aria-hidden="true" />
+              {/* BODY — one continuous bean, widest low, no feet.
+                  Head/body read comes from the value falloff and the ears, not
+                  from a second shape: a head circle stacked on a body ellipse
+                  reads as two discs, which is a known generated-image tell.
+                  Group transform is written per-frame by the rAF loop, which
+                  composes the gaze counter-lean with the per-mood squash. */}
+              <g ref={leanRef} aria-hidden="true">
+                <path d="M 55 14 C 72 14 88 32 89 60 C 90 84 76 104 55 104 C 34 104 20 84 21 60 C 22 32 38 14 55 14 Z" fill="url(#zyo-cream-grad)" stroke="hsl(var(--zyo-line))" strokeWidth="1.5" />
 
-              {/* 3. COLLAR — a soft band tucked under the chin, not a stiff cup */}
-              <ellipse cx="55" cy="61" rx="11.5" ry="4.2" fill="hsl(var(--zyo-blush))" stroke="hsl(var(--zyo-shade))" strokeWidth="1.2" aria-hidden="true" />
+                {/* Cheeks — warm, and lifted clear of the mouth. The earlier
+                    pink ellipses sat at y=50 with the mouth top edge at y=51, so
+                    the cheeks literally crossed the mouth, and at 1.79:1 they
+                    were near-invisible anyway. Baby-schema work lists chubby
+                    cheeks as a real cuteness cue, so they stay — in the body's
+                    own warm family rather than as pink, which is the AI tell. */}
+                <ellipse cx="31" cy="47" rx="5.5" ry="3.2" fill="hsl(var(--zyo-cheek))" opacity="0.8" />
+                <ellipse cx="79" cy="47" rx="5.5" ry="3.2" fill="hsl(var(--zyo-cheek))" opacity="0.8" />
 
-              {/* 4. HEAD UNIT */}
-              <g transform="translate(55, 34)" className={mood === 'dancing' && !reducedMotion.current ? 'animate-zyo-head' : ''} aria-hidden="true">
-                {/* Ears */}
-                <ellipse cx="-18" cy="-17" rx="6.5" ry="9.5" transform="rotate(-25 -18 -17)" fill="url(#zyo-body-grad)" stroke="hsl(var(--zyo-shade))" strokeWidth="1.4" />
-                <ellipse cx="18" cy="-17" rx="6.5" ry="9.5" transform="rotate(25 18 -17)" fill="url(#zyo-body-grad)" stroke="hsl(var(--zyo-shade))" strokeWidth="1.4" />
-                <ellipse cx="-17" cy="-16" rx="2.8" ry="5" transform="rotate(-25 -17 -16)" fill="hsl(var(--zyo-blush))" opacity="0.6" />
-                <ellipse cx="17" cy="-16" rx="2.8" ry="5" transform="rotate(25 17 -16)" fill="hsl(var(--zyo-blush))" opacity="0.6" />
+                {/* EYE FIELD — a soft radial lens, no rim, behind each dot.
+                    This is what makes the gaze legible at all: a perfectly
+                    symmetric disc translated is still symmetric, so with no
+                    field there is nothing for the viewer to read direction
+                    from, and the off-axis rest reads as "drawn slightly
+                    off-centre" instead of "looking away". A lens is a boundary,
+                    not a specular highlight, so it does not reintroduce the
+                    glint that measured WORSE on innocence than a plain dot.
+                    The lens is static and only the dot travels, so the eye axis
+                    can never drift out of agreement with the face axis. */}
+                <ellipse cx="44" cy="40" rx="8" ry="8" fill="url(#zyo-lens-grad)" />
+                <ellipse cx="66" cy="40" rx="8" ry="8" fill="url(#zyo-lens-grad)" />
 
-                {/* Skull */}
-                <circle cx="0" cy="0" r="24" fill="url(#zyo-head-grad)" stroke="hsl(var(--zyo-shade))" strokeWidth="1.6" />
-                <g clipPath="url(#zyo-head-clip)" aria-hidden="true">
-                  <ellipse cx="-7" cy="-14" rx="17" ry="10" fill="hsl(var(--zyo-cream))" opacity="0.2" />
-                </g>
-
-                {/* Blush */}
-                <ellipse cx="-16" cy="6" rx="6.5" ry="3.8" fill="hsl(var(--zyo-blush))" opacity="0.75" />
-                <ellipse cx="16" cy="6" rx="6.5" ry="3.8" fill="hsl(var(--zyo-blush))" opacity="0.75" />
-
-                {/* Eyes — closed and content when blinking or asleep,
-                    squinting down while deep in code, otherwise soft and
-                    following the pointer. The ref stays mounted whenever
-                    the eye is open so it never freezes. */}
                 {isBlinking || mood === 'sleeping' ? (
-                  <g stroke="hsl(var(--zyo-ink))" strokeWidth="2.1" fill="none" strokeLinecap="round">
-                    <path d="M -14 5 Q -10 -0.5 -6 5" />
-                    <path d="M 6 5 Q 10 -0.5 14 5" />
+                  <g stroke="hsl(var(--zyo-eye))" strokeWidth="2.6" fill="none" strokeLinecap="round">
+                    <path d="M 40.5 40 L 47.5 40" />
+                    <path d="M 62.5 40 L 69.5 40" />
                   </g>
                 ) : (
-                  <g ref={pupilGroupRef} transform="translate(0,0)">
-                    {mood === 'coding' ? (
-                      <g stroke="hsl(var(--zyo-ink))" strokeWidth="2.1" fill="none" strokeLinecap="round">
-                        <path d="M -14 -1 Q -10 4.5 -6 -1" />
-                        <path d="M 6 -1 Q 10 4.5 14 -1" />
-                      </g>
-                    ) : (
-                      <>
-                        <ellipse cx="-10" cy="2" rx={mood === 'watching' ? 5.2 : 4} ry={mood === 'watching' ? 6 : 4.6} fill="hsl(var(--zyo-ink))" />
-                        <ellipse cx="10" cy="2" rx={mood === 'watching' ? 5.2 : 4} ry={mood === 'watching' ? 6 : 4.6} fill="hsl(var(--zyo-ink))" />
-                        <circle cx="-11.8" cy="0.2" r={mood === 'watching' ? 1.9 : 1.3} fill="hsl(var(--zyo-cream))" />
-                        <circle cx="8.2" cy="0.2" r={mood === 'watching' ? 1.9 : 1.3} fill="hsl(var(--zyo-cream))" />
-                      </>
-                    )}
+                  <g ref={pupilGroupRef} transform="translate(1.5,-1)">
+                    <circle cx="44" cy="40" r="4.2" fill="hsl(var(--zyo-eye))" />
+                    <circle cx="66" cy="40" r="4.2" fill="hsl(var(--zyo-eye))" />
                   </g>
                 )}
 
-                {/* Mouth — a small, constant, unbothered smile */}
-                <path d="M -4 8 Q 0 11.5 4 8" stroke="hsl(var(--zyo-ink))" strokeWidth="1.9" fill="none" strokeLinecap="round" />
+                {/* Mouth — deeper than the previous 2.5px arc, which rendered as
+                    a single solid pixel row at true size and read as a seam.
+                    Sleep uses a shorter, lower, flatter line so that sleeping is
+                    no longer the happiest-looking state. */}
+                {isBlinking || mood === 'sleeping' ? (
+                  <path d="M 52 55 L 58 55" fill="none" stroke="hsl(var(--zyo-eye))" strokeWidth="1.9" strokeLinecap="round" />
+                ) : (
+                  <path d="M 49 51 Q 55 58 61 51" fill="none" stroke="hsl(var(--zyo-eye))" strokeWidth="1.9" strokeLinecap="round" />
+                )}
               </g>
             </svg>
             </div>
@@ -1003,9 +1163,13 @@ const ZyoAssistant: React.FC = () => {
       </div>
 
       <style>{`
+        /* A 1px breath, not a 6px float. The old -6px bob lifted the whole
+           character clear of its own box on a permanent loop, which is the
+           entire levitating-uncanny signal — and it has no ground contact to
+           move against, since the feet are gone. 6s, tiny, opacity-free. */
         @keyframes zyo-float {
           0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-6px); }
+          50% { transform: translateY(-1px); }
         }
         @keyframes zyo-boing {
           0% { transform: scale(1, 1); }
@@ -1013,21 +1177,21 @@ const ZyoAssistant: React.FC = () => {
           55% { transform: scale(0.94, 1.06); }
           100% { transform: scale(1, 1); }
         }
+        @keyframes zyo-caret {
+          0%, 49% { opacity: 1; }
+          50%, 100% { opacity: 0; }
+        }
         @keyframes zyo-zzz {
           0% { transform: translateY(0); opacity: 0; }
           30% { opacity: 1; }
           100% { transform: translateY(-14px); opacity: 0; }
         }
-        @keyframes zyo-head {
-          0%, 100% { transform: translate(55px, 34px) rotate(0deg); }
-          50% { transform: translate(55px, 34px) rotate(3deg); }
-        }
-        .animate-zyo-float { animation: zyo-float 3s ease-in-out infinite; }
-        .animate-zyo-head { transform-origin: 55px 34px; animation: zyo-head 0.5s ease-in-out infinite; }
+        .animate-zyo-float { animation: zyo-float 6s ease-in-out infinite; }
         .animate-zyo-boing { animation: zyo-boing 0.5s ease-out; }
         .animate-zyo-zzz { animation: zyo-zzz 2.2s ease-out infinite; }
+        .animate-zyo-caret { animation: zyo-caret 1.05s steps(1, end) infinite; }
         @media (prefers-reduced-motion: reduce) {
-          .animate-zyo-float, .animate-zyo-head, .animate-zyo-boing, .animate-zyo-zzz { animation: none; }
+          .animate-zyo-float, .animate-zyo-boing, .animate-zyo-zzz, .animate-zyo-caret { animation: none; }
         }
       `}</style>
     </>

@@ -31,12 +31,12 @@ export default {
           blue: "hsl(var(--terminal-blue))",
         },
         zyo: {
-          body: "hsl(var(--zyo-body))",
-          deep: "hsl(var(--zyo-body-deep))",
-          shade: "hsl(var(--zyo-shade))",
-          blush: "hsl(var(--zyo-blush))",
           cream: "hsl(var(--zyo-cream))",
-          ink: "hsl(var(--zyo-ink))",
+          body: "hsl(var(--zyo-body))",
+          deep: "hsl(var(--zyo-deep))",
+          line: "hsl(var(--zyo-line))",
+          eye: "hsl(var(--zyo-eye))",
+          cheek: "hsl(var(--zyo-cheek))",
         },
         neon: {
           green: "hsl(var(--neon-green))",

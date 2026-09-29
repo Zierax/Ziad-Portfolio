@@ -12,15 +12,28 @@
     --terminal-red: 0 100% 50%;
     --terminal-blue: 200 100% 60%;
 
-    /* Zyo is a soft companion, not part of the terminal phosphor rig.
-       Pastel periwinkle with a warm blush accent: low saturation and a
-       light body read calm, where neon-on-black reads as a war machine. */
-    --zyo-body: 230 34% 80%;
-    --zyo-body-deep: 231 28% 66%;
-    --zyo-shade: 233 26% 48%;
-    --zyo-blush: 8 76% 80%;
-    --zyo-cream: 38 72% 96%;
-    --zyo-ink: 250 22% 32%;
+    /* Zyo is a warm creature in a cold room. The site is a cool green-black
+       CRT field, so the pet is deliberately the warmest thing on screen, and
+       amber is the lineage's own phosphor colour, so it is diegetic rather
+       than decorative. The body is LIGHT and the eyes are DARK: a light body
+       never reads as a light source, which is what made earlier glow-eyed
+       versions look like machines.
+
+       Values are load-bearing, not vibes:
+         - body ~10.8:1 on the page: present without becoming a lamp. An
+           earlier 16:1 cream read as a hole cut in the page.
+         - eye ~7.8:1 ON the body. The face is the focal point, so it must
+           out-contrast the outline that contains it, not trail it.
+         - R-B >= 49 on every body value. Below ~30 the hue stops reading warm
+           and the pet reads as white with a beige edge.
+         - no pure black (it vanishes into the page) and no pure white (it
+           reads as an emitter). */
+    --zyo-cream: 38 48% 80%;
+    --zyo-body: 34 40% 72%;
+    --zyo-deep: 32 32% 50%;
+    --zyo-line: 30 30% 38%;
+    --zyo-eye: 16 55% 17%;
+    --zyo-cheek: 14 50% 50%;
 
     --neon-green: 142 100% 50%;
     --neon-blue: 190 100% 50%;

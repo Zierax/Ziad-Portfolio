@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "refresh:github": "node scripts/refresh-github-data.mjs",
     "retier:github": "node scripts/refresh-github-data.mjs --retier-only",
-    "test:github": "node scripts/refresh-github-data.mjs --self-test"
+    "test:github": "node scripts/refresh-github-data.mjs --self-test",
+    "check:zyo": "node scripts/check-zyo-tokens.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
