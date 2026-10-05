@@ -1,5 +1,5 @@
 {
-  "refreshedAt": "2026-09-28T13:26:51.971Z",
+  "refreshedAt": "2026-10-05T14:10:08.852Z",
   "source": "github-api",
   "schemaVersion": 2,
   "method": {
@@ -18,8 +18,8 @@
       "login": "Zierax",
       "htmlUrl": "https://github.com/Zierax",
       "publicRepos": 130,
-      "followers": 104,
-      "following": 70,
+      "followers": 106,
+      "following": 69,
       "location": "Egypt",
       "company": "@Division-36",
       "blog": "https://cal.com/zierax",
@@ -33,16 +33,16 @@
       "description": "On-device malware detection for embedded Linux. 37KB · 34ns · 96.28% accuracy · No cloud · No GPU · Built for the EU CRA 2027 compliance window.",
       "founded": "2026-03-23T17:09:15Z"
     },
-    "starredTabCount": 142
+    "starredTabCount": 145
   },
   "totals": {
-    "zieraxOwnedRepoStars": 534,
+    "zieraxOwnedRepoStars": 535,
     "zieraxOwnedRepoForks": 102,
     "zieraxOwnedRepoCount": 93,
     "division36OwnedRepoStars": 95,
     "division36OwnedRepoForks": 15,
     "division36OwnedRepoCount": 10,
-    "combinedOwnedRepoStars": 629,
+    "combinedOwnedRepoStars": 630,
     "combinedOwnedRepoForks": 117
   },
   "tiers": {
@@ -64,13 +64,13 @@
       "Zierax/Taskware-manager",
       "Zierax/Axiom-Vesuvius",
       "Division-36/mcOS",
-      "Zierax/Truthimatics_Public",
-      "Zierax/Purce",
-      "Zierax/Axiom-Recruit",
       "Zierax/fl-studio-mcp",
+      "Zierax/Purce",
+      "Zierax/Truthimatics_Public",
       "Zierax/Axiom-Bio",
-      "Zierax/Axiom-LRM",
+      "Zierax/Axiom-Recruit",
       "Zierax/Axiom-Qsecurity",
+      "Zierax/Axiom-LRM",
       "Zierax/Riptar"
     ],
     "signal": [
@@ -82,19 +82,19 @@
       "Zierax/AI-prompts-for-hunting",
       "Zierax/HackerHelper",
       "Zierax/Reconizer",
-      "Zierax/crtsh",
-      "Zierax/CIOSA"
+      "Zierax/CIOSA",
+      "Zierax/usenix26_artifact"
     ],
     "recent": [
+      "Zierax/NHE-Architecture",
+      "Zierax/fl-studio-mcp",
       "Zierax/G-dorks",
       "Zierax/CIOSA",
       "Zierax/Axiom-Astrophysics",
-      "Zierax/My-Recon-Methology",
-      "Zierax/Axiom-Zspace",
-      "Zierax/fl-studio-mcp"
+      "Zierax/My-Recon-Methology"
     ],
     "archive": [
-      "Zierax/usenix26_artifact",
+      "Zierax/crtsh",
       "Zierax/CVE-2018-13379",
       "Zierax/CVE-2023-50094_POC",
       "Zierax/TinyML-Malware-Detector_-Planck-99-"
@@ -178,10 +178,10 @@
       "pushedAt": "2024-04-15T08:25:41Z",
       "createdAt": "2024-04-15T08:14:48Z",
       "archived": false,
-      "score": 26,
+      "score": 22,
       "scoreReasons": [
         "stars×2=8",
-        "recency+8",
+        "recency+4",
         "domain+10"
       ],
       "summary": "swiss army prompts for every bug hunter",
@@ -395,11 +395,11 @@
       "pushedAt": "2026-05-27T21:43:10Z",
       "createdAt": "2026-04-16T19:29:22Z",
       "archived": false,
-      "score": 30,
+      "score": 26,
       "scoreReasons": [
         "stars×2=2",
         "forks×3=3",
-        "recency+8",
+        "recency+4",
         "domain+14",
         "readme+3"
       ],
@@ -504,11 +504,11 @@
       "pushedAt": "2026-05-01T14:09:02Z",
       "createdAt": "2026-04-24T22:03:33Z",
       "archived": false,
-      "score": 35,
+      "score": 31,
       "scoreReasons": [
         "stars×2=4",
         "forks×3=3",
-        "recency+8",
+        "recency+4",
         "domain+14",
         "readme+6"
       ],
@@ -685,11 +685,11 @@
       "pushedAt": "2024-04-15T09:01:57Z",
       "createdAt": "2024-04-15T08:32:53Z",
       "archived": false,
-      "score": 43,
+      "score": 39,
       "scoreReasons": [
         "stars×2=22",
         "forks×3=6",
-        "recency+8",
+        "recency+4",
         "domain+4",
         "readme+3"
       ],
@@ -770,11 +770,11 @@
       "pushedAt": "2024-12-04T17:29:44Z",
       "createdAt": "2024-06-13T18:22:51Z",
       "archived": false,
-      "score": 23,
+      "score": 19,
       "scoreReasons": [
         "stars×2=8",
         "forks×3=3",
-        "recency+8",
+        "recency+4",
         "domain+4"
       ],
       "summary": "Get subdomains from crt.sh",
@@ -790,7 +790,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "signal"
+      "tier": "archive"
     },
     {
       "key": "Zierax/CVE-2018-13379",
@@ -812,11 +812,11 @@
       "pushedAt": "2026-02-15T04:42:14Z",
       "createdAt": "2026-02-05T19:12:17Z",
       "archived": false,
-      "score": 15,
+      "score": 11,
       "scoreReasons": [
         "stars×2=4",
         "forks×3=3",
-        "recency+8"
+        "recency+4"
       ],
       "summary": "CVE-2018-13379 fortiOS vulnerability POC",
       "highlights": "2 stars / 1 forks",
@@ -853,11 +853,11 @@
       "pushedAt": "2024-11-23T20:11:01Z",
       "createdAt": "2024-11-23T20:00:29Z",
       "archived": false,
-      "score": 13,
+      "score": 9,
       "scoreReasons": [
         "stars×2=2",
         "forks×3=3",
-        "recency+8"
+        "recency+4"
       ],
       "summary": "poc for CVE-2023-50094 (rengine command injection)",
       "highlights": "1 stars / 1 forks",
@@ -901,15 +901,15 @@
         "creation",
         "creation-kit"
       ],
-      "stars": 1,
+      "stars": 2,
       "forks": 0,
-      "updatedAt": "2026-09-24T16:12:37Z",
+      "updatedAt": "2026-09-30T03:06:09Z",
       "pushedAt": "2026-08-17T09:48:01Z",
       "createdAt": "2026-08-15T21:04:36Z",
       "archived": false,
-      "score": 35,
+      "score": 37,
       "scoreReasons": [
-        "stars×2=2",
+        "stars×2=4",
         "recency+15",
         "domain+8",
         "readme+6",
@@ -1147,11 +1147,11 @@
       "pushedAt": "2025-01-26T12:25:37Z",
       "createdAt": "2024-12-23T19:33:40Z",
       "archived": false,
-      "score": 26,
+      "score": 22,
       "scoreReasons": [
         "stars×2=8",
         "forks×3=6",
-        "recency+8",
+        "recency+4",
         "domain+4"
       ],
       "summary": "HackerHelper is a powerful tool designed for security specialists and penetration testers. It streamlines the hacking process with an intuitive, user-friendly interface, featuring advanced scanning and efficient logging options. HackerHelper combines functionality and ease of use, making it an essential resource for cybersecurity professionals.",
@@ -1196,11 +1196,11 @@
       "pushedAt": "2026-02-17T23:21:01Z",
       "createdAt": "2024-06-18T11:53:25Z",
       "archived": false,
-      "score": 43,
+      "score": 39,
       "scoreReasons": [
         "stars×2=16",
         "forks×3=3",
-        "recency+8",
+        "recency+4",
         "domain+10",
         "readme+6"
       ],
@@ -1242,11 +1242,11 @@
       "pushedAt": "2024-11-12T18:04:48Z",
       "createdAt": "2024-11-12T16:32:43Z",
       "archived": false,
-      "score": 34,
+      "score": 30,
       "scoreReasons": [
         "stars×2=10",
         "forks×3=3",
-        "recency+8",
+        "recency+4",
         "domain+10",
         "readme+3"
       ],
@@ -1328,22 +1328,23 @@
         ],
         "benchmark": "https://github.com/Zierax/NHE-Architecture/blob/NHE-Architecture/NHE-Edge/results/NUMBERS.md"
       },
-      "headSha": "2d36361",
-      "headUrl": "https://github.com/Zierax/NHE-Architecture/commit/2d363615bc608f82663720aa82f71c1d27df6ed6",
+      "headSha": "467ea69",
+      "headUrl": "https://github.com/Zierax/NHE-Architecture/commit/467ea6994a09f792242e00fa9f7529b42d1447a6",
       "apiDescription": "you LLM will not hallucinate again",
       "language": "Python",
       "topics": [],
       "stars": 0,
       "forks": 0,
-      "updatedAt": "2026-09-23T21:19:42Z",
-      "pushedAt": "2026-09-23T21:19:37Z",
+      "updatedAt": "2026-10-04T03:23:22Z",
+      "pushedAt": "2026-10-04T03:23:18Z",
       "createdAt": "2026-08-18T07:39:51Z",
       "archived": false,
-      "score": 35,
+      "score": 39,
       "scoreReasons": [
         "recency+15",
         "domain+14",
-        "readme+6"
+        "readme+6",
+        "benchmark-table+4"
       ],
       "summary": "A guardrail for small models in places where a hallucination hurts: sub-second suppression on sub-1B edge LLMs, running on-device with no retraining and no GPU farm.",
       "highlights": "Gemma 3 1B · p<0.001 hard bench · zero control breaks · research-phase",
@@ -1355,9 +1356,11 @@
       "readme": {
         "present": true,
         "url": "https://github.com/Zierax/NHE-Architecture#readme",
-        "summary": "No-Hallucinations-Ever — fixing hallucinations on small models without retraining.",
+        "summary": "No-Hallucinations-Ever — suppressing hallucinations in sub-1B models at runtime, without retraining, on CPU, inside a 24-hour field window.",
         "highlights": [
-          "- NHE-Edge/ — working. Gemma 3 1B, jitter detector + soft scaling (0.3) in the"
+          "Runs on-device, sub-1B, CPU Gemma 3 1B, fp16, no CUDA results/latency.json",
+          "No retraining weights on disk unchanged; 32 neurons scaled at inference core/runtimerollback.py",
+          "Latency acceptable in the field +20.5% per token, 160 ms once per firing results/latency.json"
         ]
       },
       "tier": "flagship"
@@ -1430,10 +1433,10 @@
       "pushedAt": "2024-05-27T04:12:15Z",
       "createdAt": "2024-05-23T13:58:41Z",
       "archived": false,
-      "score": 25,
+      "score": 21,
       "scoreReasons": [
         "stars×2=10",
-        "recency+8",
+        "recency+4",
         "domain+4",
         "readme+3"
       ],
@@ -1576,10 +1579,10 @@
       "pushedAt": "2026-04-01T22:54:24Z",
       "createdAt": "2026-03-20T15:02:06Z",
       "archived": false,
-      "score": 10,
+      "score": 6,
       "scoreReasons": [
         "stars×2=2",
-        "recency+8"
+        "recency+4"
       ],
       "summary": "Early public benchmark lineage for Planck-99, per its own README. Marked under development upstream.",
       "highlights": "1 stars / 0 forks",
@@ -1620,11 +1623,11 @@
       "pushedAt": "2026-06-05T02:14:07Z",
       "createdAt": "2026-05-03T04:42:51Z",
       "archived": false,
-      "score": 39,
+      "score": 35,
       "scoreReasons": [
         "stars×2=2",
         "forks×3=3",
-        "recency+8",
+        "recency+4",
         "domain+16",
         "readme+6",
         "benchmark-table+4"
@@ -1680,7 +1683,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "archive"
+      "tier": "signal"
     },
     {
       "key": "Division-36/AxiomWAF-Brain_PublicBenchmarks",
@@ -1702,10 +1705,10 @@
       "pushedAt": "2026-05-13T09:08:07Z",
       "createdAt": "2026-04-07T17:18:26Z",
       "archived": false,
-      "score": 52,
+      "score": 48,
       "scoreReasons": [
         "stars×2=2",
-        "recency+8",
+        "recency+4",
         "org+12",
         "domain+20",
         "readme+6",
@@ -1882,9 +1885,9 @@
       "pushedAt": "2026-04-05T13:32:39Z",
       "createdAt": "2026-04-04T23:38:57Z",
       "archived": false,
-      "score": 50,
+      "score": 48,
       "scoreReasons": [
-        "recency+4",
+        "recency+2",
         "org+12",
         "domain+20",
         "readme+10",
