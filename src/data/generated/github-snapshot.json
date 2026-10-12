@@ -1,5 +1,5 @@
 {
-  "refreshedAt": "2026-10-05T14:10:08.852Z",
+  "refreshedAt": "2026-10-12T14:58:54.011Z",
   "source": "github-api",
   "schemaVersion": 2,
   "method": {
@@ -17,8 +17,8 @@
     "zierax": {
       "login": "Zierax",
       "htmlUrl": "https://github.com/Zierax",
-      "publicRepos": 130,
-      "followers": 106,
+      "publicRepos": 131,
+      "followers": 107,
       "following": 69,
       "location": "Egypt",
       "company": "@Division-36",
@@ -33,16 +33,16 @@
       "description": "On-device malware detection for embedded Linux. 37KB · 34ns · 96.28% accuracy · No cloud · No GPU · Built for the EU CRA 2027 compliance window.",
       "founded": "2026-03-23T17:09:15Z"
     },
-    "starredTabCount": 145
+    "starredTabCount": 148
   },
   "totals": {
-    "zieraxOwnedRepoStars": 535,
+    "zieraxOwnedRepoStars": 532,
     "zieraxOwnedRepoForks": 102,
-    "zieraxOwnedRepoCount": 93,
+    "zieraxOwnedRepoCount": 94,
     "division36OwnedRepoStars": 95,
     "division36OwnedRepoForks": 15,
     "division36OwnedRepoCount": 10,
-    "combinedOwnedRepoStars": 630,
+    "combinedOwnedRepoStars": 627,
     "combinedOwnedRepoForks": 117
   },
   "tiers": {
@@ -62,13 +62,13 @@
       "Division-36/AxiomWAF-Brain_PublicBenchmarks",
       "Division-36/Syrth_PublicBenchmark",
       "Zierax/Taskware-manager",
-      "Zierax/Axiom-Vesuvius",
       "Division-36/mcOS",
+      "Zierax/Axiom-Vesuvius",
       "Zierax/fl-studio-mcp",
-      "Zierax/Purce",
       "Zierax/Truthimatics_Public",
       "Zierax/Axiom-Bio",
       "Zierax/Axiom-Recruit",
+      "Zierax/Purce",
       "Zierax/Axiom-Qsecurity",
       "Zierax/Axiom-LRM",
       "Zierax/Riptar"
@@ -83,18 +83,19 @@
       "Zierax/HackerHelper",
       "Zierax/Reconizer",
       "Zierax/CIOSA",
-      "Zierax/usenix26_artifact"
+      "Zierax/crtsh"
     ],
     "recent": [
-      "Zierax/NHE-Architecture",
       "Zierax/fl-studio-mcp",
+      "Zierax/Grafana-Final-Scanner",
+      "Zierax/My-Recon-Methology",
+      "Zierax/NHE-Architecture",
       "Zierax/G-dorks",
-      "Zierax/CIOSA",
-      "Zierax/Axiom-Astrophysics",
-      "Zierax/My-Recon-Methology"
+      "Zierax/CIOSA"
     ],
     "archive": [
-      "Zierax/crtsh",
+      "Zierax/iamziad",
+      "Zierax/usenix26_artifact",
       "Zierax/CVE-2018-13379",
       "Zierax/CVE-2023-50094_POC",
       "Zierax/TinyML-Malware-Detector_-Planck-99-"
@@ -231,10 +232,10 @@
       "pushedAt": "2026-08-09T22:32:41Z",
       "createdAt": "2026-04-22T05:25:35Z",
       "archived": false,
-      "score": 53,
+      "score": 46,
       "scoreReasons": [
         "stars×2=8",
-        "recency+15",
+        "recency+8",
         "domain+16",
         "readme+10",
         "benchmark-table+4"
@@ -561,10 +562,10 @@
       "pushedAt": "2026-04-27T02:18:33Z",
       "createdAt": "2026-04-12T20:07:00Z",
       "archived": false,
-      "score": 44,
+      "score": 40,
       "scoreReasons": [
         "stars×2=4",
-        "recency+8",
+        "recency+4",
         "domain+18",
         "readme+10",
         "benchmark-table+4"
@@ -790,7 +791,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "archive"
+      "tier": "signal"
     },
     {
       "key": "Zierax/CVE-2018-13379",
@@ -901,15 +902,15 @@
         "creation",
         "creation-kit"
       ],
-      "stars": 2,
+      "stars": 3,
       "forks": 0,
-      "updatedAt": "2026-09-30T03:06:09Z",
+      "updatedAt": "2026-10-12T13:24:04Z",
       "pushedAt": "2026-08-17T09:48:01Z",
       "createdAt": "2026-08-15T21:04:36Z",
       "archived": false,
-      "score": 37,
+      "score": 39,
       "scoreReasons": [
-        "stars×2=4",
+        "stars×2=6",
         "recency+15",
         "domain+8",
         "readme+6",
@@ -1058,15 +1059,15 @@
       "apiDescription": "Grafana scanner with all public CVEs that I collected in one script to make grafana testing easier",
       "language": "Python",
       "topics": [],
-      "stars": 244,
+      "stars": 242,
       "forks": 45,
-      "updatedAt": "2026-09-18T13:48:59Z",
+      "updatedAt": "2026-10-08T15:56:55Z",
       "pushedAt": "2026-09-11T15:27:16Z",
       "createdAt": "2026-02-15T01:13:08Z",
       "archived": false,
-      "score": 714,
+      "score": 710,
       "scoreReasons": [
-        "stars×2=488",
+        "stars×2=484",
         "forks×3=135",
         "recency+15",
         "domain+30",
@@ -1266,6 +1267,43 @@
       "tier": "signal"
     },
     {
+      "key": "Zierax/iamziad",
+      "owner": "Zierax",
+      "name": "iamziad",
+      "label": null,
+      "license": null,
+      "url": "https://github.com/Zierax/iamziad",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
+      "apiDescription": "personal site",
+      "language": null,
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "updatedAt": "2026-10-09T13:00:02Z",
+      "pushedAt": "2026-10-09T13:00:02Z",
+      "createdAt": "2026-10-09T13:00:01Z",
+      "archived": false,
+      "score": 15,
+      "scoreReasons": [
+        "recency+15"
+      ],
+      "summary": "personal site",
+      "highlights": "0 stars / 0 forks",
+      "story": null,
+      "tags": [],
+      "mentions": [],
+      "readme": {
+        "present": false,
+        "url": "https://github.com/Zierax/iamziad#readme",
+        "summary": "",
+        "highlights": []
+      },
+      "tier": "archive"
+    },
+    {
       "key": "Zierax/My-Recon-Methology",
       "owner": "Zierax",
       "name": "My-Recon-Methology",
@@ -1281,15 +1319,15 @@
       "apiDescription": "",
       "language": null,
       "topics": [],
-      "stars": 79,
+      "stars": 77,
       "forks": 22,
-      "updatedAt": "2026-09-25T11:50:29Z",
+      "updatedAt": "2026-10-07T17:48:57Z",
       "pushedAt": "2025-05-05T06:38:14Z",
       "createdAt": "2025-04-09T10:36:04Z",
       "archived": false,
-      "score": 273,
+      "score": 269,
       "scoreReasons": [
-        "stars×2=158",
+        "stars×2=154",
         "forks×3=66",
         "recency+15",
         "domain+20",
@@ -1387,9 +1425,9 @@
       "pushedAt": "2026-09-03T23:25:19Z",
       "createdAt": "2026-07-27T09:36:22Z",
       "archived": false,
-      "score": 37,
+      "score": 30,
       "scoreReasons": [
-        "recency+15",
+        "recency+8",
         "domain+8",
         "readme+10",
         "benchmark-table+4"
@@ -1665,9 +1703,9 @@
       "pushedAt": "2026-09-10T16:49:19Z",
       "createdAt": "2026-09-10T16:46:11Z",
       "archived": false,
-      "score": 21,
+      "score": 14,
       "scoreReasons": [
-        "recency+15",
+        "recency+8",
         "domain+6"
       ],
       "summary": "Non-idempotency fault detector for Linux isolation tools.",
@@ -1683,7 +1721,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "signal"
+      "tier": "archive"
     },
     {
       "key": "Division-36/AxiomWAF-Brain_PublicBenchmarks",
