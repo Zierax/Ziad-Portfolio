@@ -1,5 +1,5 @@
 {
-  "refreshedAt": "2026-10-19T12:43:02.995Z",
+  "refreshedAt": "2026-10-26T12:36:29.179Z",
   "source": "github-api",
   "schemaVersion": 2,
   "method": {
@@ -18,7 +18,7 @@
       "login": "Zierax",
       "htmlUrl": "https://github.com/Zierax",
       "publicRepos": 131,
-      "followers": 107,
+      "followers": 108,
       "following": 69,
       "location": "Egypt",
       "company": "@Division-36",
@@ -28,21 +28,21 @@
     "division36": {
       "login": "Division-36",
       "htmlUrl": "https://github.com/Division-36",
-      "publicRepos": 10,
+      "publicRepos": 9,
       "followers": 5,
       "description": "On-device malware detection for embedded Linux. 37KB · 34ns · 96.28% accuracy · No cloud · No GPU · Built for the EU CRA 2027 compliance window.",
       "founded": "2026-03-23T17:09:15Z"
     },
-    "starredTabCount": 148
+    "starredTabCount": 147
   },
   "totals": {
-    "zieraxOwnedRepoStars": 532,
+    "zieraxOwnedRepoStars": 534,
     "zieraxOwnedRepoForks": 102,
     "zieraxOwnedRepoCount": 94,
     "division36OwnedRepoStars": 94,
     "division36OwnedRepoForks": 15,
-    "division36OwnedRepoCount": 10,
-    "combinedOwnedRepoStars": 626,
+    "division36OwnedRepoCount": 9,
+    "combinedOwnedRepoStars": 628,
     "combinedOwnedRepoForks": 117
   },
   "tiers": {
@@ -61,10 +61,10 @@
     "spotlight": [
       "Division-36/AxiomWAF-Brain_PublicBenchmarks",
       "Division-36/Syrth_PublicBenchmark",
-      "Zierax/Taskware-manager",
       "Division-36/mcOS",
-      "Zierax/Axiom-Vesuvius",
       "Zierax/fl-studio-mcp",
+      "Zierax/Axiom-Vesuvius",
+      "Zierax/Taskware-manager",
       "Zierax/Truthimatics_Public",
       "Zierax/Axiom-Bio",
       "Zierax/Axiom-Recruit",
@@ -81,24 +81,24 @@
       "Zierax/HXCC-scanner",
       "Zierax/AI-prompts-for-hunting",
       "Zierax/HackerHelper",
+      "Zierax/crtsh",
       "Zierax/Reconizer",
-      "Zierax/CIOSA",
-      "Zierax/crtsh"
+      "Zierax/CVE-2018-13379"
     ],
     "recent": [
-      "Division-36/Z-Jail",
-      "Zierax/fl-studio-mcp",
       "Zierax/Grafana-Final-Scanner",
+      "Zierax/fl-studio-mcp",
+      "Zierax/Axiom-02",
+      "Division-36/Z-Jail",
       "Zierax/My-Recon-Methology",
-      "Zierax/NHE-Architecture",
-      "Zierax/G-dorks"
+      "Zierax/NHE-Architecture"
     ],
     "archive": [
       "Zierax/iamziad",
+      "Zierax/LLM-Arabic-Tax-fert-EXP",
+      "Zierax/CIOSA",
       "Zierax/usenix26_artifact",
-      "Zierax/CVE-2018-13379",
-      "Zierax/CVE-2023-50094_POC",
-      "Zierax/TinyML-Malware-Detector_-Planck-99-"
+      "Zierax/CVE-2023-50094_POC"
     ]
   },
   "ranked": [
@@ -226,16 +226,16 @@
         "benchmarks",
         "cognitive-ai"
       ],
-      "stars": 4,
+      "stars": 5,
       "forks": 0,
-      "updatedAt": "2026-09-07T16:27:09Z",
+      "updatedAt": "2026-10-21T07:56:05Z",
       "pushedAt": "2026-08-09T22:32:41Z",
       "createdAt": "2026-04-22T05:25:35Z",
       "archived": false,
-      "score": 46,
+      "score": 55,
       "scoreReasons": [
-        "stars×2=8",
-        "recency+8",
+        "stars×2=10",
+        "recency+15",
         "domain+16",
         "readme+10",
         "benchmark-table+4"
@@ -287,10 +287,10 @@
       "pushedAt": "2026-09-25T17:59:18Z",
       "createdAt": "2026-04-09T14:44:17Z",
       "archived": false,
-      "score": 49,
+      "score": 42,
       "scoreReasons": [
         "stars×2=2",
-        "recency+15",
+        "recency+8",
         "domain+18",
         "readme+10",
         "benchmark-table+4"
@@ -628,11 +628,11 @@
       "pushedAt": "2026-09-24T19:06:00Z",
       "createdAt": "2026-04-14T21:57:16Z",
       "archived": false,
-      "score": 58,
+      "score": 51,
       "scoreReasons": [
         "stars×2=8",
         "forks×3=3",
-        "recency+15",
+        "recency+8",
         "domain+18",
         "readme+10",
         "benchmark-table+4"
@@ -731,9 +731,9 @@
       "pushedAt": "2026-09-25T18:02:56Z",
       "createdAt": "2026-08-07T19:34:24Z",
       "archived": false,
-      "score": 21,
+      "score": 14,
       "scoreReasons": [
-        "recency+15",
+        "recency+8",
         "domain+6"
       ],
       "summary": "Formal impossibility bound on semantic-understanding certification, proven and empirically validated on real transformers.",
@@ -749,7 +749,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "signal"
+      "tier": "archive"
     },
     {
       "key": "Zierax/crtsh",
@@ -832,7 +832,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "archive"
+      "tier": "signal"
     },
     {
       "key": "Zierax/CVE-2023-50094_POC",
@@ -902,15 +902,15 @@
         "creation",
         "creation-kit"
       ],
-      "stars": 3,
+      "stars": 4,
       "forks": 0,
-      "updatedAt": "2026-10-12T13:24:04Z",
+      "updatedAt": "2026-10-23T03:29:49Z",
       "pushedAt": "2026-08-17T09:48:01Z",
       "createdAt": "2026-08-15T21:04:36Z",
       "archived": false,
-      "score": 39,
+      "score": 41,
       "scoreReasons": [
-        "stars×2=6",
+        "stars×2=8",
         "recency+15",
         "domain+8",
         "readme+6",
@@ -963,11 +963,11 @@
       "pushedAt": "2024-11-25T20:53:39Z",
       "createdAt": "2024-04-15T05:55:00Z",
       "archived": false,
-      "score": 89,
+      "score": 82,
       "scoreReasons": [
         "stars×2=52",
         "forks×3=12",
-        "recency+15",
+        "recency+8",
         "domain+10"
       ],
       "summary": "Just \"Harmless\" Google dorks for bug hunters",
@@ -1059,15 +1059,15 @@
       "apiDescription": "Grafana scanner with all public CVEs that I collected in one script to make grafana testing easier",
       "language": "Python",
       "topics": [],
-      "stars": 242,
+      "stars": 243,
       "forks": 45,
-      "updatedAt": "2026-10-08T15:56:55Z",
+      "updatedAt": "2026-10-23T06:49:51Z",
       "pushedAt": "2026-09-11T15:27:16Z",
       "createdAt": "2026-02-15T01:13:08Z",
       "archived": false,
-      "score": 710,
+      "score": 712,
       "scoreReasons": [
-        "stars×2=484",
+        "stars×2=486",
         "forks×3=135",
         "recency+15",
         "domain+30",
@@ -1304,6 +1304,45 @@
       "tier": "archive"
     },
     {
+      "key": "Zierax/LLM-Arabic-Tax-fert-EXP",
+      "owner": "Zierax",
+      "name": "LLM-Arabic-Tax-fert-EXP",
+      "label": null,
+      "license": null,
+      "url": "https://github.com/Zierax/LLM-Arabic-Tax-fert-EXP",
+      "homepage": null,
+      "links": {},
+      "headSha": null,
+      "headUrl": null,
+      "apiDescription": "",
+      "language": "Python",
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "updatedAt": "2026-10-26T00:34:06Z",
+      "pushedAt": "2026-10-26T00:34:02Z",
+      "createdAt": "2026-10-25T16:51:32Z",
+      "archived": false,
+      "score": 15,
+      "scoreReasons": [
+        "recency+15"
+      ],
+      "summary": "Public repository — see README on GitHub.",
+      "highlights": "0 stars / 0 forks",
+      "story": null,
+      "tags": [
+        "Python"
+      ],
+      "mentions": [],
+      "readme": {
+        "present": false,
+        "url": "https://github.com/Zierax/LLM-Arabic-Tax-fert-EXP#readme",
+        "summary": "",
+        "highlights": []
+      },
+      "tier": "archive"
+    },
+    {
       "key": "Zierax/My-Recon-Methology",
       "owner": "Zierax",
       "name": "My-Recon-Methology",
@@ -1471,14 +1510,13 @@
       "pushedAt": "2024-05-27T04:12:15Z",
       "createdAt": "2024-05-23T13:58:41Z",
       "archived": false,
-      "score": 21,
+      "score": 18,
       "scoreReasons": [
         "stars×2=10",
         "recency+4",
-        "domain+4",
-        "readme+3"
+        "domain+4"
       ],
-      "summary": "Reconizer is a powerful and comprehensive reconnaissance tool designed to automate the process of gathering information about a target domain. It integrates various tools to perform subdomain enumeration, DNS reconnaissance, CORS scanning, IP resolution, port scanning, visual rec",
+      "summary": "Public repository — see README on GitHub.",
       "highlights": "5 stars / 0 forks",
       "story": null,
       "tags": [
@@ -1486,9 +1524,9 @@
       ],
       "mentions": [],
       "readme": {
-        "present": true,
+        "present": false,
         "url": "https://github.com/Zierax/Reconizer#readme",
-        "summary": "Reconizer is a powerful and comprehensive reconnaissance tool designed to automate the process of gathering information about a target domain. It integrates various tools to perform subdomain enumeration, DNS reconnaissance, CORS scanning, IP resolution, port scanning, visual rec",
+        "summary": "",
         "highlights": []
       },
       "tier": "signal"
@@ -1570,11 +1608,11 @@
       "pushedAt": "2026-03-10T04:20:55Z",
       "createdAt": "2026-03-10T03:41:26Z",
       "archived": false,
-      "score": 44,
+      "score": 37,
       "scoreReasons": [
         "stars×2=8",
         "forks×3=3",
-        "recency+15",
+        "recency+8",
         "domain+12",
         "readme+6"
       ],
@@ -1594,50 +1632,6 @@
         ]
       },
       "tier": "spotlight"
-    },
-    {
-      "key": "Zierax/TinyML-Malware-Detector_-Planck-99-",
-      "owner": "Zierax",
-      "name": "TinyML-Malware-Detector_-Planck-99-",
-      "label": "TinyML Malware Detector",
-      "license": null,
-      "url": "https://github.com/Zierax/TinyML-Malware-Detector_-Planck-99-",
-      "homepage": "https://github.com/Division-36/Planck-99_PublicBenchmarks",
-      "links": {
-        "site": "https://github.com/Division-36/Planck-99_PublicBenchmarks"
-      },
-      "headSha": null,
-      "headUrl": null,
-      "apiDescription": "Benchmark",
-      "language": null,
-      "topics": [],
-      "stars": 1,
-      "forks": 0,
-      "updatedAt": "2026-07-04T06:02:25Z",
-      "pushedAt": "2026-04-01T22:54:24Z",
-      "createdAt": "2026-03-20T15:02:06Z",
-      "archived": false,
-      "score": 6,
-      "scoreReasons": [
-        "stars×2=2",
-        "recency+4"
-      ],
-      "summary": "Early public benchmark lineage for Planck-99, per its own README. Marked under development upstream.",
-      "highlights": "1 stars / 0 forks",
-      "story": null,
-      "tags": [
-        "TinyML",
-        "Malware Detection",
-        "Benchmarks"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": false,
-        "url": "https://github.com/Zierax/TinyML-Malware-Detector_-Planck-99-#readme",
-        "summary": "",
-        "highlights": []
-      },
-      "tier": "archive"
     },
     {
       "key": "Zierax/Truthimatics_Public",
@@ -2154,7 +2148,6 @@
       "Division-36/.github",
       "Division-36/Axiom-Hacker",
       "Division-36/AxiomWAF_PublicBenckmark",
-      "Division-36/Syrth",
       "Zierax/30K-nuclei-templates",
       "Zierax/AD-Tools-Resources",
       "Zierax/Acqui-Finder",
@@ -2343,8 +2336,8 @@
     ]
   },
   "readmeFetch": {
-    "requested": 29,
-    "fetched": 28,
+    "requested": 28,
+    "fetched": 27,
     "failed": [
       "Zierax/G-dorks"
     ],
