@@ -1,5 +1,5 @@
 {
-  "refreshedAt": "2026-10-26T12:36:29.179Z",
+  "refreshedAt": "2026-11-02T15:18:37.031Z",
   "source": "github-api",
   "schemaVersion": 2,
   "method": {
@@ -18,7 +18,7 @@
       "login": "Zierax",
       "htmlUrl": "https://github.com/Zierax",
       "publicRepos": 131,
-      "followers": 108,
+      "followers": 107,
       "following": 69,
       "location": "Egypt",
       "company": "@Division-36",
@@ -33,16 +33,16 @@
       "description": "On-device malware detection for embedded Linux. 37KB · 34ns · 96.28% accuracy · No cloud · No GPU · Built for the EU CRA 2027 compliance window.",
       "founded": "2026-03-23T17:09:15Z"
     },
-    "starredTabCount": 147
+    "starredTabCount": 148
   },
   "totals": {
-    "zieraxOwnedRepoStars": 534,
-    "zieraxOwnedRepoForks": 102,
+    "zieraxOwnedRepoStars": 537,
+    "zieraxOwnedRepoForks": 103,
     "zieraxOwnedRepoCount": 94,
     "division36OwnedRepoStars": 94,
-    "division36OwnedRepoForks": 15,
+    "division36OwnedRepoForks": 14,
     "division36OwnedRepoCount": 9,
-    "combinedOwnedRepoStars": 628,
+    "combinedOwnedRepoStars": 631,
     "combinedOwnedRepoForks": 117
   },
   "tiers": {
@@ -59,10 +59,9 @@
       "Zierax/Axiom-02"
     ],
     "spotlight": [
-      "Division-36/AxiomWAF-Brain_PublicBenchmarks",
-      "Division-36/Syrth_PublicBenchmark",
-      "Division-36/mcOS",
       "Zierax/fl-studio-mcp",
+      "Division-36/AxiomWAF-Brain_PublicBenchmarks",
+      "Division-36/mcOS",
       "Zierax/Axiom-Vesuvius",
       "Zierax/Taskware-manager",
       "Zierax/Truthimatics_Public",
@@ -86,8 +85,8 @@
       "Zierax/CVE-2018-13379"
     ],
     "recent": [
-      "Zierax/Grafana-Final-Scanner",
       "Zierax/fl-studio-mcp",
+      "Zierax/Grafana-Final-Scanner",
       "Zierax/Axiom-02",
       "Division-36/Z-Jail",
       "Zierax/My-Recon-Methology",
@@ -902,15 +901,16 @@
         "creation",
         "creation-kit"
       ],
-      "stars": 4,
-      "forks": 0,
-      "updatedAt": "2026-10-23T03:29:49Z",
+      "stars": 7,
+      "forks": 1,
+      "updatedAt": "2026-11-02T02:07:20Z",
       "pushedAt": "2026-08-17T09:48:01Z",
       "createdAt": "2026-08-15T21:04:36Z",
       "archived": false,
-      "score": 41,
+      "score": 50,
       "scoreReasons": [
-        "stars×2=8",
+        "stars×2=14",
+        "forks×3=3",
         "recency+15",
         "domain+8",
         "readme+6",
@@ -1243,15 +1243,14 @@
       "pushedAt": "2024-11-12T18:04:48Z",
       "createdAt": "2024-11-12T16:32:43Z",
       "archived": false,
-      "score": 30,
+      "score": 27,
       "scoreReasons": [
         "stars×2=10",
         "forks×3=3",
         "recency+4",
-        "domain+10",
-        "readme+3"
+        "domain+10"
       ],
-      "summary": "HXCC is a simple yet powerful tool designed to scan web applications for common HTTP vulnerabilities. It's written in Python and utilizes the requests and socket libraries for network communication.",
+      "summary": "HXCC is a vulnerability scanner for Cross-Site tracing, Clickjacking, Cors, Host-Header injection",
       "highlights": "5 stars / 1 forks",
       "story": null,
       "tags": [
@@ -1259,9 +1258,9 @@
       ],
       "mentions": [],
       "readme": {
-        "present": true,
+        "present": false,
         "url": "https://github.com/Zierax/HXCC-scanner#readme",
-        "summary": "HXCC is a simple yet powerful tool designed to scan web applications for common HTTP vulnerabilities. It's written in Python and utilizes the requests and socket libraries for network communication.",
+        "summary": "",
         "highlights": []
       },
       "tier": "signal"
@@ -1278,12 +1277,12 @@
       "headSha": null,
       "headUrl": null,
       "apiDescription": "personal site",
-      "language": null,
+      "language": "JavaScript",
       "topics": [],
       "stars": 0,
       "forks": 0,
-      "updatedAt": "2026-10-09T13:00:02Z",
-      "pushedAt": "2026-10-09T13:00:02Z",
+      "updatedAt": "2026-10-28T19:26:08Z",
+      "pushedAt": "2026-10-28T19:26:04Z",
       "createdAt": "2026-10-09T13:00:01Z",
       "archived": false,
       "score": 15,
@@ -1293,7 +1292,9 @@
       "summary": "personal site",
       "highlights": "0 stars / 0 forks",
       "story": null,
-      "tags": [],
+      "tags": [
+        "JavaScript"
+      ],
       "mentions": [],
       "readme": {
         "present": false,
@@ -1898,56 +1899,6 @@
       "tier": "flagship"
     },
     {
-      "key": "Division-36/Syrth_PublicBenchmark",
-      "owner": "Division-36",
-      "name": "Syrth_PublicBenchmark",
-      "label": "SYRTH",
-      "license": null,
-      "url": "https://github.com/Division-36/Syrth_PublicBenchmark",
-      "homepage": null,
-      "links": {},
-      "headSha": null,
-      "headUrl": null,
-      "apiDescription": "Scan Your Risk Trace History",
-      "language": null,
-      "topics": [],
-      "stars": 0,
-      "forks": 0,
-      "updatedAt": "2026-04-05T13:32:44Z",
-      "pushedAt": "2026-04-05T13:32:39Z",
-      "createdAt": "2026-04-04T23:38:57Z",
-      "archived": false,
-      "score": 48,
-      "scoreReasons": [
-        "recency+2",
-        "org+12",
-        "domain+20",
-        "readme+10",
-        "benchmark-table+4"
-      ],
-      "summary": "AST-derived Python vulnerability classifier with explainable traces, eight CWE categories, and a C-engine benchmark path.",
-      "highlights": "0 CWE-89 SQLi arg:userinput → sink:execute · 1 CWE-79 XSS arg:userinput → sink:rendertostring · 2 CWE-284 IDOR arg:docid → sink:db.find (no auth decorator)",
-      "story": null,
-      "tags": [
-        "SAST",
-        "CWE",
-        "AST",
-        "C Engine"
-      ],
-      "mentions": [],
-      "readme": {
-        "present": true,
-        "url": "https://github.com/Division-36/Syrth_PublicBenchmark#readme",
-        "summary": "SYRTH is an AST-based vulnerability detection system for Python source code. It parses code into security-relevant function traces, encodes them into token sequences, and classifies them into 8 common CWE vulnerability categories using a trained neural network.",
-        "highlights": [
-          "0 CWE-89 SQLi arg:userinput → sink:execute",
-          "1 CWE-79 XSS arg:userinput → sink:rendertostring",
-          "2 CWE-284 IDOR arg:docid → sink:db.find (no auth decorator)"
-        ]
-      },
-      "tier": "spotlight"
-    },
-    {
       "key": "Division-36/Z-Jail",
       "owner": "Division-36",
       "name": "Z-Jail",
@@ -2104,15 +2055,15 @@
         "linux"
       ],
       "stars": 9,
-      "forks": 2,
+      "forks": 1,
       "updatedAt": "2026-08-13T04:08:38Z",
       "pushedAt": "2026-08-13T04:08:34Z",
       "createdAt": "2026-06-07T02:35:40Z",
       "archived": false,
-      "score": 82,
+      "score": 79,
       "scoreReasons": [
         "stars×2=18",
-        "forks×3=6",
+        "forks×3=3",
         "recency+8",
         "org+12",
         "domain+24",
@@ -2148,6 +2099,7 @@
       "Division-36/.github",
       "Division-36/Axiom-Hacker",
       "Division-36/AxiomWAF_PublicBenckmark",
+      "Division-36/Syrth",
       "Zierax/30K-nuclei-templates",
       "Zierax/AD-Tools-Resources",
       "Zierax/Acqui-Finder",
@@ -2336,8 +2288,8 @@
     ]
   },
   "readmeFetch": {
-    "requested": 28,
-    "fetched": 27,
+    "requested": 26,
+    "fetched": 25,
     "failed": [
       "Zierax/G-dorks"
     ],
