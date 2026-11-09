@@ -1,5 +1,5 @@
 {
-  "refreshedAt": "2026-11-02T15:18:37.031Z",
+  "refreshedAt": "2026-11-09T15:46:19.061Z",
   "source": "github-api",
   "schemaVersion": 2,
   "method": {
@@ -19,7 +19,7 @@
       "htmlUrl": "https://github.com/Zierax",
       "publicRepos": 131,
       "followers": 107,
-      "following": 69,
+      "following": 70,
       "location": "Egypt",
       "company": "@Division-36",
       "blog": "https://cal.com/zierax",
@@ -33,17 +33,17 @@
       "description": "On-device malware detection for embedded Linux. 37KB · 34ns · 96.28% accuracy · No cloud · No GPU · Built for the EU CRA 2027 compliance window.",
       "founded": "2026-03-23T17:09:15Z"
     },
-    "starredTabCount": 148
+    "starredTabCount": 149
   },
   "totals": {
-    "zieraxOwnedRepoStars": 537,
+    "zieraxOwnedRepoStars": 539,
     "zieraxOwnedRepoForks": 103,
     "zieraxOwnedRepoCount": 94,
-    "division36OwnedRepoStars": 94,
-    "division36OwnedRepoForks": 14,
+    "division36OwnedRepoStars": 95,
+    "division36OwnedRepoForks": 16,
     "division36OwnedRepoCount": 9,
-    "combinedOwnedRepoStars": 631,
-    "combinedOwnedRepoForks": 117
+    "combinedOwnedRepoStars": 634,
+    "combinedOwnedRepoForks": 119
   },
   "tiers": {
     "flagship": [
@@ -65,8 +65,8 @@
       "Zierax/Axiom-Vesuvius",
       "Zierax/Taskware-manager",
       "Zierax/Truthimatics_Public",
-      "Zierax/Axiom-Bio",
       "Zierax/Axiom-Recruit",
+      "Zierax/Axiom-Bio",
       "Zierax/Purce",
       "Zierax/Axiom-Qsecurity",
       "Zierax/Axiom-LRM",
@@ -80,23 +80,23 @@
       "Zierax/HXCC-scanner",
       "Zierax/AI-prompts-for-hunting",
       "Zierax/HackerHelper",
+      "Zierax/CIOSA",
       "Zierax/crtsh",
-      "Zierax/Reconizer",
-      "Zierax/CVE-2018-13379"
+      "Zierax/Reconizer"
     ],
     "recent": [
+      "Zierax/CIOSA",
+      "Division-36/Planck-99_PublicBenchmarks",
       "Zierax/fl-studio-mcp",
       "Zierax/Grafana-Final-Scanner",
       "Zierax/Axiom-02",
-      "Division-36/Z-Jail",
-      "Zierax/My-Recon-Methology",
-      "Zierax/NHE-Architecture"
+      "Division-36/Z-Jail"
     ],
     "archive": [
       "Zierax/iamziad",
       "Zierax/LLM-Arabic-Tax-fert-EXP",
-      "Zierax/CIOSA",
       "Zierax/usenix26_artifact",
+      "Zierax/CVE-2018-13379",
       "Zierax/CVE-2023-50094_POC"
     ]
   },
@@ -340,9 +340,9 @@
       "pushedAt": "2026-05-09T18:08:39Z",
       "createdAt": "2026-05-07T04:35:21Z",
       "archived": false,
-      "score": 32,
+      "score": 30,
       "scoreReasons": [
-        "recency+4",
+        "recency+2",
         "domain+14",
         "readme+10",
         "benchmark-table+4"
@@ -726,13 +726,13 @@
       "topics": [],
       "stars": 0,
       "forks": 0,
-      "updatedAt": "2026-09-25T18:03:00Z",
-      "pushedAt": "2026-09-25T18:02:56Z",
+      "updatedAt": "2026-11-07T22:40:44Z",
+      "pushedAt": "2026-11-07T22:40:40Z",
       "createdAt": "2026-08-07T19:34:24Z",
       "archived": false,
-      "score": 14,
+      "score": 21,
       "scoreReasons": [
-        "recency+8",
+        "recency+15",
         "domain+6"
       ],
       "summary": "Formal impossibility bound on semantic-understanding certification, proven and empirically validated on real transformers.",
@@ -748,7 +748,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "archive"
+      "tier": "signal"
     },
     {
       "key": "Zierax/crtsh",
@@ -831,7 +831,7 @@
         "summary": "",
         "highlights": []
       },
-      "tier": "signal"
+      "tier": "archive"
     },
     {
       "key": "Zierax/CVE-2023-50094_POC",
@@ -901,15 +901,15 @@
         "creation",
         "creation-kit"
       ],
-      "stars": 7,
+      "stars": 9,
       "forks": 1,
-      "updatedAt": "2026-11-02T02:07:20Z",
+      "updatedAt": "2026-11-05T10:07:20Z",
       "pushedAt": "2026-08-17T09:48:01Z",
       "createdAt": "2026-08-15T21:04:36Z",
       "archived": false,
-      "score": 50,
+      "score": 54,
       "scoreReasons": [
-        "stars×2=14",
+        "stars×2=18",
         "forks×3=3",
         "recency+15",
         "domain+8",
@@ -1281,8 +1281,8 @@
       "topics": [],
       "stars": 0,
       "forks": 0,
-      "updatedAt": "2026-10-28T19:26:08Z",
-      "pushedAt": "2026-10-28T19:26:04Z",
+      "updatedAt": "2026-11-05T22:33:13Z",
+      "pushedAt": "2026-11-05T22:33:08Z",
       "createdAt": "2026-10-09T13:00:01Z",
       "archived": false,
       "score": 15,
@@ -1365,11 +1365,11 @@
       "pushedAt": "2025-05-05T06:38:14Z",
       "createdAt": "2025-04-09T10:36:04Z",
       "archived": false,
-      "score": 269,
+      "score": 262,
       "scoreReasons": [
         "stars×2=154",
         "forks×3=66",
-        "recency+15",
+        "recency+8",
         "domain+20",
         "readme+10",
         "benchmark-table+4"
@@ -1417,9 +1417,9 @@
       "pushedAt": "2026-10-04T03:23:18Z",
       "createdAt": "2026-08-18T07:39:51Z",
       "archived": false,
-      "score": 39,
+      "score": 32,
       "scoreReasons": [
-        "recency+15",
+        "recency+8",
         "domain+14",
         "readme+6",
         "benchmark-table+4"
@@ -1796,13 +1796,14 @@
         "embedded-systems-real-time"
       ],
       "stars": 0,
-      "forks": 0,
+      "forks": 1,
       "updatedAt": "2026-08-23T05:00:17Z",
       "pushedAt": "2026-08-23T04:36:48Z",
       "createdAt": "2026-08-20T05:47:02Z",
       "archived": false,
-      "score": 44,
+      "score": 47,
       "scoreReasons": [
+        "forks×3=3",
         "recency+8",
         "org+12",
         "domain+14",
@@ -1860,17 +1861,17 @@
         "malware-detection",
         "tinyml"
       ],
-      "stars": 9,
+      "stars": 10,
       "forks": 1,
-      "updatedAt": "2026-08-13T21:19:33Z",
+      "updatedAt": "2026-11-05T19:31:50Z",
       "pushedAt": "2026-08-13T21:19:30Z",
       "createdAt": "2026-03-23T18:55:37Z",
       "archived": false,
-      "score": 77,
+      "score": 86,
       "scoreReasons": [
-        "stars×2=18",
+        "stars×2=20",
         "forks×3=3",
-        "recency+8",
+        "recency+15",
         "org+12",
         "domain+26",
         "readme+6",
@@ -2055,15 +2056,15 @@
         "linux"
       ],
       "stars": 9,
-      "forks": 1,
+      "forks": 2,
       "updatedAt": "2026-08-13T04:08:38Z",
       "pushedAt": "2026-08-13T04:08:34Z",
       "createdAt": "2026-06-07T02:35:40Z",
       "archived": false,
-      "score": 79,
+      "score": 82,
       "scoreReasons": [
         "stars×2=18",
-        "forks×3=3",
+        "forks×3=6",
         "recency+8",
         "org+12",
         "domain+24",
