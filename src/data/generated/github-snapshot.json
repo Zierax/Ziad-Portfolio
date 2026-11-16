@@ -1,5 +1,5 @@
 {
-  "refreshedAt": "2026-11-09T15:46:19.061Z",
+  "refreshedAt": "2026-11-16T15:21:39.141Z",
   "source": "github-api",
   "schemaVersion": 2,
   "method": {
@@ -19,7 +19,7 @@
       "htmlUrl": "https://github.com/Zierax",
       "publicRepos": 131,
       "followers": 107,
-      "following": 70,
+      "following": 71,
       "location": "Egypt",
       "company": "@Division-36",
       "blog": "https://cal.com/zierax",
@@ -33,16 +33,16 @@
       "description": "On-device malware detection for embedded Linux. 37KB · 34ns · 96.28% accuracy · No cloud · No GPU · Built for the EU CRA 2027 compliance window.",
       "founded": "2026-03-23T17:09:15Z"
     },
-    "starredTabCount": 149
+    "starredTabCount": 150
   },
   "totals": {
-    "zieraxOwnedRepoStars": 539,
+    "zieraxOwnedRepoStars": 540,
     "zieraxOwnedRepoForks": 103,
     "zieraxOwnedRepoCount": 94,
     "division36OwnedRepoStars": 95,
     "division36OwnedRepoForks": 16,
     "division36OwnedRepoCount": 9,
-    "combinedOwnedRepoStars": 634,
+    "combinedOwnedRepoStars": 635,
     "combinedOwnedRepoForks": 119
   },
   "tiers": {
@@ -68,8 +68,8 @@
       "Zierax/Axiom-Recruit",
       "Zierax/Axiom-Bio",
       "Zierax/Purce",
-      "Zierax/Axiom-Qsecurity",
       "Zierax/Axiom-LRM",
+      "Zierax/Axiom-Qsecurity",
       "Zierax/Riptar"
     ],
     "signal": [
@@ -85,12 +85,12 @@
       "Zierax/Reconizer"
     ],
     "recent": [
-      "Zierax/CIOSA",
-      "Division-36/Planck-99_PublicBenchmarks",
       "Zierax/fl-studio-mcp",
+      "Zierax/CIOSA",
       "Zierax/Grafana-Final-Scanner",
-      "Zierax/Axiom-02",
-      "Division-36/Z-Jail"
+      "Zierax/My-Recon-Methology",
+      "Division-36/Planck-99_PublicBenchmarks",
+      "Zierax/Axiom-02"
     ],
     "archive": [
       "Zierax/iamziad",
@@ -444,9 +444,9 @@
       "pushedAt": "2026-05-16T02:26:29Z",
       "createdAt": "2026-05-16T02:11:32Z",
       "archived": false,
-      "score": 28,
+      "score": 26,
       "scoreReasons": [
-        "recency+4",
+        "recency+2",
         "domain+14",
         "readme+6",
         "benchmark-table+4"
@@ -726,8 +726,8 @@
       "topics": [],
       "stars": 0,
       "forks": 0,
-      "updatedAt": "2026-11-07T22:40:44Z",
-      "pushedAt": "2026-11-07T22:40:40Z",
+      "updatedAt": "2026-11-10T21:23:17Z",
+      "pushedAt": "2026-11-10T17:52:53Z",
       "createdAt": "2026-08-07T19:34:24Z",
       "archived": false,
       "score": 21,
@@ -901,19 +901,19 @@
         "creation",
         "creation-kit"
       ],
-      "stars": 9,
+      "stars": 10,
       "forks": 1,
-      "updatedAt": "2026-11-05T10:07:20Z",
-      "pushedAt": "2026-08-17T09:48:01Z",
+      "updatedAt": "2026-11-14T22:55:23Z",
+      "pushedAt": "2026-11-14T03:42:54Z",
       "createdAt": "2026-08-15T21:04:36Z",
       "archived": false,
-      "score": 54,
+      "score": 60,
       "scoreReasons": [
-        "stars×2=18",
+        "stars×2=20",
         "forks×3=3",
         "recency+15",
         "domain+8",
-        "readme+6",
+        "readme+10",
         "benchmark-table+4"
       ],
       "summary": "An MCP server that lets AI assistants control FL Studio fully — transport, mixer, channel rack, plugins, patterns, step sequencer, piano roll, and the entire FL scripting API — over a virtual MIDI trigger + JSON command channel.",
@@ -931,7 +931,7 @@
         "url": "https://github.com/Zierax/fl-studio-mcp#readme",
         "summary": "An MCP server that lets AI assistants control FL Studio fully — transport, mixer, channel rack, plugins, patterns, step sequencer, piano roll, and the entire FL scripting API — over a virtual MIDI trigger + JSON command channel.",
         "highlights": [
-          "- FL Studio 20.7+ on Windows or macOS (tested on FL Studio 2025 / Windows)"
+          "- FL Studio 20.7+ on Windows or macOS (tested on FL Studio 2025 / Windows"
         ]
       },
       "tier": "spotlight"
@@ -1059,15 +1059,15 @@
       "apiDescription": "Grafana scanner with all public CVEs that I collected in one script to make grafana testing easier",
       "language": "Python",
       "topics": [],
-      "stars": 243,
+      "stars": 242,
       "forks": 45,
-      "updatedAt": "2026-10-23T06:49:51Z",
+      "updatedAt": "2026-11-10T20:49:36Z",
       "pushedAt": "2026-09-11T15:27:16Z",
       "createdAt": "2026-02-15T01:13:08Z",
       "archived": false,
-      "score": 712,
+      "score": 710,
       "scoreReasons": [
-        "stars×2=486",
+        "stars×2=484",
         "forks×3=135",
         "recency+15",
         "domain+30",
@@ -1359,17 +1359,17 @@
       "apiDescription": "",
       "language": null,
       "topics": [],
-      "stars": 77,
+      "stars": 78,
       "forks": 22,
-      "updatedAt": "2026-10-07T17:48:57Z",
+      "updatedAt": "2026-11-10T15:08:28Z",
       "pushedAt": "2025-05-05T06:38:14Z",
       "createdAt": "2025-04-09T10:36:04Z",
       "archived": false,
-      "score": 262,
+      "score": 271,
       "scoreReasons": [
-        "stars×2=154",
+        "stars×2=156",
         "forks×3=66",
-        "recency+8",
+        "recency+15",
         "domain+20",
         "readme+10",
         "benchmark-table+4"
@@ -1557,9 +1557,9 @@
       "pushedAt": "2026-05-13T17:45:38Z",
       "createdAt": "2026-05-13T10:43:26Z",
       "archived": false,
-      "score": 26,
+      "score": 24,
       "scoreReasons": [
-        "recency+4",
+        "recency+2",
         "domain+8",
         "readme+10",
         "benchmark-table+4"
@@ -1933,11 +1933,11 @@
       "pushedAt": "2026-10-16T11:46:20Z",
       "createdAt": "2026-06-02T21:38:08Z",
       "archived": false,
-      "score": 325,
+      "score": 318,
       "scoreReasons": [
         "stars×2=146",
         "forks×3=36",
-        "recency+15",
+        "recency+8",
         "org+12",
         "domain+30",
         "readme+10",
@@ -2061,11 +2061,11 @@
       "pushedAt": "2026-08-13T04:08:34Z",
       "createdAt": "2026-06-07T02:35:40Z",
       "archived": false,
-      "score": 82,
+      "score": 78,
       "scoreReasons": [
         "stars×2=18",
         "forks×3=6",
-        "recency+8",
+        "recency+4",
         "org+12",
         "domain+24",
         "readme+10",
