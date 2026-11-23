@@ -1,5 +1,5 @@
 {
-  "refreshedAt": "2026-11-16T15:21:39.141Z",
+  "refreshedAt": "2026-11-23T17:47:28.553Z",
   "source": "github-api",
   "schemaVersion": 2,
   "method": {
@@ -18,8 +18,8 @@
       "login": "Zierax",
       "htmlUrl": "https://github.com/Zierax",
       "publicRepos": 131,
-      "followers": 107,
-      "following": 71,
+      "followers": 106,
+      "following": 69,
       "location": "Egypt",
       "company": "@Division-36",
       "blog": "https://cal.com/zierax",
@@ -33,16 +33,16 @@
       "description": "On-device malware detection for embedded Linux. 37KB · 34ns · 96.28% accuracy · No cloud · No GPU · Built for the EU CRA 2027 compliance window.",
       "founded": "2026-03-23T17:09:15Z"
     },
-    "starredTabCount": 150
+    "starredTabCount": 151
   },
   "totals": {
-    "zieraxOwnedRepoStars": 540,
+    "zieraxOwnedRepoStars": 543,
     "zieraxOwnedRepoForks": 103,
     "zieraxOwnedRepoCount": 94,
     "division36OwnedRepoStars": 95,
     "division36OwnedRepoForks": 16,
     "division36OwnedRepoCount": 9,
-    "combinedOwnedRepoStars": 635,
+    "combinedOwnedRepoStars": 638,
     "combinedOwnedRepoForks": 119
   },
   "tiers": {
@@ -85,12 +85,12 @@
       "Zierax/Reconizer"
     ],
     "recent": [
+      "Zierax/Basic-ML-prompt-injections",
+      "Zierax/GoogleDorker",
       "Zierax/fl-studio-mcp",
       "Zierax/CIOSA",
       "Zierax/Grafana-Final-Scanner",
-      "Zierax/My-Recon-Methology",
-      "Division-36/Planck-99_PublicBenchmarks",
-      "Zierax/Axiom-02"
+      "Zierax/My-Recon-Methology"
     ],
     "archive": [
       "Zierax/iamziad",
@@ -231,10 +231,10 @@
       "pushedAt": "2026-08-09T22:32:41Z",
       "createdAt": "2026-04-22T05:25:35Z",
       "archived": false,
-      "score": 55,
+      "score": 48,
       "scoreReasons": [
         "stars×2=10",
-        "recency+15",
+        "recency+8",
         "domain+16",
         "readme+10",
         "benchmark-table+4"
@@ -679,22 +679,22 @@
         "paylods",
         "sql"
       ],
-      "stars": 11,
+      "stars": 12,
       "forks": 2,
-      "updatedAt": "2026-07-04T06:02:16Z",
+      "updatedAt": "2026-11-23T06:30:04Z",
       "pushedAt": "2024-04-15T09:01:57Z",
       "createdAt": "2024-04-15T08:32:53Z",
       "archived": false,
-      "score": 39,
+      "score": 52,
       "scoreReasons": [
-        "stars×2=22",
+        "stars×2=24",
         "forks×3=6",
-        "recency+4",
+        "recency+15",
         "domain+4",
         "readme+3"
       ],
       "summary": "Disclaimer: This guide is intended for educational purposes only. Prompt injection can be a serious security vulnerability, and exploiting it for malicious purposes is unethical and illegal.",
-      "highlights": "11 stars / 2 forks",
+      "highlights": "12 stars / 2 forks",
       "story": null,
       "tags": [
         "attack",
@@ -904,7 +904,7 @@
       "stars": 10,
       "forks": 1,
       "updatedAt": "2026-11-14T22:55:23Z",
-      "pushedAt": "2026-11-14T03:42:54Z",
+      "pushedAt": "2026-11-17T22:02:03Z",
       "createdAt": "2026-08-15T21:04:36Z",
       "archived": false,
       "score": 60,
@@ -1009,17 +1009,17 @@
         "googledork",
         "googledorks"
       ],
-      "stars": 34,
+      "stars": 35,
       "forks": 5,
-      "updatedAt": "2026-08-25T13:22:04Z",
+      "updatedAt": "2026-11-17T18:53:22Z",
       "pushedAt": "2024-11-27T10:48:25Z",
       "createdAt": "2024-06-21T21:02:28Z",
       "archived": false,
-      "score": 111,
+      "score": 120,
       "scoreReasons": [
-        "stars×2=68",
+        "stars×2=70",
         "forks×3=15",
-        "recency+8",
+        "recency+15",
         "domain+10",
         "readme+6",
         "benchmark-table+4"
@@ -1801,10 +1801,10 @@
       "pushedAt": "2026-08-23T04:36:48Z",
       "createdAt": "2026-08-20T05:47:02Z",
       "archived": false,
-      "score": 47,
+      "score": 43,
       "scoreReasons": [
         "forks×3=3",
-        "recency+8",
+        "recency+4",
         "org+12",
         "domain+14",
         "readme+6",
